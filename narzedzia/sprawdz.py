@@ -9,7 +9,7 @@ Sprawdza:
   * każdy plik w grafiki/*.png jest gdzieś użyty (osierocone można usunąć),
   * każda grafika D-MM-*.png ma źródło w grafiki/zrodla/,
   * nie zostały katalogi _stare,
-  * każdy moduł ma „0. O module.md”, a lekcje mają sensowną długość.
+  * lekcje mają sensowną długość.
 """
 import os
 import re
@@ -51,7 +51,7 @@ for sciezka in sorted(md_pliki):
             continue
         if pelna.startswith(GRAFIKI + os.sep):
             uzyte_grafiki.add(os.path.relpath(pelna, GRAFIKI))
-            if not cel.startswith('../../grafiki/') and not rel.startswith('README'):
+            if not re.match(r'(\.\./)+grafiki/', cel) and not rel.startswith('README'):
                 uwagi.append(f'{rel}: odnośnik do grafiki nie w konwencji ../../grafiki/: „{cel}”')
     if re.search(r'<h\d[^>]*align', tekst):
         uwagi.append(f'{rel}: nagłówki HTML <h2 align> zamiast Markdown')
@@ -62,12 +62,6 @@ for sciezka in sorted(md_pliki):
             uwagi.append(f'{rel}: tylko {n} znaków')
         elif n > MAX_ZNAKOW:
             uwagi.append(f'{rel}: aż {n} znaków – rozważ podział')
-
-for dzial in sorted(d for d in os.listdir(REPO) if d.startswith('Dział')):
-    for modul in sorted(os.listdir(os.path.join(REPO, dzial))):
-        pelna = os.path.join(REPO, dzial, modul)
-        if os.path.isdir(pelna) and not os.path.exists(os.path.join(pelna, '0. O module.md')):
-            bledy.append(f'{dzial}/{modul}: brak „0. O module.md”')
 
 obrazy = sorted(f for f in os.listdir(GRAFIKI) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')))
 osierocone = [f for f in obrazy if f not in uzyte_grafiki]

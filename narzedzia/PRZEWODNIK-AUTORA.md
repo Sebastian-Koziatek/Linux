@@ -9,20 +9,18 @@ zaglądania do Google.
 
 ```
 Dział 1 - Wprowadzenie do systemu/            moduły 01–04
-Dział 2 - Podstawy pracy z systemem Linux/    moduły 05–08
-Dział 3 - Zarządzanie systemem Linux/         moduły 09–14
-Dział 4 - Tematy dodatkowe/                   moduły 15–23 (poza programem)
-Zadania/NN. Nazwa modułu/                     I. Zadania.md + II. Rozwiązania.md
+Dział 2 - Podstawy pracy z systemem Linux/    moduły 01–04
+Dział 3 - Zarządzanie systemem Linux/         moduły 01–06
+Dział 4 - Tematy dodatkowe/                   moduły 01–09 (poza programem)
+Zadania/Dział N/NN. Nazwa modułu/             I. Zadania.md + II. Rozwiązania.md
 grafiki/                                      gotowe PNG
 grafiki/zrodla/                               źródła HTML grafik + _styl.css
 narzedzia/                                    ten przewodnik + render-grafiki.mjs
 ```
 
-- Folder modułu: `NN. Nazwa modułu` (dwucyfrowy numer, kropka, spacja).
+- Folder modułu: `NN. Nazwa modułu` (dwucyfrowy numer, kropka, spacja). **Numeracja zaczyna się od 01 w każdym dziale.**
 - Plik lekcji: `N. Tytuł lekcji.md` (numer bez zera wiodącego). Tytuł po polsku, bez skrótów,
   np. `3. Konfiguracja repozytoriów`, nie `3. Repo`.
-- Każdy moduł ma plik `0. O module.md`: 3–5 zdań, czego uczestnik się nauczy, lista lekcji
-  z linkami i czas orientacyjny.
 - Podfolder `_stare/` zawiera dotychczasowe materiały do wykorzystania. Po przepisaniu modułu
   `_stare/` **usuwamy w całości** (`git rm -r`).
 
@@ -31,14 +29,14 @@ narzedzia/                                    ten przewodnik + render-grafiki.mj
 Każda lekcja ma ten sam układ. Nagłówki zwykłe Markdown (`#`, `##`), **bez** `<h2 align="center">`.
 
 ```markdown
+![](../../grafiki/D-MM-naglowek.png)
+
 # Tytuł lekcji
 
 > **W tej lekcji:** jedno–dwa zdania, co uczestnik będzie potrafił po jej przeczytaniu.
 
-## Po co mi to?
-Krótkie osadzenie w rzeczywistości administratora: jaki problem to rozwiązuje,
-kiedy się z tym spotka. Porównanie do świata znanego uczestnikowi (Windows, biuro,
-życie codzienne) mile widziane – jedno, trafne, nie wymuszone.
+Jeden–dwa akapity wprost wyjaśniające, CZYM temat jest i kiedy administrator się z nim
+spotka. Bez osobnego nagłówka, bez marketingu i wymuszonych analogii.
 
 ## Jak to działa
 Wyjaśnienie pojęć od zera. Grafika, jeśli coś da się narysować.
@@ -54,9 +52,6 @@ Lista 2–5 punktów: co początkujący robi źle i jak to rozpoznać.
 ## Podsumowanie
 - 3–6 punktów do zapamiętania.
 - Tabela „ściąga” z poleceniami, jeśli lekcja ich uczy.
-
-## Zobacz też
-Linki do powiązanych lekcji w repozytorium (ścieżka względna).
 ```
 
 Długość: zwykle **3 000–8 000 znaków**. Lekcja czysto pojęciowa może być krótsza, lekcja
@@ -106,8 +101,10 @@ Zakończono!
   z `_styl.css`. Dzięki temu wszystkie wyglądają tak samo. Żadnych zewnętrznych obrazków,
   czcionek z internetu, emoji ani clip-artów.
 - Nazwa pliku: `D-MM-temat-po-polsku.html` → `grafiki/D-MM-temat-po-polsku.png`,
-  gdzie `D` = numer działu, `MM` = numer modułu. Przykład: `3-09-mbr-vs-gpt`.
-- W Markdown odwołujemy się ścieżką względną: `![Opis](../../grafiki/3-09-mbr-vs-gpt.png)`
+  gdzie `D` = numer działu, `MM` = numer modułu W DZIALE. Przykład: `3-01-mbr-vs-gpt`.
+  Baner nagłówkowy modułu to `D-MM-naglowek` (komponent `.naglowek`), wstawiany jako
+  pierwsza linia każdej lekcji: `![](../../grafiki/D-MM-naglowek.png)`.
+- W Markdown odwołujemy się ścieżką względną: `![Opis](../../grafiki/3-01-mbr-vs-gpt.png)`
   (lekcja leży dwa poziomy pod katalogiem głównym). Tekst alternatywny opisuje, co widać.
 - Jedna grafika = jedna myśl. Maksymalnie ~7 elementów. Tekst w grafice po polsku, krótki.
   Jeśli trzeba tłumaczyć grafikę trzema akapitami, podziel ją na dwie.
@@ -140,10 +137,10 @@ Szkielet pliku:
 | `.karty` + `.karta` (`.akcent`, `.ok`, `.zle`, `.ciemna`) | porównanie 2–4 rzeczy, kafelki pojęć | `<div class="karty"><div class="karta"><h3>…</h3><p>…</p></div>…</div>` |
 | `.strzalka` (`.dol`, `.dwie` + `<span>`) | strzałka między elementami we `.wiersz`/`.kolumna` | `<div class="strzalka"></div>` |
 | `.kroki` + `.krok` (`.kolumna`) | proces krok po kroku, numeracja automatyczna | `<div class="kroki"><div class="krok"><h3>…</h3><p>…</p></div></div>` |
-| `.warstwy` + `.warstwa.w1…w4` | stos warstw (sprzęt → jądro → powłoka) | zob. `2-05-warstwy-systemu.html` |
+| `.warstwy` + `.warstwa.w1…w4` | stos warstw (sprzęt → jądro → powłoka) | zob. `2-01-warstwy-systemu.html` |
 | `.terminal` (`.p` prompt, `.k` wyróżnienie, `.c` błąd, `.d` drugorzędne) | fragment sesji terminala wewnątrz grafiki | `<div class="terminal"><div class="pasek"><i></i><i></i><i></i><span>opis</span></div><pre>…</pre></div>` |
-| `.dyski` + `.dysk` (`.uszkodzony`) + `.blok` (`.a .b .p .x .wolny`) | dyski, RAID, partycje, LVM | zob. `3-09-raid-1.html` |
-| `.tabela` (`.tak`, `.nie`) | tabela porównawcza | zob. `3-09-mbr-vs-gpt.html` |
+| `.dyski` + `.dysk` (`.uszkodzony`) + `.blok` (`.a .b .p .x .wolny`) | dyski, RAID, partycje, LVM | zob. `3-01-raid-1.html` |
+| `.tabela` (`.tak`, `.nie`) | tabela porównawcza | zob. `3-01-mbr-vs-gpt.html` |
 | `.drzewo` (`.kat`, `.plik`, `.op`) | drzewo katalogów z opisami | `<div class="drzewo"><span class="kat">/etc</span> <span class="op">konfiguracja</span><br>…</div>` |
 | `.wezel` + `.ikona` (`.akcent`, `.morski`) | komputer/serwer/użytkownik z ikoną SVG (inline, 24×24 viewBox, stroke) | zob. `1-03-jak-dziala-menedzer-pakietow.html` |
 | `.porownanie` + `.vs` | dwie kolumny „A kontra B” | `<div class="porownanie"><div class="karta">…</div><div class="vs">vs</div><div class="karta">…</div></div>` |
@@ -158,7 +155,7 @@ bez wypełnień i gradientów.
 
 ## 6. Zadania
 
-- `Zadania/NN. Nazwa modułu/I. Zadania.md` – 8–20 zadań, od prostych do złożonych, numerowane.
+- `Zadania/Dział N/NN. Nazwa modułu/I. Zadania.md` – 8–20 zadań, od prostych do złożonych, numerowane.
   Zadania mają jasno określony cel („Utwórz…”, „Sprawdź…”, „Wyjaśnij…”). Można dodać
   ramkę `> **Wskazówka:**`.
 - `II. Rozwiązania.md` – te same numery, polecenie w bloku ```bash``` i jedno zdanie
@@ -167,11 +164,11 @@ bez wypełnień i gradientów.
 
 ## 7. Lista kontrolna przed oddaniem modułu
 
-- [ ] `0. O module.md` istnieje i linkuje wszystkie lekcje.
+- [ ] Każda lekcja zaczyna się banerem `D-MM-naglowek.png`.
 - [ ] Każda lekcja ma pełny szablon (sekcje z pkt 2), 3–8 k znaków, polskie nazewnictwo.
 - [ ] Każda grafika ma źródło w `grafiki/zrodla/`, wyrenderowany PNG został obejrzany.
 - [ ] Odnośniki `![…](../../grafiki/….png)` wskazują istniejące pliki (sprawdź `ls`).
 - [ ] Zrzuty terminala, memy, loga i stare diagramy z modułu usunięte z `grafiki/`
       (`git rm`), zachowane zrzuty GUI przemianowane.
 - [ ] `_stare/` modułu usunięte.
-- [ ] Zadania i rozwiązania modułu w `Zadania/NN. …/`.
+- [ ] Zadania i rozwiązania modułu w `Zadania/Dział N/NN. …/`.
