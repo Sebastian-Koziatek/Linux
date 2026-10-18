@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Po co jest SWAP?</h1><span class="pod">co się dzieje, gdy kończy się pamięć RAM</span></div>
+  <div class="porownanie">
+    <div class="karta ok">
+      <h3>Z przestrzenią SWAP</h3>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">RAM – pełna <small>aktywne programy</small></div>
+        <div class="strzalka dol"></div>
+        <div class="warstwa w3">SWAP na dysku <small>dawno nieużywane dane</small></div>
+      </div>
+      <ul>
+        <li>Jądro przenosi nieużywane strony pamięci na dysk.</li>
+        <li>System zwalnia, ale <b>działa dalej</b>.</li>
+        <li>Czas na reakcję administratora.</li>
+      </ul>
+    </div>
+    <div class="vs">vs</div>
+    <div class="karta zle">
+      <h3>Bez przestrzeni SWAP</h3>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">RAM – pełna <small>aktywne programy</small></div>
+        <div class="strzalka dol"></div>
+        <div class="warstwa" style="border-color:#e63946;color:#e63946">OOM killer <small>jądro zabija proces</small></div>
+      </div>
+      <ul>
+        <li>Nie ma dokąd przenieść danych.</li>
+        <li>Jądro <b>zamyka największy proces</b> – często bazę danych.</li>
+        <li>Usługa pada bez ostrzeżenia.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="podpis">SWAP nie zastępuje pamięci RAM – dysk jest setki razy wolniejszy. Jeśli system stale korzysta ze SWAP, potrzebuje więcej RAM.</div>
+</div>
+</body></html>

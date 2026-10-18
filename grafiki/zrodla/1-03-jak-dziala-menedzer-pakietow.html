@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jak działa menedżer pakietów</h1><span class="pod">na przykładzie <code>dnf install nginx</code></span></div>
+  <div class="wiersz">
+    <div class="wezel">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <b>Ty</b><small>wpisujesz jedno polecenie</small>
+    </div>
+    <div class="strzalka"></div>
+    <div class="wezel">
+      <svg class="ikona akcent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 2.5L7 14M12 14h5"/></svg>
+      <b>Menedżer pakietów</b><small>dnf / yum / apt</small>
+    </div>
+    <div class="strzalka dwie"><span></span></div>
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+      <b>Repozytorium</b><small>serwer z pakietami i ich opisem (metadane)</small>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="kroki">
+    <div class="krok"><h3>Sprawdza listę</h3><p>Pobiera z repozytorium aktualny spis dostępnych pakietów.</p></div>
+    <div class="krok"><h3>Liczy zależności</h3><p>Ustala, czego jeszcze <code>nginx</code> potrzebuje, np. bibliotek.</p></div>
+    <div class="krok"><h3>Pobiera i weryfikuje</h3><p>Ściąga pliki <code>.rpm</code> i sprawdza podpis GPG.</p></div>
+    <div class="krok"><h3>Instaluje</h3><p>Rozpakowuje pliki do systemu i zapisuje, co zainstalował.</p></div>
+  </div>
+  <div class="notatka ok">Dzięki temu nie szukasz instalatorów w internecie – wszystko pochodzi z zaufanego, podpisanego źródła i daje się jednym poleceniem zaktualizować albo odinstalować.</div>
+</div>
+</body></html>

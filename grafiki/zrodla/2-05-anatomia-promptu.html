@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Anatomia znaku zachęty</h1><span class="pod">co mówi domyślny prompt w RHEL</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>zwykły użytkownik i root</span></div>
+<pre><span class="p">[anna@serwer ~]$</span> <span class="d">▌</span>
+<span class="c">[root@serwer /etc]#</span> <span class="d">▌</span></pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta ok">
+      <h3><code>anna</code></h3>
+      <p><b>Kto</b> – nazwa zalogowanego użytkownika.</p>
+      <p class="male" style="margin-top:6px">w PS1: <code>\u</code></p>
+    </div>
+    <div class="karta">
+      <h3><code>serwer</code></h3>
+      <p><b>Gdzie</b> – nazwa komputera. Ważne, gdy masz otwartych kilka połączeń SSH.</p>
+      <p class="male" style="margin-top:6px">w PS1: <code>\h</code></p>
+    </div>
+    <div class="karta">
+      <h3><code>~</code> / <code>/etc</code></h3>
+      <p><b>Katalog bieżący</b> – tylko ostatni człon ścieżki. <code>~</code> to katalog domowy.</p>
+      <p class="male" style="margin-top:6px">w PS1: <code>\W</code> (cała ścieżka: <code>\w</code>)</p>
+    </div>
+    <div class="karta akcent">
+      <h3><code>$</code> albo <code>#</code></h3>
+      <p><b>Uprawnienia</b> – <code>$</code> zwykły użytkownik, <code>#</code> root. Przy <code>#</code> każde polecenie waży więcej.</p>
+      <p class="male" style="margin-top:6px">w PS1: <code>\$</code></p>
+    </div>
+  </div>
+  <div class="notatka">Cały wzór domyślnego promptu to <code>PS1="[\u@\h \W]\$ "</code> – ustawia go plik <code>/etc/bashrc</code>. Nawiasy kwadratowe i <code>@</code> to zwykłe znaki, wyświetlane dosłownie.</div>
+</div>
+</body></html>

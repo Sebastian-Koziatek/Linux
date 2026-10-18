@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jak działa połączenie SSH</h1><span class="pod">klient – zaszyfrowany kanał – serwer</span></div>
+  <div class="wiersz">
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l2.5 2-2.5 2M11 13h4"/></svg>
+      <b>Twój komputer (klient)</b><small>program <code>ssh</code> albo PuTTY<br>wpisujesz: <code>ssh anna@serwer</code></small>
+    </div>
+    <div class="kolumna" style="flex:1.3 1 0;align-items:center;gap:6px">
+      <span class="plakietka granat">szyfrowany kanał</span>
+      <div class="strzalka dwie" style="width:100%;max-width:220px"><span></span></div>
+      <small class="male" style="text-align:center">hasło, polecenia i wyniki<br>wędrują zaszyfrowane – nikt po drodze ich nie odczyta</small>
+    </div>
+    <div class="wezel">
+      <svg class="ikona akcent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg>
+      <b>Serwer</b><small>demon <code>sshd</code> nasłuchuje<br>na porcie <b>22/TCP</b></small>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="kroki">
+    <div class="krok"><h3>Przedstawienie się serwera</h3><p>Serwer pokazuje <b>odcisk swojego klucza</b>. Przy pierwszym połączeniu klient pyta, czy mu ufasz.</p></div>
+    <div class="krok"><h3>Zapamiętanie</h3><p>Po „yes” odcisk trafia do <code>~/.ssh/known_hosts</code>. Następnym razem pytania już nie będzie.</p></div>
+    <div class="krok"><h3>Logowanie</h3><p>Podajesz hasło albo klient używa Twojego <b>klucza SSH</b>. Serwer sprawdza, czy to naprawdę Ty.</p></div>
+    <div class="krok"><h3>Zdalna powłoka</h3><p>Dostajesz prompt <code>[anna@serwer ~]$</code>. Każde polecenie wykonuje się na serwerze.</p></div>
+  </div>
+  <div class="notatka zle">Jeśli odcisk <b>znanego</b> serwera nagle się zmieni, klient przerwie połączenie z ostrzeżeniem. Nie kasuj wpisu w <code>known_hosts</code> „na ślepo” – najpierw upewnij się, że serwer rzeczywiście był przeinstalowany.</div>
+</div>
+</body></html>

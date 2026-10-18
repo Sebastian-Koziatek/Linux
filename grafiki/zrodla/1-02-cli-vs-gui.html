@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Serwer z pulpitem czy bez?</h1><span class="pod">wiersz poleceń kontra środowisko graficzne</span></div>
+  <div class="porownanie">
+    <div class="karta ok">
+      <h3>Bez pulpitu <span class="plakietka morski">serwer</span></h3>
+      <div class="terminal" style="margin-top:10px"><div class="pasek"><i></i><i></i><i></i><span>ssh</span></div><pre><span class="p">[admin@serwer ~]$</span> systemctl status nginx
+<span class="k">●</span> nginx.service - The nginx HTTP Server
+     Active: <span class="k">active (running)</span></pre></div>
+      <ul>
+        <li>Mało RAM i miejsca, mniej pakietów do łatania.</li>
+        <li>Praca zdalna przez SSH – działa nawet na słabym łączu.</li>
+        <li>Każdą czynność da się zapisać w skrypcie i powtórzyć.</li>
+        <li>Trzeba znać polecenia.</li>
+      </ul>
+    </div>
+    <div class="vs">vs</div>
+    <div class="karta">
+      <h3>Z pulpitem <span class="plakietka">GUI</span></h3>
+      <div class="karta" style="margin-top:10px;padding:10px 12px;background:#e9ecf1">
+        <div class="wiersz" style="gap:8px"><span class="plakietka granat">Aplikacje</span><span class="plakietka">Ustawienia</span><span class="plakietka">Pliki</span></div>
+        <p class="male" style="margin-top:8px">okna, menu, ikony, mysz</p>
+      </div>
+      <ul>
+        <li>Łatwy start – wszystko widać i da się kliknąć.</li>
+        <li>Wygodne przeglądarki, edytory, narzędzia graficzne.</li>
+        <li>Więcej RAM (ok. 1 GB) i kilka GB na dysku.</li>
+        <li>Zdalnie wymaga VNC/RDP – wolniej i więcej do zabezpieczenia.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notatka ok">Zasada administratora: serwer bez pulpitu, pulpit na swoim komputerze. Do klikania w ustawieniach serwera wystarczy Cockpit – panel w przeglądarce bez instalowania GNOME.</div>
+</div>
+</body></html>

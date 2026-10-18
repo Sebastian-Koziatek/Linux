@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Konfiguracja bieżąca i trwała</h1><span class="pod">dwie kopie reguł, o których musisz pamiętać przy każdym <code>firewall-cmd</code></span></div>
+  <div class="porownanie" style="grid-template-columns:1fr 150px 1fr">
+    <div class="karta akcent">
+      <h3>Bieżąca (runtime)</h3>
+      <p class="male">to, co jądro filtruje w tej chwili</p>
+      <ul>
+        <li><code>firewall-cmd --add-service=http</code></li>
+        <li>działa <b>natychmiast</b></li>
+        <li><span style="color:var(--czerwien);font-weight:700">znika</span> po restarcie serwera i po <code>--reload</code></li>
+        <li>dobra do testów: „czy to w ogóle pomoże?”</li>
+      </ul>
+    </div>
+    <div class="vs" style="flex-direction:column;gap:6px;font-size:12px;line-height:1.3;padding:0 8px;text-align:center">
+      <div class="strzalka"></div>
+      <span>--runtime-to-<br>permanent</span>
+      <div class="strzalka" style="transform:scaleX(-1)"></div>
+      <span>--reload</span>
+    </div>
+    <div class="karta">
+      <h3>Trwała (permanent)</h3>
+      <p class="male">pliki w <code>/etc/firewalld/</code>, wczytywane przy starcie</p>
+      <ul>
+        <li><code>firewall-cmd --permanent --add-service=http</code></li>
+        <li>przeżywa restart serwera</li>
+        <li><span style="color:var(--czerwien);font-weight:700">nie działa</span> od razu – dopiero po <code>--reload</code></li>
+        <li>to tu ma trafić każda „prawdziwa” zmiana</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kroki" style="margin-top:18px">
+    <div class="krok"><h3>Dodaj na stałe</h3><p><code>sudo firewall-cmd --permanent --add-service=http</code></p></div>
+    <div class="krok"><h3>Przeładuj</h3><p><code>sudo firewall-cmd --reload</code> – konfiguracja trwała staje się bieżącą.</p></div>
+    <div class="krok"><h3>Sprawdź</h3><p><code>sudo firewall-cmd --list-all</code> – usługa jest na liście <code>services</code>.</p></div>
+  </div>
+  <div class="notatka zle">Najczęstszy błąd: <code>--permanent</code> bez <code>--reload</code> („dodałem, a nie działa”) albo brak <code>--permanent</code> („działało, aż zrestartowałem serwer”).</div>
+</div>
+</body></html>

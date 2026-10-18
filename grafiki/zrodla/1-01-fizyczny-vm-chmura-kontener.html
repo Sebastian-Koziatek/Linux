@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Gdzie działa Linux?</h1><span class="pod">cztery sposoby uruchomienia tego samego systemu</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Serwer fizyczny</h3>
+      <p class="male">jeden system na całym sprzęcie</p>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">Aplikacje</div>
+        <div class="warstwa w3">Linux</div>
+        <div class="warstwa w1">Twój sprzęt</div>
+      </div>
+    </div>
+    <div class="karta">
+      <h3>Maszyna wirtualna</h3>
+      <p class="male">kilka systemów na jednym sprzęcie</p>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">Aplikacje</div>
+        <div class="warstwa w3">Linux (gość)</div>
+        <div class="warstwa w2">Hipernadzorca</div>
+        <div class="warstwa w1">Twój sprzęt</div>
+      </div>
+    </div>
+    <div class="karta">
+      <h3>Chmura</h3>
+      <p class="male">maszyna wirtualna u dostawcy</p>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">Aplikacje</div>
+        <div class="warstwa w3">Linux (Twój)</div>
+        <div class="warstwa w2">Hipernadzorca</div>
+        <div class="warstwa w1">Sprzęt dostawcy</div>
+      </div>
+    </div>
+    <div class="karta">
+      <h3>Kontener</h3>
+      <p class="male">aplikacja z bibliotekami, wspólne jądro</p>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">Aplikacja + biblioteki</div>
+        <div class="warstwa w2">Silnik kontenerów</div>
+        <div class="warstwa w3">Jedno jądro Linux</div>
+        <div class="warstwa w1">Sprzęt</div>
+      </div>
+    </div>
+  </div>
+  <div class="podpis">Maszyna wirtualna ma własne jądro i startuje jak zwykły komputer. Kontener nie ma własnego jądra – korzysta z jądra gospodarza, dlatego startuje w ułamku sekundy. Na szkoleniu pracujesz na maszynie wirtualnej.</div>
+</div>
+</body></html>

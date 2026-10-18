@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jak Linux nazywa dyski</h1><span class="pod">każdy dysk i każda partycja to plik w katalogu <code>/dev</code></span></div>
+  <div class="dyski">
+    <div class="dysk"><div class="korpus"><div class="blok a">sda1</div><div class="blok a">sda2</div><div class="blok a">sda3</div></div><div class="nazwa">/dev/sda<small>pierwszy dysk SATA/SAS</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok b">sdb1</div><div class="blok wolny">wolne</div></div><div class="nazwa">/dev/sdb<small>drugi dysk (dodatkowy)</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok a">nvme0n1p1</div><div class="blok a">nvme0n1p2</div></div><div class="nazwa">/dev/nvme0n1<small>dysk NVMe (SSD w gnieździe M.2)</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok b">vda1</div><div class="blok b">vda2</div></div><div class="nazwa">/dev/vda<small>dysk wirtualny (VirtIO w VM)</small></div></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta"><h3><code>sd</code> + litera</h3><p>Litera = kolejny dysk: <code>sda</code>, <code>sdb</code>, <code>sdc</code>… Dotyczy dysków SATA, SAS, SCSI i pamięci USB.</p></div>
+    <div class="karta"><h3>litera + cyfra</h3><p>Cyfra = partycja na tym dysku: <code>sda1</code>, <code>sda2</code>. Sam dysk (bez cyfry) to całe urządzenie.</p></div>
+    <div class="karta"><h3><code>nvme0n1p1</code></h3><p><code>nvme0</code> – kontroler, <code>n1</code> – przestrzeń nazw (zwykle jedna), <code>p1</code> – partycja. Litera <code>p</code> oddziela numer partycji.</p></div>
+    <div class="karta"><h3><code>vda</code>, <code>sr0</code></h3><p><code>vda</code> – dysk w maszynie wirtualnej (sterownik VirtIO), <code>sr0</code> – napęd CD/DVD, także obraz ISO.</p></div>
+  </div>
+  <div class="notatka">Litery <code>sda</code>, <code>sdb</code> nadaje jądro w kolejności wykrycia – po dołożeniu dysku mogą się przesunąć. Dlatego w konfiguracji (np. <code>/etc/fstab</code>) używa się trwałych nazw: <code>UUID=…</code> lub <code>/dev/disk/by-id/…</code>.</div>
+</div>
+</body></html>

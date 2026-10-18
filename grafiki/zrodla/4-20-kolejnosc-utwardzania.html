@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>Kolejność utwardzania</h1><span class="pod">od największego zysku do największego ryzyka</span></div>
+  <div class="kroki kolumna">
+    <div class="krok"><h3>Aktualizacje</h3><p><code>sudo dnf update</code> – łata znane dziury, zero ryzyka konfiguracyjnego</p></div>
+    <div class="krok"><h3>Polityka haseł</h3><p><code>/etc/login.defs</code>, <code>pwquality.conf</code>, <code>chage</code> – starzenie i jakość haseł</p></div>
+    <div class="krok"><h3>Umask 027</h3><p>nowe pliki bez praw „dla świata”</p></div>
+    <div class="krok"><h3>Zbędne pakiety i usługi</h3><p><code>dnf remove</code>, <code>systemctl disable --now</code> – czego nie ma, tego nie trzeba łatać</p></div>
+    <div class="krok"><h3>Banery i audyt</h3><p><code>/etc/issue</code>, usługa <code>auditd</code> – ślad prawny i dziennik zdarzeń</p></div>
+    <div class="krok"><h3>AIDE i hasło GRUB-a</h3><p>kontrola integralności plików, ochrona rozruchu</p></div>
+    <div class="krok"><h3>SSH – na końcu</h3><p><code>PermitRootLogin no</code>, limity prób; test <code>sshd -t</code> i zapasowa sesja!</p></div>
+  </div>
+  <div class="notatka zle">Jedna zmiana naraz. Po każdej – test (zwłaszcza logowania SSH z drugiego okna), po każdej porcji – kontrolny <code>lynis audit system</code>.</div>
+</div>
+</body></html>

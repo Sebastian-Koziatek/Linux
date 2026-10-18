@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>SSH, RDP czy VNC?</h1><span class="pod">trzy drogi do zdalnej maszyny</span></div>
+  <div class="karty">
+    <div class="karta akcent">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9l3 2.5L7 14M12 14h5"/></svg>
+      <h3>SSH <span class="plakietka bursztyn">codzienność</span></h3>
+      <p><b>Tekst.</b> Port <code>22</code>. Szyfrowane od początku. Działa na każdym serwerze, nawet bez środowiska graficznego, przez wolne łącze. Tak administruje się Linuksem na co dzień.</p>
+    </div>
+    <div class="karta">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><rect x="6" y="7" width="7" height="5" rx="1"/><path d="M15 8h3M15 11h3"/></svg>
+      <h3>RDP (xrdp)</h3>
+      <p><b>Pulpit.</b> Port <code>3389</code>. Protokół znany z Windows – łączysz się programem „Podłączanie pulpitu zdalnego”. Dostajesz <b>własną</b> sesję graficzną. Potrzebuje zainstalowanego środowiska graficznego.</p>
+    </div>
+    <div class="karta">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10.5" r="3"/><path d="M12 8.5v2l1.5 1"/></svg>
+      <h3>VNC (TigerVNC)</h3>
+      <p><b>Pulpit.</b> Port <code>5901</code> (dla ekranu :1). Przesyła obraz ekranu. Prosty, ale <b>sam w sobie nie szyfruje</b> – w sieci publicznej zawsze przez tunel SSH.</p>
+    </div>
+  </div>
+  <table class="tabela" style="margin-top:16px">
+    <tr><th style="width:28%">Potrzebuję…</th><th>Wybierz</th></tr>
+    <tr><td>wykonać polecenia, zmienić konfigurację, obejrzeć logi</td><td><b>SSH</b> – szybko i bezpiecznie</td></tr>
+    <tr><td>programu graficznego (przeglądarka, narzędzie z okienkami) na serwerze</td><td><b>RDP</b> z Windows, VNC z Linuksa/macOS</td></tr>
+    <tr><td>dostępu tylko z przeglądarki, bez instalowania czegokolwiek</td><td>brama WWW, np. <b>Apache Guacamole</b> (tłumaczy RDP/VNC/SSH na stronę WWW)</td></tr>
+  </table>
+</div>
+</body></html>

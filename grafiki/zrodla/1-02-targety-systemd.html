@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Tekstowo czy graficznie?</h1><span class="pod">cele (targety) systemd, które o tym decydują</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3><code>multi-user.target</code></h3>
+      <p>Tryb tekstowy. Usługi, sieć, SSH, logowanie w konsoli. Tak startuje serwer po instalacji „Minimal” lub „Server”.</p>
+    </div>
+    <div class="strzalka dwie"><span></span></div>
+    <div class="karta akcent">
+      <h3><code>graphical.target</code></h3>
+      <p>Wszystko z <code>multi-user.target</code> + menedżer wyświetlania (GDM) i pulpit. Tak startuje „Server with GUI” i „Workstation”.</p>
+    </div>
+  </div>
+  <div class="terminal" style="margin-top:16px">
+    <div class="pasek"><i></i><i></i><i></i><span>trzy polecenia, które musisz znać</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> systemctl get-default              <span class="d"># co startuje przy rozruchu</span>
+multi-user.target
+<span class="p">[admin@serwer ~]$</span> sudo systemctl set-default graphical.target   <span class="d"># zmień na stałe (od następnego startu)</span>
+<span class="p">[admin@serwer ~]$</span> sudo systemctl isolate graphical.target       <span class="d"># przełącz teraz, bez restartu</span></pre>
+  </div>
+  <div class="podpis"><code>set-default</code> tylko zapisuje wybór – nic nie zmienia do restartu. <code>isolate</code> przełącza natychmiast, ale nie zapamiętuje. Zwykle używa się obu.</div>
+</div>
+</body></html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>DAC kontra MAC</h1><span class="pod">dwie bramki, które proces musi przejść, żeby dotknąć pliku</span></div>
+  <div class="porownanie">
+    <div class="karta">
+      <h3>DAC – uprawnienia <code>rwx</code></h3>
+      <p class="male">kontrola uznaniowa: decyduje właściciel</p>
+      <ul>
+        <li>Każdy plik ma właściciela, grupę i bity <code>rwx</code>.</li>
+        <li>Proces ma dokładnie takie prawa jak użytkownik, który go uruchomił.</li>
+        <li>Właściciel może dać dostęp każdemu (<code>chmod 777</code>).</li>
+        <li>Przejęty serwer WWW (użytkownik <code>apache</code>) czyta wszystko, co wolno czytać <code>apache</code>.</li>
+      </ul>
+    </div>
+    <div class="vs">+</div>
+    <div class="karta akcent">
+      <h3>MAC – SELinux</h3>
+      <p class="male">kontrola obowiązkowa: decyduje polityka systemu</p>
+      <ul>
+        <li>Każdy proces i plik ma <b>etykietę</b> (typ), np. <code>httpd_t</code>, <code>httpd_sys_content_t</code>.</li>
+        <li>Polityka mówi, który typ procesu może co robić z którym typem pliku.</li>
+        <li>Użytkownik ani <code>chmod</code> tego nie obejdą.</li>
+        <li>Przejęty serwer WWW zostaje zamknięty w swoim „pudełku”.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kroki" style="margin-top:18px">
+    <div class="krok"><h3>Proces prosi o dostęp</h3><p><code>httpd</code> chce odczytać <code>/srv/www/index.html</code>.</p></div>
+    <div class="krok"><h3>Jądro sprawdza DAC</h3><p>Czy użytkownik <code>apache</code> ma <code>r</code> do pliku? Nie – koniec, odmowa.</p></div>
+    <div class="krok"><h3>Jądro sprawdza SELinux</h3><p>Czy <code>httpd_t</code> może czytać typ pliku? Tak – dostęp. Nie – odmowa i wpis <code>AVC denied</code> w dzienniku.</p></div>
+  </div>
+  <div class="notatka">Dlatego „uprawnienia są dobre, a i tak nie działa” to najczęstszy objaw SELinuksa: pierwsza bramka przepuściła, druga nie.</div>
+</div>
+</body></html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Stany usługi w systemd</h1><span class="pod">co pokazuje <code>systemctl status</code> i które polecenie dokąd prowadzi</span></div>
+  <div class="wiersz">
+    <div class="karta" style="text-align:center"><h3>inactive (dead)</h3><p>usługa nie działa</p></div>
+    <div class="strzalka dwie"><span></span></div>
+    <div class="karta ok" style="text-align:center"><h3>active (running)</h3><p>proces pracuje</p></div>
+    <div class="strzalka"></div>
+    <div class="karta zle" style="text-align:center"><h3>failed</h3><p>wystartowała i padła</p></div>
+  </div>
+  <div class="wiersz" style="margin-top:8px">
+    <div style="flex:1 1 0;text-align:center" class="male"><code>systemctl start</code> → w prawo<br><code>systemctl stop</code> → w lewo</div>
+    <div style="flex:1 1 0;text-align:center" class="male"><code>restart</code> = stop + start<br><code>reload</code> = wczytaj konfigurację bez przerwy</div>
+    <div style="flex:1 1 0;text-align:center" class="male">błąd w konfiguracji, brak pliku, zajęty port<br>→ <code>journalctl -u nazwa</code></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta"><h3>Druga, niezależna oś: autostart</h3><p><span class="plakietka morski">enabled</span> uruchomi się przy starcie systemu &nbsp; <span class="plakietka">disabled</span> nie uruchomi się sama &nbsp; <span class="plakietka czerwien">masked</span> nie da się uruchomić nawet ręcznie.<br>Zmieniasz je poleceniami <code>enable</code>, <code>disable</code>, <code>mask</code>. <code>enable --now</code> robi oba naraz: włącza autostart i startuje usługę.</p></div>
+  </div>
+  <div class="notatka">Usługa może być <b>active, ale disabled</b> (działa do restartu) albo <b>enabled, ale inactive</b> (ktoś ją zatrzymał). Zawsze patrz na obie linie w <code>systemctl status</code>: „Loaded: … enabled” i „Active: …”.</div>
+</div>
+</body></html>

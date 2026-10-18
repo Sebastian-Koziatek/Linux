@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Sesja fdisk krok po kroku</h1><span class="pod">nowa tablica GPT i jedna partycja 5 GiB na pustym dysku <code>/dev/sdb</code></span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>nic nie zapisuje się na dysku, dopóki nie wpiszesz w</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> sudo fdisk /dev/sdb
+<span class="d">Welcome to fdisk (util-linux 2.37.4).
+Changes will remain in memory only, until you decide to write them.</span>
+
+Command (m for help): <span class="k">g</span>                     <span class="d">← nowa, pusta tablica partycji GPT</span>
+Created a new GPT disklabel (GUID: 7A1C…).
+
+Command (m for help): <span class="k">n</span>                     <span class="d">← nowa partycja</span>
+Partition number (1-128, default 1): <span class="d">⏎</span>
+First sector (2048-20971486, default 2048): <span class="d">⏎</span>
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-20971486, default 20971486): <span class="k">+5G</span>
+Created a new partition 1 of type 'Linux filesystem' and of size 5 GiB.
+
+Command (m for help): <span class="k">p</span>                     <span class="d">← podgląd planu (nadal tylko w pamięci)</span>
+Device     Start      End  Sectors Size Type
+/dev/sdb1   2048 10487807 10485760   5G Linux filesystem
+
+Command (m for help): <span class="k">w</span>                     <span class="d">← zapis na dysk i wyjście (q = wyjście bez zapisu)</span>
+The partition table has been altered.
+Syncing disks.
+<span class="p">[admin@serwer ~]$</span> lsblk /dev/sdb
+NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+sdb      8:16   0  10G  0 disk
+└─sdb1   8:17   0   5G  0 part</pre>
+  </div>
+  <div class="podpis">Litery poleceń: <b>m</b> pomoc, <b>p</b> pokaż, <b>g</b> nowa tablica GPT, <b>o</b> nowa tablica MBR, <b>n</b> nowa partycja, <b>d</b> usuń, <b>t</b> zmień typ, <b>w</b> zapisz, <b>q</b> porzuć zmiany.</div>
+</div>
+</body></html>

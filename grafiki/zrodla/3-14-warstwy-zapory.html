@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Warstwy zapory w Linuksie</h1><span class="pod">jedno jądro, kilka narzędzi do tej samej pracy</span></div>
+  <div class="warstwy">
+    <div class="warstwa w4">Ty w terminalu <small>polecenia firewall-cmd | nft | iptables</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w3">firewalld <small>demon: strefy, usługi, konfiguracja trwała – tłumaczy je na reguły poniżej</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w2">nftables (dawniej iptables) <small>zestawy reguł: tabele, łańcuchy, cele</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w1">netfilter w jądrze Linux <small>punkty zaczepienia, przez które przechodzi każdy pakiet</small></div>
+  </div>
+  <div class="karty" style="margin-top:16px">
+    <div class="karta"><h3>iptables <span class="plakietka">od 2001</span></h3><p>Klasyczne narzędzie. W RHEL 9 to już tylko nakładka na nftables, oznaczona jako przestarzała.</p></div>
+    <div class="karta"><h3>nftables <span class="plakietka">od 2014</span></h3><p>Następca iptables w jądrze. Jedno polecenie <code>nft</code> dla IPv4, IPv6 i mostów.</p></div>
+    <div class="karta akcent"><h3>firewalld <span class="plakietka bursztyn">domyślny w RHEL</span></h3><p>Wygodna warstwa na wierzchu: myślisz „usługa http w strefie public”, a nie o pojedynczych regułach.</p></div>
+  </div>
+  <div class="podpis">Niezależnie od narzędzia decyzję „przepuścić czy odrzucić” podejmuje zawsze jądro systemu. Narzędzia różnią się tylko sposobem, w jaki opisujesz mu reguły.</div>
+</div>
+</body></html>

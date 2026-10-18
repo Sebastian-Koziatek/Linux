@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Sieć lokalna 192.168.10.0/24</h1><span class="pod">ulica z 254 numerami domów</span></div>
+  <div class="wiersz">
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l2.5 2-2.5 2M11 13h4"/></svg>
+      <b>Serwer</b><small><code>192.168.10.20</code><br>adres statyczny</small>
+    </div>
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="10" rx="2"/><path d="M2 19h20M8 19l1-4M16 19l-1-4"/></svg>
+      <b>Laptop Anny</b><small><code>192.168.10.57</code><br>adres z DHCP</small>
+    </div>
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg>
+      <b>Telefon</b><small><code>192.168.10.84</code><br>adres z DHCP</small>
+    </div>
+    <div class="wezel">
+      <svg class="ikona akcent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="7" rx="2"/><path d="M7 12.5h.01M11 12.5h.01M12 9V5M12 5h6"/><circle cx="18" cy="5" r="1"/></svg>
+      <b>Brama domyślna</b><small><code>192.168.10.1</code><br>router – wyjście do internetu</small>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Adres IP = ulica + numer domu</h3>
+      <p><code>192.168.10.20</code> z maską <code>/24</code>: pierwsze trzy liczby (<code>192.168.10</code>) to nazwa ulicy – <b>adres sieci</b>, ostatnia (<code>20</code>) to numer domu – <b>konkretna maszyna</b>. Maska mówi, gdzie kończy się ulica, a zaczyna numer.</p>
+    </div>
+    <div class="karta">
+      <h3>Brama = wyjazd z ulicy</h3>
+      <p>Do sąsiada z tej samej ulicy idziesz wprost. List poza ulicę (do internetu) oddajesz <b>bramie domyślnej</b> – routerowi, zwykle z numerem <code>.1</code>.</p>
+    </div>
+    <div class="karta">
+      <h3>DNS = książka adresowa</h3>
+      <p>Ludzie pamiętają nazwy (<code>onet.pl</code>), sieć działa na numerach. <b>Serwer DNS</b> tłumaczy nazwę na adres IP, np. <code>onet.pl → 75.2.104.207</code>.</p>
+    </div>
+  </div>
+  <div class="podpis">Zapis <code>/24</code> (CIDR) oznacza: pierwsze 24 bity (trzy liczby) to sieć. W takiej sieci mieszczą się adresy .1–.254, czyli 254 „domy”.</div>
+</div>
+</body></html>

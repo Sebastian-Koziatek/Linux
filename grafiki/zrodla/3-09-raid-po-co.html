@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Po co łączyć dyski w RAID</h1><span class="pod">trzy cele – każdy poziom RAID wybiera inny kompromis</span></div>
+  <div class="karty">
+    <div class="karta">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v5c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 10v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/><path d="M4 15v4c0 1.7 3.6 3 8 3s8-1.3 8-3v-4"/></svg>
+      <h3>Pojemność</h3>
+      <p>Kilka dysków widzianych jako jeden duży. Plik większy niż pojedynczy dysk przestaje być problemem.</p>
+      <p style="margin-top:8px"><span class="plakietka">RAID 0</span> <span class="plakietka">RAID 5</span></p>
+    </div>
+    <div class="karta">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+      <h3>Wydajność</h3>
+      <p>Odczyt i zapis idą równolegle na kilka dysków naraz – razem są szybsze niż każdy z osobna.</p>
+      <p style="margin-top:8px"><span class="plakietka">RAID 0</span> <span class="plakietka">RAID 10</span></p>
+    </div>
+    <div class="karta akcent">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <h3>Odporność na awarię</h3>
+      <p>Dysk padnie – to pewne. Dane są zapisane nadmiarowo, więc serwer pracuje dalej, a Ty wymieniasz dysk bez przestoju.</p>
+      <p style="margin-top:8px"><span class="plakietka bursztyn">RAID 1</span> <span class="plakietka bursztyn">RAID 5/6</span> <span class="plakietka bursztyn">RAID 10</span></p>
+    </div>
+  </div>
+  <div class="notatka zle"><b>RAID to nie kopia zapasowa.</b> Chroni przed awarią dysku, nie przed skasowaniem pliku, błędem programu, szyfrującym wirusem ani pożarem serwerowni – to wszystko dzieje się na wszystkich dyskach macierzy naraz.</div>
+</div>
+</body></html>

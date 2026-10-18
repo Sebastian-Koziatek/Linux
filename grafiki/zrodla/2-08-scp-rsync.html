@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>scp, sftp czy rsync?</h1><span class="pod">trzy sposoby kopiowania plików przez SSH</span></div>
+  <table class="tabela">
+    <tr><th style="width:24%">Cecha</th><th>scp</th><th>sftp</th><th>rsync <span class="plakietka bursztyn">do kopii zapasowych</span></th></tr>
+    <tr><td>Jak się używa</td><td>jedno polecenie, jak <code>cp</code></td><td>sesja interaktywna: <code>get</code>, <code>put</code>, <code>ls</code></td><td>jedno polecenie, jak <code>cp</code></td></tr>
+    <tr><td>Katalogi</td><td><code>-r</code></td><td><code>get -r</code> / <code>put -r</code></td><td><code>-a</code> (zachowuje uprawnienia, czasy, dowiązania)</td></tr>
+    <tr><td>Kopiuje tylko zmiany</td><td><span class="nie">nie</span> – zawsze całość</td><td><span class="nie">nie</span></td><td><span class="tak">tak</span> – porównuje pliki i przesyła różnice</td></tr>
+    <tr><td>Wznowienie po zerwaniu</td><td><span class="nie">nie</span></td><td><code>reget</code> / <code>reput</code></td><td><span class="tak">tak</span> – ponowne uruchomienie dokończy pracę</td></tr>
+    <tr><td>Kompresja w locie</td><td><code>-C</code></td><td><code>-C</code></td><td><code>-z</code></td></tr>
+    <tr><td>Potrzebne na serwerze</td><td>tylko <code>sshd</code></td><td>tylko <code>sshd</code></td><td><code>sshd</code> + pakiet <code>rsync</code></td></tr>
+    <tr><td>Kiedy wybrać</td><td>szybko przerzucić jeden plik</td><td>„pochodzić” po zdalnych katalogach</td><td>synchronizacja, kopie zapasowe, duże drzewa</td></tr>
+  </table>
+  <div class="terminal" style="margin-top:16px">
+    <div class="pasek"><i></i><i></i><i></i><span>ta sama operacja trzema narzędziami</span></div>
+<pre><span class="p">[anna@laptop ~]$</span> scp -r raporty/ anna@serwer:/home/anna/
+<span class="p">[anna@laptop ~]$</span> sftp anna@serwer   <span class="d">→ sftp&gt; put -r raporty</span>
+<span class="p">[anna@laptop ~]$</span> rsync -avz raporty/ anna@serwer:/home/anna/raporty/</pre>
+  </div>
+  <div class="podpis">Wszystkie trzy korzystają z tego samego połączenia SSH – to samo konto, hasło lub klucz i ten sam port.</div>
+</div>
+</body></html>

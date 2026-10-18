@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Strefy firewalld</h1><span class="pod">poziom zaufania przypisany do karty sieciowej lub sieci źródłowej</span></div>
+  <div class="karty">
+    <div class="karta zle">
+      <h3>drop</h3>
+      <p><span class="plakietka czerwien">zero zaufania</span></p>
+      <p style="margin-top:8px">Wszystko przychodzące jest po cichu odrzucane, bez odpowiedzi. Wychodzić można.</p>
+      <p class="male" style="margin-top:8px">Kiedy: serwer pod atakiem, karta, której nikt nie powinien używać.</p>
+    </div>
+    <div class="karta akcent">
+      <h3>public</h3>
+      <p><span class="plakietka bursztyn">domyślna</span></p>
+      <p style="margin-top:8px">Nie ufamy innym komputerom. Przepuszcza tylko wybrane usługi: <code>ssh</code>, <code>cockpit</code>, <code>dhcpv6-client</code>.</p>
+      <p class="male" style="margin-top:8px">Kiedy: każdy serwer w sieci, której nie kontrolujesz. Tu dodajesz <code>http</code>, <code>https</code>.</p>
+    </div>
+    <div class="karta">
+      <h3>internal</h3>
+      <p><span class="plakietka">sieć firmowa</span></p>
+      <p style="margin-top:8px">Ufamy większości komputerów. Oprócz <code>ssh</code> otwarte np. <code>samba-client</code>, <code>mdns</code>.</p>
+      <p class="male" style="margin-top:8px">Kiedy: druga karta sieciowa patrząca do sieci wewnętrznej.</p>
+    </div>
+    <div class="karta ok">
+      <h3>trusted</h3>
+      <p><span class="plakietka morski">pełne zaufanie</span></p>
+      <p style="margin-top:8px">Wszystkie połączenia są przyjmowane. Zapora w tej strefie w praktyce nie filtruje.</p>
+      <p class="male" style="margin-top:8px">Kiedy: łącze między dwoma własnymi serwerami, sieć wirtualna kontenerów.</p>
+    </div>
+  </div>
+  <div class="terminal" style="margin-top:16px">
+    <div class="pasek"><i></i><i></i><i></i><span>karta sieciowa należy do jednej strefy</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> sudo firewall-cmd --get-active-zones
+<span class="k">public</span>
+  interfaces: enp1s0</pre>
+  </div>
+  <div class="podpis">Pozostałe strefy (<code>block</code>, <code>dmz</code>, <code>external</code>, <code>work</code>, <code>home</code>) to warianty powyższych. W praktyce 90% serwerów używa tylko strefy <b>public</b>.</div>
+</div>
+</body></html>

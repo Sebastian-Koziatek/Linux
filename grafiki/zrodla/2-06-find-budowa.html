@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Budowa polecenia find</h1><span class="pod">gdzie szukać · czego szukać · co z tym zrobić</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>przykład: stare logi spakuj gzipem</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> find <span class="k">/var/log</span> <span class="p">-type f -name "*.log" -mtime +30</span> <span class="c">-exec gzip {} \;</span></pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta akcent"><h3>1. Gdzie</h3><p><code>/var/log</code> – katalog startowy; find schodzi też do podkatalogów. <code>.</code> = bieżący katalog, <code>/</code> = cały system.</p></div>
+    <div class="karta ok"><h3>2. Czego</h3><p>warunki: <code>-type f</code> (plik), <code>-name</code> (nazwa), <code>-mtime +30</code> (starszy niż 30 dni). Obok siebie = wszystkie naraz.</p></div>
+    <div class="karta"><h3>3. Co zrobić</h3><p>akcja: domyślnie wypisanie ścieżki; <code>-ls</code> szczegóły, <code>-exec polecenie {} \;</code>, <code>-delete</code> (zawsze na końcu!).</p></div>
+  </div>
+  <div class="notatka">Zanim dodasz <code>-delete</code> albo <code>-exec rm</code>, uruchom polecenie bez akcji i obejrzyj listę wyników.</div>
+</div>
+</body></html>

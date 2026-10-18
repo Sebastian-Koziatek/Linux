@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Gdzie są logi na RHEL</h1><span class="pod">dwie drogi tego samego komunikatu</span></div>
+  <div class="wiersz srodek">
+    <div class="wezel">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+      <b>Jądro</b><small>dyski, sieć, pamięć, OOM</small>
+    </div>
+    <div class="wezel">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+      <b>Usługi systemd</b><small>sshd, httpd, crond…</small>
+    </div>
+    <div class="wezel">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 2.5L7 14M12 14h5"/></svg>
+      <b>Programy i sudo</b><small>wszystko, co woła „zapisz w logu”</small>
+    </div>
+  </div>
+  <div class="strzalka dol"></div>
+  <div class="karty">
+    <div class="karta ciemna">
+      <h3>systemd-journald</h3>
+      <p>binarny dziennik, czytany przez <code>journalctl</code><br>
+      <span class="male" style="color:#c9d0db">w pamięci: <code>/run/log/journal</code><br>na stałe: <code>/var/log/journal</code> (gdy katalog istnieje)</span></p>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta akcent">
+      <h3>rsyslog</h3>
+      <p>przepisuje komunikaty do zwykłych plików tekstowych w <code>/var/log</code> – do <code>grep</code>, <code>tail</code>, <code>less</code></p>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="wiersz" style="align-items:flex-start">
+    <div class="drzewo" style="flex:1 1 0">
+      <span class="kat">/var/log/</span><br>
+      ├─ <span class="plik">messages</span> <span class="op">ogólne komunikaty systemu</span><br>
+      ├─ <span class="plik">secure</span> <span class="op">logowania, sudo, SSH</span><br>
+      ├─ <span class="plik">cron</span> <span class="op">zadania cron</span><br>
+      ├─ <span class="plik">boot.log</span> <span class="op">ostatni start</span><br>
+      ├─ <span class="plik">wtmp</span>, <span class="plik">btmp</span> <span class="op">binarne: last, lastb</span><br>
+      └─ <span class="plik">messages-20261012</span> <span class="op">zrotowany przez logrotate</span>
+    </div>
+    <div class="karta" style="flex:0 0 300px">
+      <h3>Własne pliki, poza rsyslogiem</h3>
+      <p><code>/var/log/dnf.log</code> – menedżer pakietów<br>
+      <code>/var/log/httpd/</code> – serwer Apache<br>
+      <code>/var/log/audit/audit.log</code> – auditd, SELinux</p>
+    </div>
+  </div>
+  <div class="podpis">Ten sam komunikat trafia zwykle w oba miejsca. Zaczynaj od <code>journalctl</code> (filtry po usłudze i czasie), do plików sięgaj po <code>grep</code>.</div>
+</div>
+</body></html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Po co są grupy</h1><span class="pod">uprawnienia nadajesz raz – grupie, nie każdej osobie</span></div>
+  <div class="wiersz">
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="wezel">
+        <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <b>anna</b>
+      </div>
+      <div class="wezel">
+        <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <b>jan</b>
+      </div>
+      <div class="wezel">
+        <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <b>ewa</b>
+      </div>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta ciemna" style="flex:1.2 1 0">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 2.7-5 6-5s6 2 6 5M12.5 15.4c1-.3 2.2-.4 3.5-.4 3.3 0 6 2 6 5"/></svg>
+      <h3>grupa ksiegowosc</h3>
+      <p>nazwana lista użytkowników; nowa osoba w dziale = jedno polecenie <code>gpasswd -a</code></p>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta ok" style="flex:1.2 1 0">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <h3>/srv/ksiegowosc</h3>
+      <p><code>drwxrws---</code> – pełne prawa ma <b>grupa</b>, osoby spoza niej nie wejdą</p>
+    </div>
+  </div>
+  <div class="podpis">Środkowa trójka uprawnień (<code>rwx</code> dla grupy) działa dla każdego członka grupy – nie trzeba wymieniać nikogo z nazwy.</div>
+</div>
+</body></html>

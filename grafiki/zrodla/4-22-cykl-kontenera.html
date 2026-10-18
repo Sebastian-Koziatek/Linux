@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Cykl życia kontenera</h1><span class="pod">polecenia podman = polecenia docker</span></div>
+  <div class="wiersz srodek">
+    <div class="karta" style="flex:0 1 190px;text-align:center">
+      <h3>Obraz w rejestrze</h3>
+      <p>docker.io, quay.io</p>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta" style="flex:0 1 190px;text-align:center">
+      <h3>Obraz lokalny</h3>
+      <p><code>pull</code> pobiera<br><code>images</code> listuje</p>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta ok" style="flex:0 1 210px;text-align:center">
+      <h3>Działa (Up)</h3>
+      <p><code>run -d --name www</code><br><code>ps</code>, <code>logs</code>, <code>exec -it</code></p>
+    </div>
+    <div class="strzalka dwie"><span></span></div>
+    <div class="karta" style="flex:0 1 200px;text-align:center">
+      <h3>Zatrzymany (Exited)</h3>
+      <p><code>stop</code> ⇄ <code>start</code><br>nadal jest na dysku</p>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta zle"><h3>rm – usuwa kontener</h3><p>Znika warstwa zapisu kontenera; obraz zostaje. Dane na wolumenach (<code>-v</code>) przeżywają.</p></div>
+    <div class="karta zle"><h3>rmi – usuwa obraz</h3><p>Dopiero gdy nie korzysta z niego żaden kontener (także zatrzymany). Porządki hurtowo: <code>system prune</code>.</p></div>
+    <div class="karta"><h3>Przy starcie dodajesz</h3><p><code>-p 8080:80</code> porty, <code>-v katalog:cel:Z</code> wolumin, <code>-e NAZWA=wartość</code> konfigurację.</p></div>
+  </div>
+  <div class="notatka">Kontener żyje tak długo, jak jego główny proces. Stan <code>Exited</code> to nie błąd – sprawdź <code>podman ps -a</code> i <code>podman logs nazwa</code>.</div>
+</div>
+</body></html>

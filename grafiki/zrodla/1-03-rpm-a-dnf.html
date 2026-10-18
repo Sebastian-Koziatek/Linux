@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>rpm czy dnf?</h1><span class="pod">dwa poziomy tego samego systemu pakietów</span></div>
+  <div class="warstwy">
+    <div class="warstwa w3">dnf (dawniej yum) <small>repozytoria, zależności, historia, aktualizacje</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w2">rpm <small>instaluje i pyta o pojedyncze pakiety, baza zainstalowanych</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w1">pliki .rpm i baza RPM <small>/var/lib/rpm – co jest zainstalowane, z jakimi plikami</small></div>
+  </div>
+  <div class="karty" style="margin-top:16px">
+    <div class="karta ok"><h3>Używaj <code>dnf</code>, gdy…</h3><p>instalujesz, usuwasz, aktualizujesz – także z pliku lokalnego (<code>dnf install ./plik.rpm</code>). Zależności dociągną się same.</p></div>
+    <div class="karta"><h3>Używaj <code>rpm</code>, gdy…</h3><p>pytasz: co jest zainstalowane (<code>-qa</code>), z jakiego pakietu jest plik (<code>-qf</code>), jakie pliki ma pakiet (<code>-ql</code>), czy ktoś je zmienił (<code>-V</code>).</p></div>
+  </div>
+  <div class="notatka"><code>dnf</code> i tak na końcu woła bibliotekę RPM. Dlatego to, co zainstalujesz przez <code>dnf</code>, widzi <code>rpm -qa</code> – i odwrotnie.</div>
+</div>
+</body></html>

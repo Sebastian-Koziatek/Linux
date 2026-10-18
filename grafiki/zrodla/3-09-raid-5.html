@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>RAID 5 – paski z parzystością</h1><span class="pod">dane na paskach, w każdym rzędzie jeden blok parzystości</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Normalna praca</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok b">B1</div><div class="blok p">Cp</div></div><div class="nazwa">Dysk 1<small>1 TB</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">A2</div><div class="blok p">Bp</div><div class="blok b">C1</div></div><div class="nazwa">Dysk 2<small>1 TB</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok p">Ap</div><div class="blok b">B2</div><div class="blok b">C2</div></div><div class="nazwa">Dysk 3<small>1 TB</small></div></div>
+      </div>
+      <p style="margin-top:12px;text-align:center">Pojemność do użycia: <b>2 TB</b> (N − 1 dysków)</p>
+    </div>
+    <div class="karta zle">
+      <h3>Awaria jednego dysku</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok b">B1</div><div class="blok p">Cp</div></div><div class="nazwa">Dysk 1<small>działa</small></div></div>
+        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A2</div><div class="blok x">Bp</div><div class="blok x">C1</div></div><div class="nazwa">Dysk 2<small>uszkodzony</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok p">Ap</div><div class="blok b">B2</div><div class="blok b">C2</div></div><div class="nazwa">Dysk 3<small>działa</small></div></div>
+      </div>
+      <p style="margin-top:12px;text-align:center">Brakujące <b>A2</b> system wylicza z <b>A1</b> i <b>Ap</b> – dane dostępne, serwer pracuje</p>
+    </div>
+  </div>
+  <div class="notatka">Parzystość to wynik prostego działania (XOR) na blokach z jednego rzędu: <code>A1 ⊕ A2 = Ap</code>. Gdy zabraknie dowolnego jednego bloku, odtwarza się go z pozostałych: <code>A2 = A1 ⊕ Ap</code>. Blok parzystości wędruje między dyskami, żeby żaden nie był przeciążony.</div>
+  <div class="podpis">Minimum 3 dyski, przeżywa awarię <b>jednego</b>. Podczas odbudowy macierz pracuje wolniej, a drugi padnięty dysk w tym czasie oznacza utratę wszystkiego – dlatego przy dużych dyskach wybiera się RAID 6 (dwa bloki parzystości, przeżywa dwie awarie).</div>
+</div>
+</body></html>

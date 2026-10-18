@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Który rodzaj instalacji?</h1><span class="pod">„podstawowe środowiska” instalatora Anaconda</span></div>
+  <div class="karty">
+    <div class="karta akcent"><h3>Minimal Install <span class="plakietka bursztyn">serwer</span></h3><p>Tylko to, co konieczne: powłoka, sieć, SSH, <code>dnf</code>. Ok. 1,5 GB na dysku. Wszystko inne doinstalujesz sam. Tak stawia się serwery.</p></div>
+    <div class="karta"><h3>Server</h3><p>Minimal + typowe narzędzia administratora (np. Cockpit, narzędzia diagnostyczne). Bez pulpitu. Dobry start dla początkującego administratora.</p></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta"><h3>Server with GUI</h3><p>Server + pulpit GNOME. Kilka GB więcej na dysku, więcej RAM. Gdy chcesz klikać podczas nauki albo serwer stoi pod biurkiem z monitorem.</p></div>
+    <div class="karta"><h3>Workstation</h3><p>Pulpit GNOME + programy biurowe, przeglądarka, multimedia. Komputer do codziennej pracy, nie serwer.</p></div>
+  </div>
+  <div class="notatka">Na szkoleniu używamy <b>Minimal Install</b> lub <b>Server</b>. Pulpit zawsze da się dodać później: <code>dnf group install "Server with GUI"</code>.</div>
+</div>
+</body></html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Trzy drogi do uprawnień roota</h1><span class="pod">su, su - i sudo</span></div>
+  <table class="tabela">
+    <tr><th style="width:24%">Cecha</th><th><code style="color:var(--granat)">su</code></th><th><code style="color:var(--granat)">su -</code></th><th><code style="color:var(--granat)">sudo polecenie</code> <span class="plakietka bursztyn">zalecane</span></th></tr>
+    <tr><td>Czyje hasło</td><td>roota</td><td>roota</td><td><b>Twoje własne</b></td></tr>
+    <tr><td>Zakres</td><td>cała sesja, do <code>exit</code></td><td>cała sesja, do <code>exit</code></td><td>jedno polecenie</td></tr>
+    <tr><td>Środowisko roota</td><td><span class="nie">nie</span> – brak <code>/usr/sbin</code> w PATH</td><td><span class="tak">tak</span> – pełna powłoka logowania</td><td>tak (dla tego polecenia)</td></tr>
+    <tr><td>Ślad w dzienniku</td><td>tylko fakt przełączenia</td><td>tylko fakt przełączenia</td><td><span class="tak">każde polecenie</span> – kto, kiedy, co</td></tr>
+    <tr><td>Uprawnienia częściowe</td><td><span class="nie">nie</span> – wszystko albo nic</td><td><span class="nie">nie</span> – wszystko albo nic</td><td><span class="tak">tak</span> – reguły w sudoers</td></tr>
+    <tr><td>Kto może użyć</td><td colspan="2">każdy, kto zna hasło roota</td><td>członkowie grupy <code>wheel</code></td></tr>
+  </table>
+  <div class="notatka">Pełna powłoka roota na Twoje hasło: <code>sudo -i</code>. Używaj jej krótko i wychodź (<code>exit</code>) zaraz po skończeniu pracy.</div>
+</div>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jak działa udział Samby</h1><span class="pod">Windows widzi folder sieciowy, Linux widzi zwykły katalog</span></div>
+  <div class="wiersz">
+    <div class="wezel">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <b>Komputer z Windows</b><small>Eksplorator: <code>\\serwer\dokumenty</code><br>albo Linux: <code>smbclient</code>, <code>mount -t cifs</code></small>
+    </div>
+    <div class="strzalka dwie"><span></span></div>
+    <div class="wezel">
+      <svg class="ikona akcent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+      <b>Serwer Linux – demon <code>smbd</code></b><small>protokół SMB, port 445/tcp<br>udział opisany w <code>/etc/samba/smb.conf</code></small>
+    </div>
+    <div class="strzalka"></div>
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <b>Katalog</b><small><code>/srv/dokumenty</code><br>zwykłe pliki, zwykłe uprawnienia <code>rwx</code></small>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="kroki">
+    <div class="krok"><h3>Udział w <code>smb.conf</code></h3><p>Sekcja <code>[dokumenty]</code>: ścieżka, kto ma dostęp, czy wolno pisać.</p></div>
+    <div class="krok"><h3>Hasło Samby</h3><p><code>smbpasswd -a anna</code> – osobne od hasła logowania, ale konto <code>anna</code> musi istnieć.</p></div>
+    <div class="krok"><h3>Zapora</h3><p><code>firewall-cmd --add-service=samba</code> – inaczej Windows nie dotrze do portu 445.</p></div>
+    <div class="krok"><h3>SELinux i <code>rwx</code></h3><p>Typ <code>samba_share_t</code> na katalogu <b>oraz</b> prawo zapisu dla użytkownika Linuksa.</p></div>
+  </div>
+  <div class="notatka">Gdy udział „nie działa”, sprawdzaj te cztery miejsca po kolei. Każde z nich potrafi samodzielnie zablokować dostęp, a komunikat w Windows jest zawsze ten sam: „odmowa dostępu”.</div>
+</div>
+</body></html>

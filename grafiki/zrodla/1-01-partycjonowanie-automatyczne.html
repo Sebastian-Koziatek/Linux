@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Co robi partycjonowanie automatyczne</h1><span class="pod">układ dysku po instalacji RHEL 9/10</span></div>
+  <div class="wiersz">
+    <div class="dyski">
+      <div class="dysk">
+        <div class="korpus">
+          <div class="blok p">/boot/efi</div>
+          <div class="blok p">/boot</div>
+          <div class="blok a">swap</div>
+          <div class="blok b">/</div>
+          <div class="blok b">/home</div>
+          <div class="blok wolny">…</div>
+        </div>
+        <div class="nazwa">/dev/sda<small>dysk systemowy</small></div>
+      </div>
+    </div>
+    <table class="tabela">
+      <tr><th>Fragment</th><th>Rozmiar</th><th>Do czego</th></tr>
+      <tr><td>/boot/efi</td><td>600 MiB</td><td>program rozruchowy dla UEFI (tylko na UEFI)</td></tr>
+      <tr><td>/boot</td><td>1 GiB</td><td>jądro i pliki startowe – zwykła partycja</td></tr>
+      <tr><td>swap</td><td>wg tabeli</td><td>przestrzeń wymiany – wolumin LVM</td></tr>
+      <tr><td>/</td><td>reszta (do 70 GiB)</td><td>cały system – wolumin LVM, system plików XFS</td></tr>
+      <tr><td>/home</td><td>reszta</td><td>katalogi użytkowników – tylko gdy dysk jest duży</td></tr>
+    </table>
+  </div>
+  <div class="notatka">Trzy ostatnie fragmenty nie są zwykłymi partycjami, tylko woluminami LVM w grupie <code>rhel</code> (na Rocky: <code>rl</code>, na Alma: <code>almalinux</code>). Dzięki temu da się je później powiększać bez reinstalacji – o tym w module LVM.</div>
+</div>
+</body></html>

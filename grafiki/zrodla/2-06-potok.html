@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Potok – taśma produkcyjna</h1><span class="pod">znak <code>|</code> podaje wynik jednego polecenia na wejście następnego</span></div>
+  <div class="wiersz">
+    <div class="karta"><h3><code>cat</code></h3><p>wyjmuje towar z magazynu: czyta plik <code>/etc/passwd</code></p></div>
+    <div class="strzalka"></div>
+    <div class="karta akcent"><h3><code>grep bash</code></h3><p>kontrola jakości: przepuszcza tylko wiersze z „bash”</p></div>
+    <div class="strzalka"></div>
+    <div class="karta ok"><h3><code>sort</code></h3><p>układa wiersze alfabetycznie</p></div>
+    <div class="strzalka"></div>
+    <div class="karta ciemna"><h3><code>wc -l</code></h3><p>liczy gotowe sztuki: ile wierszy dotarło do końca</p></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>ilu użytkowników ma powłokę bash?</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> cat /etc/passwd <span class="k">|</span> grep bash <span class="k">|</span> sort <span class="k">|</span> wc -l
+3</pre>
+  </div>
+  <div class="podpis">Każde stanowisko robi jedną rzecz i nie wie, co jest przed nim ani po nim – dlatego polecenia można łączyć dowolnie.</div>
+</div>
+</body></html>

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Od pustej partycji do katalogu z danymi</h1><span class="pod">cykl życia systemu plików na <code>/dev/sdb1</code></span></div>
+  <div class="kroki" style="flex-wrap:wrap">
+    <div class="krok" style="flex:1 1 30%"><h3>Sprawdź</h3><p><code>lsblk -f</code> – która partycja jest pusta i czy na pewno to <code>sdb1</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Sformatuj</h3><p><code>mkfs.xfs -L dane /dev/sdb1</code> – zakłada pusty system plików. <b>Kasuje</b> wszystko na partycji.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Przygotuj katalog</h3><p><code>mkdir /mnt/dane</code> – punkt montowania, czyli „drzwi” do nowej przestrzeni.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Zamontuj</h3><p><code>mount /dev/sdb1 /mnt/dane</code> – od teraz pliki zapisane w <code>/mnt/dane</code> lądują na <code>sdb1</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Używaj i sprawdzaj</h3><p><code>df -h /mnt/dane</code> – ile miejsca zostało, <code>du -sh</code> – ile zajmują katalogi.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Odmontuj</h3><p><code>umount /mnt/dane</code> – zanim odłączysz dysk albo uruchomisz <code>fsck</code>. „Target is busy”? → <code>fuser -vm</code>.</p></div>
+  </div>
+  <div class="notatka">Montowanie poleceniem <code>mount</code> znika po restarcie. Żeby system montował partycję sam, dopisz ją do <code>/etc/fstab</code> (następna lekcja).</div>
+</div>
+</body></html>

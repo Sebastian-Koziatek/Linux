@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>LVM na RAID</h1><span class="pod">typowy układ serwera: RAID chroni przed awarią dysku, LVM dzieli elastycznie</span></div>
+  <div class="warstwy">
+    <div class="warstwa w4">Systemy plików <small>XFS: <code style="color:var(--granat)">/</code>, <code style="color:var(--granat)">/home</code>, <code style="color:var(--granat)">/var/lib/pgsql</code></small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w3">Woluminy logiczne – LV <small><code>lv_root</code>, <code>lv_home</code>, <code>lv_baza</code> – rosną, gdy trzeba</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w2">Grupa woluminów – VG <small><code>vg_serwer</code> zbudowana z jednego PV</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w1"><span>Wolumin fizyczny – PV = <code>/dev/md0</code></span> <small>macierz RAID 1 (mdadm) widziana jako jeden dysk</small></div>
+  </div>
+  <div class="strzalka dol"></div>
+  <div class="dyski">
+    <div class="dysk"><div class="korpus"><div class="blok a">md0</div><div class="blok a">md0</div><div class="blok a">md0</div></div><div class="nazwa">/dev/sdb<small>1 TB</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok a">md0</div><div class="blok a">md0</div><div class="blok a">md0</div></div><div class="nazwa">/dev/sdc<small>1 TB – lustro sdb</small></div></div>
+  </div>
+  <div class="notatka ok">Każda warstwa robi jedno: <b>mdadm</b> trzyma dwie kopie danych, <b>LVM</b> dzieli tę bezpieczną przestrzeń na woluminy, które można powiększać. Awaria <code>sdc</code> jest niewidoczna dla LVM i systemów plików.</div>
+</div>
+</body></html>

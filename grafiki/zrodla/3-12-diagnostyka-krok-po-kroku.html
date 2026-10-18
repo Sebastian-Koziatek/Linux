@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>„Nie działa internet” – diagnostyka od dołu do góry</h1><span class="pod">każdy krok sprawdza jedną warstwę; pierwszy, który zawiedzie, wskazuje winnego</span></div>
+  <div class="kroki kolumna">
+    <div class="krok"><h3>Czy mam adres? — <code>ip -br a</code></h3><p>Interfejs ma być <b>UP</b> i mieć adres IP. Brak adresu = problem lokalny: kabel, interfejs wyłączony, DHCP nie odpowiedział.</p></div>
+    <div class="krok"><h3>Czy widzę bramę? — <code>ping -c 3 192.168.10.1</code></h3><p>Brak odpowiedzi = problem w sieci lokalnej: switch, kabel, zła maska albo brama.</p></div>
+    <div class="krok"><h3>Czy wychodzę w świat? — <code>ping -c 3 8.8.8.8</code></h3><p>Brama odpowiada, a internet nie? Zła trasa domyślna (<code>ip route</code>) albo problem u dostawcy.</p></div>
+    <div class="krok"><h3>Czy działa DNS? — <code>ping -c 3 onet.pl</code></h3><p>Adresy liczbowe działają, nazwy nie = winny DNS. Sprawdź <code>/etc/resolv.conf</code> i <code>dig onet.pl</code>.</p></div>
+    <div class="krok"><h3>Czy działa usługa? — <code>curl -I https://onet.pl</code></h3><p>Sieć sprawna, a strona nie wstaje = problem z konkretną usługą lub portem, nie z Twoją siecią.</p></div>
+  </div>
+  <div class="notatka ok">Idź po kolei i <b>zatrzymaj się na pierwszym kroku, który zawiedzie</b> – tam jest usterka. Oszczędzisz godziny zgadywania.</div>
+</div>
+</body></html>

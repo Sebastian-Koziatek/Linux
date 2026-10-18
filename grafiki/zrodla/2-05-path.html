@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Jak powłoka znajduje polecenie</h1><span class="pod">wpisujesz <code>ls</code> – skąd Bash wie, co uruchomić?</span></div>
+  <div class="kroki">
+    <div class="krok"><h3>Czy to alias?</h3><p>Najpierw sprawdza skróty zdefiniowane przez <code>alias</code>, np. <code>ll</code>.</p></div>
+    <div class="krok"><h3>Czy to polecenie wbudowane?</h3><p><code>cd</code>, <code>echo</code>, <code>pwd</code>, <code>export</code> są częścią Basha – nie ma dla nich pliku.</p></div>
+    <div class="krok"><h3>Szuka w <code>PATH</code></h3><p>Przegląda katalogi z listy <code>PATH</code> <b>po kolei</b>, od lewej, i bierze pierwszy plik o tej nazwie.</p></div>
+    <div class="krok"><h3>Nie znalazł?</h3><p><code>bash: ls: command not found</code>. Polecenie nie istnieje albo leży poza <code>PATH</code>.</p></div>
+  </div>
+  <div class="odstep"></div>
+  <p class="male" style="margin:0 0 8px"><code>echo $PATH</code> → <code>/home/anna/.local/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin</code></p>
+  <div class="wiersz" style="gap:8px">
+    <div class="karta" style="padding:10px 12px"><p><code>~/.local/bin</code></p><p class="male">brak</p></div>
+    <div class="strzalka" style="width:28px"></div>
+    <div class="karta" style="padding:10px 12px"><p><code>~/bin</code></p><p class="male">brak</p></div>
+    <div class="strzalka" style="width:28px"></div>
+    <div class="karta" style="padding:10px 12px"><p><code>/usr/local/bin</code></p><p class="male">brak</p></div>
+    <div class="strzalka" style="width:28px"></div>
+    <div class="karta ok" style="padding:10px 12px"><p><code>/usr/bin</code></p><p class="male" style="color:#2a9d8f;font-weight:700">jest: /usr/bin/ls</p></div>
+    <div class="strzalka" style="width:28px"></div>
+    <div class="karta" style="padding:10px 12px;opacity:.55"><p><code>/usr/local/sbin</code></p><p class="male">już nie sprawdza</p></div>
+    <div class="strzalka" style="width:28px"></div>
+    <div class="karta" style="padding:10px 12px;opacity:.55"><p><code>/usr/sbin</code></p><p class="male">już nie sprawdza</p></div>
+  </div>
+  <div class="notatka">Katalogu bieżącego (<code>.</code>) <b>nie ma</b> na liście – to celowe zabezpieczenie. Dlatego własny skrypt uruchamiasz, wskazując drogę do niego: <code>./skrypt.sh</code>.</div>
+</div>
+</body></html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Które pliki czyta Bash na starcie?</h1><span class="pod">zależy od tego, jak powłoka została uruchomiona</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Powłoka logowania <span class="plakietka granat">SSH, konsola tekstowa, su -</span></h3>
+      <p class="male" style="margin:4px 0 12px">Zaczynasz sesję od podania hasła.</p>
+      <div class="kroki kolumna">
+        <div class="krok"><h3><code>/etc/profile</code></h3><p>Dla wszystkich. Ustawia <code>PATH</code>, <code>USER</code>, <code>HISTSIZE</code>, <code>umask</code>, a potem uruchamia każdy skrypt z katalogu niżej.</p></div>
+        <div class="krok"><h3><code>/etc/profile.d/*.sh</code></h3><p>Dla wszystkich. Tu administrator dokłada własne pliki, np. <code>firma.sh</code> – zamiast edytować <code>/etc/profile</code>.</p></div>
+        <div class="krok"><h3><code>~/.bash_profile</code></h3><p>Tylko Twój. W RHEL ma jedno zadanie: wczytać <code>~/.bashrc</code>, żeby obie ścieżki kończyły się tak samo.</p></div>
+        <div class="krok"><h3><code>~/.bashrc</code> → <code>/etc/bashrc</code></h3><p>Twoje aliasy i zmienne; <code>/etc/bashrc</code> ustawia m.in. prompt <code>PS1</code> dla wszystkich.</p></div>
+      </div>
+    </div>
+    <div class="karta">
+      <h3>Powłoka interaktywna bez logowania <span class="plakietka bursztyn">nowe okno terminala, polecenie bash</span></h3>
+      <p class="male" style="margin:4px 0 12px">Jesteś już zalogowany, otwierasz kolejną powłokę.</p>
+      <div class="kroki kolumna">
+        <div class="krok"><h3><code>~/.bashrc</code></h3><p>Tylko Twój. Od razu, bez <code>profile</code>. Dlatego aliasy wpisujemy właśnie tutaj.</p></div>
+        <div class="krok"><h3><code>/etc/bashrc</code></h3><p>Dla wszystkich – wywołany z <code>~/.bashrc</code>. W RHEL dodatkowo wczytuje <code>/etc/profile.d/*.sh</code>, więc ustawienia firmowe działają i tu.</p></div>
+      </div>
+      <div class="notatka ok" style="margin-top:14px">Co zapamiętać: <b>aliasy, funkcje i prompt → <code>~/.bashrc</code></b>. Zmienne środowiskowe dla całej sesji → <code>~/.bash_profile</code> (lub też <code>~/.bashrc</code>). Dla wszystkich użytkowników → własny plik w <code>/etc/profile.d/</code>.</div>
+      <div class="notatka" style="margin-top:10px">Na koniec powłoki logowania Bash wykonuje jeszcze <code>~/.bash_logout</code> – np. <code>clear</code>, żeby wyczyścić ekran po wylogowaniu.</div>
+    </div>
+  </div>
+</div>
+</body></html>

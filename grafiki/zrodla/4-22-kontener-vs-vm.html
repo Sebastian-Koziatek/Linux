@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Kontener kontra maszyna wirtualna</h1><span class="pod">co jest współdzielone, a co osobne</span></div>
+  <div class="porownanie">
+    <div class="karta">
+      <h3>Maszyny wirtualne</h3>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">Aplikacja A | Aplikacja B <small>każda w swojej VM</small></div>
+        <div class="warstwa w3">2 × pełny system gości <small>własne jądro każdy!</small></div>
+        <div class="warstwa w2">Hiperwizor <small>udaje sprzęt dla każdej VM</small></div>
+        <div class="warstwa w1">Sprzęt i system gospodarza</div>
+      </div>
+      <p style="margin-top:10px"><span class="plakietka">gigabajty</span> <span class="plakietka">start: minuty</span> <span class="plakietka morski">mocna izolacja</span></p>
+    </div>
+    <div class="vs">vs</div>
+    <div class="karta akcent">
+      <h3>Kontenery</h3>
+      <div class="warstwy" style="margin-top:10px">
+        <div class="warstwa w4">Aplikacja A | Aplikacja B <small>każda w swoim kontenerze</small></div>
+        <div class="warstwa w3">Tylko pliki i biblioteki <small>bez własnego jądra</small></div>
+        <div class="warstwa w2">Podman / Docker <small>izolacja: przestrzenie nazw, cgroups</small></div>
+        <div class="warstwa w1"><span>Sprzęt i <b>wspólne jądro</b> gospodarza</span></div>
+      </div>
+      <p style="margin-top:10px"><span class="plakietka bursztyn">megabajty</span> <span class="plakietka bursztyn">start: sekundy</span> <span class="plakietka">izolacja procesów</span></p>
+    </div>
+  </div>
+  <div class="podpis">Kontener to odgrodzona grupa procesów na jądrze gospodarza – dlatego jest lekki, ale nie uruchomi innego systemu (np. Windowsa). Na RHEL kontenerami zarządza Podman; polecenia są takie same jak w Dockerze.</div>
+</div>
+</body></html>

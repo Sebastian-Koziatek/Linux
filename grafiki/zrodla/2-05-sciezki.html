@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Dwie drogi do tego samego pliku</h1><span class="pod">ścieżka bezwzględna i względna</span></div>
+  <div class="wiersz" style="align-items:flex-start">
+    <div class="drzewo" style="flex:1 1 0">
+<span class="kat">/</span> <span class="op">korzeń – tu zaczyna się wszystko</span><br>
+├── <span class="kat">etc</span><br>
+├── <span class="kat">home</span><br>
+│   └── <span class="kat">anna</span> <span class="op">katalog domowy = <code>~</code></span><br>
+│       ├── <span class="kat">dokumenty</span><br>
+│       │   └── <span class="plik">raport.txt</span> <span class="op">cel</span><br>
+│       └── <span class="kat">zdjecia</span> <span class="op">tu stoisz</span><br>
+├── <span class="kat">usr</span><br>
+└── <span class="kat">var</span>
+    </div>
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="karta akcent">
+        <h3>Ścieżka bezwzględna</h3>
+        <p><code>/home/anna/dokumenty/raport.txt</code></p>
+        <p style="margin-top:6px">Zaczyna się od <code>/</code>. Opisuje drogę od korzenia – działa tak samo <b>z każdego miejsca</b>.</p>
+      </div>
+      <div class="karta ok">
+        <h3>Ścieżka względna</h3>
+        <p><code>../dokumenty/raport.txt</code></p>
+        <p style="margin-top:6px">Liczona od katalogu, w którym stoisz (<code>/home/anna/zdjecia</code>). <code>..</code> znaczy „poziom wyżej”.</p>
+      </div>
+      <div class="karta">
+        <h3>Ta sama droga ze skrótem</h3>
+        <p><code>~/dokumenty/raport.txt</code></p>
+        <p style="margin-top:6px"><code>~</code> powłoka zamienia na Twój katalog domowy, więc to też ścieżka od korzenia.</p>
+      </div>
+    </div>
+  </div>
+  <div class="podpis">Jeśli nie wiesz, gdzie stoisz – <code>pwd</code>. Jeśli nie masz pewności, czy ścieżka względna zadziała – użyj bezwzględnej.</div>
+</div>
+</body></html>

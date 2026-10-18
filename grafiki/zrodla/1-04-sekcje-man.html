@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Sekcje podręcznika man</h1><span class="pod">ta sama nazwa może mieć kilka stron</span></div>
+  <table class="tabela">
+    <tr><th style="width:10%">Sekcja</th><th style="width:34%">Co zawiera</th><th>Przykłady</th><th style="width:24%">Dla kogo</th></tr>
+    <tr><td>1</td><td>Polecenia użytkownika</td><td><code>ls(1)</code>, <code>cp(1)</code>, <code>passwd(1)</code></td><td><span class="tak">każdy</span></td></tr>
+    <tr><td>2</td><td>Wywołania systemowe (funkcje jądra)</td><td><code>open(2)</code>, <code>fork(2)</code></td><td>programiści C</td></tr>
+    <tr><td>3</td><td>Funkcje bibliotek</td><td><code>printf(3)</code>, <code>strlen(3)</code></td><td>programiści C</td></tr>
+    <tr><td>4</td><td>Pliki specjalne i urządzenia</td><td><code>null(4)</code>, <code>random(4)</code></td><td>administratorzy</td></tr>
+    <tr><td>5</td><td>Formaty plików konfiguracyjnych</td><td><code>passwd(5)</code>, <code>fstab(5)</code>, <code>sshd_config(5)</code></td><td><span class="tak">administratorzy</span></td></tr>
+    <tr><td>6</td><td>Gry</td><td><code>fortune(6)</code></td><td>dla relaksu</td></tr>
+    <tr><td>7</td><td>Różne: konwencje, protokoły, standardy</td><td><code>regex(7)</code>, <code>signal(7)</code>, <code>hier(7)</code></td><td>każdy ciekawy</td></tr>
+    <tr><td>8</td><td>Polecenia administracyjne i demony</td><td><code>mount(8)</code>, <code>useradd(8)</code>, <code>sshd(8)</code></td><td><span class="tak">administratorzy</span></td></tr>
+  </table>
+  <div class="porownanie" style="margin-top:16px">
+    <div class="karta"><h3><code>man 1 passwd</code></h3><p><b>Polecenie</b> <code>passwd</code> – jak zmienić hasło użytkownikowi.</p></div>
+    <div class="vs">vs</div>
+    <div class="karta"><h3><code>man 5 passwd</code></h3><p><b>Plik</b> <code>/etc/passwd</code> – co oznaczają kolejne pola oddzielone dwukropkami.</p></div>
+  </div>
+  <div class="podpis">Bez numeru <code>man</code> pokaże pierwszą znalezioną sekcję (zwykle 1). Wszystkie wersje zobaczysz przez <code>man -f passwd</code> albo otworzysz po kolei przez <code>man -a passwd</code>.</div>
+</div>
+</body></html>

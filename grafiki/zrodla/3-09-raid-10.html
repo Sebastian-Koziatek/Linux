@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>RAID 10 – paski z luster</h1><span class="pod">najpierw pary lustrzane (RAID 1), potem paski po parach (RAID 0)</span></div>
+  <div class="karta ciemna" style="padding:12px 18px;text-align:center"><h3 style="margin:0">RAID 0 – paski: blok A1 na parę 1, A2 na parę 2, A3 na parę 1…</h3></div>
+  <div class="strzalka dol"></div>
+  <div class="karty">
+    <div class="karta ok">
+      <h3>Para 1 – RAID 1 (lustro)</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A1</div><div class="blok x">A3</div><div class="blok x">A5</div></div><div class="nazwa">Dysk 1<small>uszkodzony</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok a">A3</div><div class="blok a">A5</div></div><div class="nazwa">Dysk 2<small>kopia – działa</small></div></div>
+      </div>
+    </div>
+    <div class="karta ok">
+      <h3>Para 2 – RAID 1 (lustro)</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok b">A2</div><div class="blok b">A4</div><div class="blok b">A6</div></div><div class="nazwa">Dysk 3<small>1 TB</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok b">A2</div><div class="blok b">A4</div><div class="blok b">A6</div></div><div class="nazwa">Dysk 4<small>1 TB</small></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="notatka ok">4 dyski po 1 TB → <b>2 TB</b> do użycia. Przeżywa awarię <b>po jednym dysku w każdej parze</b> (tu: Dysk 1 padł, macierz pracuje). Padnięcie obu dysków tej samej pary = utrata danych.</div>
+  <div class="podpis">Szybki zapis i odczyt bez liczenia parzystości, krótka odbudowa (kopiowanie z drugiego dysku pary). Cena: połowa pojemności. Typowy wybór pod bazy danych i maszyny wirtualne.</div>
+</div>
+</body></html>

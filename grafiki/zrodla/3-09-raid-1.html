@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>RAID 1 – lustro</h1><span class="pod">te same dane zapisywane na dwóch dyskach jednocześnie</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Normalna praca</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok a">A2</div><div class="blok a">A3</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 1<small>1 TB</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok a">A2</div><div class="blok a">A3</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 2<small>1 TB</small></div></div>
+      </div>
+      <p style="margin-top:12px;text-align:center">Pojemność do użycia: <b>1 TB</b> (połowa)</p>
+    </div>
+    <div class="karta zle">
+      <h3>Awaria jednego dysku</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A1</div><div class="blok x">A2</div><div class="blok x">A3</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 1<small>uszkodzony</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok a">A2</div><div class="blok a">A3</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 2<small>działa</small></div></div>
+      </div>
+      <p style="margin-top:12px;text-align:center">Dane są nadal dostępne – <b>serwer pracuje dalej</b></p>
+    </div>
+  </div>
+  <div class="podpis">RAID 1 chroni przed awarią dysku, ale <b>nie zastępuje kopii zapasowej</b>: skasowany plik znika z obu dysków naraz.</div>
+</div>
+</body></html>

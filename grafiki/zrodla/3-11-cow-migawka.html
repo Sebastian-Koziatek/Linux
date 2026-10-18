@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Kopiowanie przy zapisie i migawka</h1><span class="pod">dlaczego migawka w Btrfs i ZFS powstaje w sekundę</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>1. Plik na dysku</h3>
+      <div class="dyski" style="margin-top:8px">
+        <div class="dysk"><div class="korpus"><div class="blok a">A</div><div class="blok a">B</div><div class="blok a">C</div><div class="blok wolny">wolne</div></div><div class="nazwa">plik<small>3 bloki</small></div></div>
+      </div>
+      <p style="margin-top:10px">Plik <code>baza.db</code> zajmuje bloki A, B, C.</p>
+    </div>
+    <div class="karta ok">
+      <h3>2. Migawka</h3>
+      <div class="dyski" style="margin-top:8px">
+        <div class="dysk"><div class="korpus"><div class="blok b">A</div><div class="blok b">B</div><div class="blok b">C</div><div class="blok wolny">wolne</div></div><div class="nazwa">plik + migawka<small>nadal 3 bloki</small></div></div>
+      </div>
+      <p style="margin-top:10px">Migawka to tylko <b>drugi spis wskaźników</b> na te same bloki. Nic nie jest kopiowane.</p>
+    </div>
+    <div class="karta akcent">
+      <h3>3. Zmiana w pliku</h3>
+      <div class="dyski" style="margin-top:8px">
+        <div class="dysk"><div class="korpus"><div class="blok b">A</div><div class="blok b">B</div><div class="blok b">C</div><div class="blok a">C′</div></div><div class="nazwa">po zapisie<small>4 bloki</small></div></div>
+      </div>
+      <p style="margin-top:10px">Nowa wersja bloku C ląduje <b>obok</b>, jako C′. Plik wskazuje C′, migawka dalej widzi stare C.</p>
+    </div>
+  </div>
+  <div class="notatka ok">Kopiowanie przy zapisie (ang. copy-on-write, CoW): dane nigdy nie są nadpisywane w miejscu. Stary blok zostaje, dopóki ktoś (plik albo migawka) go potrzebuje. Stąd tanie migawki, a także odporność na awarię w trakcie zapisu.</div>
+</div>
+</body></html>

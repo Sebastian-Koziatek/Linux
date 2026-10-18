@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Ta sama czynność, inne polecenie</h1><span class="pod">równoważniki w popularnych menedżerach pakietów</span></div>
+  <table class="tabela">
+    <tr>
+      <th style="width:21%">Czynność</th>
+      <th>dnf / yum <span class="plakietka bursztyn">RHEL, Rocky, Alma, Fedora</span></th>
+      <th>apt <span class="plakietka" style="background:#fff;color:var(--granat)">Debian, Ubuntu</span></th>
+      <th>zypper <span class="plakietka" style="background:#fff;color:var(--granat)">openSUSE, SLES</span></th>
+      <th>pacman <span class="plakietka" style="background:#fff;color:var(--granat)">Arch</span></th>
+    </tr>
+    <tr><td>Odśwież listę pakietów</td><td><code>dnf makecache</code></td><td><code>apt update</code></td><td><code>zypper refresh</code></td><td><code>pacman -Sy</code></td></tr>
+    <tr><td>Wyszukaj</td><td><code>dnf search słowo</code></td><td><code>apt search słowo</code></td><td><code>zypper search słowo</code></td><td><code>pacman -Ss słowo</code></td></tr>
+    <tr><td>Informacje o pakiecie</td><td><code>dnf info pakiet</code></td><td><code>apt show pakiet</code></td><td><code>zypper info pakiet</code></td><td><code>pacman -Si pakiet</code></td></tr>
+    <tr><td>Zainstaluj</td><td><code>dnf install pakiet</code></td><td><code>apt install pakiet</code></td><td><code>zypper install pakiet</code></td><td><code>pacman -S pakiet</code></td></tr>
+    <tr><td>Usuń</td><td><code>dnf remove pakiet</code></td><td><code>apt remove pakiet</code></td><td><code>zypper remove pakiet</code></td><td><code>pacman -R pakiet</code></td></tr>
+    <tr><td>Zaktualizuj wszystko</td><td><code>dnf upgrade</code></td><td><code>apt update &amp;&amp; apt upgrade</code></td><td><code>zypper update</code></td><td><code>pacman -Syu</code></td></tr>
+    <tr><td>Lista zainstalowanych</td><td><code>dnf list --installed</code></td><td><code>apt list --installed</code></td><td><code>zypper search -i</code></td><td><code>pacman -Q</code></td></tr>
+    <tr><td>Z jakiego pakietu jest plik?</td><td><code>rpm -qf /ścieżka</code></td><td><code>dpkg -S /ścieżka</code></td><td><code>rpm -qf /ścieżka</code></td><td><code>pacman -Qo /ścieżka</code></td></tr>
+    <tr><td>Format pakietu</td><td><code>.rpm</code></td><td><code>.deb</code></td><td><code>.rpm</code></td><td><code>.pkg.tar.zst</code></td></tr>
+    <tr><td>Narzędzie niskopoziomowe</td><td><code>rpm</code></td><td><code>dpkg</code></td><td><code>rpm</code></td><td>(wbudowane w pacman)</td></tr>
+  </table>
+  <div class="podpis">Zasada działania jest wszędzie taka sama: repozytorium, metadane, zależności, podpisy. Zmienia się tylko słownictwo – gdy znasz jeden menedżer, drugiego nauczysz się w godzinę.</div>
+</div>
+</body></html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jeden wiersz pliku /etc/fstab</h1><span class="pod">sześć pól oddzielonych spacjami lub tabulatorami</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>/etc/fstab – wpis dla dysku z danymi</span></div>
+<pre><span class="d"># co           gdzie       typ   opcje            dump  pass</span>
+<span class="k">UUID=3f1c…9a</span>  <span class="k">/mnt/dane</span>   <span class="k">xfs</span>   <span class="k">defaults,nofail</span>  <span class="k">0</span>     <span class="k">0</span>
+<span class="d">   ①             ②         ③          ④           ⑤     ⑥</span></pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="kroki" style="flex-wrap:wrap">
+    <div class="krok" style="flex:1 1 30%"><h3>Co montować</h3><p><code>UUID=…</code> – trwały identyfikator systemu plików (z <code>blkid</code>). Może być też <code>LABEL=dane</code> albo <code>/dev/sdb1</code>, ale nazwa <code>sdX</code> potrafi się zmienić.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Gdzie</h3><p>Punkt montowania – istniejący, najlepiej pusty katalog.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Typ</h3><p><code>xfs</code>, <code>ext4</code>, <code>vfat</code>, <code>iso9660</code>, <code>nfs</code>, <code>swap</code>… albo <code>auto</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Opcje</h3><p><code>defaults</code> wystarcza. Przydatne dodatki: <code>nofail</code> (brak dysku nie zatrzyma startu), <code>noatime</code>, <code>ro</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Dump</h3><p>Historyczny znacznik dla programu <code>dump</code>. Dziś zawsze <code>0</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Pass</h3><p>Kolejność <code>fsck</code> przy starcie: <code>1</code> dla <code>/</code> (ext4), <code>2</code> dla pozostałych ext, <code>0</code> = nie sprawdzaj (XFS, nośniki wymienne).</p></div>
+  </div>
+  <div class="notatka zle">Literówka w tym pliku potrafi zatrzymać start systemu. Po każdej zmianie: <code>sudo mount -a</code> i <code>findmnt --verify</code>, zanim zrobisz restart.</div>
+</div>
+</body></html>

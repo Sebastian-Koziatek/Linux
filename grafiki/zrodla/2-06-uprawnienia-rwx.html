@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jak czytać wiersz ls -l</h1><span class="pod">anatomia uprawnień pliku</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>ls -l raport.txt</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> ls -l raport.txt
+<span class="d">-</span><span class="k">rwx</span><span class="p">r-x</span><span class="c">---</span><span class="d">. 1</span> <span class="k">anna</span> <span class="p">ksiegowosc</span> <span class="d">2048 Oct 18 09:00</span> raport.txt</pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta"><h3><code>-</code> typ</h3><p><code>-</code> plik, <code>d</code> katalog, <code>l</code> dowiązanie symboliczne</p></div>
+    <div class="karta akcent"><h3><code>rwx</code> właściciel</h3><p><b>anna</b> może czytać, zapisywać i wykonywać</p></div>
+    <div class="karta ok"><h3><code>r-x</code> grupa</h3><p>członkowie grupy <b>ksiegowosc</b> czytają i wykonują, nie zmieniają</p></div>
+    <div class="karta zle"><h3><code>---</code> pozostali</h3><p>wszyscy inni nie mogą nic</p></div>
+  </div>
+  <div class="odstep"></div>
+  <table class="tabela">
+    <tr><th style="width:22%">Uprawnienie</th><th>Dla pliku</th><th>Dla katalogu</th></tr>
+    <tr><td>r (read)</td><td>odczyt zawartości (<code>cat</code>, <code>less</code>)</td><td>lista nazw plików (<code>ls</code>)</td></tr>
+    <tr><td>w (write)</td><td>zmiana zawartości</td><td>tworzenie i usuwanie plików w środku</td></tr>
+    <tr><td>x (execute)</td><td>uruchomienie jako program</td><td>wejście do katalogu (<code>cd</code>)</td></tr>
+  </table>
+  <div class="podpis">Kropka po uprawnieniach (<code>-rwxr-x---.</code>) to informacja RHEL o kontekście SELinux – nie jest uprawnieniem.</div>
+</div>
+</body></html>

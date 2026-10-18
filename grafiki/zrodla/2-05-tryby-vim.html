@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Trzy tryby edytora vim</h1><span class="pod">i klawisze, które między nimi przełączają</span></div>
+  <div class="wiersz" style="gap:10px;align-items:stretch">
+    <div class="karta ok" style="flex:1 1 0">
+      <h3>Wstawiania <span class="plakietka morski">INSERT</span></h3>
+      <p>Piszesz jak w zwykłym notatniku. Na dole widać napis <code style="white-space:nowrap">-- INSERT --</code>.</p>
+      <p class="male" style="margin-top:8px">Nie działają tu polecenia – klawisz <code>x</code> wpisze literę x.</p>
+    </div>
+    <div class="kolumna" style="gap:4px;align-items:center;justify-content:center;flex:none;width:110px">
+      <span class="male" style="text-align:center"><code>i</code> <code>a</code> <code>o</code></span>
+      <div class="strzalka dwie" style="width:70px"><span></span></div>
+      <span class="male"><code>Esc</code></span>
+    </div>
+    <div class="karta akcent" style="flex:1.15 1 0">
+      <h3>Normalny <span class="plakietka bursztyn">start</span></h3>
+      <p>Tak startuje vim. Klawisze to <b>polecenia</b>: <code>x</code> usuwa znak, <code>dd</code> wiersz, <code>u</code> cofa, <code>/</code> szuka.</p>
+      <p class="male" style="margin-top:8px">Zgubiłeś się? <code>Esc</code> kilka razy – zawsze wracasz tutaj.</p>
+    </div>
+    <div class="kolumna" style="gap:4px;align-items:center;justify-content:center;flex:none;width:110px">
+      <span class="male"><code>:</code></span>
+      <div class="strzalka dwie" style="width:70px"><span></span></div>
+      <span class="male"><code>Enter</code> / <code>Esc</code></span>
+    </div>
+    <div class="karta" style="flex:1 1 0">
+      <h3>Wiersza poleceń <span class="plakietka granat">:</span></h3>
+      <p>Na dole ekranu pojawia się <code>:</code> i wpisujesz polecenie: <code>:w</code> zapis, <code>:q</code> wyjście, <code>:wq</code> oba.</p>
+      <p class="male" style="margin-top:8px"><code>:q!</code> – wyjdź i porzuć zmiany.</p>
+    </div>
+  </div>
+  <div class="notatka">Przepis na wyjście w każdej sytuacji: <b><code>Esc</code>, potem <code>:q!</code>, potem <code>Enter</code></b>. Nic nie zapiszesz, ale na pewno wyjdziesz.</div>
+</div>
+</body></html>

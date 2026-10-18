@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Gdzie mieszkają zadania crona</h1><span class="pod">jeden demon <code>crond</code>, kilka miejsc z harmonogramami</span></div>
+  <div class="drzewo">
+    <span class="kat">/var/spool/cron/anna</span> <span class="op">crontab użytkownika – edytujesz tylko przez <code>crontab -e</code>, pięć pól czasu + polecenie</span><br>
+    <span class="kat">/etc/crontab</span> <span class="op">crontab systemowy – dodatkowe pole: <b>jako kto</b> uruchomić polecenie</span><br>
+    <span class="kat">/etc/cron.d/</span> <span class="op">osobne pliki w tym samym formacie – tu swoje zadania wrzucają pakiety</span><br>
+    <span class="kat">/etc/cron.hourly/</span> <span class="op">skrypty uruchamiane co godzinę (bez pól czasu – sama nazwa katalogu jest harmonogramem)</span><br>
+    <span class="kat">/etc/cron.daily/</span> <span class="op">raz dziennie</span><br>
+    <span class="kat">/etc/cron.weekly/</span> <span class="op">raz w tygodniu</span><br>
+    <span class="kat">/etc/cron.monthly/</span> <span class="op">raz w miesiącu</span><br>
+    <span class="kat">/etc/anacrontab</span> <span class="op">anacron: uruchamia daily/weekly/monthly także wtedy, gdy komputer był wyłączony</span>
+  </div>
+  <div class="karty" style="margin-top:16px">
+    <div class="karta akcent"><h3>Swoje zadania</h3><p><code>crontab -e</code> – najprościej, działa jako Ty, bez <code>sudo</code>.</p></div>
+    <div class="karta"><h3>Zadania administracyjne</h3><p>Plik w <code>/etc/cron.d/</code> z polem użytkownika – widać go w systemie, łatwo wersjonować.</p></div>
+    <div class="karta"><h3>„Raz dziennie, obojętnie kiedy”</h3><p>Skrypt wykonywalny w <code>/etc/cron.daily/</code> – anacron dopilnuje, by nie przepadł.</p></div>
+  </div>
+</div>
+</body></html>

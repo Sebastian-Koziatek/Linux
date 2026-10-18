@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>Podmiana certyfikatu</h1><span class="pod">bezpieczna procedura krok po kroku</span></div>
+  <div class="kroki kolumna">
+    <div class="krok"><h3>Zweryfikuj nowe pliki</h3><p><code>openssl x509 -noout -subject -dates</code>; skróty kluczy publicznych certyfikatu i klucza muszą być identyczne</p></div>
+    <div class="krok"><h3>Zrób kopię starych</h3><p><code>cp serwer.crt serwer.crt.2026-10-18</code> – odwrót w razie problemów</p></div>
+    <div class="krok"><h3>Wgraj nowe na miejsce</h3><p>certyfikat <b>razem z łańcuchem pośrednim</b> w jednym pliku; klucz z <code>chmod 600</code>, konteksty: <code>restorecon</code></p></div>
+    <div class="krok"><h3>Przetestuj i przeładuj</h3><p><code>apachectl configtest && systemctl reload httpd</code> – reload nie zrywa połączeń</p></div>
+    <div class="krok"><h3>Sprawdź po zmianie</h3><p><code>openssl s_client -connect host:443</code> – daty i wystawca prosto z działającego serwera</p></div>
+  </div>
+  <div class="notatka ok">Z publiczną domeną całość automatyzuje <code>certbot --apache</code> (Let's Encrypt): odnawianie co 90 dni robi timer systemd, kontrola: <code>certbot renew --dry-run</code>.</div>
+</div>
+</body></html>

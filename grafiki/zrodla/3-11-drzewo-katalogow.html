@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Drzewo katalogów Linuksa</h1><span class="pod">jeden korzeń <code>/</code> zamiast liter dysków C:, D:</span></div>
+  <div class="drzewo">
+<span class="kat">/</span> <span class="op">korzeń – początek wszystkiego, tu „wiszą” wszystkie dyski</span><br>
+├── <span class="kat">boot</span> <span class="op">jądro, initramfs, GRUB – nie sprzątaj ręcznie</span><br>
+├── <span class="kat">etc</span> <span class="op">konfiguracja całego systemu (tekst) – tu pracuje administrator</span><br>
+├── <span class="kat">home</span> <span class="op">katalogi domowe użytkowników: /home/anna, /home/jan</span><br>
+├── <span class="kat">root</span> <span class="op">katalog domowy administratora root (osobno od /home)</span><br>
+├── <span class="kat">usr</span> <span class="op">programy i biblioteki z pakietów – zarządza nimi dnf</span><br>
+│   ├── <span class="kat">bin</span> <span class="op">polecenia: ls, cp, vim, ssh (/bin to dowiązanie tutaj)</span><br>
+│   ├── <span class="kat">sbin</span> <span class="op">polecenia administracyjne: fdisk, mkfs, useradd</span><br>
+│   ├── <span class="kat">lib, lib64</span> <span class="op">biblioteki współdzielone i moduły jądra</span><br>
+│   ├── <span class="kat">share</span> <span class="op">dokumentacja, strony man, ikony, czcionki</span><br>
+│   └── <span class="kat">local</span> <span class="op">programy instalowane ręcznie, poza menedżerem pakietów</span><br>
+├── <span class="kat">var</span> <span class="op">dane zmienne: /var/log (logi), /var/lib (bazy), /var/www, /var/cache</span><br>
+├── <span class="kat">opt</span> <span class="op">duże programy firm trzecich, każdy w swoim podkatalogu</span><br>
+├── <span class="kat">srv</span> <span class="op">dane udostępniane przez usługi (strony WWW, FTP)</span><br>
+├── <span class="kat">tmp</span> <span class="op">pliki tymczasowe, czyszczone automatycznie</span><br>
+├── <span class="kat">mnt</span> <span class="op">ręczne montowanie przez administratora</span><br>
+├── <span class="kat">media</span> <span class="op">automatycznie montowane pendrive’y i płyty</span><br>
+├── <span class="kat">dev</span> <span class="op">pliki urządzeń: /dev/sda, /dev/null – tworzy je system</span><br>
+├── <span class="kat">proc</span>, <span class="kat">sys</span> <span class="op">widok do wnętrza jądra, nie istnieją na dysku</span><br>
+└── <span class="kat">run</span> <span class="op">dane bieżącej sesji systemu, w pamięci RAM</span>
+  </div>
+  <div class="podpis">Standard FHS (Filesystem Hierarchy Standard) opisuje, co gdzie leży. Odpowiedniki z Windows: <code>C:\Program Files</code> ≈ <code>/usr</code> i <code>/opt</code>, <code>C:\Users</code> ≈ <code>/home</code>, rejestr ≈ <code>/etc</code>, <code>C:\Windows\Temp</code> ≈ <code>/tmp</code>.</div>
+</div>
+</body></html>

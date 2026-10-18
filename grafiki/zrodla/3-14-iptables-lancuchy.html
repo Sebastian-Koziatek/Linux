@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Droga pakietu przez łańcuchy</h1><span class="pod">które łańcuchy zobaczy pakiet, zależy od tego, dokąd zmierza</span></div>
+  <div class="wiersz srodek">
+    <div class="karta" style="flex:0 0 190px;text-align:center"><h3>Pakiet wchodzi</h3><p>z karty sieciowej</p></div>
+    <div class="strzalka"></div>
+    <div class="karta" style="flex:0 0 190px;text-align:center"><h3>PREROUTING</h3><p>tabela <code>nat</code>: zmiana adresu docelowego</p></div>
+    <div class="strzalka"></div>
+    <div class="karta ciemna" style="flex:0 0 230px;text-align:center"><h3>Dla kogo pakiet?</h3><p>jądro sprawdza adres docelowy</p></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta ok" style="flex:1.4 1 0">
+      <h3>Dla tego serwera <span class="plakietka morski">najczęściej</span></h3>
+      <div class="wiersz" style="margin-top:10px">
+        <div class="karta akcent" style="text-align:center;padding:12px 10px"><h3>INPUT</h3><p>tabela <code>filter</code><br>tu filtrujesz ruch przychodzący</p></div>
+        <div class="strzalka"></div>
+        <div class="karta" style="text-align:center;padding:12px 10px"><h3>Proces</h3><p>np. <code>sshd</code>, <code>nginx</code> – odpowiada</p></div>
+        <div class="strzalka"></div>
+        <div class="karta akcent" style="text-align:center;padding:12px 10px"><h3>OUTPUT</h3><p>tabela <code>filter</code><br>ruch wychodzący</p></div>
+      </div>
+    </div>
+    <div class="karta" style="flex:0.7 1 0">
+      <h3>Dla innego komputera</h3>
+      <p>Serwer pracuje jako router (<code>ip_forward=1</code>).</p>
+      <div class="karta akcent" style="text-align:center;padding:12px 10px;margin-top:10px"><h3>FORWARD</h3><p>tabela <code>filter</code><br>ruch przekazywany dalej</p></div>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="wiersz srodek">
+    <div class="karta" style="flex:0 0 230px;text-align:center"><h3>POSTROUTING</h3><p>tabela <code>nat</code>: zmiana adresu źródłowego (maskarada)</p></div>
+    <div class="strzalka"></div>
+    <div class="karta" style="flex:0 0 190px;text-align:center"><h3>Pakiet wychodzi</h3><p>do karty sieciowej</p></div>
+  </div>
+  <div class="podpis">Na zwykłym serwerze pracujesz prawie wyłącznie z łańcuchem <b>INPUT</b> tabeli <code>filter</code>. Łańcuchy <code>nat</code> są ważne dopiero wtedy, gdy Linux staje się routerem albo bramą.</div>
+</div>
+</body></html>

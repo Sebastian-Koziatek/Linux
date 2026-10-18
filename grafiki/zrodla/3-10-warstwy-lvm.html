@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Warstwy LVM</h1><span class="pod">dyski → wspólna pula → elastyczne przegródki</span></div>
+  <div class="warstwy">
+    <div class="warstwa w4">Systemy plików i punkty montowania <small>XFS na <code style="color:var(--granat)">/var/www</code>, XFS na <code style="color:var(--granat)">/var/lib/pgsql</code></small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w3">Woluminy logiczne – LV <small><code>/dev/vg_dane/lv_www</code> 20 GB, <code>/dev/vg_dane/lv_baza</code> 50 GB, wolne 30 GB</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w2">Grupa woluminów – VG <small><code>vg_dane</code>: jedna pula 100 GB, pocięta na kawałki (PE, zwykle 4 MB)</small></div>
+    <div class="strzalka dol"></div>
+    <div class="warstwa w1">Woluminy fizyczne – PV <small><code>/dev/sdb</code> 40 GB + <code>/dev/sdc</code> 60 GB (całe dyski lub partycje)</small></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta"><h3>PV – wolumin fizyczny</h3><p>Dysk lub partycja oddana pod LVM (<code>pvcreate</code>). Cegła, z której budujesz.</p></div>
+    <div class="karta"><h3>VG – grupa woluminów</h3><p>Pula zbudowana z jednego lub wielu PV (<code>vgcreate</code>). Da się ją powiększać, dokładając dyski.</p></div>
+    <div class="karta akcent"><h3>LV – wolumin logiczny</h3><p>„Partycja” wycięta z puli (<code>lvcreate</code>). Na niej zakładasz system plików. Powiększasz w locie, bez wyłączania serwera.</p></div>
+  </div>
+  <div class="podpis">Zwykła partycja ma sztywne granice sąsiadów. Wolumin logiczny może rosnąć o dowolne wolne kawałki puli, nawet z innego dysku. Instalator RHEL domyślnie stawia system właśnie na LVM (grupa <code>rl</code>, <code>cs</code> lub <code>rhel</code>).</div>
+</div>
+</body></html>

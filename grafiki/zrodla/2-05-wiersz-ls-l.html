@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Jak czytać wiersz <code>ls -l</code></h1><span class="pod">siedem kolumn, każda coś mówi</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>fragment wyniku <code>ls -l</code></span></div>
+<pre><span class="p">[anna@serwer dokumenty]$</span> ls -l
+<span class="d">razem 12</span>
+<span class="k">-rw-r--r--.</span> 1 anna ksiegowosc 2048 15 paź 10:30 raport.txt
+<span class="k">drwxr-xr-x.</span> 2 anna ksiegowosc 4096 14 paź 09:12 archiwum
+<span class="k">lrwxrwxrwx.</span> 1 anna ksiegowosc   10 15 paź 10:31 aktualny -&gt; raport.txt</pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty" style="gap:10px">
+    <div class="karta akcent" style="padding:12px 12px">
+      <h3><code>-rw-r--r--.</code></h3>
+      <p>Typ i uprawnienia. Pierwszy znak: <code>-</code> plik, <code>d</code> katalog, <code>l</code> dowiązanie. Kropka = etykieta SELinux.</p>
+    </div>
+    <div class="karta" style="padding:12px 12px">
+      <h3><code>1</code></h3>
+      <p>Liczba dowiązań twardych (dla katalogu: liczba podkatalogów + 2).</p>
+    </div>
+    <div class="karta" style="padding:12px 12px">
+      <h3><code>anna</code></h3>
+      <p>Właściciel pliku.</p>
+    </div>
+    <div class="karta" style="padding:12px 12px">
+      <h3><code>ksiegowosc</code></h3>
+      <p>Grupa, do której plik należy.</p>
+    </div>
+    <div class="karta" style="padding:12px 12px">
+      <h3><code>2048</code></h3>
+      <p>Rozmiar w bajtach. Z opcją <code>-h</code>: <code>2,0K</code>.</p>
+    </div>
+    <div class="karta" style="padding:12px 12px">
+      <h3><code>15 paź 10:30</code></h3>
+      <p>Data ostatniej zmiany treści. Format zależy od języka systemu.</p>
+    </div>
+    <div class="karta ok" style="padding:12px 12px">
+      <h3><code>raport.txt</code></h3>
+      <p>Nazwa. Przy dowiązaniu symbolicznym po <code>-&gt;</code> widać cel.</p>
+    </div>
+  </div>
+  <div class="podpis">Uprawnienia (kto może czytać, pisać, uruchamiać) omawia osobna lekcja w module 6 – na razie wystarczy, że rozpoznajesz typ po pierwszym znaku.</div>
+</div>
+</body></html>

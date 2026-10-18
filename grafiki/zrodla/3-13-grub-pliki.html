@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Skąd GRUB2 bierze menu</h1><span class="pod">edytujesz źródła po lewej, nigdy pliku po prawej</span></div>
+  <div class="wiersz">
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="karta ok"><h3><code>/etc/default/grub</code></h3><p>Ustawienia ogólne: <code>GRUB_TIMEOUT</code>, <code>GRUB_CMDLINE_LINUX</code>, <code>GRUB_DEFAULT</code>. <b>Tu robisz zmiany.</b></p></div>
+      <div class="karta ok"><h3><code>/boot/loader/entries/*.conf</code></h3><p>Jeden plik na każde zainstalowane jądro (wpisy BLS). Dopisuje je instalator jądra, poprawiasz je poleceniem <code>grubby</code>.</p></div>
+      <div class="karta"><h3><code>/etc/grub.d/</code></h3><p>Skrypty generatora – zwykle ich nie ruszasz.</p></div>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta akcent" style="flex:0 0 190px;text-align:center;align-self:center"><h3><code>grub2-mkconfig</code></h3><p>składa wszystko w jeden plik:<br><code>-o /boot/grub2/grub.cfg</code></p></div>
+    <div class="strzalka"></div>
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="karta zle"><h3><code>/boot/grub2/grub.cfg</code></h3><p>Plik wynikowy – generowany, nadpisywany przy każdej aktualizacji jądra. <b>Nie edytuj ręcznie.</b></p></div>
+      <div class="karta ciemna"><h3>Menu przy starcie</h3><p>Lista jąder, odliczanie, klawisz <code>e</code> do jednorazowej edycji wpisu.</p></div>
+    </div>
+  </div>
+  <div class="podpis">Na RHEL 9/10 polecenie jest takie samo dla BIOS i UEFI. Na UEFI plik <code>/boot/efi/EFI/redhat/grub.cfg</code> to tylko krótki „odsyłacz” do <code>/boot/grub2/grub.cfg</code>; w starszych wydaniach (RHEL 8) to on był właściwą konfiguracją.</div>
+</div>
+</body></html>

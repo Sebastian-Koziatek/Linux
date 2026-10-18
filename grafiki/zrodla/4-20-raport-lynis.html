@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Anatomia raportu Lynis</h1><span class="pod">podsumowanie po <code>sudo lynis audit system</code></span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>-[ Lynis results ]-</span></div>
+<pre><span class="c">Warnings (1):</span>
+<span class="c">! Found one or more vulnerable packages.</span> <span class="k">[PKGS-7392]</span>
+
+<span class="k">Suggestions (34):</span>
+* Configure password aging limits <span class="k">[AUTH-9286]</span>
+* Consider hardening SSH configuration <span class="k">[SSH-7408]</span>
+    <span class="d">- Details : PermitRootLogin (set YES to NO)</span>
+
+Hardening index : <span class="p">61</span> [############        ]
+Tests performed : 232</pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta zle">
+      <h3>Warnings</h3>
+      <p>sprawy poważne, jest ich mało – <b>załatw najpierw</b> (tu: podatne pakiety → <code>dnf update</code>)</p>
+    </div>
+    <div class="karta">
+      <h3>Suggestions</h3>
+      <p>propozycje „warto poprawić”; 30+ to norma – wybieraj te, które pasują do roli serwera</p>
+    </div>
+    <div class="karta akcent">
+      <h3>Identyfikator testu</h3>
+      <p><code>[SSH-7408]</code> – klucz do szczegółów: <code>lynis show details SSH-7408</code></p>
+    </div>
+    <div class="karta ok">
+      <h3>Hardening index</h3>
+      <p>0–100, poziom utwardzenia; traktuj jak <b>trend</b> tej maszyny, nie ocenę w szkole</p>
+    </div>
+  </div>
+  <div class="podpis">Pełny przebieg audytu: <code>/var/log/lynis.log</code>. Dane do porównań między audytami (m.in. <code>hardening_index=61</code>): <code>/var/log/lynis-report.dat</code>.</div>
+</div>
+</body></html>

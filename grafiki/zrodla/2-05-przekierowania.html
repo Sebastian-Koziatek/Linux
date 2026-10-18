@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Dokąd trafia wynik polecenia?</h1><span class="pod">ekran, <code>&gt;</code> nadpisuje, <code>&gt;&gt;</code> dopisuje</span></div>
+  <div class="kolumna">
+    <div class="wiersz">
+      <div class="karta ciemna" style="flex:1 1 0"><h3><code>echo "Ala"</code></h3><p>bez przekierowania</p></div>
+      <div class="strzalka"></div>
+      <div class="karta" style="flex:1 1 0">
+        <h3>Ekran <span class="plakietka">domyślnie</span></h3>
+        <p>Wynik widzisz w terminalu i znika, gdy go zamkniesz.</p>
+      </div>
+    </div>
+    <div class="wiersz">
+      <div class="karta ciemna" style="flex:1 1 0"><h3><code>echo "Ala" &gt; lista.txt</code></h3><p>jeden znak większości</p></div>
+      <div class="strzalka"></div>
+      <div class="karta zle" style="flex:1 1 0">
+        <h3>Plik <span class="plakietka czerwien">nadpisuje</span></h3>
+        <p>Stara zawartość <code>lista.txt</code> znika bez pytania. W pliku zostaje tylko: <code>Ala</code></p>
+      </div>
+    </div>
+    <div class="wiersz">
+      <div class="karta ciemna" style="flex:1 1 0"><h3><code>echo "Ola" &gt;&gt; lista.txt</code></h3><p>dwa znaki większości</p></div>
+      <div class="strzalka"></div>
+      <div class="karta ok" style="flex:1 1 0">
+        <h3>Plik <span class="plakietka morski">dopisuje</span></h3>
+        <p>Nowy wiersz ląduje na końcu. W pliku są teraz dwa wiersze: <code>Ala</code> i <code>Ola</code></p>
+      </div>
+    </div>
+  </div>
+  <div class="notatka">Jeśli plik nie istnieje, oba znaki go utworzą. Różnica jest tylko wtedy, gdy plik już coś zawiera – a wtedy pomyłka <code>&gt;</code> zamiast <code>&gt;&gt;</code> kasuje jego treść.</div>
+</div>
+</body></html>

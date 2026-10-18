@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Poziomy startowe i targety systemd</h1><span class="pod">stara numeracja 0–6 i jej dzisiejsze odpowiedniki</span></div>
+  <table class="tabela">
+    <tr><th style="width:14%">Runlevel</th><th style="width:30%">Target systemd</th><th>Co to znaczy</th><th style="width:24%">Kiedy używasz</th></tr>
+    <tr><td>0</td><td><code>poweroff.target</code></td><td>wyłączenie komputera</td><td><code>systemctl poweroff</code></td></tr>
+    <tr><td>1</td><td><code>rescue.target</code></td><td>tryb ratunkowy: tylko root, dyski zamontowane, bez sieci i usług</td><td>naprawa fstab, dysku, hasła</td></tr>
+    <tr><td>2, 3, 4</td><td><code>multi-user.target</code></td><td>pełny system wielu użytkowników, z siecią, bez pulpitu graficznego</td><td><span class="tak">serwery</span></td></tr>
+    <tr><td>5</td><td><code>graphical.target</code></td><td>jak wyżej plus ekran logowania GDM i pulpit</td><td>stacje robocze</td></tr>
+    <tr><td>6</td><td><code>reboot.target</code></td><td>ponowne uruchomienie</td><td><code>systemctl reboot</code></td></tr>
+    <tr><td>–</td><td><code>emergency.target</code></td><td>tryb awaryjny: minimalna powłoka, <code>/</code> tylko do odczytu, nic więcej</td><td><span class="nie">gdy rescue nie wystarcza</span></td></tr>
+  </table>
+  <div class="terminal" style="margin-top:16px">
+    <div class="pasek"><i></i><i></i><i></i><span>sprawdzenie i zmiana celu startu</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> systemctl get-default
+<span class="k">multi-user.target</span>
+<span class="p">[admin@serwer ~]$</span> sudo systemctl set-default graphical.target   <span class="d"># od następnego startu</span>
+<span class="p">[admin@serwer ~]$</span> sudo systemctl isolate graphical.target       <span class="d"># natychmiast, bez restartu</span></pre>
+  </div>
+</div>
+</body></html>

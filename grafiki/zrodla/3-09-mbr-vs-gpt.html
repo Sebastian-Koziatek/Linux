@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>MBR czy GPT?</h1><span class="pod">dwa sposoby zapisania tablicy partycji na dysku</span></div>
+  <table class="tabela">
+    <tr><th style="width:30%">Cecha</th><th>MBR <span class="plakietka" style="background:#fff;color:var(--granat)">starszy</span></th><th>GPT <span class="plakietka bursztyn">zalecany</span></th></tr>
+    <tr><td>Maksymalny rozmiar dysku</td><td>2 TB</td><td>praktycznie bez limitu (9,4 ZB)</td></tr>
+    <tr><td>Liczba partycji</td><td>4 podstawowe (lub 3 + rozszerzona z logicznymi)</td><td>128 partycji, wszystkie równorzędne</td></tr>
+    <tr><td>Kopia tablicy partycji</td><td><span class="nie">brak</span> – uszkodzenie = utrata układu dysku</td><td><span class="tak">tak</span> – zapasowa kopia na końcu dysku</td></tr>
+    <tr><td>Sumy kontrolne</td><td><span class="nie">nie</span></td><td><span class="tak">tak</span> (CRC32)</td></tr>
+    <tr><td>Rozruch systemu</td><td>BIOS (tryb legacy)</td><td>UEFI (nowoczesne komputery i serwery)</td></tr>
+    <tr><td>Kiedy wybrać</td><td>bardzo stary sprzęt, małe dyski</td><td>każdy nowy serwer i komputer</td></tr>
+  </table>
+  <div class="terminal" style="margin-top:16px">
+    <div class="pasek"><i></i><i></i><i></i><span>jak sprawdzić typ tablicy partycji</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> sudo fdisk -l /dev/sda | grep "Typ etykiety"
+Typ etykiety dysku: <span class="k">gpt</span></pre>
+  </div>
+</div>
+</body></html>

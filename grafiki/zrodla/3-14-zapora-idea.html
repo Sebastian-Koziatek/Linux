@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Co robi zapora sieciowa</h1><span class="pod">przepuszcza tylko to, na co jej wyraźnie pozwolisz</span></div>
+  <div class="wiersz">
+    <div class="wezel" style="flex:0 0 150px">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+      <b>Internet</b><small>klienci, administrator, ale też boty i napastnicy</small>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta ciemna" style="flex:1 1 0">
+      <h3>Zapora – lista reguł czytana od góry</h3>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-top:12px;font-size:13.5px">
+        <div style="display:flex;gap:10px;align-items:baseline"><span class="plakietka morski" style="flex:0 0 76px;text-align:center">przepuść</span><span>port 22 (SSH), ale tylko z sieci 192.168.10.0/24</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span class="plakietka morski" style="flex:0 0 76px;text-align:center">przepuść</span><span>porty 80 i 443 (WWW) z dowolnego adresu</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span class="plakietka czerwien" style="flex:0 0 76px;text-align:center">odrzuć</span><span>port 3306 (baza danych) – brak reguły, działa polityka domyślna</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span class="plakietka czerwien" style="flex:0 0 76px;text-align:center">odrzuć</span><span>wszystko inne – <b>polityka domyślna</b></span></div>
+      </div>
+    </div>
+    <div class="strzalka"></div>
+    <div class="wezel" style="flex:0 0 150px">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+      <b>Serwer</b><small>sshd :22, nginx :80/443, mariadb :3306</small>
+    </div>
+  </div>
+  <div class="karty" style="margin-top:18px">
+    <div class="karta"><h3>Pakiet</h3><p>Mała porcja danych z adresem nadawcy, adresem odbiorcy i numerem portu. Zapora ogląda każdy z osobna.</p></div>
+    <div class="karta"><h3>Port</h3><p>Numer „drzwi” na serwerze, za którymi czeka konkretna usługa: 22 = SSH, 80 = WWW, 3306 = MariaDB.</p></div>
+    <div class="karta"><h3>Kierunek</h3><p>Ruch <b>przychodzący</b> (do serwera) filtrujemy zawsze. Ruch <b>wychodzący</b> zwykle zostaje otwarty.</p></div>
+  </div>
+  <div class="notatka">Dobra zapora działa jak portier z listą gości: kogo nie ma na liście, ten nie wchodzi. Nie pisze się listy „kogo nie wpuszczać” – byłaby nieskończona.</div>
+</div>
+</body></html>

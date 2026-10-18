@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Anatomia wpisu logu</h1><span class="pod">cztery części, które ma niemal każdy wpis</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>/var/log/secure</span></div>
+<pre><span class="k">paź 18 10:42:13</span> <span class="d">serwer</span> <span class="p">sshd[2871]</span>: <span class="c">Failed password for invalid user admin from 203.0.113.5 port 51234 ssh2</span></pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta akcent">
+      <h3>Czas</h3>
+      <p><code>paź 18 10:42:13</code><br>KIEDY – zestaw ze zgłoszeniem użytkownika i oknem <code>--since/--until</code></p>
+    </div>
+    <div class="karta">
+      <h3>Host</h3>
+      <p><code>serwer</code><br>GDZIE – istotne, gdy logi z wielu maszyn trafiają w jedno miejsce</p>
+    </div>
+    <div class="karta">
+      <h3>Program [PID]</h3>
+      <p><code>sshd[2871]</code><br>KTO – usługa i numer konkretnego procesu, filtr <code>-u sshd</code></p>
+    </div>
+    <div class="karta zle">
+      <h3>Komunikat</h3>
+      <p><code>Failed password…</code><br>CO – treść z nazwą konta, adresem IP, kodem błędu</p>
+    </div>
+  </div>
+  <div class="notatka">Czytaj w tej kolejności: najpierw zawęź <b>czas</b> i <b>program</b>, dopiero potem analizuj treść komunikatu. Słowa-klucze: <code>error</code>, <code>failed</code>, <code>denied</code>, <code>No space</code>, <code>Killed</code>.</div>
+</div>
+</body></html>

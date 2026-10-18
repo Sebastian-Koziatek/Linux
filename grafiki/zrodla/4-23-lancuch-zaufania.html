@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Łańcuch zaufania</h1><span class="pod">skąd przeglądarka wie, że certyfikat jest prawdziwy</span></div>
+  <div class="wiersz srodek">
+    <div class="karta ciemna" style="flex:0 1 250px">
+      <h3>Urząd główny (root CA)</h3>
+      <p>na wbudowanej liście zaufanych w przeglądarce i systemie; podpisuje urzędy pośrednie</p>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta" style="flex:0 1 250px">
+      <h3>Urząd pośredni</h3>
+      <p>jego certyfikat podpisał urząd główny; to on podpisuje certyfikaty serwerów</p>
+    </div>
+    <div class="strzalka"></div>
+    <div class="karta akcent" style="flex:0 1 250px">
+      <h3>Certyfikat serwera</h3>
+      <p><code>CN=serwer.example.com</code> + klucz publiczny + daty ważności</p>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta ok">
+      <h3>Przeglądarka weryfikuje od dołu</h3>
+      <p>podpis certyfikatu serwera → podpis urzędu pośredniego → urząd główny z listy zaufanych. Każde ogniwo musi się zgadzać, dlatego serwer wysyła też <b>łańcuch pośredni</b>.</p>
+    </div>
+    <div class="karta zle">
+      <h3>Klucz prywatny zostaje na serwerze</h3>
+      <p>Nigdy nie jest wysyłany – ani do CA (tam idzie tylko CSR), ani mailem, ani „do sprawdzenia”. Wyciek klucza = unieważnienie certyfikatu.</p>
+    </div>
+  </div>
+  <div class="notatka">Certyfikat samopodpisany nie ma żadnego ogniwa do listy zaufanych – dlatego przeglądarka ostrzega, choć połączenie jest szyfrowane. Ostrzeżenie dotyczy tożsamości, nie szyfrowania.</div>
+</div>
+</body></html>

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Zabezpieczanie serwera SSH</h1><span class="pod">w jakiej kolejności zmieniać ustawienia, żeby się nie zablokować</span></div>
+  <div class="kroki kolumna">
+    <div class="krok"><h3>Wdróż klucze i sprawdź, że działają</h3><p><code>ssh-keygen</code> → <code>ssh-copy-id anna@serwer</code> → zaloguj się kluczem. Dopóki to nie działa, <b>nie wyłączaj haseł</b>.</p></div>
+    <div class="krok"><h3>Zapisz zmiany w osobnym pliku</h3><p><code>/etc/ssh/sshd_config.d/00-szkolenie.conf</code> (niski numer = czytany pierwszy = wygrywa): <code>PermitRootLogin no</code>, <code>PasswordAuthentication no</code>, <code>MaxAuthTries 3</code>, <code>AllowUsers anna jan</code>.</p></div>
+    <div class="krok"><h3>Zmieniasz port? Najpierw zapora i SELinux</h3><p><code>firewall-cmd --permanent --add-port=2222/tcp</code> + <code>--reload</code>, potem <code>semanage port -a -t ssh_port_t -p tcp 2222</code>. Dopiero wtedy <code>Port 2222</code> w konfiguracji.</p></div>
+    <div class="krok"><h3>Sprawdź składnię</h3><p><code>sudo sshd -t</code> – brak wyjścia oznacza, że plik jest poprawny. Literówka zgłosi się tu, a nie dopiero po restarcie.</p></div>
+    <div class="krok"><h3>Przeładuj usługę, nie zamykaj sesji</h3><p><code>sudo systemctl reload sshd</code>. Obecne połączenie zostaje – to Twoja „lina ratunkowa”.</p></div>
+    <div class="krok"><h3>Zaloguj się w drugim oknie</h3><p>Nowe połączenie działa z nowymi ustawieniami? Dopiero teraz możesz zamknąć stare okno.</p></div>
+  </div>
+  <div class="notatka">Zasada administratora: <b>zawsze miej otwarte jedno zapasowe połączenie</b>, kiedy zmieniasz konfigurację SSH, zapory albo sieci na zdalnej maszynie.</div>
+</div>
+</body></html>

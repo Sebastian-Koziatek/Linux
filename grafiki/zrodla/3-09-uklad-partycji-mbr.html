@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Partycje podstawowe, rozszerzone i logiczne</h1><span class="pod">dlaczego w MBR po <code>sda3</code> bywa od razu <code>sda5</code></span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Dysk z tablicą MBR</h3>
+      <p>Miejsca są tylko <b>4</b>. Czwarte oddaje się partycji <b>rozszerzonej</b> – pojemnikowi, w którym mieszczą się partycje <b>logiczne</b>, numerowane zawsze od 5.</p>
+      <div class="dyski" style="margin-top:12px">
+        <div class="dysk">
+          <div class="korpus">
+            <div class="blok a">sda1</div>
+            <div class="blok a">sda2</div>
+            <div class="blok a">sda3</div>
+            <div style="position:relative;z-index:1;border:2px dashed var(--fiolet);border-radius:8px;padding:4px;display:flex;flex-direction:column;gap:4px;align-items:center">
+              <div class="blok p" style="width:80px;font-size:11.5px">sda4 rozsz.</div>
+              <div class="blok b" style="width:80px">sda5</div>
+              <div class="blok b" style="width:80px">sda6</div>
+              <div class="blok b" style="width:80px">sda7</div>
+            </div>
+          </div>
+          <div class="nazwa">/dev/sda<small>MBR: 3 podstawowe + rozszerzona</small></div>
+        </div>
+      </div>
+      <p style="margin-top:12px"><span class="plakietka bursztyn">podstawowa</span> <span class="plakietka" style="background:#ded9fb">rozszerzona</span> <span class="plakietka morski">logiczna</span></p>
+    </div>
+    <div class="karta ok">
+      <h3>Dysk z tablicą GPT</h3>
+      <p>Do <b>128</b> partycji i wszystkie są równorzędne. Nie ma rozszerzonych ani logicznych, numeracja idzie po kolei: 1, 2, 3, 4, 5…</p>
+      <div class="dyski" style="margin-top:12px">
+        <div class="dysk">
+          <div class="korpus">
+            <div class="blok a">sda1</div>
+            <div class="blok a">sda2</div>
+            <div class="blok a">sda3</div>
+            <div class="blok a">sda4</div>
+            <div class="blok a">sda5</div>
+            <div class="blok wolny">…</div>
+          </div>
+          <div class="nazwa">/dev/sda<small>GPT: wszystkie podstawowe</small></div>
+        </div>
+      </div>
+      <p style="margin-top:12px">Na nowych serwerach wybieraj GPT – podział na typy partycji przestaje być problemem.</p>
+    </div>
+  </div>
+  <div class="podpis">Numery 1–4 w MBR są zarezerwowane dla partycji podstawowych i rozszerzonej, nawet jeśli któreś z tych miejsc jest puste. Stąd „dziura” w numeracji między <code>sda2</code> a <code>sda5</code>.</div>
+</div>
+</body></html>

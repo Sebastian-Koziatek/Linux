@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Nowy dysk bez restartu</h1><span class="pod">od włożenia dysku do <code>/dev/sdb</code> w pięciu krokach</span></div>
+  <div class="kroki kolumna">
+    <div class="krok"><h3>Podłącz dysk</h3><p>Wsuń dysk do kieszeni serwera (hot-swap) albo dodaj go w ustawieniach maszyny wirtualnej. Serwer pracuje dalej.</p></div>
+    <div class="krok"><h3>Sprawdź stan przed – <code>lsblk</code></h3><p>Widać tylko <code>sda</code>. Nowego dysku jeszcze nie ma, bo kontroler nie został zapytany o zmiany.</p></div>
+    <div class="krok"><h3>Poproś kontroler o skan</h3><p><code>echo "- - -" | sudo tee /sys/class/scsi_host/host*/scan</code> – trzy myślniki znaczą „wszystkie kanały, wszystkie identyfikatory, wszystkie jednostki”. Alternatywa: <code>sudo rescan-scsi-bus.sh</code> z pakietu <code>sg3_utils</code>.</p></div>
+    <div class="krok"><h3>Zobacz, co zgłosiło jądro – <code>dmesg | tail</code></h3><p>W dzienniku jądra pojawia się wpis w rodzaju <code>sd 2:0:1:0: [sdb] Attached SCSI disk</code>. To potwierdzenie, że dysk został przyjęty.</p></div>
+    <div class="krok"><h3>Sprawdź stan po – <code>lsblk</code></h3><p>Na liście jest <code>sdb</code> bez partycji. Dysk jest gotowy do partycjonowania (<code>fdisk</code>, <code>parted</code>).</p></div>
+  </div>
+  <div class="notatka">Dysk <b>powiększony</b> (np. w VMware lub Proxmoksie) skanuje się inaczej: <code>echo 1 | sudo tee /sys/class/block/sdb/device/rescan</code>, a po zmianie partycji – <code>sudo partprobe</code>.</div>
+</div>
+</body></html>

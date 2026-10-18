@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Parametry jądra, które warto ustawić</h1><span class="pod">plik <code>/etc/sysctl.d/99-zabezpieczenia.conf</code>, prefiksy <code>net.ipv4.</code> i <code>conf.all.</code> pominięte</span></div>
+  <div class="karty">
+    <div class="karta"><h3><code>ip_forward = 0</code></h3><p>Serwer nie przekazuje cudzych pakietów dalej – nie staje się przypadkowym routerem.</p></div>
+    <div class="karta"><h3><code>rp_filter = 1</code></h3><p>Odrzuca pakiety z podrobionym adresem źródłowym, który nie pasuje do karty, z której przyszły.</p></div>
+    <div class="karta"><h3><code>tcp_syncookies = 1</code></h3><p>Serwer przeżywa zalew SYN (próbę zapchania go półotwartymi połączeniami).</p></div>
+    <div class="karta"><h3><code>icmp_echo_ignore_<br>broadcasts = 1</code></h3><p>Nie odpowiada na ping wysłany „do wszystkich” – nie da się go użyć do ataku smurf.</p></div>
+  </div>
+  <div class="karty" style="margin-top:16px">
+    <div class="karta"><h3><code>accept_redirects = 0</code></h3><p>Ignoruje komunikaty „idź inną trasą” – nikt nie przekieruje ruchu serwera przez swoją maszynę.</p></div>
+    <div class="karta"><h3><code>send_redirects = 0</code></h3><p>Sam też nie rozsyła takich komunikatów – zwykły serwer nie ma po co.</p></div>
+    <div class="karta"><h3><code>accept_source_route<br>= 0</code></h3><p>Odrzuca pakiety, w których nadawca sam wyznaczył trasę – stara technika obchodzenia zapór.</p></div>
+    <div class="karta akcent"><h3><code>log_martians = 1</code></h3><p>Zapisuje w dzienniku pakiety z niemożliwych adresów – dzięki temu zobaczysz, że ktoś próbuje.</p></div>
+  </div>
+  <div class="terminal" style="margin-top:16px">
+    <div class="pasek"><i></i><i></i><i></i><span>wczytanie pliku i kontrola jednej wartości</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> sudo sysctl -p /etc/sysctl.d/99-zabezpieczenia.conf
+<span class="d">net.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 1
+…</span>
+<span class="p">[admin@serwer ~]$</span> sysctl net.ipv4.tcp_syncookies
+net.ipv4.tcp_syncookies = <span class="k">1</span></pre>
+  </div>
+  <div class="podpis">Każdy parametr z <code>conf.all.</code> ma bliźniaka <code>conf.default.</code> (dla kart dodanych później) – ustawiaj oba. Odpowiedniki IPv6 mają prefiks <code>net.ipv6.</code>.</div>
+</div>
+</body></html>

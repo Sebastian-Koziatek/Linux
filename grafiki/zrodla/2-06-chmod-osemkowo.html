@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>chmod ósemkowo</h1><span class="pod">r = 4, w = 2, x = 1 – cyfra to ich suma</span></div>
+  <table class="tabela">
+    <tr><th style="width:18%">Cyfra</th><th style="width:22%">Litery</th><th>Rachunek</th></tr>
+    <tr><td>0</td><td><code>---</code></td><td>nic</td></tr>
+    <tr><td>1</td><td><code>--x</code></td><td>1</td></tr>
+    <tr><td>2</td><td><code>-w-</code></td><td>2</td></tr>
+    <tr><td>3</td><td><code>-wx</code></td><td>2 + 1</td></tr>
+    <tr><td>4</td><td><code>r--</code></td><td>4</td></tr>
+    <tr><td>5</td><td><code>r-x</code></td><td>4 + 1</td></tr>
+    <tr><td>6</td><td><code>rw-</code></td><td>4 + 2</td></tr>
+    <tr><td>7</td><td><code>rwx</code></td><td>4 + 2 + 1</td></tr>
+  </table>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta akcent"><h3><code>chmod 640</code></h3><p><b>6</b> = <code>rw-</code> właściciel · <b>4</b> = <code>r--</code> grupa · <b>0</b> = <code>---</code> pozostali</p></div>
+    <div class="karta"><h3><code>chmod 755</code></h3><p><b>7</b> = <code>rwx</code> właściciel · <b>5</b> = <code>r-x</code> grupa · <b>5</b> = <code>r-x</code> pozostali</p></div>
+  </div>
+  <div class="podpis">Trzy cyfry to zawsze kolejno: właściciel – grupa – pozostali.</div>
+</div>
+</body></html>

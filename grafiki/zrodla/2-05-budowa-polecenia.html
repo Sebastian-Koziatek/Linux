@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Budowa wiersza polecenia</h1><span class="pod">polecenie, opcje, argumenty</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>to samo polecenie zapisane na dwa sposoby</span></div>
+<pre><span class="p">[anna@serwer ~]$</span> <span class="k">ls</span> -l -h --all <span class="k">/etc</span>
+<span class="p">[anna@serwer ~]$</span> <span class="k">ls</span> -lha <span class="k">/etc</span>          <span class="d"># opcje krótkie można skleić w jedną</span></pre>
+  </div>
+  <div class="odstep"></div>
+  <div class="karty">
+    <div class="karta akcent">
+      <h3><code>ls</code></h3>
+      <p><b>Polecenie</b> – co ma się stać. Zawsze pierwsze. Tu: pokaż listę plików.</p>
+    </div>
+    <div class="karta">
+      <h3><code>-l</code> <code>-h</code></h3>
+      <p><b>Opcje krótkie</b> – jedna litera po myślniku. Zmieniają sposób działania: <code>-l</code> długa lista, <code>-h</code> czytelne rozmiary.</p>
+    </div>
+    <div class="karta">
+      <h3><code>--all</code></h3>
+      <p><b>Opcja długa</b> – całe słowo po dwóch myślnikach. Łatwiej zapamiętać. Zwykle ma krótki odpowiednik, tu <code style="white-space:nowrap">-a</code>.</p>
+    </div>
+    <div class="karta ok">
+      <h3><code>/etc</code></h3>
+      <p><b>Argument</b> – na czym polecenie ma działać: plik, katalog, nazwa użytkownika. Może być kilka.</p>
+    </div>
+  </div>
+  <div class="notatka">Elementy rozdzielamy <b>spacjami</b>. Wielkość liter ma znaczenie: <code>ls -R</code> (rekurencyjnie) to co innego niż <code>ls -r</code> (odwrotna kolejność).</div>
+</div>
+</body></html>

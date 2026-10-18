@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Trzy tryby SELinuksa</h1><span class="pod">co się dzieje, gdy polityka mówi „nie”</span></div>
+  <div class="karty">
+    <div class="karta ok">
+      <h3>enforcing <span class="plakietka morski">produkcja</span></h3>
+      <p>Odmowa jest <b>egzekwowana</b>: operacja się nie udaje, a w dzienniku audytu pojawia się wpis <code>AVC denied</code>.</p>
+      <p class="male" style="margin-top:8px"><code>getenforce</code> → <code>Enforcing</code></p>
+    </div>
+    <div class="karta akcent">
+      <h3>permissive <span class="plakietka bursztyn">diagnoza</span></h3>
+      <p>Odmowa jest tylko <b>zapisywana</b>, operacja się udaje. Idealny do sprawdzenia, czego polityka by zabroniła – i tylko do tego.</p>
+      <p class="male" style="margin-top:8px"><code>sudo setenforce 0</code> – do restartu</p>
+    </div>
+    <div class="karta zle">
+      <h3>disabled <span class="plakietka czerwien">unikaj</span></h3>
+      <p>SELinux nie działa i <b>nie etykietuje</b> nowych plików. Po ponownym włączeniu potrzebne jest ponowne etykietowanie całego dysku.</p>
+      <p class="male" style="margin-top:8px">w RHEL 9/10 tylko przez parametr jądra <code>selinux=0</code></p>
+    </div>
+  </div>
+  <div class="notatka">Tryb na stałe ustawiasz w <code>/etc/selinux/config</code> (wiersz <code>SELINUX=</code>), tryb do restartu poleceniem <code>setenforce 0|1</code>. Z <code>disabled</code> na <code>enforcing</code> nie da się przejść bez restartu.</div>
+</div>
+</body></html>

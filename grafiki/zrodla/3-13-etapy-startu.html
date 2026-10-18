@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Jak startuje Linux</h1><span class="pod">od wciśnięcia przycisku do ekranu logowania</span></div>
+  <div class="kroki" style="flex-wrap:wrap">
+    <div class="krok" style="flex:1 1 22%"><h3>BIOS / UEFI</h3><p>Oprogramowanie płyty głównej: test sprzętu (POST), wybór dysku rozruchowego.</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>GRUB2</h3><p>Program rozruchowy: menu z listą jąder, odliczanie, przekazanie parametrów.</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>Jądro + initramfs</h3><p>Jądro startuje w pamięci; mały tymczasowy system ze sterownikami odnajduje dysk z <code>/</code>.</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>systemd (PID 1)</h3><p>Pierwszy proces. Czyta jednostki i uruchamia resztę systemu.</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>Target</h3><p>Cel startu: <code>multi-user</code> (serwer, tekst) albo <code>graphical</code> (pulpit).</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>Usługi</h3><p>Sieć, <code>sshd</code>, <code>chronyd</code>, serwer WWW… równolegle, wg zależności.</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>Logowanie</h3><p><code>getty</code> na konsoli tekstowej lub GDM w trybie graficznym pyta o hasło.</p></div>
+    <div class="krok" style="flex:1 1 22%"><h3>Sesja</h3><p>Powłoka lub pulpit użytkownika. Od tej chwili to Ty sterujesz.</p></div>
+  </div>
+  <div class="notatka">Gdzie co się psuje: brak dysku w BIOS → „No bootable device”; uszkodzony GRUB → <code>grub rescue&gt;</code>; brak sterownika w initramfs → „Cannot find root device”; błąd w <code>/etc/fstab</code> → tryb awaryjny systemd; padnięta usługa → <code>systemctl --failed</code>.</div>
+</div>
+</body></html>

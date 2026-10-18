@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Z czego składa się „pulpit”?</h1><span class="pod">warstwy środowiska graficznego w Linuksie</span></div>
+  <div class="wiersz" style="align-items:stretch">
+    <div class="warstwy" style="flex:1 1 0">
+      <div class="warstwa w4">Aplikacje <small>Firefox, LibreOffice, terminal</small></div>
+      <div class="warstwa w3">Środowisko pulpitu <small>GNOME, KDE Plasma, Xfce – panel, menu, ustawienia, menedżer plików</small></div>
+      <div class="warstwa">Menedżer okien <small>Mutter, KWin, Xfwm – ramki, przesuwanie, fokus</small></div>
+      <div class="warstwa">Serwer wyświetlania <small>Wayland (nowy) albo X11 (stary) – rysuje piksele, czyta klawiaturę i mysz</small></div>
+      <div class="warstwa w2">Jądro Linux + sterownik karty graficznej</div>
+      <div class="warstwa w1">Sprzęt <small>karta graficzna, monitor, klawiatura, mysz</small></div>
+    </div>
+    <div class="karta ciemna" style="flex:0 0 220px">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+      <h3>Menedżer wyświetlania</h3>
+      <p>GDM, SDDM, LightDM. Ekran logowania. Pyta o hasło i uruchamia wybraną sesję – cały stos po lewej.</p>
+    </div>
+  </div>
+  <div class="podpis">Środowisko pulpitu to zestaw: własny menedżer okien + programy. Można też użyć samego menedżera okien (i3, dwm, awesome) – mało zasobów, ale wszystko konfigurujesz ręcznie.</div>
+</div>
+</body></html>

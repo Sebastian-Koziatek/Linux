@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>init SysV kontra systemd</h1><span class="pod">dwa sposoby uruchomienia tego samego serwera</span></div>
+  <div class="porownanie">
+    <div class="karta">
+      <h3>init SysV <span class="plakietka">do RHEL 6</span></h3>
+      <ul>
+        <li>skrypty powłoki w <code>/etc/init.d/</code>, po jednym na usługę</li>
+        <li>poziomy startowe 0–6 i dowiązania <code>S20…</code>/<code>K80…</code> w <code>/etc/rc.d/rcN.d/</code></li>
+        <li>start <b>po kolei</b>, według numerów – wolno</li>
+        <li>brak nadzoru: usługa padła → nikt nie wie</li>
+        <li>logi w plikach tekstowych w <code>/var/log</code></li>
+        <li>polecenia: <code>service</code>, <code>chkconfig</code></li>
+      </ul>
+    </div>
+    <div class="vs">vs</div>
+    <div class="karta akcent">
+      <h3>systemd <span class="plakietka bursztyn">RHEL 7+</span></h3>
+      <ul>
+        <li>deklaratywne pliki jednostek <code>.service</code>, <code>.timer</code>, <code>.mount</code>…</li>
+        <li>cele (targety) zamiast poziomów</li>
+        <li>start <b>równoległy</b>, według zależności – szybko</li>
+        <li>nadzór procesów: <code>Restart=on-failure</code>, stan <code>failed</code></li>
+        <li>dziennik binarny <code>journalctl</code> z filtrowaniem</li>
+        <li>polecenia: <code>systemctl</code>, <code>journalctl</code></li>
+      </ul>
+    </div>
+  </div>
+  <div class="podpis">Stare polecenia nadal działają na RHEL 9 jako nakładki: <code>service sshd status</code> wywołuje po cichu <code>systemctl status sshd</code>. W Alpine i Gentoo spotkasz trzeci system – OpenRC (<code>rc-service</code>, <code>rc-update</code>).</div>
+</div>
+</body></html>

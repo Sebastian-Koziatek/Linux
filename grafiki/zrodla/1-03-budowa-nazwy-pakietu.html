@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Budowa nazwy pakietu RPM</h1><span class="pod">każdy człon coś znaczy</span></div>
+  <div class="srodek" style="display:flex;justify-content:center;margin:6px 0 18px">
+    <div style="display:flex;align-items:flex-end;font-family:var(--mono);font-size:30px;font-weight:700;letter-spacing:-0.01em">
+      <span style="color:var(--granat);border-bottom:6px solid var(--granat);padding:0 2px 6px">nginx</span><span style="color:var(--szary-4);padding-bottom:6px">-</span>
+      <span style="color:#b36b00;border-bottom:6px solid var(--bursztyn);padding:0 2px 6px">1.24.0</span><span style="color:var(--szary-4);padding-bottom:6px">-</span>
+      <span style="color:var(--morski);border-bottom:6px solid var(--morski);padding:0 2px 6px">1</span><span style="color:var(--szary-4);padding-bottom:6px">.</span>
+      <span style="color:var(--fiolet);border-bottom:6px solid var(--fiolet);padding:0 2px 6px">el9</span><span style="color:var(--szary-4);padding-bottom:6px">.</span>
+      <span style="color:var(--granat-2);border-bottom:6px solid var(--szary-3);padding:0 2px 6px">x86_64</span><span style="color:var(--szary-4);padding-bottom:6px">.rpm</span>
+    </div>
+  </div>
+  <div class="karty">
+    <div class="karta" style="border-top:5px solid var(--granat)"><h3>nazwa</h3><p>Co to za program. Tej nazwy używasz w <code>dnf install</code>.</p></div>
+    <div class="karta" style="border-top:5px solid var(--bursztyn)"><h3>wersja</h3><p>Wersja nadana przez autorów programu (ang. <i>upstream</i>).</p></div>
+    <div class="karta" style="border-top:5px solid var(--morski)"><h3>wydanie</h3><p>Które to „opakowanie” tej wersji przez dystrybucję. Rośnie przy poprawkach pakietu.</p></div>
+    <div class="karta" style="border-top:5px solid var(--fiolet)"><h3>dystrybucja</h3><p><code>el9</code> = Enterprise Linux 9 (RHEL 9 i pochodne), <code>el10</code>, <code>fc41</code> = Fedora 41.</p></div>
+    <div class="karta" style="border-top:5px solid var(--szary-3)"><h3>architektura</h3><p><code>x86_64</code> – zwykłe PC i serwery, <code>aarch64</code> – ARM, <code>noarch</code> – niezależny od procesora (skrypty, dane).</p></div>
+  </div>
+  <div class="podpis">Przykład w nagłówku to tylko ilustracja. W wyjściu <code>rpm -qa</code> i <code>dnf list</code> zobaczysz te same człony, tylko bez końcówki <code>.rpm</code>; czasem na początku pojawia się jeszcze „epoka”, np. <code>1:nginx-…</code>.</div>
+</div>
+</body></html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Wiersz /etc/passwd</h1><span class="pod">siedem pól rozdzielonych dwukropkami</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>getent passwd jan</span></div>
+<pre><span class="k">jan</span>:<span class="d">x</span>:<span class="p">1001</span>:<span class="p">1001</span>:<span class="d">Jan Kowalski, ksiegowosc</span>:<span class="k">/home/jan</span>:<span class="c">/bin/bash</span></pre>
+  </div>
+  <div class="odstep"></div>
+  <table class="tabela">
+    <tr><th style="width:8%">Pole</th><th style="width:30%">Przykład</th><th>Znaczenie</th></tr>
+    <tr><td>1</td><td><code>jan</code></td><td>nazwa konta</td></tr>
+    <tr><td>2</td><td><code>x</code></td><td>dawne miejsce hasła – dziś hasło (skrót) leży w <code>/etc/shadow</code></td></tr>
+    <tr><td>3</td><td><code>1001</code></td><td>UID – numer użytkownika; <code>0</code> = root, od 1000 = zwykłe konta</td></tr>
+    <tr><td>4</td><td><code>1001</code></td><td>GID – numer grupy głównej</td></tr>
+    <tr><td>5</td><td><code>Jan Kowalski, ksiegowosc</code></td><td>opis konta (GECOS)</td></tr>
+    <tr><td>6</td><td><code>/home/jan</code></td><td>katalog domowy</td></tr>
+    <tr><td>7</td><td><code>/bin/bash</code></td><td>powłoka; <code>/sbin/nologin</code> = bez możliwości logowania</td></tr>
+  </table>
+  <div class="podpis">Plik jest czytelny dla wszystkich – dlatego nie ma w nim haseł.</div>
+</div>
+</body></html>

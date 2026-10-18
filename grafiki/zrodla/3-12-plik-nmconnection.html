@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Anatomia pliku .nmconnection</h1><span class="pod">/etc/NetworkManager/system-connections/ens192.nmconnection</span></div>
+  <div class="wiersz" style="align-items:stretch">
+    <div class="terminal" style="flex:1.1 1 0">
+      <div class="pasek"><i></i><i></i><i></i><span>plik profilu połączenia</span></div>
+<pre><span class="k">[connection]</span>
+id=ens192
+uuid=5fb06bd0-0bb0-7ffb-45f1-d6ed
+type=ethernet
+interface-name=ens192
+
+<span class="k">[ipv4]</span>
+method=<span class="p">manual</span>
+addresses=<span class="p">192.168.10.20/24</span>
+gateway=<span class="p">192.168.10.1</span>
+dns=<span class="p">192.168.10.1;8.8.8.8;</span>
+
+<span class="k">[ipv6]</span>
+addr-gen-mode=eui64
+method=auto</pre>
+    </div>
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="karta"><h3>[connection]</h3><p>Metryczka profilu: nazwa (<code>id</code>), unikalny identyfikator (<code>uuid</code>), typ i karta sieciowa, której dotyczy (<code>interface-name</code>).</p></div>
+      <div class="karta akcent"><h3>[ipv4]</h3><p>Najważniejsza sekcja: <code>method=manual</code> to adres statyczny (<code>auto</code> = DHCP). Adres z maską CIDR, brama i serwery DNS rozdzielone średnikami.</p></div>
+      <div class="karta"><h3>[ipv6]</h3><p>To samo dla IPv6 – na szkoleniu zostawiamy <code>auto</code>.</p></div>
+    </div>
+  </div>
+  <div class="notatka">Plik ma uprawnienia <code>600</code> i należy do roota. Po ręcznej edycji NetworkManager <b>nie widzi zmian</b>, dopóki nie wykonasz <code>nmcli connection reload</code> i <code>nmcli connection up ens192</code>. Dlatego wygodniej zmieniać ustawienia przez <code>nmcli</code> – pliki aktualizują się same.</div>
+</div>
+</body></html>

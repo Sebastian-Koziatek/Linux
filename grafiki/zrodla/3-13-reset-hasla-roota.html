@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Reset hasła roota przez GRUB</h1><span class="pod">gdy nikt nie pamięta hasła, a masz dostęp do konsoli maszyny</span></div>
+  <div class="kroki" style="flex-wrap:wrap">
+    <div class="krok" style="flex:1 1 30%"><h3>Zatrzymaj menu</h3><p>Restart, w menu GRUB wciśnij dowolny klawisz, podświetl wpis i naciśnij <code>e</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Dopisz rd.break</h3><p>Na końcu wiersza zaczynającego się od <code>linux</code> dodaj <code>rd.break</code>. Start: <code>Ctrl+x</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Odblokuj zapis</h3><p>W powłoce initramfs: <code>mount -o remount,rw /sysroot</code>, potem <code>chroot /sysroot</code>.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Zmień hasło</h3><p><code>passwd root</code> – wpisz nowe hasło dwa razy.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Napraw etykiety SELinux</h3><p><code>touch /.autorelabel</code> – bez tego nowe hasło nie zadziała przy logowaniu.</p></div>
+    <div class="krok" style="flex:1 1 30%"><h3>Wyjdź</h3><p><code>exit</code>, <code>exit</code>. System sam się uruchomi, przeetykietuje pliki (kilka minut) i zrestartuje.</p></div>
+  </div>
+  <div class="notatka zle">Wniosek dla administratora: kto ma fizyczny dostęp do konsoli (lub do konsoli maszyny wirtualnej), ten ma roota. Chronią przed tym hasło w GRUB i szyfrowanie dysku.</div>
+</div>
+</body></html>

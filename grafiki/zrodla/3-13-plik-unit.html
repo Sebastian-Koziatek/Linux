@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Anatomia pliku jednostki .service</h1><span class="pod"><code>/etc/systemd/system/monitor-dysku.service</code></span></div>
+  <div class="wiersz" style="align-items:stretch">
+    <div class="terminal" style="flex:1 1 0">
+      <div class="pasek"><i></i><i></i><i></i><span>plik jednostki</span></div>
+<pre><span class="k">[Unit]</span>
+Description=Monitor wolnego miejsca na dysku
+After=network.target
+
+<span class="k">[Service]</span>
+Type=simple
+ExecStart=/usr/local/bin/monitor-dysku.sh
+Restart=on-failure
+RestartSec=10
+User=monitor
+
+<span class="k">[Install]</span>
+WantedBy=multi-user.target</pre>
+    </div>
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="karta ciemna"><h3>[Unit] – wizytówka</h3><p>Opis widoczny w <code>status</code> i kolejność: <code>After=</code> „startuj dopiero po…”, <code>Requires=</code> „bez tego nie startuj”.</p></div>
+      <div class="karta akcent"><h3>[Service] – co uruchomić</h3><p><code>ExecStart</code> z pełną ścieżką. <code>Type=simple</code>: proces zostaje na pierwszym planie. <code>Restart=on-failure</code>: po awarii podnieś ponownie po 10 s. <code>User</code>: nie jako root.</p></div>
+      <div class="karta ok"><h3>[Install] – kiedy włączać</h3><p><code>WantedBy=multi-user.target</code> mówi, do którego celu startu dopiąć usługę przy <code>systemctl enable</code>.</p></div>
+    </div>
+  </div>
+  <div class="notatka">Po każdej zmianie pliku: <code>sudo systemctl daemon-reload</code>, inaczej systemd dalej pamięta starą wersję.</div>
+</div>
+</body></html>

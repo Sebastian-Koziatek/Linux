@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Klucze SSH – kłódka i klucz</h1><span class="pod">para kluczy zamiast hasła</span></div>
+  <div class="karty">
+    <div class="karta ok">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#2a9d8f"><circle cx="8" cy="12" r="4.5"/><path d="M12.5 12H21M18 12v3M15 12v2.5"/></svg>
+      <h3>Klucz prywatny</h3>
+      <p><code>~/.ssh/id_ed25519</code> na <b>Twoim</b> komputerze. Nigdy go nie kopiujesz ani nie wysyłasz. Uprawnienia <code>600</code>. Najlepiej chroniony dodatkowym hasłem (ang. passphrase).</p>
+    </div>
+    <div class="karta akcent">
+      <svg class="ikona" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#fca311"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4M12 15v2.5"/></svg>
+      <h3>Klucz publiczny</h3>
+      <p><code>~/.ssh/id_ed25519.pub</code> – „kłódka”. Możesz go rozdawać. Na serwerze trafia do <code>~/.ssh/authorized_keys</code> konta, na które chcesz się logować (<code>ssh-copy-id</code>).</p>
+    </div>
+  </div>
+  <div class="odstep"></div>
+  <div class="wiersz">
+    <div class="wezel">
+      <svg class="ikona morski" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="10" cy="10.5" r="2.2"/><path d="M12.2 10.5H16M15 10.5v1.5"/></svg>
+      <b>Klient</b><small>ma klucz prywatny<br>(i tylko on)</small>
+    </div>
+    <div class="kolumna" style="flex:1.4 1 0;align-items:center;gap:4px">
+      <small class="male">1. „Chcę się zalogować jako anna”</small>
+      <div class="strzalka" style="width:140px"></div>
+      <small class="male">2. „Udowodnij: podpisz tę losową wiadomość”</small>
+      <div class="strzalka" style="width:140px;transform:rotate(180deg)"></div>
+      <small class="male">3. Podpis sprawdzony kłódką – wpuszczam</small>
+      <div class="strzalka" style="width:140px"></div>
+    </div>
+    <div class="wezel">
+      <svg class="ikona akcent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/><rect x="12" y="5" width="6" height="3" rx="1"/></svg>
+      <b>Serwer</b><small>ma tylko kłódkę<br>w <code>authorized_keys</code></small>
+    </div>
+  </div>
+  <div class="notatka ok">Klucz prywatny <b>nigdy nie opuszcza</b> Twojego komputera – po sieci idzie tylko podpis. Dlatego klucze są bezpieczniejsze od haseł: nie da się ich podsłuchać ani zgadnąć.</div>
+</div>
+</body></html>

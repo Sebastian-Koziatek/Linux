@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Życie macierzy mdadm – od awarii do odbudowy</h1><span class="pod">RAID 1 z dysków <code>sdb</code> i <code>sdc</code> jako <code>/dev/md0</code></span></div>
+  <div class="kroki">
+    <div class="krok"><h3>Macierz działa</h3><p><code>cat /proc/mdstat</code> pokazuje <code>[UU]</code> – oba dyski (U = up) w porządku.</p></div>
+    <div class="krok"><h3>Dysk pada</h3><p>Jądro oznacza go jako wadliwy (F). W ćwiczeniu robisz to ręcznie: <code>mdadm /dev/md0 --fail /dev/sdc</code>. Stan: <code>[U_]</code>, dane nadal dostępne.</p></div>
+    <div class="krok"><h3>Wyjmij z macierzy</h3><p><code>mdadm /dev/md0 --remove /dev/sdc</code> – dopiero teraz możesz fizycznie wyciągnąć dysk z serwera.</p></div>
+    <div class="krok"><h3>Włóż nowy i dodaj</h3><p>Nowy dysk (tu znów <code>sdc</code>): <code>mdadm /dev/md0 --add /dev/sdc</code>. Macierz od razu zaczyna odbudowę.</p></div>
+    <div class="krok"><h3>Odbudowa</h3><p>W <code>/proc/mdstat</code> pasek <code>recovery = 37%</code> i szacowany czas. Po zakończeniu znów <code>[UU]</code>.</p></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="dyski">
+    <div class="dysk"><div class="korpus"><div class="blok a">dane</div><div class="blok a">dane</div></div><div class="nazwa">/dev/sdb<small>działa cały czas</small></div></div>
+    <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">dane</div><div class="blok x">dane</div></div><div class="nazwa">/dev/sdc<small>krok 2–3: wadliwy</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok a">dane</div><div class="blok wolny">kopiuję…</div></div><div class="nazwa">/dev/sdc (nowy)<small>krok 4–5: odbudowa</small></div></div>
+  </div>
+  <div class="notatka">Między krokiem 2 a 5 macierz RAID 1 pracuje <b>bez zapasu</b> – kolejna awaria oznacza utratę danych. Dlatego odbudowę zaczyna się jak najszybciej, a stan macierzy monitoruje (<code>mdadm --monitor</code> wysyła e-mail).</div>
+</div>
+</body></html>

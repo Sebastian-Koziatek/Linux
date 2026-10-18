@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Pięć pól czasu w crontabie</h1><span class="pod">czytamy od lewej: minuta, godzina, dzień miesiąca, miesiąc, dzień tygodnia</span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>jeden wiersz z <code style="background:transparent;color:inherit">crontab -e</code></span></div>
+<pre style="font-size:20px;letter-spacing:0.02em"><span class="k">30</span>   <span class="k">2</span>   <span class="k">*</span>   <span class="k">*</span>   <span class="k">1-5</span>   <span class="d">/usr/local/bin/kopia.sh</span></pre>
+  </div>
+  <div class="karty" style="margin-top:14px">
+    <div class="karta akcent" style="text-align:center"><h3>30</h3><p><b>minuta</b><br>0–59</p></div>
+    <div class="karta akcent" style="text-align:center"><h3>2</h3><p><b>godzina</b><br>0–23</p></div>
+    <div class="karta akcent" style="text-align:center"><h3>*</h3><p><b>dzień miesiąca</b><br>1–31</p></div>
+    <div class="karta akcent" style="text-align:center"><h3>*</h3><p><b>miesiąc</b><br>1–12</p></div>
+    <div class="karta akcent" style="text-align:center"><h3>1-5</h3><p><b>dzień tygodnia</b><br>0–7 (0 i 7 = niedziela)</p></div>
+    <div class="karta ciemna" style="text-align:center;flex:1.6 1 0"><h3>polecenie</h3><p>pełna ścieżka do skryptu lub programu</p></div>
+  </div>
+  <div class="notatka ok">Czytamy: „o <b>2:30</b>, każdego dnia miesiąca, każdego miesiąca, ale tylko od <b>poniedziałku do piątku</b> – uruchom <code>kopia.sh</code>”.</div>
+  <table class="tabela" style="margin-top:14px">
+    <tr><th style="width:18%">Znak</th><th style="width:32%">Znaczenie</th><th>Przykład</th></tr>
+    <tr><td>*</td><td>każda wartość</td><td><code>* * * * *</code> – co minutę</td></tr>
+    <tr><td>,</td><td>lista wartości</td><td><code>0 8,16 * * *</code> – o 8:00 i 16:00</td></tr>
+    <tr><td>-</td><td>zakres</td><td><code>0 9-17 * * *</code> – o pełnej godzinie od 9 do 17</td></tr>
+    <tr><td>/</td><td>co ile (krok)</td><td><code>*/15 * * * *</code> – co 15 minut</td></tr>
+  </table>
+</div>
+</body></html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Co się dzieje z procesem po zerwaniu SSH</h1><span class="pod">bez multipleksera i z sesją screen/tmux</span></div>
+  <div class="porownanie">
+    <div class="karta zle">
+      <h3>Bez screen/tmux</h3>
+      <div class="kroki kolumna" style="margin-top:10px">
+        <div class="krok"><h3>Logujesz się przez SSH</h3><p>powłoka rusza <b>pod połączeniem</b></p></div>
+        <div class="krok"><h3>Uruchamiasz <code>dnf update</code></h3><p>proces jest dzieckiem tej powłoki</p></div>
+        <div class="krok"><h3>Połączenie pada</h3><p>powłoka dostaje SIGHUP i przekazuje go dalej</p></div>
+      </div>
+      <div class="notatka zle" style="margin-top:12px"><b>Proces ginie</b> w połowie pracy – po zalogowaniu zaczynasz od nowa.</div>
+    </div>
+    <div class="vs">vs</div>
+    <div class="karta ok">
+      <h3>Z sesją screen/tmux</h3>
+      <div class="kroki kolumna" style="margin-top:10px">
+        <div class="krok"><h3>Startujesz sesję</h3><p><code>tmux new -s praca</code> – powłoka żyje <b>pod sesją</b>, nie pod SSH</p></div>
+        <div class="krok"><h3>Połączenie pada</h3><p>znika tylko podgląd; sesja jest „odłączona”</p></div>
+        <div class="krok"><h3>Wracasz</h3><p><code>tmux attach -t praca</code> – wszystko tam, gdzie było</p></div>
+      </div>
+      <div class="notatka ok" style="margin-top:12px"><b>Proces pracuje dalej</b> – odłączasz się też sam: <code>Ctrl+b d</code> (tmux), <code>Ctrl+a d</code> (screen).</div>
+    </div>
+  </div>
+  <div class="podpis">Sesja działa na serwerze do jego restartu albo do zamknięcia jej poleceniem <code>exit</code>.</div>
+</div>
+</body></html>

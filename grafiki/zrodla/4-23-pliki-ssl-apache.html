@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Gdzie co leży: Apache z SSL na RHEL</h1><span class="pod">pakiety <code>httpd</code> + <code>mod_ssl</code></span></div>
+  <div class="wiersz" style="align-items:flex-start">
+    <div class="drzewo" style="flex:1.2 1 0">
+      <span class="kat">/etc/httpd/</span><br>
+      ├─ <span class="kat">conf/</span><span class="plik">httpd.conf</span> <span class="op">konfiguracja główna</span><br>
+      └─ <span class="kat">conf.d/</span><br>
+      &nbsp;&nbsp;&nbsp;├─ <span class="plik">ssl.conf</span> <span class="op">VirtualHost :443 – tu wskazujesz pliki</span><br>
+      &nbsp;&nbsp;&nbsp;└─ <span class="plik">przekierowanie.conf</span> <span class="op">80 → 443</span><br>
+      <span class="kat">/etc/pki/tls/</span><br>
+      ├─ <span class="kat">certs/</span><span class="plik">serwer.crt</span> <span class="op">certyfikat (644, cert_t)</span><br>
+      └─ <span class="kat">private/</span><span class="plik">serwer.key</span> <span class="op">klucz prywatny (600!)</span><br>
+      <span class="kat">/var/www/html/</span> <span class="op">pliki strony</span><br>
+      <span class="kat">/var/log/httpd/</span> <span class="op">error_log, ssl_error_log…</span>
+    </div>
+    <div class="kolumna" style="flex:1 1 0">
+      <div class="karta akcent">
+        <h3>Dwie dyrektywy w ssl.conf</h3>
+        <p><code>SSLCertificateFile</code> → certyfikat<br><code>SSLCertificateKeyFile</code> → klucz prywatny</p>
+      </div>
+      <div class="karta">
+        <h3>Dwie bramki poza Apache'em</h3>
+        <p>firewalld: <code>--add-service=https</code><br>SELinux: kontekst <code>cert_t</code> (w tych katalogach jest sam; po kopiowaniu skądinąd – <code>restorecon</code>)</p>
+      </div>
+      <div class="karta ok">
+        <h3>Rytuał zmiany</h3>
+        <p><code>apachectl configtest</code> i dopiero potem <code>systemctl restart httpd</code></p>
+      </div>
+    </div>
+  </div>
+  <div class="podpis">Test z samego serwera: <code>curl -k https://localhost</code> (<code>-k</code> akceptuje certyfikat samopodpisany). Z zewnątrz pamiętaj o otwartym porcie 443.</div>
+</div>
+</body></html>

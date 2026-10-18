@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Stare i nowe polecenia sieciowe</h1><span class="pod">net-tools (przestarzałe) kontra iproute2 (dzisiejszy standard)</span></div>
+  <table class="tabela">
+    <tr><th style="width:42%">Zadanie</th><th>Stare (net-tools) <span class="plakietka" style="background:#fff;color:var(--granat)">przestarzałe</span></th><th>Nowe (iproute2) <span class="plakietka bursztyn">używaj tego</span></th></tr>
+    <tr><td>pokaż adresy interfejsów</td><td><code>ifconfig -a</code></td><td><code>ip addr</code> (skrót: <code>ip a</code>)</td></tr>
+    <tr><td>krótki, czytelny przegląd</td><td>brak</td><td><code>ip -br a</code></td></tr>
+    <tr><td>włącz / wyłącz interfejs</td><td><code>ifconfig ens192 up</code> / <code>down</code></td><td><code>ip link set ens192 up</code> / <code>down</code></td></tr>
+    <tr><td>dodaj adres IP</td><td><code>ifconfig ens192 192.168.10.20 netmask 255.255.255.0</code></td><td><code>ip addr add 192.168.10.20/24 dev ens192</code></td></tr>
+    <tr><td>pokaż tablicę tras</td><td><code>route -n</code></td><td><code>ip route</code> (skrót: <code>ip r</code>)</td></tr>
+    <tr><td>dodaj bramę domyślną</td><td><code>route add default gw 192.168.10.1</code></td><td><code>ip route add default via 192.168.10.1</code></td></tr>
+    <tr><td>tablica ARP (sąsiedzi)</td><td><code>arp -a</code></td><td><code>ip neigh</code></td></tr>
+    <tr><td>porty i połączenia</td><td><code>netstat -tulpn</code></td><td><code>ss -tulpn</code></td></tr>
+  </table>
+  <div class="notatka">Na świeżym RHEL 9/10 poleceń <code>ifconfig</code>, <code>route</code> i <code>netstat</code> w ogóle <b>nie ma</b> – wróciłyby dopiero po instalacji pakietu <code>net-tools</code>. Ucz się od razu nowych; stare poznaj tylko po to, by czytać wiekowe instrukcje i skrypty.</div>
+</div>
+</body></html>
