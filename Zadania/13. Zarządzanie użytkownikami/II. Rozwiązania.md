@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-13-zarzadzanie-uzytkownikami.png)
+
 # Rozwiązania - Zarządzanie użytkownikami
 
 ## 1. Utwórz dwa dodatkowe konta użytkownika „tux1" i „tux2". Nadaj tym użytkownikom hasło, aby móc się zalogować jako ci użytkownicy. Sprawdź, czy zostały utworzone konta użytkowników.
@@ -42,6 +44,8 @@ getent passwd tux2
 Lista wszystkich użytkowników:
 cut -d: -f1 /etc/passwd | sort
 ```
+
+---
 
 ## 2. Przyjrzyj się różnym plikom przechowującym informacje o użytkownikach (/etc/passwd, /etc/shadow, /etc/group, /etc/gshadow). Spójrz także na katalog domowy tych nowych użytkowników i porównaj to z zawartością /etc/skel.
 
@@ -103,6 +107,8 @@ Uprawnienia:
 /etc/group: 644 (r--r--r--)
 /etc/gshadow: 000 lub 640 (tylko root może czytać)
 ```
+
+---
 
 ## 3. W innym oknie terminala spróbuj zalogować się jako tux1 i tux2. czy to działa?
 
@@ -168,6 +174,8 @@ sudo tail /var/log/auth.log      # Debian/Ubuntu
 journalctl | grep "su:"
 ```
 
+---
+
 ## 4. Zablokuj konto użytkownika tux1.
 
 ```
@@ -214,6 +222,8 @@ sudo chage -E 0 tux1
 chage -l tux1
 ```
 
+---
+
 ## 5. W innym oknie terminala spróbuj zalogować się jako tux1. Czy możesz się teraz zalogwać?
 
 ```
@@ -257,6 +267,8 @@ sudo tail -f /var/log/secure &  # Monitor w tle
 Sprawdzenie PAM (Pluggable Authentication Modules):
 grep tux1 /var/log/secure | grep pam
 ```
+
+---
 
 ## 6. Odblokuj konto użytkownika tux1.
 
@@ -314,6 +326,8 @@ sudo chage -E -1 tux1
 sudo chage -E 2025-12-31 tux1
 ```
 
+---
+
 ## 7. Zmodyfikuj parametry starzenia się hasła dla tux1 tak, aby przy następnym logowaniu tux1 był zmuszony zresetować swoje hasło.
 
 ```
@@ -361,6 +375,8 @@ sudo passwd -S tux1 | grep "must change"
 Domyślne ustawienia dla nowych użytkowników:
 cat /etc/login.defs | grep -E "PASS_MAX_DAYS|PASS_MIN_DAYS|PASS_WARN_AGE"
 ```
+
+---
 
 ## 8. Ponownie, w innym terminalu, zaloguj się jako tux1. czy to działa? Czy poproszono Cię o zmianę hasła?
 
@@ -416,6 +432,8 @@ Sprawdzenie polityki haseł:
 grep -E "^password.*pam_cracklib|^password.*pam_pwquality" /etc/pam.d/passwd
 ```
 
+---
+
 ## 9. Utwórz dodatkową grupę „pingwiny". Uczyń użytkowników „tux1" i „tux2" członkami tej grupy.
 
 ```
@@ -465,6 +483,8 @@ id tux1 | grep -o "gid=[0-9]*([^)]*)"
 # Dodatkowe grupy:
 id tux1 | grep -o "groups=.*"
 ```
+
+---
 
 ## 10. Przyjrzyj się różnym plikom przechowującym informacje o użytkownikach, aby zobaczyć, jak administrowana jest ta grupa pomocnicza.
 
@@ -534,6 +554,8 @@ su - tux2 -c "groups"
 Sprawdzenie z newgrp:
 su - tux1 -c "newgrp pingwiny && id"
 ```
+
+---
 
 ## 11. Utwórz katalog grupy, /home/pingwiny. Ustaw odpowiednie uprawnienia w tym katalogu, aby użytkownicy tux1 i tux2 mogli pracować razem nad projektem w tym katalogu.
 
@@ -609,6 +631,8 @@ Weryfikacja pełnych uprawnień:
 find /home/pingwiny -exec ls -ld {} \;
 ```
 
+---
+
 ## 12. Przejrzyj na informacje o starzeniu się hasła dla tux1.
 
 ```
@@ -680,6 +704,8 @@ Sprawdzenie po zmianach:
 chage -l tux1
 ```
 
+---
+
 ## 13. Zobacz, ile procesów ma już twój użytkownik uruchomionych.
 
 ```
@@ -745,6 +771,8 @@ loginctl show-user tux1
 Historia procesów:
 last tux1                      # Historia logowań
 ```
+
+---
 
 ## Dodatkowe polecenia zarządzania użytkownikami
 

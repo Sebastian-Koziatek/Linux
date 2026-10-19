@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-01-wprowadzenie-do-systemu-linux.png)
+
 # Rozwiązania - Wprowadzenie do systemu Linux
 
 ## 1. Na jakich platformach sprzętowych można uruchomić Linuksa?
@@ -17,6 +19,8 @@ Linux może być uruchomiony na szerokim spektrum platform sprzętowych:
 - IA-64 (Itanium) - serwery HP/Intel (wycofane)
 - Alpha - starsze serwery DEC/Compaq/HP
 ```
+
+---
 
 ## 2. Jak wybrać odpowiednią wersję systemu Linux do swoich potrzeb?
 
@@ -46,6 +50,8 @@ Model wsparcia:
 - Kontenery: Alpine Linux, CoreOS
 ```
 
+---
+
 ## 3. Czym różnią się od siebie dystrybucje: RHEL, CentOS i CentOS Stream?
 
 ```
@@ -70,6 +76,8 @@ CentOS Stream:
 - Rolling release model z punktami stabilności
 - Zastąpiła tradycyjną dystrybucję CentOS
 ```
+
+---
 
 ## 4. Jak przebiega typowa instalacja systemu Linux?
 
@@ -113,6 +121,8 @@ Typowa instalacja systemu Linux składa się z następujących etapów:
 9. Restart i pierwsza konfiguracja
 ```
 
+---
+
 ## 5. Czym jest SWAP i jakie są różnice między jego włączeniem a wyłączeniem?
 
 ```
@@ -143,6 +153,8 @@ Wady:
 - Potencjalne crashes systemu przy wyczerpaniu RAM
 ```
 
+---
+
 ## 6. Jak dobrać odpowiedni rozmiar partycji SWAP do swojego systemu?
 
 ```
@@ -172,6 +184,8 @@ Alternatywy:
 - Swap file zamiast partycji (łatwiejsza zmiana rozmiaru)
 ```
 
+---
+
 ## 7. Czym różni się środowisko graficzne (Desktop Environment) od menedżera okien (Window Manager)?
 
 ```
@@ -199,6 +213,8 @@ Typy Window Managerów:
 - Dynamic: kombinacja stacking i tiling
 - Compositing: efekty wizualne, przezroczystość
 ```
+
+---
 
 ## 8. Jakie są główne zalety korzystania z CLI (Command Line Interface) w porównaniu do GUI?
 
@@ -240,6 +256,8 @@ Dokumentacja:
 - Historia komend
 - Reprodukowalne operacje
 ```
+
+---
 
 ## 9. Wymień po 3 zalety i 3 wady środowiska graficznego (GUI).
 

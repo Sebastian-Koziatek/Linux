@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-11-deamony-i-systemctl.png)
+
 # Rozwiązania - Deamony i systemctl
 
 ## 1. Wyświetl wszystkie serwisy w systemie i ich aktualny stan oraz lokalizację
@@ -39,6 +41,8 @@ Lokalizacje plików systemd:
 Sprawdzenie ścieżek systemd:
 systemd-analyze unit-paths
 ```
+
+---
 
 ## 2. Zainstaluj silnik stron internetowych nginx i uruchom jego deamona
 
@@ -83,6 +87,8 @@ curl localhost
 curl -I localhost                      # Tylko headers
 ```
 
+---
+
 ## 3. Sprawdź czy serwis nginx'a jest uruchomiony
 
 ```
@@ -124,6 +130,8 @@ journalctl -u nginx -f
 systemctl status nginx -l
 ```
 
+---
+
 ## 4. Zastopuj działanie serwisu nginx
 
 ```
@@ -160,6 +168,8 @@ sudo systemctl kill nginx
 sudo pkill nginx
 ```
 
+---
+
 ## 5. Ponownie sprawdź czy serwis nginx'a jest uruchomiony
 
 ```
@@ -194,6 +204,8 @@ systemctl show nginx -p ActiveState   # ActiveState=inactive
 Logi zatrzymania:
 journalctl -u nginx --since "2 minutes ago"
 ```
+
+---
 
 ## 6. Uruchom serwis nginx'a i sprawdź czy działa
 
@@ -234,6 +246,8 @@ Test zaawansowany:
 curl -s -o /dev/null -w "HTTP Code: %{http_code}\nTime: %{time_total}s\n" localhost
 ```
 
+---
+
 ## 7. Włącz autostart serwisu nginx w trakcie startu systemu
 
 ```
@@ -271,6 +285,8 @@ systemctl list-dependencies multi-user.target | grep nginx
 Weryfikacja konfiguracji systemd:
 systemctl daemon-reload                # Po zmianach w plikach unit
 ```
+
+---
 
 ## 8. Sprawdź czy serwis firewalld jest włączony. Jeżeli tak to wyłącz i z poziomu przeglądarki wejdź na adres IP swojego serwera.
 
@@ -331,6 +347,8 @@ Przywrócenie firewall (po testach):
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
 ```
+
+---
 
 ## Dodatkowe polecenia systemctl
 

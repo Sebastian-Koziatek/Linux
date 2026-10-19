@@ -1,5 +1,8 @@
-<h2 align="center">Zadania - Managery pakietów</h2>
+![](../../grafiki/zadania-02-managery-pakietow.png)
 
+# Zadania – Managery pakietów
+
+<h2 align="center">Zadania - Managery pakietów</h2>
 
 **1.** Czym jest YUM i jakie pełni funkcje w systemie Linux?
 
@@ -19,7 +22,6 @@
 
 **9.** Jakie są kluczowe różnice między YUM a jego następcą DNF?
 
-
 **10.** Czym jest „dependency hell" i w jaki sposób menedżery pakietów próbują go unikać?
 
 **11.** Na czym polega różnica między `yum update` a `yum upgrade`?
@@ -38,5 +40,3 @@
 **17.** Przeanalizuj zależności wybranego pakietu (`yum deplist wget`) i spróbuj zrozumieć, co jest wymagane.
 
 **18.** Porównaj polecenia `dnf` i `yum` dla tej samej operacji – które jest szybsze i bardziej informacyjne?
-
-

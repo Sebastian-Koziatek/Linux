@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-19-find-i-locate.png)
+
 # Rozwiązania - Find i locate
 
 ## 1. Znajdź wszystkie pliki z rozszerzeniem .txt w bieżącym katalogu i jego podkatalogach.
@@ -21,6 +23,8 @@ find /home/user -name "*.txt"
 find . -name "dokument*.txt"
 find . -name "*raport*.txt"
 ```
+
+---
 
 ## 2. Znajdź pliki, które zostały zmodyfikowane w ciągu ostatnich 7 dni w katalogu /home/user.
 
@@ -48,6 +52,8 @@ find /home/user -mtime -1    # Ostatni dzień
 find /home/user -mtime +30   # Starsze niż 30 dni
 find /home/user -mmin -60    # Ostatnia godzina
 ```
+
+---
 
 ## 3. Znajdź pliki, które mają rozmiar większy niż 1 MB w katalogu /var/log.
 
@@ -78,6 +84,8 @@ find /var/log -size 1M                # Dokładnie 1MB
 find /var/log -size -1M               # Mniejsze niż 1MB
 ```
 
+---
+
 ## 4. Znajdź wszystkie pliki, które należą do użytkownika john w całym systemie.
 
 ```
@@ -107,6 +115,8 @@ find /tmp -user john -type f
 find / -user john -name "*.txt" 2>/dev/null
 ```
 
+---
+
 ## 5. Znajdź wszystkie katalogi, które mają nazwę "test" w swojej ścieżce.
 
 ```
@@ -132,6 +142,8 @@ find /home -type d -name "*test*"
 find /var -type d -iname "*TEST*"
 find . -type d -name "test_*"
 ```
+
+---
 
 ## 6. Znajdź pliki wykonywalne w katalogu /bin.
 
@@ -159,6 +171,8 @@ find /bin -type f -executable | head -10
 find /usr/local/bin -perm /111
 ```
 
+---
+
 ## 7. Znajdź pliki o nazwie "config" bez względu na wielkość liter w katalogu /etc.
 
 ```
@@ -184,6 +198,8 @@ find /etc -iname "*apache*"
 find /etc -type f -iname "*.conf"
 find /etc -iname "ssh*"
 ```
+
+---
 
 ## 8. Znajdź pliki, które zawierają określone słowo kluczowe "error" w katalogu /var/log.
 
@@ -214,6 +230,8 @@ find /var/log -type f -exec grep -l "warning\|error" {} +
 find . -name "*.txt" -exec grep -l "TODO" {} +
 ```
 
+---
+
 ## 9. Znajdź wszystkie pliki, które nie zostały zmodyfikowane w ciągu ostatnich 30 dni w katalogu /home/user/docs.
 
 ```
@@ -242,6 +260,8 @@ Przykłady:
 find /home/user/docs -mtime +90     # Starsze niż 3 miesiące
 find /tmp -mtime +7 -type f         # Stare pliki tymczasowe
 ```
+
+---
 
 ## 10. Znajdź wszystkie pliki, które mają ustawione prawa dostępu 777 w katalogu /var/www.
 
@@ -273,6 +293,8 @@ find /home -type f -perm 644
 find /usr/bin -type f -perm /4000   # SUID binaries
 ```
 
+---
+
 ## 11. Znajdź pliki, które są większe niż 100 MB i zostały zmodyfikowane w ciągu ostatnich 60 dni w katalogu /home/user/files.
 
 ```
@@ -303,6 +325,8 @@ find /var/log -size +10M -mtime -30
 find ~/Downloads -size +500M -name "*.mp4" -mtime -7
 ```
 
+---
+
 ## 12. Znajdź pliki, które mają rozszerzenie .log i zawierają słowo kluczowe "failed" w katalogu /var/log.
 
 ```
@@ -330,6 +354,8 @@ Przykłady:
 find /var/log -name "*.log" -exec grep -l "authentication failure" {} +
 find . -name "*.log" -exec grep -l "CRITICAL" {} +
 ```
+
+---
 
 ## 13. Znajdź pliki, które zostały utworzone w ciągu ostatnich 24 godzin w katalogu /tmp.
 
@@ -362,6 +388,8 @@ find /var/log -name "*.log" -mtime 0
 find ~/Downloads -type f -ctime 0
 ```
 
+---
+
 ## 14. Znajdź wszystkie pliki, które nie są własnością bieżącego użytkownika w katalogu /home.
 
 ```
@@ -392,6 +420,8 @@ find /tmp ! -user "$(whoami)" -type f
 find /var/www ! -user www-data
 ```
 
+---
+
 ## 15. Znajdź pliki, które są symlinkami do określonego katalogu /opt/app w całym systemie.
 
 ```
@@ -419,6 +449,8 @@ find /usr/bin -type l -lname "/opt/app/*"
 find /etc -type l -lname "/opt/app/config/*"
 find / -type l -lname "*/opt/app*" 2>/dev/null
 ```
+
+---
 
 ## Dodatkowe przydatne opcje find
 

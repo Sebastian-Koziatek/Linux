@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-08-symlink-i-hardlink.png)
+
 # Rozwiązania - Symlink i hardlink
 
 ## 1. W swoim katalogu domowym utwórz podkatalog „links". Przejdź do tego katalogu. Utwórz plik „abc" z dowolną treścią.
@@ -25,6 +27,8 @@ pwd                    # Sprawdź lokalizację
 ls -la                 # Lista plików
 cat abc               # Zawartość pliku
 ```
+
+---
 
 ## 2. Sprawdź informacje pliku abc. W szczególności zwróć uwagę na jego numer i-węzła, jego rozmiar i uprawnienia.
 
@@ -59,6 +63,8 @@ du -b abc             # Rozmiar w bajtach
 wc -c abc             # Liczba znaków
 ls -s abc             # Rozmiar w blokach
 ```
+
+---
 
 ## 3. Utwórz dowiązanie stałe o nazwie „def" do pliku abc. Spójrz na cechy tego pliku.
 
@@ -97,6 +103,8 @@ cat def
 # Identyczna zawartość
 ```
 
+---
+
 ## 4. Zmodyfikuj uprawnienia pliku def (np. 400). Następnie spójrz na uprawnienia abc.
 
 ```
@@ -133,6 +141,8 @@ chmod 755 def     # rwxr-xr-x
 chmod 600 abc     # rw-------
 chmod u+x def     # Dodaj execute dla właściciela
 ```
+
+---
 
 ## 5. Spójrz na charakterystykę systemu plików i zanotuj/zapamiętaj rozmiar.
 
@@ -175,6 +185,8 @@ Filesystem      Inodes   IUsed   IFree IUse% Mounted on
 /dev/sda1      1310720   45234 1265486    4% /
 ```
 
+---
+
 ## 6. Usuń plik abc. Zobacz, co się stało z plikiem def.
 
 ```
@@ -212,6 +224,8 @@ cat def
 # Plik def w pełni funkcjonalny
 ```
 
+---
+
 ## 7. Spójrz na charakterystykę systemu plików i sprawdź rozmiar.
 
 ```
@@ -246,6 +260,8 @@ Miejsce zostanie zwolnione dopiero gdy:
 - System wykona garbage collection
 ```
 
+---
+
 ## 8. Skasuj plik def.
 
 ```
@@ -269,6 +285,8 @@ Co się stało:
 - Dane będą oznaczone do usunięcia
 - Miejsce na dysku zostanie zwolnione
 ```
+
+---
 
 ## 9. Ponownie sprawdź rozmiar systemu plików.
 

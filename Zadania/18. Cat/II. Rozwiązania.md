@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-18-cat.png)
+
 # Rozwiązania - Cat
 
 ## 1. Wyświetlanie zawartości pliku na ekranie
@@ -11,6 +13,8 @@ cat /etc/passwd
 cat ~/.bashrc
 cat dokument.txt
 ```
+
+---
 
 ## 2. Wyświetlanie zawartości wielu plików jednocześnie
 
@@ -28,6 +32,8 @@ cat *.log
 cat /var/log/*.log
 ```
 
+---
+
 ## 3. Łączenie zawartości kilku plików i zapisywanie ich do nowego pliku
 
 ```
@@ -42,6 +48,8 @@ cat /etc/passwd /etc/group > users_info.txt
 cat *.txt > wszystkie_teksty.txt
 cat header.txt content.txt footer.txt > complete.txt
 ```
+
+---
 
 ## 4. Wyświetlanie numerowanych linii w pliku
 
@@ -61,6 +69,8 @@ Porównanie:
 -b: numeruje tylko niepuste linie
 ```
 
+---
+
 ## 5. Wyświetlanie zawartości pliku w odwróconej kolejności
 
 ```
@@ -77,6 +87,8 @@ sort -r plik.txt
 Przykład zastosowania:
 tac /var/log/messages | head -20  # Ostatnie 20 linii w odwróconej kolejności
 ```
+
+---
 
 ## 6. Wyświetlanie tylko określonej liczby linii pliku
 
@@ -98,6 +110,8 @@ head -5 /etc/passwd          # Pierwsze 5 linii
 tail -10 /var/log/messages   # Ostatnie 10 linii
 head -20 plik.txt | tail -5  # Linie 16-20
 ```
+
+---
 
 ## 7. Wyświetlanie zawartości pliku z paginacją
 
@@ -126,6 +140,8 @@ less /var/log/messages
 cat duzy_plik.txt | less
 ```
 
+---
+
 ## 8. Wyświetlanie zawartości pliku wraz z podkreśleniem wyszukiwanego słowa kluczowego
 
 ```
@@ -147,6 +163,8 @@ cat /var/log/messages | grep --color=always "error"
 grep --color=always "root" /etc/passwd
 cat plik.txt | grep --color=always -i "ważne"  # Bez wielkości liter
 ```
+
+---
 
 ## 9. Wyświetlanie zawartości pliku z pominięciem powtarzających się linii
 
@@ -170,6 +188,8 @@ Przykłady:
 cat /etc/passwd | cut -d: -f7 | sort | uniq  # Unikalne shelle
 cat access.log | awk '{print $1}' | sort | uniq -c  # IP i liczba wystąpień
 ```
+
+---
 
 ## 10. Przeglądanie zawartości pliku z paginacją
 
@@ -198,6 +218,8 @@ less /var/log/messages
 less +F /var/log/messages  # Tryb follow (jak tail -f)
 ```
 
+---
+
 ## 11. Przeglądanie pliku w trybie tylko do odczytu, uniemożliwiając zmiany
 
 ```
@@ -223,6 +245,8 @@ less /etc/shadow
 vim -R ~/.bashrc
 ```
 
+---
+
 ## 12. Przeglądanie pliku od ostatniej linii
 
 ```
@@ -243,6 +267,8 @@ tail -f /var/log/messages     # Podąża za zmianami
 tail -100 /var/log/apache2/access.log
 less +G ~/.bash_history       # Otwiera na końcu
 ```
+
+---
 
 ## 13. Przeszukiwanie pliku w poszukiwaniu określonego wyrażenia
 
@@ -270,6 +296,8 @@ grep -n "root" /etc/passwd
 grep -i "warning" *.log
 grep -r "TODO" ~/projekt/
 ```
+
+---
 
 ## 14. Wyświetlanie numerowanych linii w pliku
 
@@ -300,6 +328,8 @@ nl -s ": " plik.txt     # Separator
 nl -w 3 plik.txt        # Szerokość numeru
 nl -v 10 plik.txt       # Zacznij od 10
 ```
+
+---
 
 ## Dodatkowe przydatne polecenia cat
 

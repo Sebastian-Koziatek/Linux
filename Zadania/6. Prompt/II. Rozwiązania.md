@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-06-prompt.png)
+
 # Rozwiązania - Prompt
 
 ## 1. Wygeneruj swój własny styl wiersza poleceń dla powłoki bash.
@@ -64,6 +66,8 @@ Zmienne używane w prompt:
 \$ - wyświetla $ dla zwykłego użytkownika, # dla root
 ```
 
+---
+
 ## 2. Zapisz wygenerowany bash w pliku konfiguracyjnym .bashrc.
 
 ```
@@ -113,6 +117,8 @@ bash -x ~/.bashrc  # Uruchom z debugowaniem
 Sprawdź składnię:
 bash -n ~/.bashrc  # Sprawdź składnię bez wykonywania
 ```
+
+---
 
 ## 3. Załaduj ponownie powłokę.
 

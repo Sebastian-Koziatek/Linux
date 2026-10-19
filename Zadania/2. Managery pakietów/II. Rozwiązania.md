@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-02-managery-pakietow.png)
+
 # Rozwiązania - Managery pakietów
 
 ## 1. Czym jest YUM i jakie pełni funkcje w systemie Linux?
@@ -29,6 +31,8 @@ Bezpieczeństwo:
 - Sprawdzanie sum kontrolnych
 - Rollback transakcji
 ```
+
+---
 
 ## 2. Jakie są podstawowe różnice między YUM a APT?
 
@@ -63,6 +67,8 @@ Narzędzia:
 - YUM: rpm, yumdownloader, repoquery
 - APT: dpkg, apt-cache, apt-file
 ```
+
+---
 
 ## 3. Czym jest repozytorium pakietów i jaką pełni rolę?
 
@@ -99,6 +105,8 @@ Typy repozytoriów:
 - Lokalne (własne organizacji)
 ```
 
+---
+
 ## 4. Jak wyświetlić listę zainstalowanych pakietów za pomocą YUM?
 
 ```
@@ -129,6 +137,8 @@ yum history list
 Pakiety zainstalowane ręcznie (nie jako zależności):
 yum mark showinstalled
 ```
+
+---
 
 ## 5. W jakiej sytuacji użyjesz YUM, a kiedy RPM? Podaj praktyczne przykłady.
 
@@ -166,6 +176,8 @@ Scenariusze specjalne:
 - Niestandardowe pakiety firmowe
 - Analiza forensyczna systemu
 ```
+
+---
 
 ## 6. Gdzie znajduje się plik konfiguracyjny `yum.conf`? Jakie ustawienia można w nim zmienić?
 
@@ -219,6 +231,8 @@ timeout=30
 retries=10
 ```
 
+---
+
 ## 7. Czy można pobierać pakiety z pominięciem weryfikacji kluczy GPG w YUM? Jeśli tak, to jak?
 
 ```
@@ -254,6 +268,8 @@ Lepsze rozwiązania:
 - Używanie oficjalnych repozytoriów
 - Weryfikacja kluczy przed importem
 ```
+
+---
 
 ## 8. Gdzie przechowywane są pliki konfiguracyjne repozytoriów dla YUM?
 
@@ -296,6 +312,8 @@ yum repolist all - wszystkie repozytoria
 yum-config-manager --enable repo-id
 yum-config-manager --disable repo-id
 ```
+
+---
 
 ## 9. Jakie są kluczowe różnice między YUM a jego następcą DNF?
 
@@ -340,6 +358,8 @@ Konfiguracja:
 - YUM: /etc/yum.conf
 - Podobna struktura repozytoriów
 ```
+
+---
 
 ## 10. Czym jest „dependency hell" i w jaki sposób menedżery pakietów próbują go unikać?
 
@@ -392,6 +412,8 @@ Dependency tracking:
 - Rollback capabilities
 ```
 
+---
+
 ## 11. Na czym polega różnica między `yum update` a `yum upgrade`?
 
 ```
@@ -437,6 +459,8 @@ Historia i rollback:
 yum history
 yum history undo ID
 ```
+
+---
 
 ## 12. Jak wyszukać w repozytorium pakiety `wget` oraz `mc`?
 
@@ -487,6 +511,8 @@ repoquery --whatprovides wget
 repoquery -i mc
 ```
 
+---
+
 ## 13. Jak zainstalować pakiety `wget` oraz `mc`?
 
 ```
@@ -536,6 +562,8 @@ which mc
 wget --version
 mc --version
 ```
+
+---
 
 ## 14. Jak zaktualizować pojedynczy pakiet (np. `wget`) za pomocą YUM?
 
@@ -589,6 +617,8 @@ Weryfikacja po aktualizacji:
 yum info installed wget
 rpm -qi wget
 ```
+
+---
 
 ## 15. Jak wyświetlić historię operacji wykonanych przez YUM?
 
@@ -653,6 +683,8 @@ Lokalizacja plików historii:
 /var/lib/yum/history/
 ```
 
+---
+
 ## 16. Jak wyczyścić cache, metadane i nagłówki YUM?
 
 ```
@@ -707,6 +739,8 @@ Optymalizacja po czyszczeniu:
 yum check
 rpm --rebuilddb
 ```
+
+---
 
 ## 17. Przeanalizuj zależności wybranego pakietu (`yum deplist wget`) i spróbuj zrozumieć, co jest wymagane.
 
@@ -765,6 +799,8 @@ yum deplist bash glibc openssl-libs
 Sprawdzenie czy zależności są spełnione:
 rpm -V wget
 ```
+
+---
 
 ## 18. Porównaj polecenia `dnf` i `yum` dla tej samej operacji – które jest szybsze i bardziej informacyjne?
 

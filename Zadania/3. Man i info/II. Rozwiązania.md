@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-03-man-i-info.png)
+
 # Rozwiązania - Man i info
 
 ## 1. Użyj polecenia `man man` i zapoznaj się ze strukturą stron podręcznika (`man pages`).
@@ -57,6 +59,8 @@ Sekcje man pages:
 9 - Procedury kernela
 ```
 
+---
+
 ## 2. Przejrzyj stronę podręcznika dla polecenia `ls`.
 
 ```
@@ -114,6 +118,8 @@ Przydatne przełączniki ls:
     - Zamiast nazw użytkowników/grup
 ```
 
+---
+
 ## 3. Zainstaluj pakiet `info` i przejrzyj strukturę dokumentacji `info` dla polecenia `pwd`.
 
 ```
@@ -167,6 +173,8 @@ Struktura dokumentacji pwd w info:
 - Linki do powiązanych poleceń
 - Informacje o opcjach środowiska
 ```
+
+---
 
 ## 4. Zainstaluj pakiet `mc` (Midnight Commander) i sprawdź dokumentację.
 

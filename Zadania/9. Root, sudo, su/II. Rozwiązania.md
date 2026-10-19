@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-09-root-sudo-su.png)
+
 # Rozwiązania - Root, sudo, su
 
 ## 1. Czym się różni konto root od konta użytkownika?
@@ -53,6 +55,8 @@ Filozofia Linux:
 - Codzienne zadania jako zwykły użytkownik
 ```
 
+---
+
 ## 2. Czym jest sudo?
 
 ```
@@ -105,6 +109,8 @@ sudo useradd newuser             # Dodanie użytkownika
 Konfiguracja sudoers:
 visudo                           # Bezpieczna edycja /etc/sudoers
 ```
+
+---
 
 ## 3. Jak z poziomu użytkownika zalogować się do konta root?
 
@@ -172,6 +178,8 @@ Uwagi bezpieczeństwa:
 - Ogranicz czas przebywania jako root
 - Używaj sudo -i zamiast sudo su -
 ```
+
+---
 
 ## 4. Zaloguj się do konta root i korzystając z pakietu sudo dopisz konto swojego użytkownika do listy kont uprawnionych.
 
@@ -256,6 +264,8 @@ Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
 Defaults timestamp_timeout=15
 Defaults !visiblepw
 ```
+
+---
 
 ## 5. Czym się różni sudo su - od su?
 
@@ -366,6 +376,8 @@ echo $USER
 pwd
 env | grep -E "HOME|PATH|USER"
 ```
+
+---
 
 ## 6. Przejrzyj plik konfiguracyjny sudo i utwórz wpis który pozwoli wywoływać polecenia sudo bez hasła.
 

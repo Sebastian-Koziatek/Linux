@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-04-edytory-tekstu.png)
+
 # Rozwiązania - Edytory tekstu
 
 ## 1. Utwórz nowy plik tekstowy o nazwie `temp.txt` za pomocą dowolnego edytora.
@@ -23,6 +25,8 @@ Echo:
 echo "" > temp.txt
 ```
 
+---
+
 ## 2. Wpisz do pliku frazę: `Szkolenie Linux`
 
 ```
@@ -37,6 +41,8 @@ W vi:
 3. Wpisz: Szkolenie Linux
 4. Naciśnij ESC (powrót do trybu COMMAND)
 ```
+
+---
 
 ## 3. Zapisz plik i wyjdź z edytora.
 
@@ -57,6 +63,8 @@ Alternatywne metody w vi:
 ZZ (zapisz i wyjdź - shortcut)
 ```
 
+---
+
 ## 4. Otwórz plik `temp.txt` w edytorze `vi`.
 
 ```
@@ -69,6 +77,8 @@ Po otwarciu:
 - Kursor znajduje się na początku pierwszego znaku
 - Status line pokazuje informacje o pliku
 ```
+
+---
 
 ## 5. Dopisz do istniejącej frazy słowa `jest proste` korzystając ze skrótu `A`.
 
@@ -92,6 +102,8 @@ Inne przydatne skróty vi:
 - O: open new line above (nowa linia powyżej)
 ```
 
+---
+
 ## 6. Wyjdź z edytora `vi` bez zapisywania zmian.
 
 ```
@@ -110,6 +122,8 @@ Inne opcje wyjścia z vi:
 ZQ - wyjdź bez zapisywania (shortcut)
 ZZ - zapisz i wyjdź (shortcut)
 ```
+
+---
 
 ## 7. Pobierz "Pana Tadeusza" w formacie `.txt` przy użyciu `wget`.
 
@@ -138,6 +152,8 @@ Opcje wget:
 --timeout=30 - timeout 30 sekund
 ```
 
+---
+
 ## 8. Otwórz pobraną książkę (`pan-tadeusz.txt`) za pomocą edytora `vi`.
 
 ```
@@ -159,6 +175,8 @@ Ctrl+B - strona w górę
 Ctrl+D - pół strony w dół
 Ctrl+U - pół strony w górę
 ```
+
+---
 
 ## 9. Wyszukaj w tekście imię "Tadeusz" i przejdź przez kolejne wystąpienia.
 
@@ -188,6 +206,8 @@ Highlight search:
 :nohlsearch - wyłączenie podświetlania (lub :noh)
 ```
 
+---
+
 ## 10. Uruchom plik `pan-tadeusz.txt` w edytorze `nano`.
 
 ```
@@ -210,6 +230,8 @@ Ctrl+K - wytnij linię (cut)
 Ctrl+U - wklej (paste/Uncut)
 Ctrl+C - pokaż pozycję kursora
 ```
+
+---
 
 ## 11. Wyszukaj frazę `Tadeusz` i przejdź przez kolejne wystąpienia.
 
@@ -239,6 +261,8 @@ Alt+B - backward search (wyszukiwanie wstecz)
 Alt+R - regex search (wyrażenia regularne)
 ```
 
+---
+
 ## 12. Wyjdź z edytora `nano` bez zapisywania zmian.
 
 ```
@@ -259,6 +283,8 @@ Ctrl+X - standardowe wyjście
 Ctrl+C (dwukrotnie) - force exit w niektórych sytuacjach
 ```
 
+---
+
 ## 13. Otwórz plik `temp.txt` za pomocą edytora `nano`.
 
 ```
@@ -276,6 +302,8 @@ Status line pokazuje:
 - Czy plik został zmodyfikowany
 - Pozycję kursora (linia, kolumna)
 ```
+
+---
 
 ## 14. Usuń cały wiersz za pomocą odpowiedniego skrótu.
 
@@ -300,6 +328,8 @@ Wielokrotne usuwanie:
 - Można je przywrócić za pomocą Ctrl+U
 ```
 
+---
+
 ## 15. Wpisz nową frazę: `Używam edytora nano`
 
 ```
@@ -314,6 +344,8 @@ Nano pozwala na:
 - Standardowe zachowanie klawiatury
 - Copy/paste systemowe (Ctrl+Shift+C/V w terminalu)
 ```
+
+---
 
 ## 16. Zapisz zmiany i wyjdź z edytora.
 
@@ -338,6 +370,8 @@ Weryfikacja:
 cat temp.txt
 # Powinno pokazać: "Używam edytora nano"
 ```
+
+---
 
 ## Dodatkowe zasoby i ćwiczenia
 

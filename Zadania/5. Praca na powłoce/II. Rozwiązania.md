@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-05-praca-na-powloce.png)
+
 # Rozwiązania - Praca na powłoce
 
 ## 1. Sprawdź, w jakim katalogu aktualnie się znajdujesz.
@@ -16,6 +18,8 @@ Przykładowe wyjście:
 /Users/username (macOS)
 /root (gdy jesteś rootem)
 ```
+
+---
 
 ## 2. Wyświetl zawartość bieżącego katalogu.
 
@@ -43,6 +47,8 @@ group: grupa
 Data i czas: ostatnia modyfikacja
 ```
 
+---
+
 ## 3. Utwórz nowy katalog o nazwie `szkolenie` w bieżącej lokalizacji.
 
 ```
@@ -60,6 +66,8 @@ mkdir katalog1 katalog2         # Tworzy wiele katalogów jednocześnie
 Przykład tworzenia zagnieżdżonych katalogów:
 mkdir -p projekt/src/main/java
 ```
+
+---
 
 ## 4. Przejdź do katalogu `szkolenie`.
 
@@ -84,6 +92,8 @@ $OLDPWD - poprzedni katalog
 $PWD - bieżący katalog
 ```
 
+---
+
 ## 5. Utwórz pięć plików: `plik1`, `plik2`, `plik3`, `plik4`, `plik5` – za pomocą jednego polecenia.
 
 ```
@@ -106,6 +116,8 @@ Weryfikacja:
 ls -l plik*
 ```
 
+---
+
 ## 6. Utwórz ukryty plik o nazwie `.ukryty.txt`.
 
 ```
@@ -126,6 +138,8 @@ Weryfikacja istnienia:
 ls -la .ukryty.txt
 file .ukryty.txt
 ```
+
+---
 
 ## 7. Wyświetl pełną zawartość katalogu, łącznie z plikami ukrytymi.
 
@@ -156,6 +170,8 @@ Specjalne katalogi:
 .. - katalog nadrzędny
 ```
 
+---
+
 ## 8. Zmień nazwę pliku `.ukryty.txt` na `plik6`.
 
 ```
@@ -178,6 +194,8 @@ mv plik1 plik2 katalog/    # Przeniesienie wielu plików
 mv katalog1 katalog2       # Zmiana nazwy katalogu
 mv *.txt backup/           # Przeniesienie wszystkich plików .txt
 ```
+
+---
 
 ## 9. Zapisz tekst `Szkolenie Linux` do pliku `plik3`.
 
@@ -208,6 +226,8 @@ Różnica między > i >>:
 >> - dopisuje na końcu pliku (append)
 ```
 
+---
+
 ## 10. Wyświetl zawartość pliku `plik3`.
 
 ```
@@ -235,6 +255,8 @@ Grep (wyszukiwanie):
 grep "Linux" plik3
 ```
 
+---
+
 ## 11. Z aktualnej lokalizacji utwórz folder `/tmp/test`.
 
 ```
@@ -254,6 +276,8 @@ ls -la /tmp/ | grep test
 Bez opcji -p (gdyby /tmp nie istniał):
 mkdir: cannot create directory '/tmp/test': No such file or directory
 ```
+
+---
 
 ## 12. Czym jest katalog `/tmp`? Jakie ma właściwości?
 
@@ -295,6 +319,8 @@ Bezpieczeństwo:
 - Sprawdzaj uprawnienia plików
 ```
 
+---
+
 ## 13. Skopiuj całą zawartość bieżącego katalogu do `/tmp/test`.
 
 ```
@@ -328,6 +354,8 @@ Weryfikacja:
 ls -la /tmp/test/
 ```
 
+---
+
 ## 14. Wyświetl zawartość katalogu `/tmp/test`.
 
 ```
@@ -350,6 +378,8 @@ Liczenie plików:
 ls -1 /tmp/test | wc -l
 find /tmp/test -type f | wc -l
 ```
+
+---
 
 ## 15. Przejdź jeden katalog wyżej.
 
@@ -377,6 +407,8 @@ pwd
 echo $PWD
 ```
 
+---
+
 ## 16. Wyświetl zawartość `/tmp`, pokazując tylko folder `test`.
 
 ```
@@ -401,6 +433,8 @@ Sprawdzenie typu:
 file /tmp/test
 ls -ld /tmp/test | grep "^d"
 ```
+
+---
 
 ## 17. Przejdź do katalogu `/tmp/test` i usuń wszystkie znajdujące się w nim pliki.
 
@@ -439,6 +473,8 @@ Uwagi bezpieczeństwa:
 - Uważaj na spacje w nazwach plików
 ```
 
+---
+
 ## 18. Wróć katalog wyżej.
 
 ```
@@ -457,6 +493,8 @@ Inne sposoby nawigacji:
 cd -    # Toggle między dwoma ostatnimi katalogami
 popd    # Jeśli używasz pushd/popd stack
 ```
+
+---
 
 ## 19. Usuń pusty katalog `test`.
 
@@ -481,6 +519,8 @@ Sprawdzenie czy katalog jest pusty:
 ls -la test
 find test -mindepth 1 -print -quit
 ```
+
+---
 
 ## 20. Przejdź do katalogu domowego użytkownika.
 
@@ -511,6 +551,8 @@ Sprawdzenie gdzie jesteśmy:
 whoami
 id
 ```
+
+---
 
 ## 21. Wyświetl historię ostatnio używanych poleceń.
 
@@ -545,6 +587,8 @@ history -c    # Wyczyść historię w pamięci
 history -w    # Zapisz historię do pliku
 > ~/.bash_history  # Wyczyść plik historii
 ```
+
+---
 
 ## 22. Zapisz historię poleceń do pliku `historia.txt`.
 

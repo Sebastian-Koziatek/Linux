@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-19-rhel.png)
+
 # Rozwiązania - RHEL
 
 ## 1. Daj swojemu użytkownikowi "szkolenie" uprawnienia do używania polecenia sudo
@@ -35,6 +37,8 @@ id szkolenie
 grep wheel /etc/group
 ```
 
+---
+
 ## 2. Zaktualizuj system, użyj menagera pakietów dnf a po aktualizacji sprawdź czy jakaś aktualizacja pozostała do wykonania.
 
 ```
@@ -71,6 +75,8 @@ Sprawdzenie rozmiaru aktualizacji przed instalacją:
 dnf update --downloadonly  # Tylko pobierz
 dnf update --assumeno      # Symulacja bez wykonania
 ```
+
+---
 
 ## 3. Sprawdź jaki pakiet zawiera program który pozwoli Ci sprawdzić czy musisz wykonać restart systemu po aktualizacji i zainstaluj go
 
@@ -110,6 +116,8 @@ Inne przydatne narzędzia w yum-utils:
 - yum-debug-dump
 - yumdownloader
 ```
+
+---
 
 ## 4. Sprawdź czy musisz wykonać restart systemu
 
@@ -151,6 +159,8 @@ rpm -qa --last | head -5
 systemctl is-system-running
 ```
 
+---
+
 ## 5. Zainstaluj pakiet mc
 
 ```
@@ -187,6 +197,8 @@ Lokalizacja plików konfiguracyjnych mc:
 find /etc -name "*mc*" 2>/dev/null
 ls -la ~/.config/mc/ 2>/dev/null
 ```
+
+---
 
 ## 6. Sprawdź komendą man opis programu mc
 
@@ -226,6 +238,8 @@ info mc
 mc --help
 dnf info mc
 ```
+
+---
 
 ## 7. Sprawdź stronę pomocy za pomocą polecenia man dla pakietu mc
 
@@ -271,6 +285,8 @@ apropos mc
 man -k mc
 ```
 
+---
+
 ## 8. Sprawdź jakie serwisy są uruchomione w systemie
 
 ```
@@ -308,6 +324,8 @@ systemctl list-units --type=service | grep -c "failed"
 Eksport listy serwisów:
 systemctl list-units --type=service --all --no-pager > services_list.txt
 ```
+
+---
 
 ## 9. Sprawdź status serwisu firewall oraz ssh
 
@@ -349,6 +367,8 @@ systemctl list-dependencies sshd
 Status jedną komendą:
 systemctl status firewalld sshd
 ```
+
+---
 
 ## 10. Sprawdź plik konfiguracyjny SSH i zobacz na jakim porcie działa twoja usługa SSH
 
@@ -393,6 +413,8 @@ Sprawdzenie wszystkich plików SSH:
 ls -la /etc/ssh/
 ls -la ~/.ssh/
 ```
+
+---
 
 ## 11. Sprawdź do jakich subskrypcji masz dostęp w systemie RHEL
 
@@ -448,6 +470,8 @@ Dostęp do Customer Portal:
 Sprawdzenie limitów subskrypcji:
 subscription-manager list --available | grep -A 10 -B 5 "Pool ID"
 ```
+
+---
 
 ## Dodatkowe przydatne komendy RHEL
 

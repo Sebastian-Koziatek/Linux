@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-17-crontab.png)
+
 # Rozwiązania - Crontab
 
 ## 1. Korzystając z generatora czasu do crona, stwórz wpis który co minutę będzie wysłał wiadomość do wszystkich użytkowników systemu z informacją "Crontab pozdrawia".
@@ -49,6 +51,8 @@ Sprawdzenie czy użytkownicy otrzymują wiadomości:
 # Wiadomość powinna pojawić się na wszystkich konsolach
 ```
 
+---
+
 ## 2. Zrestartuj serwis crona aby załadować nowe ustawienia.
 
 ```
@@ -96,6 +100,8 @@ Sprawdzenie czy restart był konieczny:
 # W nowoczesnych systemach cron automatycznie wykrywa zmiany
 # Restart nie zawsze jest konieczny, ale jest dobrą praktyką
 ```
+
+---
 
 ## 3. Wyświetl wszystkie zaplanowane procesy crona.
 
@@ -154,6 +160,8 @@ atq                             # Lista zaplanowanych zadań at
 at -l                          # Alternative
 ```
 
+---
+
 ## 4. Sprawdź listę zaplanowanych zadań cron dla użytkownika szkolenie
 
 ```
@@ -210,6 +218,8 @@ Historia wykonań zadań użytkownika szkolenie:
 grep "szkolenie" /var/log/cron | tail -10
 journalctl | grep szkolenie | grep CRON
 ```
+
+---
 
 ## 5. Jakimi znakami rozdzielisz poszczególne polecenia które możesz zawrzeć w cronie?
 
@@ -276,6 +286,8 @@ Escapowanie znaków specjalnych:
 * * * * * echo 'Date: \$(date)' > /tmp/time.txt
 ```
 
+---
+
 ## 6. Użyj polecenia aby usunąć utworzony wpis do crona (żeby nie zaśmiecał Ci systemu)
 
 ```
@@ -341,6 +353,8 @@ Monitoring czy zadania rzeczywiście się zatrzymały:
 journalctl -u crond -f                  # Follow cron logs
 tail -f /var/log/cron                   # Traditional logs
 ```
+
+---
 
 ## Dodatkowe informacje o Cron
 

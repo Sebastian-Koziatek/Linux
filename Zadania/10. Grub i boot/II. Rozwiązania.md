@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-10-grub-i-boot.png)
+
 # Rozwiązania - Grub i boot
 
 ## 1. Przejrzyj plik konfiguracyjny i sprawdź jakie ma opcje /etc/default/grub
@@ -44,6 +46,8 @@ GRUB_GFXMODE=auto          # Rozdzielczość graficzna
 GRUB_DISABLE_OS_PROBER=true # Wyłącz szukanie innych OS
 GRUB_SAVEDEFAULT=true      # Zapisuj ostatni wybór jako domyślny
 ```
+
+---
 
 ## 2. Sprawdź pliki znajdujące się na partycji /boot, co tam możesz znaleźć?
 
@@ -95,6 +99,8 @@ rpm -V kernel
 rpm -qa | grep kernel
 ```
 
+---
+
 ## 3. Użyj polecenia rpm, aby stworzyć listę wszystkich zainstalowanych kerneli w twoim systemie.
 
 ```
@@ -136,6 +142,8 @@ dnf list available kernel*
 Porównanie wersji:
 rpm -qa kernel* | sort -V
 ```
+
+---
 
 ## 4. Sprawdź wersję jądra, która jest aktualnie uruchomiona.
 
@@ -183,6 +191,8 @@ Sprawdzenie uptime:
 uptime
 cat /proc/uptime
 ```
+
+---
 
 ## 5. Sprawdź listę aktualnie załadowanych modułów.
 
@@ -240,6 +250,8 @@ cat /sys/module/nazwa_modulu/parameters/*
 Historia ładowania modułów:
 journalctl -k | grep -i module
 ```
+
+---
 
 ## Dodatkowe informacje o GRUB i boot
 

@@ -1,3 +1,5 @@
+![](../../grafiki/rozwiazania-07-aliasy.png)
+
 # Rozwiązania - Aliasy
 
 ## 1. Utwórz tymczasowy alias `czas` do wyświetlenia aktualnej daty i godziny.
@@ -26,6 +28,8 @@ Wyjaśnienie:
 - date wyświetla aktualną datę i czas systemowy
 ```
 
+---
+
 ## 2. Utwórz tymczasowy alias `etc` do szybkiego wyświetlenia zawartości katalogu `/etc`.
 
 ```
@@ -48,6 +52,8 @@ Przydatne warianty:
 alias etc-conf='ls -la /etc/*.conf'
 alias etc-d='ls -la /etc/*d/'
 ```
+
+---
 
 ## 3. Utwórz tymczasowy alias `pakiety` do wyświetlenia listy wszystkich zainstalowanych pakietów.
 
@@ -76,6 +82,8 @@ alias pakiety-kernel='rpm -qa | grep kernel'
 alias pakiety-lib='rpm -qa | grep lib'
 ```
 
+---
+
 ## 4. Utwórz tymczasowy alias `dom` do szybkiego przejścia do katalogu domowego.
 
 ```
@@ -102,6 +110,8 @@ alias dom-downloads='cd ~/Downloads'
 Kombinacja z innymi poleceniami:
 alias dom-clean='cd ~ && rm -f *.tmp'
 ```
+
+---
 
 ## 5. Utwórz tymczasowy alias `dysk` do wyświetlenia zajętości dysku w formie czytelnej dla użytkownika.
 
@@ -130,6 +140,8 @@ alias dysk-all='df -a'                # Wszystkie systemy plików
 Z formatowaniem:
 alias dysk='echo "=== Zajętość dysków ===" && df -h | head -1 && df -h | grep -v tmpfs | tail -n +2'
 ```
+
+---
 
 ## 6. Utwórz stały alias `aktualizuj` do wykonania aktualizacji systemu, wyczyszczenia cache oraz wyświetlenia komunikatu o powodzeniu.
 

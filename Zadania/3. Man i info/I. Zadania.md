@@ -1,3 +1,7 @@
+![](../../grafiki/zadania-03-man-i-info.png)
+
+# Zadania – Man i info
+
 ## **Podstawy dokumentacji systemowej**
 
 **1.** Użyj polecenia `man man` i zapoznaj się ze strukturą stron podręcznika (`man pages`).
@@ -21,4 +25,3 @@
    - Czy `mc` posiada własną stronę podręcznika?
    - Czy dostępna jest dokumentacja `info`? Jeśli nie – jakie mogą być przyczyny?
    - Jak uruchomić wbudowaną pomoc w samym `mc`?
-
