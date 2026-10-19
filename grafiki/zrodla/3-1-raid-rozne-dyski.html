@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Dyski różnej wielkości</h1><span class="pod">macierz liczy się z najmniejszym</span></div>
+  <div class="wiersz srodek" style="gap:34px;align-items:flex-start">
+    <div class="dysk">
+      <div class="korpus"><div class="blok b">100 GB</div><div class="blok wolny">—</div><div class="blok wolny">—</div></div>
+      <div class="nazwa">/dev/sdb<small>100 GB</small></div>
+    </div>
+    <div class="dysk">
+      <div class="korpus">
+        <div class="blok b">100 GB</div>
+        <div class="blok x">400 GB</div>
+        <div class="blok x">zmarnowane</div>
+      </div>
+      <div class="nazwa">/dev/sdc<small>500 GB</small></div>
+    </div>
+    <div class="strzalka" style="margin-top:60px"></div>
+    <div class="karta akcent" style="max-width:300px">
+      <h3>Macierz: 100 GB</h3>
+      <p>RAID 1 z tych dysków da <b>100 GB</b> – tyle, ile ma mniejszy dysk. Pozostałe <b>400 GB</b> na większym dysku jest poza macierzą i nie zostanie wykorzystane.</p>
+    </div>
+  </div>
+  <div class="notatka">Dlatego do macierzy dobiera się dyski tej samej pojemności – najlepiej też tego samego modelu i z podobnym przebiegiem, żeby zachowywały się jednakowo.</div>
+</div>
+</body></html>

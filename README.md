@@ -24,30 +24,30 @@ otwórz katalog repozytorium jako skarbiec (vault).
 
 | Moduł | Zakres |
 |---|---|
-| [01. Instalacja systemu](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/01.%20Instalacja%20systemu/1.%20Czym%20jest%20Linux%20i%20sk%C4%85d%20si%C4%99%20wzi%C4%85%C5%82.md) | czym jest Linux, dystrybucje, nośniki, rodzaj i wersja systemu, maszyna wirtualna, instalacja krok po kroku |
-| [02. Środowiska graficzne](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/02.%20%C5%9Arodowiska%20graficzne/1.%20Czym%20jest%20%C5%9Brodowisko%20graficzne.md) | GNOME, KDE Plasma, Xfce, Cinnamon, MATE; instalacja pulpitu na serwerze i kiedy to ma sens |
-| [03. Instalacja i zarządzanie oprogramowaniem](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/03.%20Instalacja%20i%20zarz%C4%85dzanie%20oprogramowaniem/1.%20Jak%20dzia%C5%82a%20mened%C5%BCer%20pakiet%C3%B3w.md) | menedżer pakietów, YUM, repozytoria, pakiety RPM, DNF, inne dystrybucje, piekło zależności |
-| [04. Dokumentacja i pomoc](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/04.%20Dokumentacja%20i%20pomoc/1.%20Podr%C4%99cznik%20systemowy%20man.md) | `man`, `info`, pomoc wbudowana w programy, gdzie szukać odpowiedzi |
+| [01. Instalacja systemu](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/1.%20Instalacja%20systemu/1.%20Czym%20jest%20Linux%20i%20sk%C4%85d%20si%C4%99%20wzi%C4%85%C5%82.md) | czym jest Linux, dystrybucje, nośniki, rodzaj i wersja systemu, maszyna wirtualna, instalacja krok po kroku |
+| [02. Środowiska graficzne](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/2.%20%C5%9Arodowiska%20graficzne/1.%20Czym%20jest%20%C5%9Brodowisko%20graficzne.md) | GNOME, KDE Plasma, Xfce, Cinnamon, MATE; instalacja pulpitu na serwerze i kiedy to ma sens |
+| [03. Instalacja i zarządzanie oprogramowaniem](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/3.%20Instalacja%20i%20zarz%C4%85dzanie%20oprogramowaniem/1.%20Jak%20dzia%C5%82a%20mened%C5%BCer%20pakiet%C3%B3w.md) | menedżer pakietów, YUM, repozytoria, pakiety RPM, DNF, inne dystrybucje, piekło zależności |
+| [04. Dokumentacja i pomoc](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/4.%20Dokumentacja%20i%20pomoc/1.%20Podr%C4%99cznik%20systemowy%20man.md) | `man`, `info`, pomoc wbudowana w programy, gdzie szukać odpowiedzi |
 
 ### Dział 2 — Podstawy pracy z systemem Linux
 
 | Moduł | Zakres |
 |---|---|
-| [01. Praca z powłoką Bash](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/01.%20Praca%20z%20pow%C5%82ok%C4%85%20Bash/1.%20Czym%20jest%20pow%C5%82oka%20i%20terminal.md) | terminal i powłoka, poruszanie się po systemie, pliki i katalogi, prompt, konfiguracja powłoki, zmienne i aliasy, dowiązania, vi/vim, nano |
-| [02. Zarządzanie plikami i katalogami](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/02.%20Zarz%C4%85dzanie%20plikami%20i%20katalogami/1.%20Uprawnienia%20do%20plik%C3%B3w%20i%20katalog%C3%B3w.md) | uprawnienia (`chmod`, `chown`), wyszukiwanie (`find`, `locate`), przeglądanie i potoki (`cat`, `less`, `tail`, `grep`), podstawy `sed` |
-| [03. Użytkownicy i grupy](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/03.%20U%C5%BCytkownicy%20i%20grupy/1.%20Konto%20root%2C%20sudo%20i%20su.md) | root, `sudo`, `su`, konta i grupy lokalne, pliki konfiguracyjne, uwierzytelnianie w LDAP/AD (sssd, PAM) |
-| [04. Zdalna administracja](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/04.%20Zdalna%20administracja/1.%20Czym%20jest%20SSH.md) | SSH: serwer, klient, klucze, zdalne polecenia i kopiowanie plików, pulpit zdalny |
+| [01. Praca z powłoką Bash](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/1.%20Praca%20z%20pow%C5%82ok%C4%85%20Bash/1.%20Czym%20jest%20pow%C5%82oka%20i%20terminal.md) | terminal i powłoka, poruszanie się po systemie, pliki i katalogi, prompt, konfiguracja powłoki, zmienne i aliasy, dowiązania, vi/vim, nano |
+| [02. Zarządzanie plikami i katalogami](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/2.%20Zarz%C4%85dzanie%20plikami%20i%20katalogami/1.%20Uprawnienia%20do%20plik%C3%B3w%20i%20katalog%C3%B3w.md) | uprawnienia (`chmod`, `chown`), wyszukiwanie (`find`, `locate`), przeglądanie i potoki (`cat`, `less`, `tail`, `grep`), podstawy `sed` |
+| [03. Użytkownicy i grupy](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/3.%20U%C5%BCytkownicy%20i%20grupy/1.%20Konto%20root%2C%20sudo%20i%20su.md) | root, `sudo`, `su`, konta i grupy lokalne, pliki konfiguracyjne, uwierzytelnianie w LDAP/AD (sssd, PAM) |
+| [04. Zdalna administracja](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/4.%20Zdalna%20administracja/1.%20Czym%20jest%20SSH.md) | SSH: serwer, klient, klucze, zdalne polecenia i kopiowanie plików, pulpit zdalny |
 
 ### Dział 3 — Zarządzanie systemem Linux
 
 | Moduł | Zakres |
 |---|---|
-| [01. Zarządzanie dyskami](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/01.%20Zarz%C4%85dzanie%20dyskami/1.%20Dyski%20w%20Linuksie%20%E2%80%93%20katalog%20dev%20i%20nazwy%20urz%C4%85dze%C5%84.md) | urządzenia w `/dev`, wykrywanie dysków, MBR i GPT, typy partycji, `fdisk`, `cfdisk`, `parted`, `gparted`, RAID i `mdadm` |
-| [02. Woluminy logiczne LVM](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/02.%20Woluminy%20logiczne%20LVM/1.%20Idea%20wolumin%C3%B3w%20logicznych.md) | idea LVM, tworzenie i powiększanie woluminów, LVM a RAID |
-| [03. System plików](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/03.%20System%20plik%C3%B3w/1.%20Czym%20jest%20system%20plik%C3%B3w.md) | budowa systemu plików, ext2/3/4, XFS, Btrfs i ZFS, montowanie i naprawa, drzewo katalogów, `fstab` |
-| [04. Konfiguracja sieci](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/04.%20Konfiguracja%20sieci/1.%20Podstawy%20sieci%20dla%20administratora.md) | podstawy sieci, `ip`/`ifconfig`/`route`, NetworkManager (`nmcli`, `nmtui`, GUI), pliki konfiguracyjne, diagnostyka |
-| [05. Proces startu systemu](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/05.%20Proces%20startu%20systemu/1.%20Etapy%20startu%20systemu.md) | etapy startu, GRUB2, poziomy startowe i targety, demony i `systemctl`, własna usługa, init a systemd |
-| [06. Zabezpieczenia sieciowe](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/06.%20Zabezpieczenia%20sieciowe/1.%20Czym%20jest%20zapora%20sieciowa.md) | zapora sieciowa, `iptables`, `firewalld`, zabezpieczenia na poziomie jądra (`sysctl`) |
+| [01. Zarządzanie dyskami](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/1.%20Zarz%C4%85dzanie%20dyskami/1.%20Dyski%20w%20Linuksie%20%E2%80%93%20katalog%20dev%20i%20nazwy%20urz%C4%85dze%C5%84.md) | urządzenia w `/dev`, wykrywanie dysków, MBR i GPT, typy partycji, `fdisk`, `cfdisk`, `parted`, `gparted`, RAID i `mdadm` |
+| [02. Woluminy logiczne LVM](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/2.%20Woluminy%20logiczne%20LVM/1.%20Idea%20wolumin%C3%B3w%20logicznych.md) | idea LVM, tworzenie i powiększanie woluminów, LVM a RAID |
+| [03. System plików](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/3.%20System%20plik%C3%B3w/1.%20Czym%20jest%20system%20plik%C3%B3w.md) | budowa systemu plików, ext2/3/4, XFS, Btrfs i ZFS, montowanie i naprawa, drzewo katalogów, `fstab` |
+| [04. Konfiguracja sieci](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/4.%20Konfiguracja%20sieci/1.%20Podstawy%20sieci%20dla%20administratora.md) | podstawy sieci, `ip`/`ifconfig`/`route`, NetworkManager (`nmcli`, `nmtui`, GUI), pliki konfiguracyjne, diagnostyka |
+| [05. Proces startu systemu](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/5.%20Proces%20startu%20systemu/1.%20Etapy%20startu%20systemu.md) | etapy startu, GRUB2, poziomy startowe i targety, demony i `systemctl`, własna usługa, init a systemd |
+| [06. Zabezpieczenia sieciowe](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/6.%20Zabezpieczenia%20sieciowe/1.%20Czym%20jest%20zapora%20sieciowa.md) | zapora sieciowa, `iptables`, `firewalld`, zabezpieczenia na poziomie jądra (`sysctl`) |
 
 ### Dział 4 — Tematy dodatkowe
 
@@ -55,15 +55,15 @@ Materiał poza programem podstawowym — dla chętnych i na pytania z sali.
 
 | Moduł | Zakres |
 |---|---|
-| [01. Crontab](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/01.%20Crontab/1.%20Harmonogram%20zada%C5%84%20%E2%80%93%20cron%20i%20crontab.md) | harmonogram zadań, składnia czasu, timery systemd |
-| [02. SELinux](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/02.%20SELinux/1.%20Czym%20jest%20SELinux.md) | czym jest SELinux, tryby pracy, diagnoza i naprawa typowych blokad |
-| [03. Samba](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/03.%20Samba/1.%20Udost%C4%99pnianie%20plik%C3%B3w%20dla%20Windows%20%E2%80%93%20Samba.md) | udostępnianie plików dla Windows |
-| [04. Logi systemowe](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/04.%20Logi%20systemowe/1.%20Gdzie%20szuka%C4%87%20log%C3%B3w.md) | `journalctl`, rsyslog, czytanie logów w praktyce |
-| [05. Screen i tmux](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/05.%20Screen%20i%20tmux/1.%20Sesje%20terminala%20%E2%80%93%20screen%20i%20tmux.md) | sesje terminala odporne na zerwane połączenie |
-| [06. Lynis](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/06.%20Lynis/1.%20Audyt%20bezpiecze%C5%84stwa%20z%20Lynis.md) | audyt bezpieczeństwa i utwardzanie systemu |
-| [07. nmap](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/07.%20nmap/1.%20nmap%20%E2%80%93%20wprowadzenie%20i%20etyka.md) | skanowanie własnych systemów, czytanie wyników |
-| [08. Docker](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/08.%20Docker/1.%20Czym%20s%C4%85%20kontenery.md) | kontenery, Podman/Docker, podstawowe polecenia, praktyczne przykłady |
-| [09. Certyfikat SSL w Apache](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/09.%20Certyfikat%20SSL%20w%20Apache/1.%20HTTPS%20i%20certyfikaty%20%E2%80%93%20podstawy.md) | HTTPS, certyfikat self-signed, podmiana certyfikatu, Let's Encrypt |
+| [01. Crontab](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/1.%20Crontab/1.%20Harmonogram%20zada%C5%84%20%E2%80%93%20cron%20i%20crontab.md) | harmonogram zadań, składnia czasu, timery systemd |
+| [02. SELinux](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/2.%20SELinux/1.%20Czym%20jest%20SELinux.md) | czym jest SELinux, tryby pracy, diagnoza i naprawa typowych blokad |
+| [03. Samba](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/3.%20Samba/1.%20Udost%C4%99pnianie%20plik%C3%B3w%20dla%20Windows%20%E2%80%93%20Samba.md) | udostępnianie plików dla Windows |
+| [04. Logi systemowe](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/4.%20Logi%20systemowe/1.%20Gdzie%20szuka%C4%87%20log%C3%B3w.md) | `journalctl`, rsyslog, czytanie logów w praktyce |
+| [05. Screen i tmux](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/5.%20Screen%20i%20tmux/1.%20Sesje%20terminala%20%E2%80%93%20screen%20i%20tmux.md) | sesje terminala odporne na zerwane połączenie |
+| [06. Lynis](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/6.%20Lynis/1.%20Audyt%20bezpiecze%C5%84stwa%20z%20Lynis.md) | audyt bezpieczeństwa i utwardzanie systemu |
+| [07. nmap](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/7.%20nmap/1.%20nmap%20%E2%80%93%20wprowadzenie%20i%20etyka.md) | skanowanie własnych systemów, czytanie wyników |
+| [08. Docker](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/8.%20Docker/1.%20Czym%20s%C4%85%20kontenery.md) | kontenery, Podman/Docker, podstawowe polecenia, praktyczne przykłady |
+| [09. Certyfikat SSL w Apache](Dzia%C5%82%204%20-%20Tematy%20dodatkowe/9.%20Certyfikat%20SSL%20w%20Apache/1.%20HTTPS%20i%20certyfikaty%20%E2%80%93%20podstawy.md) | HTTPS, certyfikat self-signed, podmiana certyfikatu, Let's Encrypt |
 
 ## Zadania
 
