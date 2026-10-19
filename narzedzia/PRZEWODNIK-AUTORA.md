@@ -112,6 +112,13 @@ Zakończono!
 - Rendery: `node narzedzia/render-grafiki.mjs nazwa1 nazwa2` (bez argumentów – wszystkie).
   Po wyrenderowaniu **obejrzyj PNG** i popraw, jeśli coś się nie mieści lub nakłada.
 
+### Logotypy dystrybucji
+W `grafiki/logo/` leżą kafelki z logotypami (160×56 px, białe tło, ramka `#c9d0db`),
+używane w lekcji o przeglądzie dystrybucji. Źródła logotypów to Wikimedia Commons
+(licencje PD / CC) albo oficjalna strona projektu; w materiałach podajemy je wyłącznie
+w funkcji rozpoznawczej, razem z odnośnikiem do strony dystrybucji. Nowy kafelek robi się
+tak samo jak pozostałe grafiki: logo wyśrodkowane w ramce, renderowane w skali 1×.
+
 ### Zrzuty ekranu
 Zostawiamy tylko zrzuty rzeczywistego interfejsu graficznego (instalator, gparted, nmtui,
 PuTTY, ustawienia sieci w GNOME, pulpity środowisk graficznych). Zrzuty terminala,
