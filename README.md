@@ -26,7 +26,7 @@ otwórz katalog repozytorium jako skarbiec (vault).
 |---|---|
 | [01. Instalacja systemu](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/1.%20Instalacja%20systemu/1.%20Czym%20jest%20Linux%20i%20sk%C4%85d%20si%C4%99%20wzi%C4%85%C5%82.md) | czym jest Linux (i dlaczego nie jest Uniksem), dystrybucje i ich rodziny, model wydań i cykl życia, rodzina Red Hat, nośniki, rodzaj i wersja systemu, maszyna wirtualna, instalacja krok po kroku |
 | [02. Środowiska graficzne](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/2.%20%C5%9Arodowiska%20graficzne/1.%20Czym%20jest%20%C5%9Brodowisko%20graficzne.md) | GNOME, KDE Plasma, Xfce, Cinnamon, MATE; instalacja pulpitu na serwerze i kiedy to ma sens |
-| [03. Instalacja i zarządzanie oprogramowaniem](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/3.%20Instalacja%20i%20zarz%C4%85dzanie%20oprogramowaniem/1.%20Jak%20dzia%C5%82a%20mened%C5%BCer%20pakiet%C3%B3w.md) | menedżer pakietów, YUM, repozytoria, pakiety RPM, DNF, inne dystrybucje, piekło zależności |
+| [03. Instalacja i zarządzanie oprogramowaniem](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/3.%20Instalacja%20i%20zarz%C4%85dzanie%20oprogramowaniem/1.%20Jak%20dzia%C5%82a%20mened%C5%BCer%20pakiet%C3%B3w.md) | menedżer pakietów, `dnf`, repozytoria, pakiety RPM, możliwości zaawansowane `dnf`, inne dystrybucje, piekło zależności |
 | [04. Dokumentacja i pomoc](Dzia%C5%82%201%20-%20Wprowadzenie%20do%20systemu/4.%20Dokumentacja%20i%20pomoc/1.%20Podr%C4%99cznik%20systemowy%20man.md) | `man`, `info`, pomoc wbudowana w programy, gdzie szukać odpowiedzi |
 
 ### Dział 2 — Podstawy pracy z systemem Linux
