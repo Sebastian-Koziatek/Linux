@@ -67,9 +67,10 @@ Materiał poza programem podstawowym — dla chętnych i na pytania z sali.
 
 ## Zadania
 
-Katalog [Zadania](Zadania/) (podfoldery `Dział 1`–`Dział 4`) zawiera dla każdego modułu plik `I. Zadania.md` oraz `II. Rozwiązania.md`.
-Zadania wykonuje się na maszynie szkoleniowej — zwykle z dodatkowymi dyskami `/dev/sdb` i `/dev/sdc`
-do ćwiczeń z partycjonowania, RAID i LVM.
+Katalog [Zadania](Zadania/) (podfoldery `Dział 1`–`Dział 4`) zawiera ćwiczenia z rozwiązaniami:
+plik `I. Zadania.md` oraz `II. Rozwiązania.md`. Zestawy obejmują te moduły, dla których ćwiczenia
+powstały — pozostałe moduły przerabia się na podstawie samych lekcji. Zadania wykonuje się na maszynie
+szkoleniowej, w razie potrzeby z dodatkowym dyskiem do ćwiczeń z partycjonowania i LVM.
 
 ## Dla autorów
 
