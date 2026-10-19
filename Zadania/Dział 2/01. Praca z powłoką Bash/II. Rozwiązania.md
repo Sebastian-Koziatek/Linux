@@ -1,7 +1,8 @@
+![](../../../grafiki/2-01-rozwiazania.png)
+
 # Rozwiązania – Praca z powłoką Bash
 
-Numeracja odpowiada plikowi [I. Zadania.md](I.%20Zadania.md). Przy każdym zadaniu podajemy
-polecenie i krótkie wyjaśnienie; tam, gdzie jest kilka dobrych dróg, pokazujemy najprostszą.
+> Numeracja odpowiada plikowi [I. Zadania.md](I.%20Zadania.md). Przy każdym zadaniu podajemy polecenie i krótkie wyjaśnienie; tam, gdzie jest kilka dobrych dróg, pokazujemy najprostszą.
 
 ## 1. Użytkownik, komputer, powłoka
 
@@ -11,8 +12,9 @@ hostname
 echo $SHELL
 ```
 
-`whoami` wypisuje nazwę zalogowanego użytkownika, `hostname` nazwę komputera, a zmienna `SHELL`
-zawiera ścieżkę Twojej domyślnej powłoki (np. `/bin/bash`).
+`whoami` wypisuje nazwę zalogowanego użytkownika, `hostname` nazwę komputera, a zmienna `SHELL` zawiera ścieżkę Twojej domyślnej powłoki (np. `/bin/bash`).
+
+---
 
 ## 2. Komunikat błędu
 
@@ -20,9 +22,9 @@ zawiera ścieżkę Twojej domyślnej powłoki (np. `/bin/bash`).
 lss
 ```
 
-Wynik: `bash: lss: command not found`. Komunikat zgłasza sam Bash (pierwszy człon) – nie znalazł
-polecenia `lss` ani wśród aliasów, ani wśród poleceń wbudowanych, ani w katalogach z `PATH`.
-Przyczyną jest literówka (powinno być `ls`) albo brak zainstalowanego programu.
+Wynik: `bash: lss: command not found`. Komunikat zgłasza sam Bash (pierwszy człon) – nie znalazł polecenia `lss` ani wśród aliasów, ani wśród poleceń wbudowanych, ani w katalogach z `PATH`. Przyczyną jest literówka (powinno być `ls`) albo brak zainstalowanego programu.
+
+---
 
 ## 3. Historia i czyszczenie ekranu
 
@@ -40,8 +42,9 @@ clear
 # oraz skrót klawiszowy Ctrl+L
 ```
 
-`!numer` wykonuje polecenie o danym numerze z historii, `!!` powtarza ostatnie. Czyszczenie
-ekranu nie kasuje historii – tylko odświeża widok.
+`!numer` wykonuje polecenie o danym numerze z historii, `!!` powtarza ostatnie. Czyszczenie ekranu nie kasuje historii – tylko odświeża widok.
+
+---
 
 ## 4. Nawigacja
 
@@ -55,14 +58,17 @@ cd -           # powrót do poprzedniego katalogu (/var)
 
 `cd -` przełącza między dwoma ostatnimi katalogami i wypisuje, dokąd przeszedł.
 
+---
+
 ## 5. `/etc` od najnowszych, czytelne rozmiary
 
 ```bash
 ls -lht /etc
 ```
 
-`-l` długa lista, `-h` rozmiary „dla ludzi”, `-t` sortowanie od najnowszej modyfikacji.
-Od najstarszych: `ls -lhtr /etc`.
+`-l` długa lista, `-h` rozmiary „dla ludzi”, `-t` sortowanie od najnowszej modyfikacji. Od najstarszych: `ls -lhtr /etc`.
+
+---
 
 ## 6. Pliki ukryte
 
@@ -70,8 +76,9 @@ Od najstarszych: `ls -lhtr /etc`.
 ls -la ~
 ```
 
-`-a` pokazuje pliki zaczynające się od kropki. `.` to katalog bieżący, `..` to katalog nadrzędny –
-te dwa wpisy istnieją w każdym katalogu i dzięki nim działają ścieżki względne typu `cd ..`.
+`-a` pokazuje pliki zaczynające się od kropki. `.` to katalog bieżący, `..` to katalog nadrzędny – te dwa wpisy istnieją w każdym katalogu i dzięki nim działają ścieżki względne typu `cd ..`.
+
+---
 
 ## 7. Czytanie `ls -l`
 
@@ -83,9 +90,9 @@ ls -l /etc/hostname
 -rw-r--r--. 1 root root 7 10 paź 08:40 /etc/hostname
 ```
 
-Kolejno: typ i uprawnienia (`-` = zwykły plik; kropka = etykieta SELinux), liczba dowiązań
-twardych (1), właściciel (`root`), grupa (`root`), rozmiar w bajtach (7), data ostatniej
-modyfikacji, nazwa.
+Kolejno: typ i uprawnienia (`-` = zwykły plik; kropka = etykieta SELinux), liczba dowiązań twardych (1), właściciel (`root`), grupa (`root`), rozmiar w bajtach (7), data ostatniej modyfikacji, nazwa.
+
+---
 
 ## 8. Ścieżka bezwzględna i względna
 
@@ -96,6 +103,8 @@ ls ../../var/log   # względna – z /home/anna dwa poziomy w górę, potem var/
 ```
 
 Ścieżka względna zależy od katalogu bieżącego, bezwzględna działa z każdego miejsca.
+
+---
 
 ## 9. Katalog, pięć plików, plik ukryty
 
@@ -110,6 +119,8 @@ mv .ukryty.txt plik6
 ```
 
 `mv` w tym samym katalogu to po prostu zmiana nazwy.
+
+---
 
 ## 10. Zapis i dopisanie
 
@@ -126,14 +137,17 @@ RHEL 9
 
 Gdyby w drugim poleceniu użyć `>`, pierwszy wiersz by zginął.
 
+---
+
 ## 11. Wynik polecenia do pliku
 
 ```bash
 ls -l /etc > ~/szkolenie/spis-etc.txt
 ```
 
-Przekierowanie `>` działa z każdym poleceniem – do pliku trafia to, co normalnie poszłoby
-na ekran.
+Przekierowanie `>` działa z każdym poleceniem – do pliku trafia to, co normalnie poszłoby na ekran.
+
+---
 
 ## 12. Kopiowanie do /tmp/test
 
@@ -143,8 +157,9 @@ cp -r ~/szkolenie/* /tmp/test/
 ls -la /tmp/test
 ```
 
-`-r` jest potrzebne, gdyby w `szkolenie` były podkatalogi. Uwaga: wzorzec `*` nie obejmuje
-plików ukrytych – dlatego w `/tmp/test` nie będzie np. `.ukryty.txt` (u nas już przemianowanego).
+`-r` jest potrzebne, gdyby w `szkolenie` były podkatalogi. Uwaga: wzorzec `*` nie obejmuje plików ukrytych – dlatego w `/tmp/test` nie będzie np. `.ukryty.txt` (u nas już przemianowanego).
+
+---
 
 ## 13. Symbole wieloznaczne
 
@@ -156,6 +171,8 @@ ls plik[135]    # jeden znak z listy: plik1, plik3, plik5
 
 `?` zastępuje dokładnie jeden znak, `[135]` – jeden znak spośród wymienionych.
 
+---
+
 ## 14. Usuwanie i `rmdir`
 
 ```bash
@@ -165,15 +182,15 @@ cd ..
 rmdir test
 ```
 
-`rmdir` usuwa **wyłącznie puste** katalogi – jeśli coś przeoczysz, zatrzyma się z błędem,
-zamiast po cichu skasować zawartość. `rm -r` nie daje tej ochrony.
+`rmdir` usuwa **wyłącznie puste** katalogi – jeśli coś przeoczysz, zatrzyma się z błędem, zamiast po cichu skasować zawartość. `rm -r` nie daje tej ochrony.
+
+---
 
 ## 15. `rm -rf *` – odpowiedź
 
-W katalogu domowym `rm -rf *` usunęłoby **bez żadnego pytania** wszystkie nieukryte pliki
-i katalogi: dokumenty, projekty, pobrane pliki. `-r` wchodzi w głąb katalogów, `-f` wyłącza
-pytania i komunikaty o błędach, a Kosza w terminalu nie ma. Dlatego przed `rm` ze wzorcem
-wykonuje się `ls` z tym samym wzorcem – lista `ls` to dokładnie lista tego, co `rm` skasuje.
+W katalogu domowym `rm -rf *` usunęłoby **bez żadnego pytania** wszystkie nieukryte pliki i katalogi: dokumenty, projekty, pobrane pliki. `-r` wchodzi w głąb katalogów, `-f` wyłącza pytania i komunikaty o błędach, a Kosza w terminalu nie ma. Dlatego przed `rm` ze wzorcem wykonuje się `ls` z tym samym wzorcem – lista `ls` to dokładnie lista tego, co `rm` skasuje.
+
+---
 
 ## 16. Historia do pliku
 
@@ -183,6 +200,8 @@ wc -l ~/szkolenie/historia.txt
 ```
 
 Przekierowanie zapisuje całą numerowaną historię; `wc -l` pokazuje, ile poleceń trafiło do pliku.
+
+---
 
 ## 17. Elementy promptu
 
@@ -194,10 +213,9 @@ echo $PS1
 [\u@\h \W]\$
 ```
 
-W `[anna@serwer ~]$`: `anna` – użytkownik (`\u`), `serwer` – nazwa komputera (`\h`),
-`~` – katalog bieżący, tylko ostatni człon (`\W`), `$` – znak zwykłego użytkownika.
-U roota zamiast `$` jest `#` – to ostrzeżenie, że polecenia wykonują się z pełnymi
-uprawnieniami.
+W `[anna@serwer ~]$`: `anna` – użytkownik (`\u`), `serwer` – nazwa komputera (`\h`), `~` – katalog bieżący, tylko ostatni człon (`\W`), `$` – znak zwykłego użytkownika. U roota zamiast `$` jest `#` – to ostrzeżenie, że polecenia wykonują się z pełnymi uprawnieniami.
+
+---
 
 ## 18. Trzy warianty promptu
 
@@ -211,8 +229,9 @@ PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
 cd /etc    # prompt powinien pokazać /etc (wariant a, b) i zielony kolor (c)
 ```
 
-`\[` i `\]` mówią powłoce, że kody koloru nie zajmują miejsca na ekranie – bez nich kursor
-„skacze” przy edycji długich poleceń. Spacja na końcu wzoru oddziela prompt od polecenia.
+`\[` i `\]` mówią powłoce, że kody koloru nie zajmują miejsca na ekranie – bez nich kursor „skacze” przy edycji długich poleceń. Spacja na końcu wzoru oddziela prompt od polecenia.
+
+---
 
 ## 19. Prompt na stałe
 
@@ -223,8 +242,9 @@ nano ~/.bashrc
 source ~/.bashrc
 ```
 
-Wpis trafia do `~/.bashrc`, bo ten plik czyta **każda** powłoka interaktywna – i logowania
-(przez `~/.bash_profile`), i nowe okno terminala. `source` wczytuje zmiany w bieżącej sesji.
+Wpis trafia do `~/.bashrc`, bo ten plik czyta **każda** powłoka interaktywna – i logowania (przez `~/.bash_profile`), i nowe okno terminala. `source` wczytuje zmiany w bieżącej sesji.
+
+---
 
 ## 20. Zmienna powłoki a środowiskowa
 
@@ -238,6 +258,8 @@ bash -c 'echo $KURS'  # Linux – po export zmienna jest środowiskowa
 
 `export` przekazuje zmienną każdemu programowi uruchamianemu z tej powłoki.
 
+---
+
 ## 21. `PATH`
 
 ```bash
@@ -248,9 +270,9 @@ echo $PATH
 /home/anna/.local/bin:/home/anna/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 ```
 
-Powłoka przeszukuje katalogi **od lewej do prawej** i uruchamia pierwszy znaleziony plik o danej
-nazwie. Katalogu bieżącego (`.`) na liście nie ma – to zabezpieczenie przed podrzuconymi
-programami – więc skrypt z bieżącego katalogu uruchamiasz, jawnie podając ścieżkę: `./skrypt.sh`.
+Powłoka przeszukuje katalogi **od lewej do prawej** i uruchamia pierwszy znaleziony plik o danej nazwie. Katalogu bieżącego (`.`) na liście nie ma – to zabezpieczenie przed podrzuconymi programami – więc skrypt z bieżącego katalogu uruchamiasz, jawnie podając ścieżkę: `./skrypt.sh`.
+
+---
 
 ## 22. Aliasy tymczasowe
 
@@ -266,6 +288,8 @@ alias czas dom dysk   # pokaż definicje
 
 Aliasy zdefiniowane w sesji znikają po jej zamknięciu. `unalias czas` usuwa alias.
 
+---
+
 ## 23. Alias na stałe
 
 ```bash
@@ -274,9 +298,9 @@ source ~/.bashrc
 ll
 ```
 
-Właściwy plik to `~/.bashrc` – czytają go wszystkie powłoki interaktywne użytkownika, więc alias
-działa i po SSH, i w nowym oknie terminala. Pliki w `/etc` zmieniałyby ustawienia wszystkim
-użytkownikom i wymagają uprawnień roota.
+Właściwy plik to `~/.bashrc` – czytają go wszystkie powłoki interaktywne użytkownika, więc alias działa i po SSH, i w nowym oknie terminala. Pliki w `/etc` zmieniałyby ustawienia wszystkim użytkownikom i wymagają uprawnień roota.
+
+---
 
 ## 24. Plik i jego i-węzeł
 
@@ -292,8 +316,9 @@ ls -li abc
 1835201 -rw-r--r--. 1 anna anna 18 18 paź 12:10 abc
 ```
 
-Pierwsza kolumna to numer i-węzła, `1` po uprawnieniach to licznik dowiązań twardych,
-`18` to rozmiar w bajtach. Pełne metadane pokazuje `stat abc`.
+Pierwsza kolumna to numer i-węzła, `1` po uprawnieniach to licznik dowiązań twardych, `18` to rozmiar w bajtach. Pełne metadane pokazuje `stat abc`.
+
+---
 
 ## 25. Dowiązanie twarde
 
@@ -314,8 +339,9 @@ chmod 400 def
 ls -l abc def
 ```
 
-Uprawnienia `abc` też zmieniły się na `r--------`, bo uprawnienia są zapisane w i-węźle,
-wspólnym dla obu nazw. (Przywróć: `chmod 644 abc`.)
+Uprawnienia `abc` też zmieniły się na `r--------`, bo uprawnienia są zapisane w i-węźle, wspólnym dla obu nazw. (Przywróć: `chmod 644 abc`.)
+
+---
 
 ## 26. Dowiązanie symboliczne i usunięcie oryginału
 
@@ -328,8 +354,9 @@ cat skrot    # "No such file or directory" – skrot wskazywał NAZWĘ abc, któ
 ls -l skrot  # dowiązanie "wisi" (w kolorowym terminalu świeci na czerwono)
 ```
 
-Dowiązanie twarde dzieli i-węzeł, więc przeżywa usunięcie pierwszej nazwy. Dowiązanie
-symboliczne przechowuje tylko ścieżkę – po usunięciu celu prowadzi donikąd.
+Dowiązanie twarde dzieli i-węzeł, więc przeżywa usunięcie pierwszej nazwy. Dowiązanie symboliczne przechowuje tylko ścieżkę – po usunięciu celu prowadzi donikąd.
+
+---
 
 ## 27. Vim – podstawy
 
@@ -337,17 +364,27 @@ symboliczne przechowuje tylko ścieżkę – po usunięciu celu prowadzi doniką
 vim temp.txt
 ```
 
-1. `i` – tryb wstawiania, wpisz `Szkolenie Linux`, `Esc`.
-2. `:wq` + `Enter` – zapis i wyjście.
+---
+
+**1.** `i` – tryb wstawiania, wpisz `Szkolenie Linux`, `Esc`.
+
+---
+
+**2.** `:wq` + `Enter` – zapis i wyjście.
 
 ```bash
 vim temp.txt
 ```
 
-3. `A` (wielkie) – kursor skacze na koniec wiersza i włącza się wstawianie; wpisz
-   ` jest proste`, `Esc`.
-4. `:q!` + `Enter` – wyjście bez zapisu; w pliku zostaje samo `Szkolenie Linux`
-   (sprawdź: `cat temp.txt`).
+---
+
+**3.** `A` (wielkie) – kursor skacze na koniec wiersza i włącza się wstawianie; wpisz ` jest proste`, `Esc`.
+
+---
+
+**4.** `:q!` + `Enter` – wyjście bez zapisu; w pliku zostaje samo `Szkolenie Linux` (sprawdź: `cat temp.txt`).
+
+---
 
 ## 28. Vim – duży plik i szukanie
 
@@ -356,9 +393,9 @@ wget https://wolnelektury.pl/media/book/txt/pan-tadeusz.txt
 vim pan-tadeusz.txt
 ```
 
-W trybie normalnym: `G` – koniec pliku, `gg` – początek, `/Tadeusz` + `Enter` – pierwsze
-wystąpienie, `n` trzy razy – kolejne wystąpienia (`N` cofa). Wyjście: `:q!` (nic nie
-zmienialiśmy, wystarczyłoby też `:q`).
+W trybie normalnym: `G` – koniec pliku, `gg` – początek, `/Tadeusz` + `Enter` – pierwsze wystąpienie, `n` trzy razy – kolejne wystąpienia (`N` cofa). Wyjście: `:q!` (nic nie zmienialiśmy, wystarczyłoby też `:q`).
+
+---
 
 ## 29. Nano – szukanie i edycja
 
@@ -366,15 +403,13 @@ zmienialiśmy, wystarczyłoby też `:q`).
 nano pan-tadeusz.txt
 ```
 
-`Ctrl+W`, wpisz `Zosia`, `Enter` – pierwsze wystąpienie; `Alt+W` – następne.
-Wyjście: `Ctrl+X` (bez zmian nano nie pyta o zapis).
+`Ctrl+W`, wpisz `Zosia`, `Enter` – pierwsze wystąpienie; `Alt+W` – następne. Wyjście: `Ctrl+X` (bez zmian nano nie pyta o zapis).
 
 ```bash
 nano temp.txt
 ```
 
-`Ctrl+K` usuwa cały wiersz; wpisz `Używam edytora nano`; zapis i wyjście: `Ctrl+O`, `Enter`,
-`Ctrl+X` (albo od razu `Ctrl+X`, `Y`, `Enter`).
+`Ctrl+K` usuwa cały wiersz; wpisz `Używam edytora nano`; zapis i wyjście: `Ctrl+O`, `Enter`, `Ctrl+X` (albo od razu `Ctrl+X`, `Y`, `Enter`).
 
 ```bash
 cat temp.txt
@@ -383,6 +418,8 @@ cat temp.txt
 ```text
 Używam edytora nano
 ```
+
+---
 
 ## 30. Sprzątanie
 
@@ -393,5 +430,4 @@ rm -r szkolenie links
 rm temp.txt pan-tadeusz.txt
 ```
 
-Kontrolne `ls` przed `rm -r` pokazuje dokładnie te ścieżki, które za chwilę skasujesz –
-jeśli lista Cię zaskoczy, jeszcze nic się nie stało.
+Kontrolne `ls` przed `rm -r` pokazuje dokładnie te ścieżki, które za chwilę skasujesz – jeśli lista Cię zaskoczy, jeszcze nic się nie stało.

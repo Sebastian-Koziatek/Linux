@@ -1,3 +1,5 @@
+![](../../../grafiki/4-01-rozwiazania.png)
+
 # Rozwiązania – Crontab
 
 ## 1. Stan demona
@@ -9,6 +11,8 @@ systemctl is-enabled crond
 
 Na RHEL/Rocky/AlmaLinux usługa nazywa się `crond` (na Ubuntu/Debianie: `cron`); `is-enabled` potwierdza autostart.
 
+---
+
 ## 2. Kopia harmonogramu
 
 ```bash
@@ -16,6 +20,8 @@ crontab -l > ~/crontab.kopia
 ```
 
 Jedno pomyłkowe `crontab -r` kasuje cały harmonogram bez potwierdzenia — z kopią przywrócisz go poleceniem `crontab ~/crontab.kopia`.
+
+---
 
 ## 3. Komunikat co minutę
 
@@ -29,6 +35,8 @@ crontab -e
 
 Pięć gwiazdek oznacza „co minutę”; `wall` wypisuje komunikat na terminalach wszystkich zalogowanych.
 
+---
+
 ## 4. Dowód w dzienniku
 
 ```bash
@@ -36,6 +44,8 @@ sudo journalctl -u crond --since "5 min ago"
 ```
 
 Szukamy wpisów `CROND[…]: (twoj_login) CMD (/usr/bin/wall "Crontab pozdrawia")` — pojawiają się co minutę i potwierdzają, że cron zadanie uruchamia.
+
+---
 
 ## 5. Harmonogramy użytkowników
 
@@ -46,9 +56,13 @@ sudo crontab -u szkolenie -l
 
 `no crontab for szkolenie` oznacza po prostu, że ten użytkownik nigdy nie utworzył harmonogramu — to nie błąd.
 
+---
+
 ## 6. Tłumaczenia wpisów
 
 a) co 5 minut; b) w dni robocze (pon–pt) o 22:00; c) pierwszego i piętnastego dnia każdego miesiąca o 6:30; d) w każdą niedzielę co 4 godziny, o pełnych godzinach (0:00, 4:00, 8:00, …); e) jednorazowo po każdym starcie systemu.
+
+---
 
 ## 7. Zapis w składni crona
 
@@ -59,6 +73,8 @@ a) co 5 minut; b) w dni robocze (pon–pt) o 22:00; c) pierwszego i piętnastego
 0 1 1 1,4,7,10 *   # d) 1 stycznia/kwietnia/lipca/października o 1:00
 ```
 
+---
+
 ## 8. Zadanie z przekierowaniem wyjścia
 
 ```text
@@ -67,9 +83,13 @@ a) co 5 minut; b) w dni robocze (pon–pt) o 22:00; c) pierwszego i piętnastego
 
 `>>` dopisuje do pliku, a `2>&1` kieruje tam także strumień błędów — bez tego komunikaty o problemach przepadną.
 
+---
+
 ## 9. Dlaczego skrypt nie działa w cronie
 
 Po pierwsze: brak pełnej ścieżki — cron ma krótki `PATH` (zwykle `/usr/bin:/bin`) i nie zagląda do katalogu bieżącego; rozwiązanie: `/pełna/ścieżka/moj-skrypt.sh` albo linia `PATH=…` na początku crontaba. Po drugie: skrypt może polegać na środowisku z `~/.bashrc` (zmienne, aliasy), którego cron nie wczytuje; rozwiązanie: ustawić potrzebne zmienne w samym skrypcie. (Częsty trzeci powód: brak bitu wykonywalności — `chmod +x`.)
+
+---
 
 ## 10. Łączenie poleceń
 
@@ -82,6 +102,8 @@ Po pierwsze: brak pełnej ścieżki — cron ma krótki `PATH` (zwykle `/usr/bin
 
 Działa też potok `|` (przekazanie wyjścia dalej). Uwaga na `%` w cronie — np. w `date +\%F` wymaga ukośnika.
 
+---
+
 ## 11. Crontab systemowy
 
 ```bash
@@ -92,6 +114,8 @@ cat /etc/cron.d/*
 
 Wpisy systemowe mają **sześć** pól przed poleceniem — dodatkowe (szóste z kolei) to nazwa użytkownika, jako który zadanie się wykona, np. `30 2 * * * root /usr/local/sbin/kopia.sh`.
 
+---
+
 ## 12. Katalogi okresowe i anacron
 
 ```bash
@@ -101,6 +125,8 @@ cat /etc/anacrontab
 
 W katalogach leżą zwykłe skrypty wykonywalne (m.in. rotacja logów). Ich wykonania pilnuje **anacron** — jeśli maszyna była wyłączona w porze zadania, uruchomi je po starcie z opóźnieniem opisanym w `/etc/anacrontab`.
 
+---
+
 ## 13. Usunięcie jednego wpisu
 
 ```bash
@@ -109,6 +135,8 @@ crontab -l     # kontrola
 ```
 
 Nie używamy `crontab -r` — usuwa cały harmonogram, a nie jeden wpis. Alternatywa skryptowa: `crontab -l | grep -v 'wall' | crontab -`.
+
+---
 
 ## 14. Timery systemd
 

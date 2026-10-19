@@ -1,6 +1,8 @@
-# Moduł 08. Zdalna administracja – rozwiązania
+![](../../../grafiki/2-04-rozwiazania.png)
 
-**1. Stan serwera SSH:**
+# Rozwiązania – Zdalna administracja
+
+> **1. Stan serwera SSH:**
 
 ```bash
 systemctl status sshd
@@ -15,8 +17,7 @@ Usługa nazywa się `sshd`; `active (running)` oznacza, że działa, a `enabled`
 ssh anna@localhost
 ```
 
-Na pytanie „Are you sure you want to continue connecting?” odpowiadamy całym słowem `yes` –
-odcisk klucza serwera zostanie zapamiętany. Po zalogowaniu `hostname` i `whoami`, wylogowanie: `exit`.
+Na pytanie „Are you sure you want to continue connecting?” odpowiadamy całym słowem `yes` – odcisk klucza serwera zostanie zapamiętany. Po zalogowaniu `hostname` i `whoami`, wylogowanie: `exit`.
 
 **3. Plik known_hosts:**
 
@@ -24,8 +25,7 @@ odcisk klucza serwera zostanie zapamiętany. Po zalogowaniu `hostname` i `whoami
 cat ~/.ssh/known_hosts
 ```
 
-Plik przechowuje odciski kluczy serwerów, z którymi już się łączyliśmy; chroni przed podstawieniem
-innego (fałszywego) serwera pod znany adres – przy zmianie klucza klient przerwie połączenie.
+Plik przechowuje odciski kluczy serwerów, z którymi już się łączyliśmy; chroni przed podstawieniem innego (fałszywego) serwera pod znany adres – przy zmianie klucza klient przerwie połączenie.
 
 **4. Usunięcie odcisku:**
 
@@ -50,8 +50,8 @@ Polecenie wykonuje się na serwerze, wynik wraca do lokalnego terminala, sesja k
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 cat >> ~/.ssh/config <<'EOF'
 Host ja
-    HostName localhost
-    User anna
+HostName localhost
+User anna
 EOF
 chmod 600 ~/.ssh/config
 ssh ja
@@ -65,9 +65,7 @@ Bez uprawnień `600` klient odmówi użycia pliku (`Bad owner or permissions`).
 ssh -v ja
 ```
 
-W wyjściu szukamy: `Reading configuration data /home/anna/.ssh/config` (plik konfiguracyjny),
-`Connecting to localhost ... port 22` (port), `Authentications that can continue: publickey,password`
-(metody uwierzytelnienia).
+W wyjściu szukamy: `Reading configuration data /home/anna/.ssh/config` (plik konfiguracyjny), `Connecting to localhost ... port 22` (port), `Authentications that can continue: publickey,password` (metody uwierzytelnienia).
 
 **8. Generowanie pary kluczy:**
 
@@ -76,8 +74,7 @@ ssh-keygen -t ed25519 -C "anna"
 ls -l ~/.ssh/id_ed25519 ~/.ssh/id_ed25519.pub
 ```
 
-Koledze wolno wysłać tylko `id_ed25519.pub` (klucz publiczny – „kłódkę”); klucz prywatny
-`id_ed25519` nigdy nie opuszcza naszego komputera.
+Koledze wolno wysłać tylko `id_ed25519.pub` (klucz publiczny – „kłódkę”); klucz prywatny `id_ed25519` nigdy nie opuszcza naszego komputera.
 
 **9. Wgranie klucza:**
 
@@ -102,10 +99,7 @@ chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-Przy `644`/`755` (brak zapisu dla grupy i innych) logowanie kluczem zwykle nadal działa –
-`StrictModes` odrzuca dopiero pliki i katalogi **zapisywalne** dla grupy lub innych (np. `775`
-na katalogu domowym albo `.ssh`; wtedy w dzienniku `journalctl -u sshd` pojawia się
-`Authentication refused: bad ownership or modes`). Dobre praktyki to mimo wszystko `700`/`600`.
+Przy `644`/`755` (brak zapisu dla grupy i innych) logowanie kluczem zwykle nadal działa – `StrictModes` odrzuca dopiero pliki i katalogi **zapisywalne** dla grupy lub innych (np. `775` na katalogu domowym albo `.ssh`; wtedy w dzienniku `journalctl -u sshd` pojawia się `Authentication refused: bad ownership or modes`). Dobre praktyki to mimo wszystko `700`/`600`.
 
 **11. Plik konfiguracyjny serwera:**
 
@@ -119,8 +113,7 @@ sudo sshd -t
 sudo systemctl reload sshd
 ```
 
-`sshd -t` bez komunikatu = składnia poprawna; `reload` nie zrywa istniejących sesji. Test
-w drugim oknie: `ssh anna@localhost`.
+`sshd -t` bez komunikatu = składnia poprawna; `reload` nie zrywa istniejących sesji. Test w drugim oknie: `ssh anna@localhost`.
 
 **12. Efektywna konfiguracja:**
 
@@ -174,8 +167,7 @@ rsync -avz ~/cwiczenia-scp/ anna@localhost:kopia/
 rsync -avz ~/cwiczenia-scp/ anna@localhost:kopia/
 ```
 
-Drugi `rsync` nie przesłał plików, bo porównuje obie strony i kopiuje tylko różnice – a nic się
-nie zmieniło.
+Drugi `rsync` nie przesłał plików, bo porównuje obie strony i kopiuje tylko różnice – a nic się nie zmieniło.
 
 **16. Sesja sftp:**
 
@@ -202,15 +194,11 @@ rsync -avz --delete -n ~/cwiczenia-scp/ anna@localhost:kopia/   # próba na such
 rsync -avz --delete ~/cwiczenia-scp/ anna@localhost:kopia/
 ```
 
-Z `-n` rsync tylko wypisuje plan (w tym `deleting c.txt`); bez `-n` wykonuje go naprawdę –
-kopia staje się wiernym lustrem źródła.
+Z `-n` rsync tylko wypisuje plan (w tym `deleting c.txt`); bez `-n` wykonuje go naprawdę – kopia staje się wiernym lustrem źródła.
 
 **18. (Dla chętnych) RDP, VNC i tunel:**
 
-xrdp wybierzemy, gdy z Windows potrzebujemy pełnego pulpitu graficznego serwera („Podłączanie
-pulpitu zdalnego”, każdy dostaje własną sesję, ruch szyfrowany). VNC – gdy klient to Linux/macOS
-albo narzędzia firmowe używają VNC. Portu 5901 nie wystawiamy, bo VNC sam w sobie nie szyfruje
-ruchu ani hasła. Tunel:
+xrdp wybierzemy, gdy z Windows potrzebujemy pełnego pulpitu graficznego serwera („Podłączanie pulpitu zdalnego”, każdy dostaje własną sesję, ruch szyfrowany). VNC – gdy klient to Linux/macOS albo narzędzia firmowe używają VNC. Portu 5901 nie wystawiamy, bo VNC sam w sobie nie szyfruje ruchu ani hasła. Tunel:
 
 ```bash
 ssh -L 5901:localhost:5901 anna@serwer

@@ -1,3 +1,5 @@
+![](../../../grafiki/4-03-rozwiazania.png)
+
 # Rozwiązania – Samba
 
 ## 1. Instalacja i konfiguracja domyślna
@@ -9,6 +11,8 @@ grep '^\[' /etc/samba/smb.conf
 
 Główna konfiguracja to `/etc/samba/smb.conf`; domyślnie zawiera sekcje `[global]`, `[homes]` (katalogi domowe) i `[printers]` (drukarki).
 
+---
+
 ## 2. Udział publiczny
 
 ```bash
@@ -19,11 +23,11 @@ Dopisujemy do `/etc/samba/smb.conf`:
 
 ```text
 [publiczny]
-        path = /srv/publiczny
-        comment = Udzial cwiczeniowy
-        browsable = yes
-        writable = yes
-        valid users = anna
+    path = /srv/publiczny
+    comment = Udzial cwiczeniowy
+    browsable = yes
+    writable = yes
+    valid users = anna
 ```
 
 ```bash
@@ -31,6 +35,8 @@ testparm
 ```
 
 `testparm` sprawdza składnię i przy poprawnym pliku wypisuje m.in. `Loaded services file OK.`, a po naciśnięciu Enter — zinterpretowaną konfigurację.
+
+---
 
 ## 3. Użytkownik Samby
 
@@ -41,6 +47,8 @@ sudo smbpasswd -a anna
 
 Samba trzyma własną bazę haseł w innym formacie niż `/etc/shadow` — konto systemowe daje tożsamość i uprawnienia plikowe, ale logowanie SMB weryfikuje się hasłem z bazy Samby, które trzeba założyć `smbpasswd -a`.
 
+---
+
 ## 4. Uruchomienie usługi
 
 ```bash
@@ -49,6 +57,8 @@ sudo ss -tlnp | grep smbd
 ```
 
 `smbd` nasłuchuje na porcie `445/tcp` (oraz historycznym 139, jeśli włączony jest NetBIOS).
+
+---
 
 ## 5. Zapora
 
@@ -61,6 +71,8 @@ cat /usr/lib/firewalld/services/samba.xml
 
 Usługa `samba` otwiera porty 445/tcp i 139/tcp oraz 137-138/udp (NetBIOS).
 
+---
+
 ## 6. SELinux
 
 ```bash
@@ -70,6 +82,8 @@ ls -Zd /srv/publiczny
 ```
 
 Bez typu `samba_share_t` polityka SELinux zabroni demonowi `smbd` czytać i zapisywać pliki — udział byłby widoczny, ale każda operacja kończyłaby się odmową dostępu (i wpisem AVC w dzienniku audytu).
+
+---
 
 ## 7. Test z klienta
 
@@ -92,6 +106,8 @@ ls -l /srv/publiczny/hostname.txt
 ```
 
 Plik należy do użytkownika `anna` — Samba wykonuje operacje plikowe z tożsamością zalogowanego konta systemowego.
+
+---
 
 ## 8. Diagnoza „odmowy dostępu” przy zapisie
 

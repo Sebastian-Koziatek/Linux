@@ -1,6 +1,8 @@
-# Moduł 12. Konfiguracja sieci – rozwiązania
+![](../../../grafiki/3-04-rozwiazania.png)
 
-**1. Przegląd interfejsów:**
+# Rozwiązania – Konfiguracja sieci
+
+> **1. Przegląd interfejsów:**
 
 ```bash
 ip -br a
@@ -10,8 +12,7 @@ Przykładowo: interfejs `ens192`, stan `UP`, adres `192.168.10.20/24`. (`lo` to 
 
 **2. Adres sieci i część hosta:**
 
-Dla `192.168.10.20/24` adres sieci to `192.168.10.0/24` (pierwsze trzy liczby – „ulica”),
-a `20` to część hosta („numer domu”). Przy masce /24 dostępne są adresy .1–.254, czyli 254 maszyny.
+Dla `192.168.10.20/24` adres sieci to `192.168.10.0/24` (pierwsze trzy liczby – „ulica”), a `20` to część hosta („numer domu”). Przy masce /24 dostępne są adresy .1–.254, czyli 254 maszyny.
 
 **3. Brama domyślna:**
 
@@ -19,8 +20,7 @@ a `20` to część hosta („numer domu”). Przy masce /24 dostępne są adresy
 ip route
 ```
 
-Wiersz `default via 192.168.10.1 ...` wskazuje bramę. Brama to router, któremu maszyna oddaje
-cały ruch kierowany poza sieć lokalną (np. do internetu).
+Wiersz `default via 192.168.10.1 ...` wskazuje bramę. Brama to router, któremu maszyna oddaje cały ruch kierowany poza sieć lokalną (np. do internetu).
 
 **4. Adres MAC:**
 
@@ -35,9 +35,7 @@ ip -br link             # kolumna z adresem MAC
 ip neigh
 ```
 
-Wpis (np. `192.168.10.1 ... lladdr 70:4f:57:12:ab:cd REACHABLE`) oznacza, że system ustalił,
-jaki fizyczny adres karty (MAC) odpowiada danemu adresowi IP w sieci lokalnej – bez tego nie
-wysłałby do niego ramki.
+Wpis (np. `192.168.10.1 ... lladdr 70:4f:57:12:ab:cd REACHABLE`) oznacza, że system ustalił, jaki fizyczny adres karty (MAC) odpowiada danemu adresowi IP w sieci lokalnej – bez tego nie wysłałby do niego ramki.
 
 **6. Adres tymczasowy:**
 
@@ -47,8 +45,7 @@ ip -br a
 sudo ip addr del 192.168.77.5/24 dev ens192
 ```
 
-Polecenie `ip` zmienia tylko bieżący stan jądra; przy starcie systemu konfigurację ustawia
-NetworkManager z profili – tymczasowy adres nie jest w żadnym profilu, więc znika.
+Polecenie `ip` zmienia tylko bieżący stan jądra; przy starcie systemu konfigurację ustawia NetworkManager z profili – tymczasowy adres nie jest w żadnym profilu, więc znika.
 
 **7. ifconfig i następcy:**
 
@@ -66,8 +63,7 @@ nmcli device status
 nmcli connection show
 ```
 
-Urządzenie to fizyczny interfejs (np. `ens192`); połączenie to zapisany profil ustawień (adres,
-brama, DNS), który można przypisać do urządzenia – jedno urządzenie może mieć kilka profili.
+Urządzenie to fizyczny interfejs (np. `ens192`); połączenie to zapisany profil ustawień (adres, brama, DNS), który można przypisać do urządzenia – jedno urządzenie może mieć kilka profili.
 
 **9. Metoda IPv4 profilu:**
 
@@ -84,13 +80,13 @@ nmcli connection show ens192 | grep ipv4.method
 ip -br a; ip route
 # ustawienie (przykładowe wartości – podstaw własne)
 sudo nmcli connection modify ens192 ipv4.method manual \
-    ipv4.addresses 192.168.10.20/24 ipv4.gateway 192.168.10.1 \
-    ipv4.dns "192.168.10.1 8.8.8.8"
+ipv4.addresses 192.168.10.20/24 ipv4.gateway 192.168.10.1 \
+ipv4.dns "192.168.10.1 8.8.8.8"
 sudo nmcli connection up ens192
 ip -br a; cat /etc/resolv.conf
 # powrót do DHCP
 sudo nmcli connection modify ens192 ipv4.method auto \
-    ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
 sudo nmcli connection up ens192
 ```
 
@@ -103,14 +99,11 @@ sudo cat /etc/NetworkManager/system-connections/ens192.nmconnection
 ls -l /etc/NetworkManager/system-connections/
 ```
 
-Serwery DNS są w sekcji `[ipv4]`, klucz `dns=192.168.10.1;8.8.8.8;`. Plik ma uprawnienia `600`
-(tylko root), bo profile mogą zawierać hasła (np. do sieci Wi-Fi).
+Serwery DNS są w sekcji `[ipv4]`, klucz `dns=192.168.10.1;8.8.8.8;`. Plik ma uprawnienia `600` (tylko root), bo profile mogą zawierać hasła (np. do sieci Wi-Fi).
 
 **12. resolv.conf i ręczna edycja profili:**
 
-`/etc/resolv.conf` jest generowany przez NetworkManager – ręczne zmiany zostaną nadpisane przy
-najbliższym podniesieniu połączenia. Poprawnie: `sudo nmcli con mod ens192 ipv4.dns "…"` +
-`sudo nmcli con up ens192`. Po ręcznej edycji pliku `.nmconnection`:
+`/etc/resolv.conf` jest generowany przez NetworkManager – ręczne zmiany zostaną nadpisane przy najbliższym podniesieniu połączenia. Poprawnie: `sudo nmcli con mod ens192 ipv4.dns "…"` + `sudo nmcli con up ens192`. Po ręcznej edycji pliku `.nmconnection`:
 
 ```bash
 sudo nmcli connection reload
@@ -125,8 +118,7 @@ ping -c 2 mojserwer
 sudo sed -i '/mojserwer/d' /etc/hosts
 ```
 
-Działa, bo system (zgodnie z `/etc/nsswitch.conf`) sprawdza plik `/etc/hosts` **przed**
-zapytaniem DNS.
+Działa, bo system (zgodnie z `/etc/nsswitch.conf`) sprawdza plik `/etc/hosts` **przed** zapytaniem DNS.
 
 **14. Nazwa komputera:**
 
@@ -165,8 +157,7 @@ sudo ss -tulpn
 nc -zv localhost 22
 ```
 
-Na porcie 22 nasłuchuje `sshd`. `sudo` jest potrzebne, by `ss` pokazał nazwy procesów;
-`nc -zv` potwierdza: `Connected to localhost:22`.
+Na porcie 22 nasłuchuje `sshd`. `sudo` jest potrzebne, by `ss` pokazał nazwy procesów; `nc -zv` potwierdza: `Connected to localhost:22`.
 
 **18. Skan własnej maszyny:**
 
@@ -174,7 +165,4 @@ Na porcie 22 nasłuchuje `sshd`. `sudo` jest potrzebne, by `ss` pokazał nazwy p
 nmap localhost
 ```
 
-Lista `open` powinna pokrywać się z portami z `ss -tulpn` (dla adresów dostępnych z zewnątrz;
-usługi na `127.0.0.1` widać tylko przy skanie localhost). Cudzych adresów nie skanujemy, bo skan
-portów bez zgody właściciela jest traktowany jak rekonesans przed atakiem – może naruszać prawo
-i regulaminy sieci.
+Lista `open` powinna pokrywać się z portami z `ss -tulpn` (dla adresów dostępnych z zewnątrz; usługi na `127.0.0.1` widać tylko przy skanie localhost). Cudzych adresów nie skanujemy, bo skan portów bez zgody właściciela jest traktowany jak rekonesans przed atakiem – może naruszać prawo i regulaminy sieci.

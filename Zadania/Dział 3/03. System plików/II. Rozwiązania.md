@@ -1,3 +1,5 @@
+![](../../../grafiki/3-03-rozwiazania.png)
+
 # Rozwiązania – System plików
 
 ## 1. Przegląd urządzeń
@@ -8,6 +10,8 @@ lsblk -f
 
 Partycje bez wartości w kolumnie `FSTYPE` nie mają systemu plików – powinny to być `sdb1` i `sdb2`.
 
+---
+
 ## 2. XFS na /dev/sdb1
 
 ```bash
@@ -16,11 +20,15 @@ sudo mkfs.xfs -L dane /dev/sdb1
 
 Opcja `-L` nadaje etykietę; jeśli partycja miała już system plików, trzeba dodać `-f`.
 
+---
+
 ## 3. ext4 na /dev/sdb2
 
 ```bash
 sudo mkfs.ext4 -L archiwum /dev/sdb2
 ```
+
+---
 
 ## 4. Odczyt UUID
 
@@ -30,6 +38,8 @@ lsblk -f /dev/sdb
 ```
 
 Oba polecenia pokazują UUID; `blkid` dodatkowo PARTUUID i typ.
+
+---
 
 ## 5. Montowanie po etykiecie i UUID
 
@@ -42,6 +52,8 @@ findmnt /mnt/dane /mnt/archiwum
 
 Etykieta i UUID są odporne na zmianę nazwy urządzenia (`sdb` → `sdc`).
 
+---
+
 ## 6. Miejsce i i-węzły
 
 ```bash
@@ -50,6 +62,8 @@ df -i /mnt/dane
 ```
 
 `df -h` pokazuje bloki, `df -i` i-węzły – oba zasoby mogą się skończyć niezależnie.
+
+---
 
 ## 7. Rozmiar katalogu
 
@@ -60,6 +74,8 @@ sudo du -sh /mnt/dane/projekty
 ```
 
 `du -s` sumuje, `-h` podaje czytelne jednostki.
+
+---
 
 ## 8. „Target is busy”
 
@@ -73,6 +89,8 @@ sudo umount /mnt/archiwum          # teraz się uda
 
 Odmontowanie wymaga, by żaden proces nie używał systemu plików – także jako bieżącego katalogu.
 
+---
+
 ## 9. e2fsck na ext4
 
 ```bash
@@ -82,6 +100,8 @@ sudo e2fsck -f /dev/sdb2
 
 Na zamontowanym systemie plików `fsck` mógłby naprawiać struktury, które jądro właśnie zmienia – to prosta droga do uszkodzenia danych.
 
+---
+
 ## 10. Sprawdzenie XFS bez zmian
 
 ```bash
@@ -90,6 +110,8 @@ sudo xfs_repair -n /dev/sdb1
 ```
 
 `-n` (no modify) tylko raportuje problemy. Pamiętaj: `fsck.xfs` nic nie robi – dla XFS zawsze `xfs_repair`.
+
+---
 
 ## 11. Zmiana etykiet
 
@@ -102,6 +124,8 @@ sudo xfs_admin -L kopie-xfs /dev/sdb1
 sudo xfs_admin -l /dev/sdb1            # kontrola
 ```
 
+---
+
 ## 12. Remount w tryb tylko do odczytu
 
 ```bash
@@ -113,6 +137,8 @@ sudo mount -o remount,rw /mnt/dane
 
 `remount` zmienia opcje bez przerywania montowania.
 
+---
+
 ## 13. Parametry systemów plików
 
 ```bash
@@ -121,6 +147,8 @@ xfs_info /mnt/dane
 ```
 
 W `tune2fs -l`: `Block size: 4096`, `Inode count`, `Filesystem state: clean`. W `xfs_info` wielkość bloku to `bsize`, liczba bloków `blocks`; XFS tworzy i-węzły dynamicznie.
+
+---
 
 ## 14. Wpis w fstab
 
@@ -133,6 +161,8 @@ sudo systemctl daemon-reload
 ```
 
 `mount -a` montuje wpisy z fstab bez restartu, `findmnt --verify` sprawdza składnię. `nofail` sprawia, że brak dysku nie zatrzyma startu systemu w trybie awaryjnym.
+
+---
 
 ## 15. Symulacja literówki
 
@@ -148,6 +178,8 @@ sudo findmnt --verify
 
 Weryfikator wskazuje nieistniejące źródło. Przywróć poprawny UUID i ponownie uruchom `findmnt --verify` aż do `Success`.
 
+---
+
 ## 16. Montowanie ISO
 
 ```bash
@@ -159,6 +191,8 @@ sudo umount /mnt/iso
 
 Opcja `loop` tworzy urządzenie pętli z pliku; ISO montuje się zawsze tylko do odczytu.
 
+---
+
 ## 17. Drzewo katalogów
 
 ```bash
@@ -168,6 +202,8 @@ which sshd || ls /usr/sbin/sshd  # c) program: /usr/sbin
 ```
 
 d) Własne skrypty administracyjne: `/usr/local/bin` – katalog poza kontrolą menedżera pakietów, obecny w `PATH`.
+
+---
 
 ## 18. Sprzątanie
 
