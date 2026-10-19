@@ -116,7 +116,7 @@ Zostawiamy tylko zrzuty rzeczywistego interfejsu graficznego (instalator, gparte
 PuTTY, ustawienia sieci w GNOME, pulpity środowisk graficznych). Zrzuty terminala,
 tabelki z PowerPointa, loga, memy i obrazki stockowe **zastępujemy** grafikami z systemu
 albo blokami tekstu. Zachowane zrzuty zmieniają nazwę na nową konwencję
-(`git mv grafiki/1_05_1_instalacja3.png grafiki/1-01-instalator-siec.png`).
+(`git mv grafiki/1_05_1_instalacja3.png grafiki/1-01-instalator-03-podsumowanie.png`).
 
 ### Dostępne komponenty (`_styl.css`)
 Szkielet pliku:
