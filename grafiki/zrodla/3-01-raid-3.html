@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>RAID 3 – parzystość bajtowa</h1><span class="pod">dane bajt po bajcie, cała parzystość na jednym dedykowanym dysku</span></div>
+  <div class="dyski">
+    <div class="dysk"><div class="korpus"><div class="blok a">a1</div><div class="blok b">b1</div></div><div class="nazwa">Dysk 1<small>bajty danych</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok a">a2</div><div class="blok b">b2</div></div><div class="nazwa">Dysk 2<small>bajty danych</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok a">a3</div><div class="blok b">b3</div></div><div class="nazwa">Dysk 3<small>bajty danych</small></div></div>
+    <div class="dysk" style="margin-left:40px"><div class="korpus"><div class="blok p">ap</div><div class="blok p">bp</div></div><div class="nazwa">Dysk 4<small>tylko parzystość</small></div></div>
+  </div>
+  <div class="notatka zle">Paski tak drobne jak bajt angażują <b>wszystkie dyski w każdej operacji</b>, a każdy zapis musi dodatkowo zaktualizować dysk 4 – dedykowany dysk parzystości jest wąskim gardłem macierzy.</div>
+  <div class="podpis">Minimum 3 dyski, pojemność (N − 1) × dysk, przeżywa 1 awarię. Dobry tylko do jednego dużego, ciągłego transferu (np. strumień wideo) – dziś praktycznie nieużywany, zastąpiony przez RAID 5.</div>
+</div>
+</body></html>

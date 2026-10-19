@@ -2,25 +2,30 @@
 <html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
 <body>
 <div id="grafika" class="grafika">
-  <div class="tytul"><h1>RAID 0 – paski</h1><span class="pod">dane dzielone na kawałki i rozkładane na przemian na wszystkie dyski</span></div>
-  <div class="karty">
+  <div class="tytul"><h1>RAID 0 – paskowanie</h1><span class="pod">plik cięty na bloki, bloki na przemian na wszystkie dyski</span></div>
+  <div class="wiersz">
+    <div class="karta" style="flex:0 0 230px">
+      <h3>Plik</h3>
+      <p class="male" style="margin:4px 0 12px">pocięty na bloki (paski)</p>
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        <span style="background:#fde3b3;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12.5px">A1</span>
+        <span style="background:#cdeae6;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12.5px">A2</span>
+        <span style="background:#fde3b3;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12.5px">A3</span>
+        <span style="background:#cdeae6;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12.5px">A4</span>
+        <span style="background:#fde3b3;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12.5px">A5</span>
+        <span style="background:#cdeae6;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12.5px">A6</span>
+      </div>
+    </div>
+    <div class="strzalka"></div>
     <div class="karta">
-      <h3>Normalna praca</h3>
-      <div class="dyski" style="margin-top:10px">
+      <h3 style="text-align:center">Zapis na przemian – „rozdawanie kart”</h3>
+      <div class="dyski" style="margin-top:12px">
         <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok a">A3</div><div class="blok a">A5</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 1<small>1 TB</small></div></div>
         <div class="dysk"><div class="korpus"><div class="blok b">A2</div><div class="blok b">A4</div><div class="blok b">A6</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 2<small>1 TB</small></div></div>
       </div>
-      <p style="margin-top:12px;text-align:center">Pojemność do użycia: <b>2 TB</b> (suma), odczyt i zapis <b>około 2× szybciej</b></p>
-    </div>
-    <div class="karta zle">
-      <h3>Awaria jednego dysku</h3>
-      <div class="dyski" style="margin-top:10px">
-        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A1</div><div class="blok x">A3</div><div class="blok x">A5</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 1<small>uszkodzony</small></div></div>
-        <div class="dysk"><div class="korpus"><div class="blok x">A2</div><div class="blok x">A4</div><div class="blok x">A6</div><div class="blok wolny">…</div></div><div class="nazwa">Dysk 2<small>sprawny, ale bezużyteczny</small></div></div>
-      </div>
-      <p style="margin-top:12px;text-align:center">Każdy plik miał kawałki na obu dyskach – <b>wszystkie dane stracone</b></p>
+      <p style="margin-top:12px;text-align:center">Pojemność: <b>2 TB</b> (suma), odczyt i zapis <b>około 2× szybciej</b> – dyski pracują równolegle</p>
     </div>
   </div>
-  <div class="podpis">RAID 0 daje pojemność i szybkość, ale <b>zero odporności</b>: im więcej dysków, tym większe ryzyko, że któryś padnie. Tylko do danych tymczasowych, które da się odtworzyć.</div>
+  <div class="podpis">Żaden blok nie jest zapisywany podwójnie – nic się nie marnuje, ale też nic nie jest chronione. Każdy plik ma kawałki na <b>wszystkich</b> dyskach macierzy.</div>
 </div>
 </body></html>

@@ -16,12 +16,12 @@
     <div class="karta ok">
       <h3>Para 2 – RAID 1 (lustro)</h3>
       <div class="dyski" style="margin-top:10px">
-        <div class="dysk"><div class="korpus"><div class="blok b">A2</div><div class="blok b">A4</div><div class="blok b">A6</div></div><div class="nazwa">Dysk 3<small>1 TB</small></div></div>
-        <div class="dysk"><div class="korpus"><div class="blok b">A2</div><div class="blok b">A4</div><div class="blok b">A6</div></div><div class="nazwa">Dysk 4<small>1 TB</small></div></div>
+        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A2</div><div class="blok x">A4</div><div class="blok x">A6</div></div><div class="nazwa">Dysk 3<small>uszkodzony</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok b">A2</div><div class="blok b">A4</div><div class="blok b">A6</div></div><div class="nazwa">Dysk 4<small>kopia – działa</small></div></div>
       </div>
     </div>
   </div>
-  <div class="notatka ok">4 dyski po 1 TB → <b>2 TB</b> do użycia. Przeżywa awarię <b>po jednym dysku w każdej parze</b> (tu: Dysk 1 padł, macierz pracuje). Padnięcie obu dysków tej samej pary = utrata danych.</div>
+  <div class="notatka ok">4 dyski po 1 TB → <b>2 TB</b> do użycia. Awaria dotyka tylko własnej pary: tu padły <b>dwa dyski naraz</b> (po jednym w każdej parze), a macierz nadal pracuje. Utratą danych grozi dopiero padnięcie <b>obu dysków tej samej pary</b>.</div>
   <div class="podpis">Szybki zapis i odczyt bez liczenia parzystości, krótka odbudowa (kopiowanie z drugiego dysku pary). Cena: połowa pojemności. Typowy wybór pod bazy danych i maszyny wirtualne.</div>
 </div>
 </body></html>

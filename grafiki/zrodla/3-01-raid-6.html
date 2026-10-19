@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>RAID 6 – podwójna parzystość</h1><span class="pod">w każdym rzędzie dwie niezależne sumy kontrolne: P i Q</span></div>
+  <div class="dyski">
+    <div class="dysk"><div class="korpus"><div class="blok a">A1</div><div class="blok b">B1</div><div class="blok p">Cp</div></div><div class="nazwa">Dysk 1<small>1 TB</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok a">A2</div><div class="blok p">Bp</div><div class="blok p">Cq</div></div><div class="nazwa">Dysk 2<small>1 TB</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok p">Ap</div><div class="blok p">Bq</div><div class="blok b">C1</div></div><div class="nazwa">Dysk 3<small>1 TB</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok p">Aq</div><div class="blok b">B2</div><div class="blok b">C2</div></div><div class="nazwa">Dysk 4<small>1 TB</small></div></div>
+  </div>
+  <div class="notatka ok">P to zwykła parzystość XOR (jak w RAID 5), Q – druga suma liczona innym wzorem. Dwa niezależne „równania” pozwalają odtworzyć zawartość <b>dowolnych dwóch dysków naraz</b> – macierz przeżyje drugą awarię nawet podczas odbudowy po pierwszej.</div>
+  <div class="podpis">Minimum 4 dyski, pojemność (N − 2) × dysk: tu 4 × 1 TB → <b>2 TB</b> do użycia. Bloki P i Q wędrują po dyskach, żeby żaden nie był wąskim gardłem. Cena: zapisy wolniejsze niż w RAID 5 (dwie sumy do przeliczenia).</div>
+</div>
+</body></html>

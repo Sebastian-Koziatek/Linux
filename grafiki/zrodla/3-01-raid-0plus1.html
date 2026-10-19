@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>RAID 0+1 – lustro pasków</h1><span class="pod">najpierw paski (RAID 0) w dwie połowy, potem lustro połówek (RAID 1)</span></div>
+  <div class="karta ciemna" style="padding:12px 18px;text-align:center"><h3 style="margin:0">RAID 1 – lustro: Połowa 2 jest kopią Połowy 1</h3></div>
+  <div class="strzalka dol"></div>
+  <div class="karty">
+    <div class="karta zle">
+      <h3>Połowa 1 – RAID 0 (paski)</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A1</div><div class="blok x">A3</div><div class="blok x">A5</div></div><div class="nazwa">Dysk 1<small>uszkodzony</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok x">A2</div><div class="blok x">A4</div><div class="blok x">A6</div></div><div class="nazwa">Dysk 2<small>sprawny, ale połowa martwa</small></div></div>
+      </div>
+    </div>
+    <div class="karta zle">
+      <h3>Połowa 2 – RAID 0 (paski)</h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok x">A1</div><div class="blok x">A3</div><div class="blok x">A5</div></div><div class="nazwa">Dysk 3<small>sprawny, ale połowa martwa</small></div></div>
+        <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A2</div><div class="blok x">A4</div><div class="blok x">A6</div></div><div class="nazwa">Dysk 4<small>uszkodzony</small></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="notatka zle">Awaria <b>jednego</b> dysku wyłącza całą jego połowę (paski bez jednego dysku są bezużyteczne) – zapasu już nie ma. Druga awaria w drugiej połowie – jak tu, dyski 1 i 4 – to <b>utrata wszystkich danych</b>. Te same dwie awarie RAID 10 by przeżył.</div>
+  <div class="podpis">Pojemność jak w RAID 10 (połowa), odporność gorsza, odbudowa dłuższa (przepisanie całej połowy). Dlatego w praktyce używa się wyłącznie RAID 1+0, czyli „RAID 10”.</div>
+</div>
+</body></html>

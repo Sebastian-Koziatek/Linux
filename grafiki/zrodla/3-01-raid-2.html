@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>RAID 2 – bity i kod Hamminga</h1><span class="pod">dane rozkładane bit po bicie, kod korekcyjny na osobnych dyskach</span></div>
+  <div class="wiersz">
+    <div class="karta">
+      <h3>4 dyski danych <span class="plakietka">bit po bicie</span></h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok a">b1</div><div class="blok b">b5</div></div><div class="nazwa">Dysk 1<small>dane</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">b2</div><div class="blok b">b6</div></div><div class="nazwa">Dysk 2<small>dane</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">b3</div><div class="blok b">b7</div></div><div class="nazwa">Dysk 3<small>dane</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok a">b4</div><div class="blok b">b8</div></div><div class="nazwa">Dysk 4<small>dane</small></div></div>
+      </div>
+    </div>
+    <div class="karta" style="flex:0 0 420px">
+      <h3>3 dyski ECC <span class="plakietka bursztyn">kod Hamminga</span></h3>
+      <div class="dyski" style="margin-top:10px">
+        <div class="dysk"><div class="korpus"><div class="blok p">h1</div><div class="blok p">h4</div></div><div class="nazwa">Dysk 5<small>ECC</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok p">h2</div><div class="blok p">h5</div></div><div class="nazwa">Dysk 6<small>ECC</small></div></div>
+        <div class="dysk"><div class="korpus"><div class="blok p">h3</div><div class="blok p">h6</div></div><div class="nazwa">Dysk 7<small>ECC</small></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="notatka">Dla każdych 4 bitów danych (b1–b4) kod Hamminga potrzebuje 3 bitów kontrolnych (h1–h3) – potrafi wskazać i <b>naprawić</b> przekłamany bit. Koszt: w układzie 4+3 prawie połowa dysków idzie na kod.</div>
+  <div class="podpis">Poziom historyczny: dziś każdy dysk ma własny, wbudowany kod ECC przy każdym sektorze, więc RAID 2 nie daje nic ponad prostszą parzystość (RAID 5/6). Nie wspiera go ani <code>mdadm</code>, ani współczesne kontrolery.</div>
+</div>
+</body></html>

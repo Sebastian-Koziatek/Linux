@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Struktura LVM</h1><span class="pod">od dysków, przez wspólną pulę, do zamontowanych woluminów</span></div>
+
+  <div class="dyski">
+    <div class="dysk"><div class="korpus"><div class="blok wolny">40 GB</div></div><div class="nazwa"><code>/dev/sdb</code><small>cały dysk</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok wolny">60 GB</div></div><div class="nazwa"><code>/dev/sdc1</code><small>partycja</small></div></div>
+  </div>
+
+  <div class="kolumna" style="align-items:center;gap:6px;margin:8px 0"><div class="strzalka dol"></div><code>pvcreate /dev/sdb /dev/sdc1</code></div>
+
+  <div class="karty">
+    <div class="karta" style="text-align:center"><h3>PV <code>/dev/sdb</code></h3><p>wolumin fizyczny, 40 GB</p></div>
+    <div class="karta" style="text-align:center"><h3>PV <code>/dev/sdc1</code></h3><p>wolumin fizyczny, 60 GB</p></div>
+  </div>
+
+  <div class="kolumna" style="align-items:center;gap:6px;margin:8px 0"><div class="strzalka dol"></div><code>vgcreate vg_dane /dev/sdb /dev/sdc1</code></div>
+
+  <div class="karta ciemna" style="text-align:center"><h3>VG <code>vg_dane</code> – wspólna pula 100 GB</h3><p>pojemność obu PV zsumowana i pocięta na kawałki (PE po 4 MiB)</p></div>
+
+  <div class="kolumna" style="align-items:center;gap:6px;margin:8px 0"><div class="strzalka dol"></div><code>lvcreate -n lv_www -L 20G vg_dane</code></div>
+
+  <div class="karty">
+    <div class="karta akcent" style="text-align:center"><h3>LV <code>lv_www</code></h3><p><code>/dev/vg_dane/lv_www</code><br>20 GB</p></div>
+    <div class="karta akcent" style="text-align:center"><h3>LV <code>lv_baza</code></h3><p><code>/dev/vg_dane/lv_baza</code><br>50 GB</p></div>
+    <div class="karta" style="text-align:center;border-style:dashed"><h3 style="color:var(--szary-4)">wolne</h3><p>30 GB w puli<br>na powiększanie i nowe LV</p></div>
+  </div>
+
+  <div class="kolumna" style="align-items:center;gap:6px;margin:8px 0"><div class="strzalka dol"></div><code>mkfs.xfs … &nbsp;+&nbsp; mount …</code></div>
+
+  <div class="karty">
+    <div class="karta ok" style="text-align:center"><p>XFS zamontowany w <code>/var/www</code></p></div>
+    <div class="karta ok" style="text-align:center"><p>XFS zamontowany w <code>/var/lib/pgsql</code></p></div>
+  </div>
+
+  <div class="podpis">Kilka dysków wpada do jednej puli, a z puli wycinasz woluminy – granice dysków przestają mieć znaczenie. Kolejność budowy jest zawsze ta sama: <b>pvcreate → vgcreate → lvcreate → mkfs → mount</b>.</div>
+</div>
+</body></html>

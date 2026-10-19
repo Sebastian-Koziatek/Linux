@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>RAID 0 – awaria dysku</h1><span class="pod">jeden dysk pada – giną wszystkie dane</span></div>
+  <div class="dyski">
+    <div class="dysk uszkodzony"><div class="korpus"><div class="blok x">A1</div><div class="blok x">A3</div><div class="blok x">A5</div></div><div class="nazwa">Dysk 1<small>uszkodzony</small></div></div>
+    <div class="dysk"><div class="korpus"><div class="blok x">A2</div><div class="blok x">A4</div><div class="blok x">A6</div></div><div class="nazwa">Dysk 2<small>sprawny, ale bezużyteczny</small></div></div>
+  </div>
+  <div class="notatka zle">Każdy plik miał kawałki na obu dyskach. Bloki A2, A4 i A6 fizycznie istnieją, ale bez A1, A3 i A5 z żadnego pliku nie da się nic złożyć – <b>utrata jednego dysku = utrata wszystkich danych</b>.</div>
+  <div class="podpis">Ryzyko rośnie z liczbą dysków: wystarczy, że padnie <b>którykolwiek</b> z nich. Dlatego RAID 0 nadaje się tylko na dane tymczasowe i odtwarzalne.</div>
+</div>
+</body></html>
