@@ -2,42 +2,60 @@
 
 # Zadania – Konfiguracja sieci
 
-> Zadania wykonuj na maszynie szkoleniowej. Tam, gdzie pojawia się nazwa interfejsu `ens192`, podstaw nazwę swojej karty (sprawdzisz ją w zadaniu 1). Adresy dopasuj do swojej sieci – chyba że zadanie wyraźnie każe użyć konkretnego adresu.
+***Pakiet ifconfig***
 
-> **Wskazówka:** jeśli pracujesz przez SSH, zadania zmieniające adres lub wyłączające interfejs (6, 10) wykonuj na konsoli maszyny – inaczej zerwiesz sobie połączenie.
+**1.** Wyświetl informacje o wszystkich interfejsach sieciowych
 
-**1.** Wyświetl skrócony przegląd wszystkich interfejsów sieciowych. Zapisz: jak nazywa się Twój interfejs, jaki ma stan i jaki adres IP z maską.
+**2.** Zadanie: Konfiguruj adres IP na interfejsie sieciowym
 
-**2.** Na podstawie wyniku z zadania 1 odpowiedz: jaki jest adres **sieci**, w której pracuje Twoja maszyna, a jaka część adresu to „numer domu” (część hosta)? Ile maszyn zmieści się w tej sieci przy masce /24?
+**3.** W jaki sposób wyłaczysz interfejs sieciowy?
 
-**3.** Wyświetl tablicę tras i wskaż adres bramy domyślnej. Wyjaśnij jednym zdaniem, do czego ta brama służy.
+**4.** Zadanie: Wyświetlaj adres MAC interfejsu sieciowego
+___
+***Pakiet IP***
 
-**4.** Sprawdź adres MAC swojego interfejsu dwoma różnymi poleceniami z rodziny `ip`.
+**1.** Zadanie: Sprawdź informacje o interfejsach sieciowych
 
-**5.** Wyświetl tablicę sąsiadów (ARP). Co oznacza wpis łączący adres IP z adresem MAC?
+**2.** Zadanie: Wyświetl tablicę routingu
 
-**6.** Dodaj do swojego interfejsu **tymczasowy** drugi adres `192.168.77.5/24`, sprawdź, że się pojawił, a następnie go usuń. Dlaczego taka zmiana nie przetrwa restartu systemu?
+**3.** Konfiguracja adresu IP na interfejsie sieciowym
 
-**7.** Sprawdź, czy w systemie dostępne jest polecenie `ifconfig`. Jeśli nie – z jakiego pakietu można je doinstalować i jakie nowe polecenia zastępują `ifconfig -a`, `route -n` i `netstat -tulpn`?
+**4.** W jaki sposób wyłączysz interfejs sieciowy?
+___
+***Ping***
 
-**8.** Wyświetl listę urządzeń widzianych przez NetworkManager oraz listę profili połączeń. Czym różni się „urządzenie” od „połączenia (profilu)”?
+**1.** Sprawdź, czy host o adresie IP 192.168.10.1 jest dostępny w sieci lokalnej
 
-**9.** Odczytaj z profilu swojego połączenia metodę przydzielania adresu IPv4 (`auto` czy `manual`) jednym poleceniem z `grep`.
+**2.** Ustal czas odpowiedzi hosta hosta o adresie IP 8.8.8.8 (DNS Google).
 
-**10.** Ustaw na swoim interfejsie **statyczną** konfigurację przez `nmcli`: obecny adres IP z maską, obecną bramę i serwery DNS `192.168.10.1` oraz `8.8.8.8` (adresy IP/bramy odczytaj wcześniej z systemu, żeby ich nie zmienić). Zastosuj profil i sprawdź wynik. Na koniec – jeśli maszyna wcześniej używała DHCP – przywróć metodę automatyczną.
+**3.** Wykonaj ping do hosta o adresie IP 10.123.0.2, ale ogranicz liczbę wysłanych pakietów do 5.
 
-**11.** Obejrzyj plik profilu swojego połączenia w `/etc/NetworkManager/system-connections/`. Wskaż sekcję i klucz, w którym zapisały się serwery DNS. Jakie uprawnienia ma ten plik i dlaczego?
+**4.** Wykonuj ping do hosta o adresie IP 10.123.0.2 w nieskończoność
 
-**12.** Wyjaśnij, dlaczego ręczna edycja `/etc/resolv.conf` to zły pomysł, i podaj poprawny sposób zmiany serwerów DNS. Jakie polecenia trzeba wykonać po **ręcznej** edycji pliku `.nmconnection`, żeby NetworkManager ją zastosował?
+**5.** Wykonuj ping do hosta o adresie IP 10.123.0.2 co 2 sekundy.
+___
+***nslookup***
 
-**13.** Dodaj do `/etc/hosts` wpis `127.0.0.1 mojserwer` i sprawdź pingiem, że nazwa działa. Dlaczego działa, mimo że żaden serwer DNS o niej nie słyszał? Na koniec usuń wpis.
+**1.** Wykonaj zapytanie DNS dla nazwy domenowej "www.example.com" i wyświetl adresy IP powiązane z tą nazwą.
 
-**14.** Sprawdź bieżącą nazwę komputera, zmień ją trwale na `stacja1.szkolenie.local`, zweryfikuj zmianę, a następnie przywróć poprzednią nazwę.
+**2.** Wykonaj zapytanie odwrotne DNS dla adresu IP 10.123.0.1 i wyświetl odpowiadającą mu nazwę domenową (jeśli istnieje).
 
-**15.** Przeprowadź pełną diagnostykę „od dołu do góry” swojej maszyny: (1) adres, (2) ping do bramy, (3) ping do `8.8.8.8`, (4) ping do `onet.pl`, (5) `curl -I` do dowolnej strony. Przy każdym kroku zapisz, co by oznaczało jego niepowodzenie.
+**3.** Wykonaj zapytanie DNS dla nazwy domenowej "www.example.com", korzystając z serwera DNS o adresie IP 8.8.8.8 (Google DNS).
 
-**16.** Ustal adres IP domeny `www.example.com` trzema różnymi narzędziami. Następnie zapytaj o tę samą nazwę bezpośrednio serwer `8.8.8.8` i sprawdź w wyjściu, który serwer DNS odpowiedział.
+**4.** Ustal rekord MX dla domeny "example.com", który określa serwer poczty odpowiedzialny za tę domenę.
 
-**17.** Wyświetl wszystkie porty TCP i UDP, na których nasłuchuje Twoja maszyna, razem z nazwami procesów. Który proces nasłuchuje na porcie 22? Potwierdź otwartość portu 22 osobnym testem pojedynczego portu (`nc`).
+**5.** Wyświetl informacje o serwerze DNS dla domeny "example.com", w tym adres IP serwera DNS.
+___
+***nmap***
 
-**18.** Przeskanuj **własną** maszynę nmapem (`localhost`) i porównaj listę otwartych portów z wynikiem zadania 17. Dlaczego nie wolno skanować adresów, które do Ciebie nie należą?
+**1.** Treść: Wykonaj szybkie skanowanie pingowe, aby sprawdzić dostępność hostów w sieci.
+
+**2.** Skanuj port 80 na hoście o adresie IP 10.123.0.2
+
+**3.** Skanuj porty od 1 do 1000 na hoście o adresie IP 10.123.0.2
+
+**3.** Wyświetl informacje o wersji i usługach działających na hoście o adresie IP 192.168.2.50.
+
+**4.** Próbuj wykryć system operacyjny hosta o adresie IP 172.16.0.1.
+
+**5.** Treść: Wykonaj szybkie skanowanie, aby zidentyfikować otwarte porty na hoście o adresie IP 192.168.0.2

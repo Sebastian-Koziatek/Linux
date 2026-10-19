@@ -2,84 +2,155 @@
 
 # Zadania – Praca z powłoką Bash
 
-> Zadania są ułożone w kolejności lekcji modułu 05. Wykonuj je jako zwykły użytkownik na maszynie szkoleniowej (RHEL 9/10 lub pochodna). Rozwiązania znajdziesz w pliku [II. Rozwiązania.md](II.%20Rozwiązania.md) – zaglądaj do nich dopiero po własnej próbie.
+> Zestawy odpowiadają kolejnym tematom modułu; numeracja zaczyna się od nowa w każdym z nich.
 
-## Podstawy pracy w terminalu (lekcja 1)
+## Praca na powłoce
 
-**1.** Sprawdź, jak nazywa się Twój użytkownik, jak nazywa się komputer i jaka powłoka Cię obsługuje.
+**1.** Sprawdź, w jakim katalogu aktualnie się znajdujesz.  
 
-**2.** Wpisz polecenie `lss` (celowo z literówką). Przeczytaj komunikat błędu i wyjaśnij własnymi słowami, kto go zgłasza i co oznacza.
+**2.** Wyświetl zawartość bieżącego katalogu.  
 
-**3.** Wyświetl 10 ostatnich poleceń z historii i powtórz jedno z nich, nie przepisując go ręcznie. Na koniec wyczyść ekran terminala na dwa różne sposoby.
+**3.** Utwórz nowy katalog o nazwie `szkolenie` w bieżącej lokalizacji.  
 
-> **Wskazówka:** historia ma numery, a strzałka w górę też się liczy.
+**4.** Przejdź do katalogu `szkolenie`.  
 
-## Poruszanie się po systemie (lekcja 2)
+**5.** Utwórz pięć plików: `plik1`, `plik2`, `plik3`, `plik4`, `plik5` – za pomocą jednego polecenia.  
 
-**4.** Sprawdź, w którym katalogu się znajdujesz, a potem przejdź kolejno: do `/var/log`, do katalogu nadrzędnego, do swojego katalogu domowego i z powrotem do poprzedniego katalogu – jednym poleceniem bez podawania ścieżki.
+**6.** Utwórz ukryty plik o nazwie `.ukryty.txt`.  
 
-**5.** Wyświetl zawartość katalogu `/etc` posortowaną od najnowszych plików, z czytelnymi rozmiarami.
+**7.** Wyświetl pełną zawartość katalogu, łącznie z plikami ukrytymi.  
 
-**6.** Wyświetl pełną zawartość swojego katalogu domowego, łącznie z plikami ukrytymi. Wyjaśnij, czym są wpisy `.` i `..` na początku listy.
+**8.** Zmień nazwę pliku `.ukryty.txt` na `plik6`.  
 
-**7.** Wykonaj `ls -l /etc/hostname` i opisz znaczenie każdej kolumny wyniku.
+**9.** Zapisz tekst `Szkolenie Linux` do pliku `plik3`.  
 
-**8.** Będąc w katalogu domowym, wyświetl zawartość `/var/log` raz ścieżką bezwzględną, a raz względną.
+**10.** Wyświetl zawartość pliku `plik3`.  
 
-## Operacje na plikach i katalogach (lekcja 3)
+**11.** Z aktualnej lokalizacji utwórz folder `/tmp/test`.  
 
-**9.** W katalogu domowym utwórz katalog `szkolenie`, a w nim – jednym poleceniem – pięć plików: `plik1` … `plik5`. Dodaj ukryty plik `.ukryty.txt`, upewnij się, że istnieje, a następnie zmień jego nazwę na `plik6`.
+**12.** Czym jest katalog `/tmp`? Jakie ma właściwości?  
 
-> **Wskazówka:** `touch` przyjmuje wiele argumentów, a nawiasy klamrowe generują listę.
+**13.** Skopiuj całą zawartość bieżącego katalogu do `/tmp/test`.  
 
-**10.** Zapisz tekst `Szkolenie Linux` do pliku `plik3`, a potem dopisz do niego drugi wiersz `RHEL 9` tak, żeby pierwszy nie zginął. Wyświetl zawartość pliku.
+**14.** Wyświetl zawartość katalogu `/tmp/test`.  
 
-**11.** Zapisz wynik polecenia `ls -l /etc` do pliku `spis-etc.txt` w katalogu `szkolenie`.
+**15.** Przejdź jeden katalog wyżej.  
 
-**12.** Utwórz katalog `/tmp/test` i skopiuj do niego całą zawartość katalogu `szkolenie`. Sprawdź wynik kopiowania.
+**16.** Wyświetl zawartość `/tmp`, pokazując tylko folder `test`.  
 
-**13.** Wyświetl z katalogu `szkolenie` tylko pliki pasujące do wzorca `plik` + jeden znak, a potem tylko pliki `plik1`, `plik3` i `plik5` – jednym poleceniem z listą znaków.
+**17.** Przejdź do katalogu `/tmp/test` i usuń wszystkie znajdujące się w nim pliki.  
 
-**14.** Usuń wszystkie pliki w `/tmp/test`, wróć poziom wyżej i usuń pusty katalog `test` poleceniem, które działa **tylko** na pustych katalogach. Wyjaśnij, dlaczego takie polecenie jest bezpieczniejsze niż `rm -r`.
+**18.** Wróć katalog wyżej.  
 
-**15.** Wyjaśnij (bez wykonywania!), co zrobiłoby polecenie `rm -rf *` uruchomione w katalogu domowym i dlaczego przed każdym `rm` ze wzorcem warto najpierw wykonać `ls` z tym samym wzorcem.
+**19.** Usuń pusty katalog `test`.  
 
-**16.** Zapisz historię swoich poleceń do pliku `historia.txt` w katalogu `szkolenie`.
+**20.** Przejdź do katalogu domowego użytkownika.  
 
-## Prompt (lekcja 4)
+**21.** Wyświetl historię ostatnio używanych poleceń.  
 
-**17.** Wyświetl obecny wzór znaku zachęty. Nazwij każdy element promptu `[anna@serwer ~]$` i powiedz, czym różni się zakończenie `$` od `#`.
+**22.** Zapisz historię poleceń do pliku `historia.txt`.
 
-**18.** Zmień prompt bieżącej sesji trzy razy: (a) z pełną ścieżką katalogu bieżącego, (b) dodatkowo z godziną, (c) w kolorze zielonym. Przetestuj, przechodząc do `/etc`, i zadbaj, żeby kolor nie „wyciekał” na wpisywane polecenia.
+## Prompt
 
-> **Wskazówka:** kody kolorów otaczaj sekwencjami `\[` i `\]`.
+**1.** Korzystając z pomocy jednek z poniższych stron, wygeneruj swój własny styl wiersza poleceń dla powłoki bash. 
+- https://scriptim.github.io/bash-prompt-generator/
+- https://bashrcgenerator.com/
+- https://ezprompt.net/
 
-**19.** Spraw, żeby Twój ulubiony wariant promptu był ustawiany automatycznie w każdej nowej powłoce. Wczytaj zmiany bez wylogowywania i sprawdź w nowym oknie terminala.
+**2.** Wygenerowany bash zapisz w pliku konfiguracyjnym .bashrc znajdującym się w twoim katalogu domowym użytkownika.
+```
+cd ~/.
+nano .bashrc
+```
 
-## Konfiguracja powłoki, zmienne i aliasy (lekcje 5–6)
+**3.** Załaduj pownonie powłowkę. 
+```
+bash
+```
 
-**20.** Utwórz zmienną `KURS` o wartości `Linux`, wyświetl ją, a następnie sprawdź, czy widzi ją powłoka potomna (`bash -c 'echo $KURS'`). Spraw, żeby ją widziała.
+## Aliasy
 
-**21.** Wyświetl wartość zmiennej `PATH` i wyjaśnij: w jakiej kolejności powłoka przeszukuje katalogi i dlaczego własny skrypt w katalogu bieżącym trzeba uruchamiać jako `./skrypt.sh`.
+**1.** **Utwórz tymczasowy alias `czas` do wyświetlenia aktualnej daty i godziny.**
 
-**22.** Utwórz tymczasowe aliasy: `czas` (data i godzina), `dom` (przejście do katalogu domowego z wyświetleniem ścieżki) oraz `dysk` (zajętość dysków w czytelnym formacie). Przetestuj je i sprawdź ich definicje.
+**2.** **Utwórz tymczasowy alias `etc` do szybkiego wyświetlenia zawartości katalogu `/etc`.**
 
-**23.** Alias `ll='ls -lah'` zapisz na stałe w odpowiednim pliku konfiguracyjnym, wczytaj zmiany bez wylogowania i sprawdź, że działa. Uzasadnij wybór pliku.
+**3.** **Utwórz tymczasowy alias `pakiety` do wyświetlenia listy wszystkich zainstalowanych pakietów.**
 
-## Dowiązania (lekcja 7)
+**4.** **Utwórz tymczasowy alias `dom` do szybkiego przejścia do katalogu domowego.**
 
-**24.** W katalogu domowym utwórz katalog `links`, przejdź do niego i utwórz plik `abc` z dowolną treścią. Sprawdź jego numer i-węzła, rozmiar i licznik dowiązań.
+**5.** **Utwórz tymczasowy alias `dysk` do wyświetlenia zajętości dysku w formie czytelnej dla użytkownika.**
 
-**25.** Utwórz dowiązanie twarde `def` do pliku `abc` i porównaj oba pliki poleceniem `ls -li`. Co się zgadza, a co się zmieniło? Następnie zmień uprawnienia pliku `def` na `400` i sprawdź uprawnienia `abc`. Wyjaśnij wynik.
+**6.** **Utwórz stały alias `aktualizuj` do wykonania aktualizacji systemu, wyczyszczenia cache oraz wyświetlenia komunikatu o powodzeniu.**
 
-**26.** Utwórz dowiązanie symboliczne `skrot` do pliku `abc` i obejrzyj je w `ls -li`. Potem usuń plik `abc` i sprawdź, co stało się z `def`, a co ze `skrot`. Wyjaśnij różnicę.
+## Dowiązania – symlink i hardlink
 
-## Edytory vi/vim i nano (lekcje 8–9)
+**1.** W swoim katalogu domowym utwórz podkatalog „links”. Przejdź do tego katalogu. Utwórz plik „abc” z dowolną treścią.
 
-**27.** Utwórz plik `temp.txt` w edytorze `vim`: wpisz do niego wiersz `Szkolenie Linux`, zapisz i wyjdź. Następnie otwórz go ponownie i dopisz na końcu wiersza tekst ` jest proste`, używając polecenia trybu normalnego, które od razu przeskakuje na koniec wiersza i włącza wstawianie. Tym razem wyjdź **bez zapisywania**.
+**2.** Sprawdź informacje pliku abc. W szczególności zwróć uwagę na jego numer i-węzła, jego rozmiar i uprawnienia.
 
-**28.** Pobierz „Pana Tadeusza” poleceniem `wget https://wolnelektury.pl/media/book/txt/pan-tadeusz.txt`, otwórz plik w `vim` i: przejdź na koniec pliku, wróć na początek, wyszukaj słowo `Tadeusz` i przejdź przez trzy kolejne wystąpienia. Wyjdź z edytora.
+**3.** Utwórz dowiązanie stałe o nazwie „def” do pliku abc. Spójrz na cechy tego pliku.
 
-**29.** Otwórz `pan-tadeusz.txt` w `nano`, wyszukaj frazę `Zosia` i przejdź do następnego wystąpienia, po czym wyjdź bez zapisywania. Następnie otwórz `temp.txt` w `nano`, usuń cały wiersz jednym skrótem, wpisz nowy tekst `Używam edytora nano`, zapisz i wyjdź. Sprawdź zawartość pliku.
+**4.** Zmodyfikuj uprawnienia pliku def (np. 400). Następnie spójrz na uprawnienia abc.
 
-**30.** Na koniec posprzątaj: usuń katalogi `szkolenie` i `links` oraz pliki `temp.txt` i `pan-tadeusz.txt`. Zanim naciśniesz Enter przy `rm -r`, wykonaj kontrolne `ls`.
+**5.** Spójrz na charakterystykę systemu plików i zanotuj/zapamiętaj rozmiar cs-root
+
+**6.** Usuń plik abc. Zobacz, co się stało z plikiem def.
+
+**7.** Spójrz na charakterystykę systemu plików i sprawdź rozmiar cs-root
+
+**8.** Skasuj plik def
+
+**9.** Ponownie sprawdź rozmiar cs-root
+
+## Edytory tekstu
+
+**1.** **Utwórz nowy plik tekstowy o nazwie `temp.txt` za pomocą dowolnego edytora.**  
+
+**2.** **Wpisz do pliku frazę:**  
+   ```
+   Szkolenie Linux
+   ```
+
+**3.** **Zapisz plik i wyjdź z edytora.**  
+
+**4.** **Otwórz plik `temp.txt` w edytorze `vi`.**  
+
+**5.** **Dopisz do istniejącej frazy słowa `jest proste` korzystając ze skrótu `A` (duże A).**  
+- Skrót `A` przechodzi do końca linii i włącza tryb INSERT.
+
+**6.** **Wyjdź z edytora `vi` bez zapisywania zmian.**  
+- Użyj polecenia `:q!` w trybie COMMAND.
+
+**7.** **Pobierz "Pana Tadeusza" w formacie `.txt` przy użyciu `wget`.**  
+- Wskazówka: możesz użyć pliku z Wolnych Lektur, np.:
+     ```
+     wget https://wolnelektury.pl/media/book/txt/pan-tadeusz.txt
+     ```  
+
+**8.** **Otwórz pobraną książkę (`pan-tadeusz.txt`) za pomocą edytora `vi`.**  
+
+**9.** **Wyszukaj w tekście imię "Tadeusz" i przejdź przez kolejne wystąpienia.**  
+- W trybie COMMAND: `/Tadeusz` + Enter, potem `n` (next).
+
+**10.** **Uruchom plik `pan-tadeusz.txt` w edytorze `nano`.**  
+
+**11.** **Wyszukaj frazę `Tadeusz` i przejdź przez kolejne wystąpienia.**  
+- Użyj skrótu: `Ctrl+W`, wpisz `Tadeusz`, zatwierdź Enter. Następne wystąpienia: `Ctrl+W`, Enter.
+
+**12.** **Wyjdź z edytora `nano` bez zapisywania zmian.**  
+- Skrót: `Ctrl+X`, następnie `N`.
+
+**13.** **Otwórz plik `temp.txt` za pomocą edytora `nano`.**  
+
+**14.** **Usuń cały wiersz za pomocą odpowiedniego skrótu.**  
+- Skrót: `Ctrl+K`.
+
+**15.** **Wpisz nową frazę:**  
+   ```
+   Używam edytora nano
+   ```
+
+**16.** **Zapisz zmiany i wyjdź z edytora.**  
+- Skróty: `Ctrl+O` (zapisz), Enter (potwierdź), `Ctrl+X` (wyjdź).
+
+  Wiecej zadań praktycznych możesz znaleźć online, na przykład na stronie [https://vim.is/#exercise](https://vim.is/#exercise)

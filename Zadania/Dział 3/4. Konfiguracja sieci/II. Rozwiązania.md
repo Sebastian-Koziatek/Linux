@@ -2,167 +2,167 @@
 
 # Rozwiązania – Konfiguracja sieci
 
-> **1. Przegląd interfejsów:**
+## Pakiet `ifconfig`
+
+**1. Wyświetl informacje o wszystkich interfejsach sieciowych:**
 
 ```bash
-ip -br a
+ifconfig -a
 ```
 
-Przykładowo: interfejs `ens192`, stan `UP`, adres `192.168.10.20/24`. (`lo` to pętla zwrotna.)
+**2. Zadanie: Konfiguruj adres IP na interfejsie sieciowym:**
 
-**2. Adres sieci i część hosta:**
+```bash
+sudo ifconfig eth0 192.168.10.100 netmask 255.255.255.0 up
+```
 
-Dla `192.168.10.20/24` adres sieci to `192.168.10.0/24` (pierwsze trzy liczby – „ulica”), a `20` to część hosta („numer domu”). Przy masce /24 dostępne są adresy .1–.254, czyli 254 maszyny.
+**3. W jaki sposób wyłączysz interfejs sieciowy?**
 
-**3. Brama domyślna:**
+```bash
+sudo ifconfig eth0 down
+```
 
+**4. Zadanie: Wyświetl adres MAC interfejsu sieciowego:**
+```bash
+ifconfig eth0 | grep ether
+```
+---
+
+---
+
+## Pakiet `ip`
+
+**1. Zadanie: Sprawdź informacje o interfejsach sieciowych:**
+```bash
+ip addr
+```
+
+**2. Zadanie: Wyświetl tablicę routingu:**
 ```bash
 ip route
+```  
+
+**3. Konfiguracja adresu IP na interfejsie sieciowym:**
+```bash
+sudo ip addr add 192.168.10.100/24 dev eth0
+sudo ip link set eth0 up
 ```
 
-Wiersz `default via 192.168.10.1 ...` wskazuje bramę. Brama to router, któremu maszyna oddaje cały ruch kierowany poza sieć lokalną (np. do internetu).
+**4. W jaki sposób wyłączysz interfejs sieciowy?**
+```bash
+sudo ip link set eth0 down
+```
+  ---
 
-**4. Adres MAC:**
+---
+
+## Komenda `ping`
+
+**1. Sprawdź, czy host o adresie IP 192.168.10.1 jest dostępny w sieci lokalnej:**
 
 ```bash
-ip link show ens192     # pole link/ether
-ip -br link             # kolumna z adresem MAC
+ping 192.168.10.1
 ```
 
-**5. Tablica sąsiadów:**
-
+**2. Ustal czas odpowiedzi hosta o adresie IP 8.8.8.8 (DNS Google):**
 ```bash
-ip neigh
+ping 8.8.8.8
 ```
 
-Wpis (np. `192.168.10.1 ... lladdr 70:4f:57:12:ab:cd REACHABLE`) oznacza, że system ustalił, jaki fizyczny adres karty (MAC) odpowiada danemu adresowi IP w sieci lokalnej – bez tego nie wysłałby do niego ramki.
-
-**6. Adres tymczasowy:**
+**3. Wykonaj ping do hosta o adresie IP 10.123.0.2, ale ogranicz liczbę wysłanych pakietów do 5:**
 
 ```bash
-sudo ip addr add 192.168.77.5/24 dev ens192
-ip -br a
-sudo ip addr del 192.168.77.5/24 dev ens192
+ping -c 5 10.123.0.2
 ```
 
-Polecenie `ip` zmienia tylko bieżący stan jądra; przy starcie systemu konfigurację ustawia NetworkManager z profili – tymczasowy adres nie jest w żadnym profilu, więc znika.
-
-**7. ifconfig i następcy:**
-
+**4. Wykonuj ping do hosta o adresie IP 10.123.0.2 w nieskończoność:**
 ```bash
-ifconfig          # bash: ifconfig: command not found
-sudo dnf whatprovides ifconfig   # pakiet net-tools
+ping 10.123.0.2
 ```
 
-Odpowiedniki: `ifconfig -a` → `ip a`, `route -n` → `ip route`, `netstat -tulpn` → `ss -tulpn`.
-
-**8. Urządzenia i profile:**
-
+**5. Wykonuj ping do hosta o adresie IP 10.123.0.2 co 2 sekundy:**
 ```bash
-nmcli device status
-nmcli connection show
+ping -i 2 10.123.0.2
 ```
 
-Urządzenie to fizyczny interfejs (np. `ens192`); połączenie to zapisany profil ustawień (adres, brama, DNS), który można przypisać do urządzenia – jedno urządzenie może mieć kilka profili.
+---
 
-**9. Metoda IPv4 profilu:**
+  ## Komenda `nslookup`
 
+**1. Wykonaj zapytanie DNS dla nazwy domenowej "www.example.com":**
 ```bash
-nmcli connection show ens192 | grep ipv4.method
-```
-
-`auto` = DHCP, `manual` = adres statyczny.
-
-**10. Konfiguracja statyczna i powrót:**
-
-```bash
-# odczyt obecnych wartości
-ip -br a; ip route
-# ustawienie (przykładowe wartości – podstaw własne)
-sudo nmcli connection modify ens192 ipv4.method manual \
-ipv4.addresses 192.168.10.20/24 ipv4.gateway 192.168.10.1 \
-ipv4.dns "192.168.10.1 8.8.8.8"
-sudo nmcli connection up ens192
-ip -br a; cat /etc/resolv.conf
-# powrót do DHCP
-sudo nmcli connection modify ens192 ipv4.method auto \
-ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
-sudo nmcli connection up ens192
-```
-
-Pamiętaj o dwóch krokach: `modify` zapisuje, dopiero `up` stosuje.
-
-**11. Plik profilu:**
-
-```bash
-sudo cat /etc/NetworkManager/system-connections/ens192.nmconnection
-ls -l /etc/NetworkManager/system-connections/
-```
-
-Serwery DNS są w sekcji `[ipv4]`, klucz `dns=192.168.10.1;8.8.8.8;`. Plik ma uprawnienia `600` (tylko root), bo profile mogą zawierać hasła (np. do sieci Wi-Fi).
-
-**12. resolv.conf i ręczna edycja profili:**
-
-`/etc/resolv.conf` jest generowany przez NetworkManager – ręczne zmiany zostaną nadpisane przy najbliższym podniesieniu połączenia. Poprawnie: `sudo nmcli con mod ens192 ipv4.dns "…"` + `sudo nmcli con up ens192`. Po ręcznej edycji pliku `.nmconnection`:
-
-```bash
-sudo nmcli connection reload
-sudo nmcli connection up ens192
-```
-
-**13. Wpis w /etc/hosts:**
-
-```bash
-echo "127.0.0.1 mojserwer" | sudo tee -a /etc/hosts
-ping -c 2 mojserwer
-sudo sed -i '/mojserwer/d' /etc/hosts
-```
-
-Działa, bo system (zgodnie z `/etc/nsswitch.conf`) sprawdza plik `/etc/hosts` **przed** zapytaniem DNS.
-
-**14. Nazwa komputera:**
-
-```bash
-hostnamectl                                  # odczyt (zanotuj starą nazwę)
-sudo hostnamectl set-hostname stacja1.szkolenie.local
-hostnamectl
-sudo hostnamectl set-hostname stara-nazwa    # przywrócenie
-```
-
-**15. Diagnostyka od dołu do góry:**
-
-```bash
-ip -br a                 # 1. brak adresu/DOWN = problem lokalny (kabel, interfejs, DHCP)
-ping -c 3 192.168.10.1   # 2. brak odpowiedzi = sieć lokalna (switch, maska, brama)
-ping -c 3 8.8.8.8        # 3. brak = zła trasa domyślna albo łącze dostawcy
-ping -c 3 onet.pl        # 4. brak (a krok 3 działa) = DNS
-curl -I https://onet.pl  # 5. brak (a krok 4 działa) = konkretna usługa, nie sieć
-```
-
-**16. Adres domeny czterema sposobami:**
-
-```bash
-dig www.example.com
 nslookup www.example.com
-host www.example.com
-dig @8.8.8.8 www.example.com
 ```
 
-W wyjściu `dig` serwer, który odpowiedział, widać w stopce: `;; SERVER: 8.8.8.8#53(8.8.8.8)`.
+**2. Wykonaj zapytanie odwrotne DNS dla adresu IP 10.123.0.1:**
+```bash
+nslookup 10.123.0.1
+```
 
-**17. Porty nasłuchujące:**
+**3. Wykonaj zapytanie DNS dla "www.example.com", korzystając z DNS Google (8.8.8.8):**
 
 ```bash
-sudo ss -tulpn
-nc -zv localhost 22
+nslookup www.example.com 8.8.8.8
 ```
 
-Na porcie 22 nasłuchuje `sshd`. `sudo` jest potrzebne, by `ss` pokazał nazwy procesów; `nc -zv` potwierdza: `Connected to localhost:22`.
-
-**18. Skan własnej maszyny:**
+**4. Ustal rekord MX dla domeny "example.com":**
 
 ```bash
-nmap localhost
+nslookup -query=mx example.com
 ```
 
-Lista `open` powinna pokrywać się z portami z `ss -tulpn` (dla adresów dostępnych z zewnątrz; usługi na `127.0.0.1` widać tylko przy skanie localhost). Cudzych adresów nie skanujemy, bo skan portów bez zgody właściciela jest traktowany jak rekonesans przed atakiem – może naruszać prawo i regulaminy sieci.
+**5. Wyświetl informacje o serwerze DNS dla domeny "example.com":**
+
+```bash
+nslookup -type=ns example.com
+```
+
+---
+
+---
+
+## Komenda `nmap`
+
+**1. Wykonaj szybkie skanowanie pingowe:**
+```bash
+nmap -sn 10.123.0.1/24
+```
+
+nmap -p 80 192.168.10.2
+nmap -p 1-1000 192.168.10.2
+
+**2. Skanuj port 80 na hoście o adresie IP 10.123.0.2:**
+
+```bash
+nmap -p 80 10.123.0.2
+```
+
+**3. Skanuj porty od 1 do 1000 na hoście o adresie IP 10.123.0.2:**
+
+```bash
+nmap -p 1-1000 10.123.0.2
+```
+
+**4. Wyświetl informacje o wersji i usługach działających na hoście 192.168.2.50:**
+
+```bash
+
+nmap -sV 192.168.2.50
+
+```
+
+**5. Próbuj wykryć system operacyjny hosta o adresie IP 172.16.0.1:**
+
+```bash
+
+sudo nmap -O 172.16.0.1
+
+```
+
+**6. Wykonaj szybkie skanowanie otwartych portów na hoście 192.168.0.2:**
+
+```bash
+
+nmap -F 192.168.0.2
+
+```

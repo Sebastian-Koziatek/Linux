@@ -2,38 +2,48 @@
 
 # Zadania – Instalacja systemu
 
-> Zadania 1–5 to pytania sprawdzające teorię z modułu, zadania 6–16 wykonujesz na swojej maszynie wirtualnej zainstalowanej według lekcji 6 i 7.
+> Zestawy odpowiadają kolejnym tematom modułu; numeracja zaczyna się od nowa w każdym z nich.
 
-**1.** Wyjaśnij własnymi słowami różnicę między jądrem Linux a dystrybucją Linuksa.
+## Wprowadzenie do systemu Linux
 
-**2.** Przyporządkuj dystrybucje do rodzin (Red Hat / Debian / SUSE / Arch): Ubuntu, Rocky Linux, Fedora, Linux Mint, openSUSE Leap, AlmaLinux, Kali Linux, Manjaro.
+**1.** Na jakich platformach sprzętowych można uruchomić Linuksa?  
 
-**3.** Czym różnią się od siebie RHEL, CentOS Stream, Rocky Linux i AlmaLinux? Którą z nich wybrałbyś na serwer produkcyjny bez budżetu na subskrypcje i dlaczego?
+**2.** Jak wybrać odpowiednią wersję systemu Linux do swoich potrzeb?  
 
-**4.** Wymień cztery środowiska, w których może działać Linux (sprzęt, maszyna wirtualna, chmura, kontener), i wskaż, które z nich NIE ma własnego jądra.
+**3.** Czym różnią się od siebie dystrybucje: RHEL, CentOS i CentOS Stream?  
 
-**5.** Kiedy warto mieć przestrzeń SWAP, a kiedy można z niej zrezygnować? Jaki rozmiar SWAP zaleca się dla serwera z 4 GB RAM?
+**4.** Jak przebiega typowa instalacja systemu Linux?  
 
-**6.** Sprawdź, jaką dystrybucję i wersję ma Twoja maszyna. Użyj dwóch różnych poleceń.
+**5.** Czym jest SWAP i jakie są różnice między jego włączeniem a wyłączeniem?  
 
-**7.** Sprawdź wersję uruchomionego jądra oraz – jednym poleceniem – pełne podsumowanie systemu (nazwa komputera, system, wirtualizacja, architektura).
+**6.** Jak dobrać odpowiedni rozmiar partycji SWAP do swojego systemu?  
 
-**8.** Sprawdź, czy Twoja maszyna działa w środowisku wirtualnym i pod jakim hipernadzorcą.
+**7.** Czym różni się środowisko graficzne (Desktop Environment) od menedżera okien (Window Manager)?  
 
-**9.** Sprawdź, ile pamięci RAM i SWAP ma Twój system oraz skąd pochodzi SWAP (partycja, wolumin, plik).
+**8.** Jakie są główne zalety korzystania z CLI (Command Line Interface) w porównaniu do GUI?  
 
-**10.** Wyświetl układ dysków i partycji maszyny. Odszukaj partycję `/boot` i woluminy LVM utworzone przez instalator.
+**9.** Wymień po 3 zalety i 3 wady środowiska graficznego (GUI).
 
-**11.** Nadaj swojemu użytkownikowi (jeśli jeszcze ich nie ma) uprawnienia do `sudo`, dodając go do grupy `wheel`, i zweryfikuj, że działają.
+## Rodzina RHEL
 
-> **Wskazówka:** jeżeli przy instalacji zaznaczono „Ustawienie tego użytkownika jako administratora”, użytkownik już jest w grupie `wheel` – sprawdź to poleceniem `id`.
+**1.** Daj swojemu użytkownikowi "szkolenie" uprawnienia do używania polecenia sudo
 
-**12.** Zaktualizuj system menedżerem `dnf`, a następnie sprawdź, czy pozostały jakieś aktualizacje do wykonania.
+**2.** Zaktualizuj system, użyj menagera pakietów dnf a po aktualizacji sprawdź w menagerze dnf czy jakaś aktualizacja pozostała do wykonania.
 
-**13.** Znajdź, który pakiet zawiera program `needs-restarting`, zainstaluj go i sprawdź, czy po aktualizacji system wymaga ponownego uruchomienia.
+**3.** Sprawdź jaki pakiet zawiera program który pozwoli Ci sprawdzić czy musisz wykonać restart systemu po aktualizacji i zainstaluj go
 
-**14.** Zainstaluj pakiet `mc` (Midnight Commander), a następnie wyświetl jego stronę podręcznika `man` i odczytaj z niej, do czego służy opcja `-e`.
+**4.** Sprawdź czy musisz wykonać restart systemu
 
-**15.** Sprawdź nazwę komputera i zmień ją na `serwer` poleceniem `hostnamectl`. Zweryfikuj zmianę.
+**5.** Zainstaluj pakiet mc
 
-**16.** (Tylko RHEL) Sprawdź stan rejestracji systemu i dostępne subskrypcje poleceniem `subscription-manager`. Na Rocky/AlmaLinux: wyjaśnij, dlaczego to polecenie nie jest tam potrzebne.
+**6.** Sprawdź komendą man opis programu mc
+
+**7.** Sprawdź stronę pomocy za pomocą polecenia man dla pakietu mc
+
+**8.** Sprawdź jakie serwisy są uruchomione w systemie
+
+**9.** Sprawdź status serwisu firewall oraz ssh
+
+**10.** Sprawdź plik konfiguracyjny SSH i zobacz na jakim porcie działa twoja usługa SSH
+
+**11.** Sprawdź do jakich subskrypcji masz dostęp w systemie RHEL

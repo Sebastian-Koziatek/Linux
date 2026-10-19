@@ -2,42 +2,37 @@
 
 # Zadania – Woluminy logiczne LVM
 
-> Zadania wykonuj na **dodatkowych dyskach** `/dev/sdb` i `/dev/sdc` maszyny szkoleniowej (powinny być czyste – bez partycji, macierzy i systemów plików; jeśli zostały na nich ślady po module 09, posprzątaj według tamtejszych rozwiązań). Dysku systemowego `/dev/sda` i grupy systemowej (`rl`/`cs`/`rhel`) nie zmieniamy – tylko odczytujemy.
+**1.** Stwórz nowy dysk w virtualbox i przypisz mu przynajmniej 5GB  
 
-> **Wskazówka:** po każdym kroku sprawdzaj efekt poleceniami `pvs`, `vgs`, `lvs` i `lsblk`.
+**2.** Sprawdź czy dysk jest widoczny w systmie
 
-**1.** Sprawdź, czy dyski `/dev/sdb` i `/dev/sdc` są widoczne w systemie i czyste (bez partycji oraz systemów plików).
+**3.** Utwórz na nowym dysku (/dev/sdb) nową partycję
 
-**2.** Wyświetl istniejące w systemie grupy woluminów oraz woluminy logiczne. Jak nazywa się grupa utworzona przez instalator i jakie woluminy zawiera?
+**5.** Rozszerz grupę voluminów (VG) cs o nowy fizyczny volumen (PV)
 
-**3.** Utwórz na dysku `/dev/sdb` tablicę GPT i jedną partycję zajmującą cały dysk, o typie **Linux LVM**.
+**6.** Sprawdź czy nowy psychiczny volumen został dodany do grupy volumenów
 
-**4.** Utwórz wolumin fizyczny (PV) na partycji `/dev/sdb1`. Sprawdź listę PV w systemie.
+**7.** Stwórz nowy volumen logiczny (LV) o nazwie szkolenie i wielkości 9GB w grupie volumenów cs
 
-**5.** Utwórz grupę woluminów o nazwie `vg_szkolenie` zawierającą `/dev/sdb1`. Sprawdź jej rozmiar i wolne miejsce.
+**8.** Sprawdź czy twój volumen tam występuje w grupie volumenów rhel
 
-**6.** Utwórz w grupie `vg_szkolenie` wolumin logiczny o nazwie `lv_szkolenie` i rozmiarze **5 GiB**.
+**9.** Sprawdź czy ten volumen jest gdzieś zamontowany
+[Zadanie opcjonalne]
 
-**7.** Sprawdź, pod jakimi dwiema ścieżkami w `/dev` widoczny jest nowy wolumin.
+**10.** Stwórz w głownym katalogu systemowym folder szkolenie, przygotuj volumen szkolenie aby można go było zamontowac w stworzonym katalogu szkolenie i zamontuj go.
 
-**8.** Załóż na woluminie system plików XFS, utwórz katalog `/szkolenie` i zamontuj w nim wolumin. Utwórz w nim plik z dowolną treścią.
+**11.** Wyjaśnij dlaczego używanie LVM bądź RAID jest zalecane i czym jest LVM.
 
-**9.** Sprawdź, czy wolumin jest zamontowany i ile ma wolnego miejsca.
+**12.** W jaki sposób zamontujesz katalog /var/log  na dysku /dev/sdb na partycji numer 3 dysku. Podaj poprawną komendę.
 
-**10.** Powiększ wolumin `lv_szkolenie` o **2 GiB** razem z systemem plików – bez odmontowywania. Udowodnij poleceniem `df -h`, że system plików urósł.
+**13.** Jak wyświetlić listę iistniejących grup woluminów?
 
-**11.** Dodaj cały dysk `/dev/sdc` (bez partycjonowania) jako drugi wolumin fizyczny do grupy `vg_szkolenie`. Sprawdź, o ile urosło wolne miejsce w grupie.
+**14.** Jak wyświetlić listę dostępnych woluminów logicznych w systemie?
 
-**12.** Powiększ wolumin `lv_szkolenie` o **całe pozostałe wolne miejsce** grupy.
+**15.** Jak wyświetlić listę dostępnych woluminów fizycznych w LVM?
 
-**13.** Wyświetl szczegółowe informacje o grupie `vg_szkolenie` (m.in. rozmiar PE, liczbę PE wolnych i zajętych) oraz o woluminie `lv_szkolenie`.
+**16.** Jak wyświetlić szczegółowe informacje o grupie woluminów?
 
-**14.** Wyjaśnij: czym różni się `lvextend -r` od `lvextend` bez tej opcji? Co trzeba zrobić dodatkowo, gdy `-r` pominięto – i jakim poleceniem dla XFS, a jakim dla ext4?
+**17.** Jak wyświetlić szczegółowe informacje o woluminach logicznych?
 
-**15.** Wyjaśnij: dlaczego woluminu z systemem plików XFS nie można zmniejszyć i jaki z tego praktyczny wniosek przy planowaniu rozmiarów woluminów?
-
-**16.** Utwórz migawkę woluminu `lv_szkolenie` o nazwie `lv_szkolenie_przed` i rozmiarze 1 GiB. Zmień zawartość pliku na woluminie, a potem sprawdź listą `lvs`, że migawka istnieje i zaczęła zajmować miejsce. Usuń migawkę.
-
-**17.** Wyjaśnij: co daje połączenie mdadm RAID 1 z LVM i w jakiej kolejności układa się warstwy takiego serwera?
-
-**18.** Posprzątaj w poprawnej kolejności: odmontuj wolumin, usuń LV, grupę i woluminy fizyczne, tak by `lsblk` pokazywał czyste dyski. Dlaczego kolejność usuwania musi być odwrotna do kolejności tworzenia?
+**18.** Jak zmienić nazwę grupy woluminów? czy możemy zmienić nazwę VG  aktualnie używanym systemie?

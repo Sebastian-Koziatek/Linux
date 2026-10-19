@@ -2,167 +2,239 @@
 
 # Rozwiązania – Dokumentacja i pomoc
 
-## 1. Sekcje podręcznika
+## 1. Użyj polecenia `man man` i zapoznaj się ze strukturą stron podręcznika (`man pages`).
 
-```bash
-man man
+```
+Struktura stron podręcznika (man pages):
+
+NAME - Nazwa polecenia i krótki opis
+- Zawiera nazwę polecenia/programu
+- Jednoliniowy opis funkcji
+
+SYNOPSIS - Składnia polecenia
+- Sposób użycia polecenia
+- Opcjonalne i obowiązkowe parametry
+- Konwencje: [] = opcjonalne, <> = wymagane, | = alternatywa
+
+DESCRIPTION - Szczegółowy opis
+- Dokładne wyjaśnienie działania
+- Opis funkcjonalności
+- Kontekst użycia
+
+OPTIONS - Opcje i przełączniki
+- Lista wszystkich dostępnych opcji
+- Opis każdej opcji z przykładami
+- Parametry krótkie (-h) i długie (--help)
+
+EXAMPLES - Przykłady użycia
+- Praktyczne przykłady komend
+- Typowe scenariusze użycia
+- Demonstracja różnych opcji
+
+FILES - Pliki konfiguracyjne
+- Ważne pliki systemowe związane z poleceniem
+- Lokalizacje plików konfiguracyjnych
+
+SEE ALSO - Zobacz również
+- Powiązane polecenia i strony man
+- Dodatkowe źródła informacji
+
+BUGS - Znane błędy
+- Opis znanych problemów
+- Informacje o zgłaszaniu błędów
+
+AUTHOR - Autor
+- Informacje o twórcach
+- Kontakt do opiekunów projektu
+
+Sekcje man pages:
+1 - Polecenia użytkownika
+2 - Wywołania systemowe
+3 - Funkcje biblioteczne
+4 - Pliki specjalne (urządzenia)
+5 - Formaty plików i konwencje
+6 - Gry
+7 - Różne (makra, konwencje)
+8 - Polecenia administracyjne
+9 - Procedury kernela
 ```
 
-Podręcznik ma 8 sekcji (plus warianty z literami). Sekcja 1 – polecenia użytkownika, sekcja 5 – formaty plików (np. `/etc/passwd`, `/etc/fstab`), sekcja 8 – polecenia administracyjne i demony.
-
 ---
 
-## 2. Strona ls
+## 2. Przejrzyj stronę podręcznika dla polecenia `ls`.
 
-```bash
-man ls
+```
+Sekcja polecenia ls:
+man ls pokazuje: LS(1) - sekcja 1 (polecenia użytkownika)
+
+Opcje sortowania ls:
+-t, --time - sortowanie według czasu modyfikacji
+-S, --size - sortowanie według rozmiaru pliku
+-X, --sort=extension - sortowanie według rozszerzenia
+-v, --version-sort - sortowanie naturalne numerów wersji
+-r, --reverse - odwrócenie kolejności sortowania
+--sort=WORD - sortowanie według: none, size, time, version, extension
+
+Przydatne przełączniki ls:
+
+1. -l, --format=long
+   - Długi format z szczegółami
+   - Uprawnienia, właściciel, rozmiar, data
+
+2. -a, --all
+   - Pokazuje ukryte pliki (zaczynające się od .)
+   - Włącznie z . i ..
+
+3. -h, --human-readable
+   - Rozmiary w czytelnym formacie (K, M, G)
+   - Używane z -l
+
+4. -R, --recursive
+   - Rekurencyjne listowanie podkatalogów
+   - Przechodzi przez całe drzewo katalogów
+
+5. -F, --classify
+   - Dodaje wskaźniki typu pliku
+   - / dla katalogów, * dla executables
+
+6. --color=auto
+   - Kolorowanie według typu pliku
+   - Ułatwia rozróżnianie typów
+
+7. -i, --inode
+   - Pokazuje numery i-node
+   - Przydatne do diagnostyki systemu plików
+
+8. -1 (cyfra jeden)
+   - Jeden plik na linię
+   - Przydatne w skryptach
+
+9. -d, --directory
+   - Lista katalogów bez ich zawartości
+   - Pokazuje tylko sam katalog
+
+10. -n, --numeric-uid-gid
+    - Pokazuje UID i GID numerycznie
+    - Zamiast nazw użytkowników/grup
 ```
 
-Nagłówek `LS(1)` – sekcja 1. Opcje sortowania (szukaj `/sort`): `-t` (czas modyfikacji), `-S` (rozmiar), `-X` (rozszerzenie), `-v` (numery wersji), `-r` (odwrócenie kolejności), `--sort=WORD`. Koniec strony: `G`, początek: `g`.
-
 ---
 
-## 3. Notacja SYNOPSIS
+## 3. Zainstaluj pakiet `info` i przejrzyj strukturę dokumentacji `info` dla polecenia `pwd`.
 
-Nawiasy kwadratowe `[OPTION]` oznaczają element opcjonalny, wielokropek `...` – że element można powtórzyć wiele razy. `SOURCE` i `DEST` są bez nawiasów, więc są **wymagane** – `cp plik1` bez celu nie jest zgodne z wzorem i zakończy się błędem („missing destination file operand”).
-
----
-
-## 4. passwd w kilku sekcjach
-
-```bash
-whatis passwd        # albo: man -f passwd
-man 5 passwd
 ```
+Instalacja pakietu info:
+sudo yum install info          # RHEL/CentOS
+sudo apt install info         # Debian/Ubuntu
+sudo dnf install info         # Fedora
 
-`whatis` pokaże co najmniej `passwd (1)` i `passwd (5)`. W `man 5 passwd`: trzecie pole wiersza `/etc/passwd` to **UID** – numeryczny identyfikator użytkownika.
+Struktura dokumentacji info vs man:
 
----
+INFO:
+- Hipertekstowy system dokumentacji
+- Struktura węzłów (nodes) połączonych linkami
+- Możliwość nawigacji między powiązanymi tematami
+- Bardziej szczegółowa dokumentacja
+- Integration z GNU projektem
 
-## 5. Szukanie po opisach
+MAN:
+- Liniowa struktura dokumentu
+- Czytanie od góry do dołu
+- Krótsze, bardziej konkretne informacje
+- Uniwersalny standard Unix/Linux
 
-```bash
-apropos rename       # albo: man -k rename
-```
+Różnice w nawigacji:
 
-Wynik wskaże m.in. `rename(1)` i `mv(1)`.
+MAN:
+- Przestronne: przewijanie w górę/dół
+- /text: wyszukiwanie tekstu
+- q: wyjście
+- h: pomoc
 
----
+INFO:
+- n: next node (następny węzeł)
+- p: previous node (poprzedni węzeł)
+- u: up node (węzeł nadrzędny)
+- TAB: następny link
+- Enter: follow link (przejdź za link)
+- l: last node (ostatni węzeł)
+- d: directory node (katalog główny)
+- q: quit (wyjście)
+- ?: pomoc
 
-## 6. Budowa indeksu
-
-```bash
-sudo mandb
-```
-
-`apropos` i `whatis` czytają indeks baz man – na świeżym/minimalnym systemie trzeba go zbudować.
-
----
-
-## 7. Położenie pliku strony
-
-```bash
-man -w 5 passwd
-```
-
-Typowy wynik: `/usr/share/man/man5/passwd.5.gz`.
-
----
-
-## 8. Nawigacja w info
-
-```bash
-info coreutils
-```
-
-Odnośnik: `Tab` (najechanie) + `Enter` (wejście); poziom wyżej: `u`; wyjście: `q`. Info jest podzielone na węzły (rozdziały/podrozdziały) połączone odnośnikami i menu – jak książka ze spisem treści, podczas gdy strona man to jeden płaski dokument.
-
----
-
-## 9. info pwd
-
-```bash
+Polecenie pwd w info:
 info pwd
-man pwd
-```
+info coreutils 'pwd invocation'
 
-Dokument info (rozdział coreutils) jest zwykle obszerniejszy i pisany stylem podręcznika. Narzędzia GNU dokumentuje projekt GNU w formacie Texinfo – strona man bywa tylko skrótem, co sama sygnalizuje odsyłaczem „Full documentation … via info”.
+Struktura dokumentacji pwd w info:
+- Część większego manuala GNU coreutils
+- Szczegółowe wyjaśnienie zachowania
+- Przykłady użycia
+- Linki do powiązanych poleceń
+- Informacje o opcjach środowiska
+```
 
 ---
 
-## 10. pinfo
+## 4. Zainstaluj pakiet `mc` (Midnight Commander) i sprawdź dokumentację.
 
-```bash
-sudo dnf install pinfo
-pinfo coreutils
 ```
+Instalacja Midnight Commander:
+sudo yum install mc           # RHEL/CentOS
+sudo apt install mc          # Debian/Ubuntu
+sudo dnf install mc          # Fedora
 
-W pinfo odnośniki są podświetlone, nawigacja działa strzałkami: góra/dół – między odnośnikami, prawo – wejście, lewo – powrót. Treść dokumentów jest ta sama.
+Sprawdzenie dokumentacji mc:
 
----
-
-## 11. type i help
-
-```bash
-type cd ls pwd history
-help cd
-help history
-```
-
-`cd` i `history` to polecenia wbudowane w bash (pomoc: `help`), `ls` to zwykle alias do `ls --color=auto` (a pod spodem program), `pwd` bywa jednocześnie wbudowane i dostępne jako `/usr/bin/pwd` – `type` pokazuje to, czego powłoka użyje.
-
----
-
-## 12. --help
-
-```bash
-tar --help | less
-```
-
-Opcja rozpakowania: `-x` / `--extract`. Pomoc `--help` wystarcza, gdy pamiętasz, że opcja istnieje, a szukasz tylko litery.
-
----
-
-## 13. Dokumentacja mc
-
-```bash
-sudo dnf install mc
+1. Strona podręcznika man:
 man mc
-ls /usr/share/doc/mc/
+- TAK, mc posiada własną stronę man
+- Szczegółowy opis funkcji
+- Lista opcji wiersza poleceń
+- Opis plików konfiguracyjnych
+
+2. Dokumentacja info:
+info mc
+- Zwykle NIEDOSTĘPNA lub ograniczona
+- mc nie jest częścią GNU Core Utilities
+- Może być dostępna jako osobny pakiet
+
+Przyczyny braku dokumentacji info:
+- mc nie jest projektem GNU
+- Preferuje własny system pomocy
+- Dokumentacja man jest wystarczająca
+- Focus na wbudowaną pomoc
+
+3. Wbudowana pomoc w mc:
+
+Uruchomienie pomocy:
+- F1 podczas pracy z mc
+- Ctrl+? jako alternatywa
+- Menu Help > Contents
+
+Funkcje wbudowanej pomocy:
+- Interaktywna nawigacja
+- Kontekstowa pomoc dla funkcji
+- Lista skrótów klawiszowych
+- Opis wszystkich opcji menu
+
+Dodatkowe źródła pomocy mc:
+- /usr/share/doc/mc/ - dokumentacja
+- ~/.config/mc/ - pliki konfiguracyjne
+- mc --help - podstawowa pomoc
+- man mcedit - edytor tekstu mc
+
+Wbudowane polecenia pomocy:
+F1 - Pomoc główna
+F2 - Menu użytkownika
+F3 - Podgląd pliku
+F4 - Edycja pliku
+F9 - Menu główne
+F10 - Wyjście
+
+Skróty klawiszowe:
+Alt+? - Quick help
+Ctrl+O - Pokaż/ukryj panele
+Alt+Tab - Przełącz panele
+Ctrl+U - Zamień panele
 ```
-
-`mc` ma stronę man i katalog dokumentacji (README itd.). Pomoc wewnątrz programu: klawisz **F1**.
-
----
-
-## 14. Pliki pakietu bez instalacji
-
-```bash
-dnf repoquery -l tree | grep /usr/share/man
-```
-
-Wynik pokaże m.in. `/usr/share/man/man1/tree.1.gz` – `repoquery -l` pyta repozytorium, więc pakiet nie musi być zainstalowany.
-
----
-
-## 15. tldr
-
-```bash
-sudo dnf install tealdeer     # wymaga włączonego EPEL
-tldr --update
-tldr tar
-```
-
-`tldr` pokazuje kilka najczęstszych przykładów użycia z opisami; `man tar` – kompletny opis wszystkich opcji. Ściąga jest szybsza, gdy wiesz, *co* chcesz zrobić; man niezbędny, gdy potrzebujesz szczegółów lub rzadkiej opcji.
-
----
-
-## 16. Dokumentacja online
-
-Red Hat: `docs.redhat.com` (przewodniki po RHEL), Rocky Linux: `docs.rockylinux.org`, AlmaLinux: `wiki.almalinux.org`. Rocky i Alma są odbudowanymi klonami RHEL (zgodność binarna), więc procedury z dokumentacji Red Hat stosują się do nich niemal w całości.
-
----
-
-## 17. Dobre zgłoszenie problemu
-
-Potrzebne: (1) dystrybucja i wersja systemu (`cat /etc/os-release`), (2) dokładne polecenie, które zostało wydane, (3) pełny komunikat błędu skopiowany jako tekst, (4) co już sprawdzono i z jakim skutkiem. Zdjęcie ekranu jest złe, bo tekstu z niego nie można przeszukać, skopiować do wyszukiwarki ani zacytować w odpowiedzi – a często jest ucięty.
