@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>/boot</h1><span class="pod">pliki potrzebne do uruchomienia systemu</span></div>
+  <div class="drzewo"><span class="kat">vmlinuz-5.14.0-…</span> <span class="op">jądro systemu</span><br><span class="kat">initramfs-….img</span> <span class="op">mini-system startowy w pamięci</span><br><span class="kat">grub2/grub.cfg</span> <span class="op">konfiguracja programu rozruchowego</span><br><span class="kat">efi/</span> <span class="op">program rozruchowy dla UEFI</span><br><span class="kat">System.map-…</span> <span class="op">mapa symboli jądra</span></div>
+  <div class="notatka zle">Ręcznie nic tu nie kasuj – stare jądra usuwaj przez <code>dnf remove</code>. Pusty lub uszkodzony <code>/boot</code> to serwer, który nie wstanie.</div>
+</div>
+</body></html>

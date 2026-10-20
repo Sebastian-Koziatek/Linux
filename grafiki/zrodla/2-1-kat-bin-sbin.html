@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>/bin, /sbin, /lib, /lib64</h1><span class="pod">na RHEL to już tylko dowiązania</span></div>
+  <div class="drzewo"><span class="kat">/bin → usr/bin</span> <span class="op">polecenia użytkownika</span><br><span class="kat">/sbin → usr/sbin</span> <span class="op">polecenia administracyjne</span><br><span class="kat">/lib → usr/lib</span> <span class="op">biblioteki</span><br><span class="kat">/lib64 → usr/lib64</span> <span class="op">biblioteki 64-bitowe</span></div>
+  <div class="notatka">Historycznie były to osobne katalogi na najważniejsze programy. Od RHEL 7 wszystko leży w <code>/usr</code>, a te nazwy zostały jako dowiązania symboliczne – dla zgodności ze starymi skryptami.</div>
+</div>
+</body></html>

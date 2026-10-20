@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika waska">
+  <div class="tytul"><h1>/proc i /sys</h1><span class="pod">okna do jądra, nie pliki na dysku</span></div>
+  <div class="drzewo"><span class="kat">/proc/cpuinfo</span> <span class="op">procesor</span><br><span class="kat">/proc/meminfo</span> <span class="op">pamięć</span><br><span class="kat">/proc/1234/</span> <span class="op">szczegóły procesu o PID 1234</span><br><span class="kat">/proc/sys/</span> <span class="op">parametry jądra (sysctl)</span><br><span class="kat">/sys/class/net/</span> <span class="op">interfejsy sieciowe</span><br><span class="kat">/sys/block/</span> <span class="op">dyski i ich parametry</span></div>
+  <div class="notatka">Te katalogi generuje jądro w locie – mają zerowy rozmiar i znikają po wyłączeniu systemu. Czytasz je poleceniem <code>cat</code>, a parametry zmieniasz przez <code>sysctl</code>, nie edytorem.</div>
+</div>
+</body></html>
