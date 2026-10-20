@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Demony wiszą pod systemd</h1><span class="pod">drzewo procesów serwera – <code>pstree</code></span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>[admin@serwer ~]$ pstree</span></div>
+<pre><span class="k">systemd</span>─┬─NetworkManager───2*[{NetworkManager}]
+        ├─auditd───{auditd}
+        ├─chronyd
+        ├─crond
+        ├─dbus-broker-lau───dbus-broker
+        ├─firewalld───{firewalld}
+        ├─nginx───2*[nginx]
+        ├─rsyslogd───2*[{rsyslogd}]
+        ├─sshd───sshd───sshd───bash───pstree
+        ├─systemd-journal
+        ├─systemd-logind
+        └─systemd-udevd</pre>
+  </div>
+  <div class="notatka ok">Proces <b>systemd</b> ma numer <b>1</b> i jest rodzicem wszystkich demonów. Zatrzymanie usługi poleceniem <code>systemctl stop</code> to w praktyce polecenie wydane właśnie jemu – to on zabija proces i sprząta po nim grupę zasobów.</div>
+  <div class="podpis">Gałąź <code>sshd───sshd───sshd───bash───pstree</code> to Twoje własne połączenie: serwer SSH, proces sesji, powłoka i uruchomione w niej polecenie.</div>
+</div>
+</body></html>

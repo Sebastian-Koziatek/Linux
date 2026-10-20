@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Budowa systemd</h1><span class="pod">od jądra po polecenia, które wpisujesz w terminalu</span></div>
+  <div class="warstwy">
+    <div class="warstwa">Narzędzia <small><code>systemctl</code> · <code>journalctl</code> · <code>systemd-analyze</code> · <code>loginctl</code> · <code>hostnamectl</code> · <code>timedatectl</code></small></div>
+    <div class="warstwa w4">Demony systemd <small>journald (logi) · logind (sesje) · udevd (urządzenia) · resolved (DNS) · timesyncd (czas)</small></div>
+    <div class="warstwa w3">Rdzeń systemd – proces nr 1 <small>zarządza jednostkami: .service · .target · .timer · .socket · .mount · .path · .slice</small></div>
+    <div class="warstwa w2">Biblioteki <small>libsystemd · D-Bus · PAM · libcap · libaudit</small></div>
+    <div class="warstwa w1">Jądro Linux <small>cgroups (limity zasobów) · przestrzenie nazw · udev</small></div>
+  </div>
+  <div class="odstep"></div>
+  <div class="male" style="font-weight:700;color:var(--granat);margin-bottom:8px">Kolejność startu – systemd dochodzi do kolejnych punktów zbiórki:</div>
+  <div class="kroki">
+    <div class="krok"><h3>sysinit.target</h3><p>montowanie systemów plików, swap, udev, wczytanie modułów jądra.</p></div>
+    <div class="krok"><h3>basic.target</h3><p>gniazda, timery i podstawowe usługi – fundament dla reszty.</p></div>
+    <div class="krok"><h3>multi-user.target</h3><p>sieć, <code>sshd</code>, serwer WWW, bazy – stan docelowy serwera.</p></div>
+    <div class="krok"><h3>graphical.target</h3><p>dodatkowo pulpit i menedżer logowania – tylko na stacji roboczej.</p></div>
+  </div>
+  <div class="notatka">Każdy punkt zbiórki wymaga poprzedniego, więc kolejność jest zawsze taka sama – ale usługi w obrębie jednego punktu systemd uruchamia <b>równolegle</b>. Stąd szybki start w porównaniu ze starym init SysV.</div>
+</div>
+</body></html>
