@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Dowiązanie symboliczne a i-węzły</h1><span class="pod">każdy skrót ma własny i-węzeł i własną treść: ścieżkę do celu</span></div>
+  <div class="karty">
+    <div class="karta">
+      <h3>Dopóki cel istnieje</h3>
+      <p class="male" style="margin:2px 0 14px">Dwa skróty, dwa osobne pliki – oba prowadzą do jednej nazwy.</p>
+      <div class="wiersz" style="gap:10px">
+        <div class="kolumna" style="gap:8px;flex:1 1 0">
+          <div class="karta" style="padding:8px 10px;text-align:center;border-color:#6c5ce7"><p><code>skrot1.txt</code></p><p class="male">i-węzeł 200</p></div>
+          <div class="karta" style="padding:8px 10px;text-align:center;border-color:#6c5ce7"><p><code>skrot2.txt</code></p><p class="male">i-węzeł 300</p></div>
+        </div>
+        <div class="strzalka"></div>
+        <div class="karta ok" style="padding:10px 12px;text-align:center;flex:1 1 0"><p><code>raport.txt</code></p><p class="male">i-węzeł 100</p></div>
+        <div class="strzalka"></div>
+        <div class="karta ciemna" style="padding:10px 12px;text-align:center;flex:0 0 108px"><p><b>dane</b></p><p class="male" style="color:#c9d0db">bloki na dysku</p></div>
+      </div>
+      <div class="notatka ok">Skrót waży tyle, ile zapisana w nim ścieżka – kilkanaście bajtów. Treści pliku nie kopiuje.</div>
+    </div>
+    <div class="karta">
+      <h3>Po usunięciu celu</h3>
+      <p class="male" style="margin:2px 0 14px">Skróty zostają na dysku, ale prowadzą donikąd.</p>
+      <div class="wiersz" style="gap:10px">
+        <div class="kolumna" style="gap:8px;flex:1 1 0">
+          <div class="karta" style="padding:8px 10px;text-align:center;border-color:#6c5ce7"><p><code>skrot1.txt</code></p><p class="male">i-węzeł 200</p></div>
+          <div class="karta" style="padding:8px 10px;text-align:center;border-color:#6c5ce7"><p><code>skrot2.txt</code></p><p class="male">i-węzeł 300</p></div>
+        </div>
+        <div class="strzalka"></div>
+        <div class="karta zle" style="padding:10px 12px;text-align:center;flex:1 1 0;background:#fdeaec"><p><code style="text-decoration:line-through">raport.txt</code></p><p class="male" style="color:var(--czerwien)">usunięty<br>✕</p></div>
+        <div class="strzalka"></div>
+        <div class="karta" style="padding:10px 12px;text-align:center;flex:0 0 108px;border-style:dashed"><p class="male">dane zwolnione</p></div>
+      </div>
+      <div class="notatka zle">Oba skróty „wiszą”. <code>ls</code> pokaże je na czerwono, a <code>cat skrot1.txt</code> odpowie <i>No such file or directory</i> – choć sam skrót istnieje.</div>
+    </div>
+  </div>
+  <div class="podpis">Numery i-węzłów (100, 200, 300) są przykładowe – ważne, że są <b>różne</b>: skrót to osobny plik, a nie druga nazwa oryginału.</div>
+</div>
+</body></html>

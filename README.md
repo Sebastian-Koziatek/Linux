@@ -34,20 +34,21 @@ otwórz katalog repozytorium jako skarbiec (vault).
 | Moduł | Zakres |
 |---|---|
 | [01. Praca z powłoką Bash](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/1.%20Praca%20z%20pow%C5%82ok%C4%85%20Bash/1.%20Czym%20jest%20pow%C5%82oka%20i%20terminal.md) | terminal i powłoka, poruszanie się po systemie, pliki i katalogi, prompt, konfiguracja powłoki, zmienne i aliasy, dowiązania, vi/vim, nano |
-| [02. Zarządzanie plikami i katalogami](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/2.%20Zarz%C4%85dzanie%20plikami%20i%20katalogami/1.%20Uprawnienia%20do%20plik%C3%B3w%20i%20katalog%C3%B3w.md) | uprawnienia (`chmod`, `chown`), wyszukiwanie (`find`, `locate`), przeglądanie i potoki (`cat`, `less`, `tail`, `grep`), podstawy `sed` |
-| [03. Użytkownicy i grupy](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/3.%20U%C5%BCytkownicy%20i%20grupy/1.%20Konto%20root%2C%20sudo%20i%20su.md) | root, `sudo`, `su`, konta i grupy lokalne, pliki konfiguracyjne, uwierzytelnianie w LDAP/AD (sssd, PAM) |
+| [02. Zarządzanie plikami i katalogami](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/2.%20Zarz%C4%85dzanie%20plikami%20i%20katalogami/1.%20Uprawnienia%20do%20plik%C3%B3w%20i%20katalog%C3%B3w.md) | uprawnienia (`chmod`, `chown`), wyszukiwanie (`find`, `locate`), przeglądanie i potoki (`cat`, `less`, `tail`, `grep`) |
+| [03. Użytkownicy i grupy](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/3.%20U%C5%BCytkownicy%20i%20grupy/1.%20Konto%20root%2C%20sudo%20i%20su.md) | root, `sudo`, `su`, konta i grupy lokalne, pliki konfiguracyjne kont |
 | [04. Zdalna administracja](Dzia%C5%82%202%20-%20Podstawy%20pracy%20z%20systemem%20Linux/4.%20Zdalna%20administracja/1.%20Czym%20jest%20SSH.md) | SSH: serwer, klient, klucze, zdalne polecenia i kopiowanie plików, pulpit zdalny |
 
 ### Dział 3 — Zarządzanie systemem Linux
 
 | Moduł | Zakres |
 |---|---|
-| [01. Zarządzanie dyskami](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/1.%20Zarz%C4%85dzanie%20dyskami/1.%20Dyski%20w%20Linuksie%20%E2%80%93%20katalog%20dev%20i%20nazwy%20urz%C4%85dze%C5%84.md) | urządzenia w `/dev`, wykrywanie dysków, MBR i GPT, typy partycji, `fdisk`, `cfdisk`, `parted`, `gparted`, RAID i `mdadm` |
-| [02. Woluminy logiczne LVM](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/2.%20Woluminy%20logiczne%20LVM/1.%20Idea%20wolumin%C3%B3w%20logicznych.md) | idea LVM, tworzenie i powiększanie woluminów, LVM a RAID |
-| [03. System plików](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/3.%20System%20plik%C3%B3w/1.%20Czym%20jest%20system%20plik%C3%B3w.md) | budowa systemu plików, ext2/3/4, XFS, Btrfs i ZFS, montowanie i naprawa, drzewo katalogów, `fstab` |
-| [04. Konfiguracja sieci](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/4.%20Konfiguracja%20sieci/1.%20Podstawy%20sieci%20dla%20administratora.md) | podstawy sieci, `ip`/`ifconfig`/`route`, NetworkManager (`nmcli`, `nmtui`, GUI), pliki konfiguracyjne, diagnostyka |
-| [05. Proces startu systemu](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/5.%20Proces%20startu%20systemu/1.%20Etapy%20startu%20systemu.md) | etapy startu, GRUB2, poziomy startowe i targety, demony i `systemctl`, własna usługa, init a systemd |
-| [06. Zabezpieczenia sieciowe](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/6.%20Zabezpieczenia%20sieciowe/1.%20Czym%20jest%20zapora%20sieciowa.md) | zapora sieciowa, `iptables`, `firewalld`, zabezpieczenia na poziomie jądra (`sysctl`) |
+| [01. Zarządzanie dyskami](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/1.%20Zarz%C4%85dzanie%20dyskami/1.%20Dyski%20w%20Linuksie%20%E2%80%93%20katalog%20dev%20i%20nazwy%20urz%C4%85dze%C5%84.md) | urządzenia w `/dev`, wykrywanie dysków, MBR i GPT, typy partycji, `fdisk`, `cfdisk`, `parted`, `gparted` |
+| [02. RAID](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/2.%20RAID/1.%20RAID%20%E2%80%93%20po%20co%20%C5%82%C4%85czy%C4%87%20dyski.md) | po co łączyć dyski, RAID 0, 1, 2, 3, 4, 5, 6, RAID 0+1 i 1+0, RAID programowy (`mdadm`) |
+| [03. Woluminy logiczne LVM](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/3.%20Woluminy%20logiczne%20LVM/1.%20Idea%20wolumin%C3%B3w%20logicznych.md) | idea LVM, tworzenie i powiększanie woluminów, LVM a RAID |
+| [04. System plików](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/4.%20System%20plik%C3%B3w/1.%20Czym%20jest%20system%20plik%C3%B3w.md) | budowa systemu plików, ext2/3/4, XFS, Btrfs i ZFS, montowanie i naprawa, drzewo katalogów, `fstab` |
+| [05. Konfiguracja sieci](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/5.%20Konfiguracja%20sieci/1.%20Podstawy%20sieci%20dla%20administratora.md) | podstawy sieci, `ip`/`ifconfig`/`route`, NetworkManager (`nmcli`, `nmtui`, GUI), pliki konfiguracyjne, diagnostyka |
+| [06. Proces startu systemu](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/6.%20Proces%20startu%20systemu/1.%20Etapy%20startu%20systemu.md) | etapy startu, GRUB2, poziomy startowe i targety, demony i `systemctl`, własna usługa, init a systemd |
+| [07. Zabezpieczenia sieciowe](Dzia%C5%82%203%20-%20Zarz%C4%85dzanie%20systemem%20Linux/7.%20Zabezpieczenia%20sieciowe/1.%20Czym%20jest%20zapora%20sieciowa.md) | zapora sieciowa, `iptables`, `firewalld`, zabezpieczenia na poziomie jądra (`sysctl`) |
 
 ### Dział 4 — Tematy dodatkowe
 
