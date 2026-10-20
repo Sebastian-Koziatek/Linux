@@ -5,6 +5,7 @@
   <div class="tytul"><h1>MBR czy GPT?</h1><span class="pod">dwa sposoby zapisania tablicy partycji na dysku</span></div>
   <table class="tabela">
     <tr><th style="width:30%">Cecha</th><th>MBR <span class="plakietka" style="background:#fff;color:var(--granat)">starszy</span></th><th>GPT <span class="plakietka bursztyn">zalecany</span></th></tr>
+    <tr><td>Opis partycji</td><td>typ zapisany w jednym sektorze rozruchowym</td><td>przy każdej partycji: GUID, typ i nazwa</td></tr>
     <tr><td>Maksymalny rozmiar dysku</td><td>2 TB</td><td>praktycznie bez limitu (9,4 ZB)</td></tr>
     <tr><td>Liczba partycji</td><td>4 podstawowe (lub 3 + rozszerzona z logicznymi)</td><td>128 partycji, wszystkie równorzędne</td></tr>
     <tr><td>Kopia tablicy partycji</td><td><span class="nie">brak</span> – uszkodzenie = utrata układu dysku</td><td><span class="tak">tak</span> – zapasowa kopia na końcu dysku</td></tr>

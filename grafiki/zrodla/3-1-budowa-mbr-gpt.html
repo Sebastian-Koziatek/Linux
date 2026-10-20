@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Co dokładnie leży na dysku</h1><span class="pod">budowa tablicy partycji MBR i GPT, od początku do końca dysku</span></div>
+
+  <!-- MBR -->
+  <div style="display:flex;align-items:center;gap:14px">
+    <div style="flex:0 0 54px;font-size:17px;font-weight:800;color:var(--granat)">MBR</div>
+    <div style="flex:1">
+      <div style="display:flex;gap:6px;margin-bottom:6px">
+        <div style="flex:0 0 330px;font-size:11.5px;font-weight:700;color:var(--szary-4);text-align:center;border-bottom:2px solid var(--granat);padding-bottom:3px">pierwszy sektor dysku – 512 bajtów</div>
+        <div style="flex:1;font-size:11.5px;font-weight:700;color:var(--szary-4);text-align:center;border-bottom:2px solid var(--bursztyn);padding-bottom:3px">obszar danych – partycje</div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:stretch">
+        <div style="flex:0 0 108px;background:var(--granat);color:#fff;border-radius:8px;padding:12px 6px;text-align:center;font-size:12px;font-weight:700">Kod rozruchowy<br><span style="font-weight:500;font-size:11px;color:#c9d0db">446 B</span></div>
+        <div style="flex:0 0 174px;border:2px solid var(--granat-2);border-radius:8px;padding:5px;background:#eef1f7">
+          <div style="font-size:10.5px;font-weight:700;color:var(--granat-2);text-align:center;margin-bottom:4px">Tablica partycji – 64 B</div>
+          <div style="display:flex;gap:4px">
+            <div style="flex:1;background:var(--granat-2);color:#fff;border-radius:5px;padding:7px 2px;text-align:center;font-size:11px;font-weight:700">1</div>
+            <div style="flex:1;background:var(--granat-2);color:#fff;border-radius:5px;padding:7px 2px;text-align:center;font-size:11px;font-weight:700">2</div>
+            <div style="flex:1;background:var(--granat-2);color:#fff;border-radius:5px;padding:7px 2px;text-align:center;font-size:11px;font-weight:700">3</div>
+            <div style="flex:1;background:var(--granat-2);color:#fff;border-radius:5px;padding:7px 2px;text-align:center;font-size:11px;font-weight:700">4</div>
+          </div>
+        </div>
+        <div style="flex:0 0 36px;background:var(--szary-2);border-radius:8px;padding:12px 2px;text-align:center;font-size:10.5px;font-weight:700;color:var(--granat)">55<br>AA</div>
+        <div style="flex:0.95;background:#fde3b3;border-radius:8px;padding:14px 6px;text-align:center;font-size:12.5px;font-weight:700">sda1<br><span style="font-weight:500;font-size:11px;color:var(--szary-4)">podstawowa</span></div>
+        <div style="flex:0.95;background:#fde3b3;border-radius:8px;padding:14px 6px;text-align:center;font-size:12.5px;font-weight:700">sda2<br><span style="font-weight:500;font-size:11px;color:var(--szary-4)">podstawowa</span></div>
+        <div style="flex:0.95;background:#fde3b3;border-radius:8px;padding:14px 6px;text-align:center;font-size:12.5px;font-weight:700">sda3<br><span style="font-weight:500;font-size:11px;color:var(--szary-4)">podstawowa</span></div>
+        <div style="flex:2.2;border:2px dashed var(--fiolet);border-radius:8px;padding:5px;background:#f6f4ff">
+          <div style="font-size:10.5px;font-weight:700;color:var(--fiolet);text-align:center;margin-bottom:4px">sda4 – partycja rozszerzona</div>
+          <div style="display:flex;gap:4px">
+            <div style="flex:1;background:#cdeae6;border-radius:5px;padding:7px 2px;text-align:center;font-size:11.5px;font-weight:700">sda5</div>
+            <div style="flex:1;background:#cdeae6;border-radius:5px;padding:7px 2px;text-align:center;font-size:11.5px;font-weight:700">sda6</div>
+            <div style="flex:1;background:#cdeae6;border-radius:5px;padding:7px 2px;text-align:center;font-size:11.5px;font-weight:700">sda7</div>
+          </div>
+        </div>
+      </div>
+      <div class="male" style="margin-top:6px">Cztery miejsca w tablicy, jedna kopia. Partycje logiczne (<code>sda5</code>+) mieszczą się w rozszerzonej i numerowane są od 5.</div>
+    </div>
+  </div>
+
+  <div class="odstep"></div>
+
+  <!-- GPT -->
+  <div style="display:flex;align-items:center;gap:14px">
+    <div style="flex:0 0 54px;font-size:17px;font-weight:800;color:var(--granat)">GPT</div>
+    <div style="flex:1">
+      <div style="display:flex;gap:6px;margin-bottom:6px">
+        <div style="flex:0 0 318px;font-size:11.5px;font-weight:700;color:var(--szary-4);text-align:center;border-bottom:2px solid var(--granat);padding-bottom:3px">początek dysku – tablica główna</div>
+        <div style="flex:1;font-size:11.5px;font-weight:700;color:var(--szary-4);text-align:center;border-bottom:2px solid var(--bursztyn);padding-bottom:3px">obszar danych – partycje</div>
+        <div style="flex:0 0 186px;font-size:11.5px;font-weight:700;color:var(--szary-4);text-align:center;border-bottom:2px solid var(--morski);padding-bottom:3px">koniec dysku – kopia</div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:stretch">
+        <div style="flex:0 0 104px;background:var(--szary-2);border-radius:8px;padding:12px 4px;text-align:center;font-size:11.5px;font-weight:700;color:var(--granat)">Ochronny MBR<br><span style="font-weight:500;font-size:10.5px;color:var(--szary-4)">sektor 0</span></div>
+        <div style="flex:0 0 96px;background:var(--granat);color:#fff;border-radius:8px;padding:12px 4px;text-align:center;font-size:11.5px;font-weight:700">Nagłówek GPT<br><span style="font-weight:500;font-size:10.5px;color:#c9d0db">sektor 1</span></div>
+        <div style="flex:0 0 106px;background:var(--granat-2);color:#fff;border-radius:8px;padding:12px 4px;text-align:center;font-size:11.5px;font-weight:700">Wpisy 1–128<br><span style="font-weight:500;font-size:10.5px;color:#c9d0db">sektory 2–33</span></div>
+        <div style="flex:1;background:#fde3b3;border-radius:8px;padding:14px 4px;text-align:center;font-size:12.5px;font-weight:700">sda1<br><span style="font-weight:500;font-size:11px;color:var(--szary-4)">EFI</span></div>
+        <div style="flex:1;background:#fde3b3;border-radius:8px;padding:14px 4px;text-align:center;font-size:12.5px;font-weight:700">sda2<br><span style="font-weight:500;font-size:11px;color:var(--szary-4)">/boot</span></div>
+        <div style="flex:1.4;background:#fde3b3;border-radius:8px;padding:14px 4px;text-align:center;font-size:12.5px;font-weight:700">sda3 … sda128<br><span style="font-weight:500;font-size:11px;color:var(--szary-4)">wszystkie równorzędne</span></div>
+        <div style="flex:0 0 106px;background:#cdeae6;border-radius:8px;padding:12px 4px;text-align:center;font-size:11.5px;font-weight:700;color:var(--granat)">Kopia wpisów<br><span style="font-weight:500;font-size:10.5px;color:var(--szary-4)">1–128</span></div>
+        <div style="flex:0 0 74px;background:var(--morski);color:#fff;border-radius:8px;padding:12px 4px;text-align:center;font-size:11.5px;font-weight:700">Kopia nagłówka<br><span style="font-weight:500;font-size:10.5px;color:#e3f4f1">ostatni sektor</span></div>
+      </div>
+      <div class="male" style="margin-top:6px">128 równorzędnych wpisów, każdy z własnym identyfikatorem GUID i nazwą; nagłówek i tablica mają kopię na końcu dysku oraz sumy kontrolne CRC32.</div>
+    </div>
+  </div>
+
+  <div class="notatka">Ochronny MBR w sektorze 0 nie opisuje partycji – mówi starym narzędziom „cały dysk zajęty”, żeby nie uznały dysku GPT za pusty i go nie nadpisały.</div>
+</div>
+</body></html>
