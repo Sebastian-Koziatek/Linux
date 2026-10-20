@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Trzeci dysk zamiast kopii</h1><span class="pod">dwa dyski z danymi + jeden z sumami kontrolnymi</span></div>
+  <div class="dyski" style="align-items:center">
+    <div class="dysk"><div class="korpus" style="width:150px">
+      <div class="blok a" style="width:124px;font-family:Menlo,monospace">1011 0010</div>
+      <div class="blok a" style="width:124px;font-family:Menlo,monospace">0011 1100</div>
+      <div class="blok a" style="width:124px;font-family:Menlo,monospace">0101 0101</div>
+      <div class="blok a" style="width:124px;font-family:Menlo,monospace">1110 0001</div>
+    </div><div class="nazwa">Dysk 1<small>dane</small></div></div>
+    <div style="font-size:30px;font-weight:700;color:#fca311;align-self:center">⊕</div>
+    <div class="dysk"><div class="korpus" style="width:150px">
+      <div class="blok b" style="width:124px;font-family:Menlo,monospace">0110 0111</div>
+      <div class="blok b" style="width:124px;font-family:Menlo,monospace">1100 0011</div>
+      <div class="blok b" style="width:124px;font-family:Menlo,monospace">0011 0011</div>
+      <div class="blok b" style="width:124px;font-family:Menlo,monospace">1001 1001</div>
+    </div><div class="nazwa">Dysk 2<small>dane</small></div></div>
+    <div style="font-size:30px;font-weight:700;color:#14213d;align-self:center">=</div>
+    <div class="dysk"><div class="korpus" style="width:150px">
+      <div class="blok p" style="width:124px;font-family:Menlo,monospace">1101 0101</div>
+      <div class="blok p" style="width:124px;font-family:Menlo,monospace">1111 1111</div>
+      <div class="blok p" style="width:124px;font-family:Menlo,monospace">0110 0110</div>
+      <div class="blok p" style="width:124px;font-family:Menlo,monospace">0111 1000</div>
+    </div><div class="nazwa">Dysk 3<small>sumy kontrolne</small></div></div>
+  </div>
+  <div class="notatka">Dla każdego rzędu bajtów macierz liczy <b>jedną sumę kontrolną</b>: bajt z dysku 1 ⊕ bajt z dysku 2. Trzy dyski po 100 GB dają 200 GB miejsca – oddajesz pojemność jednego dysku, nie połowę jak w lustrze.</div>
+</div>
+</body></html>
