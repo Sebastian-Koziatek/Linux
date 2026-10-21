@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Kolejność reguł decyduje</h1><span class="pod">iptables czyta łańcuch od góry i zatrzymuje się na pierwszym dopasowaniu</span></div>
+
+  <div class="porownanie" style="grid-template-columns:1fr 70px 1fr">
+    <div class="karta zle">
+      <h3>Reguła dopisana przez <code>-A</code></h3>
+      <p style="margin-bottom:12px">Trafia na <b>koniec</b> listy – za regułę, która już blokuje całą sieć.</p>
+      <table class="tabela" style="font-size:13px">
+        <tr><th style="width:46px">Nr</th><th>Reguła</th><th style="width:92px">Wynik</th></tr>
+        <tr><td>1</td><td>DROP &nbsp;192.168.10.240</td><td></td></tr>
+        <tr><td>2</td><td>DROP &nbsp;192.168.0.0/24 &nbsp;port 25</td><td class="nie">pasuje ✓</td></tr>
+        <tr><td>3</td><td>ACCEPT &nbsp;192.168.0.166</td><td>nigdy nie sprawdzona</td></tr>
+      </table>
+      <div class="notatka zle" style="margin-top:14px">Poczta od klienta (192.168.0.166) wpada w regułę nr 2 i ginie. Reguła nr 3 nie ma już nic do powiedzenia.</div>
+    </div>
+
+    <div class="vs"><div class="strzalka"></div></div>
+
+    <div class="karta ok">
+      <h3>Reguła wstawiona przez <code>-I</code></h3>
+      <p style="margin-bottom:12px">Trafia na <b>początek</b> listy – sprawdzana jako pierwsza.</p>
+      <table class="tabela" style="font-size:13px">
+        <tr><th style="width:46px">Nr</th><th>Reguła</th><th style="width:92px">Wynik</th></tr>
+        <tr><td>1</td><td>ACCEPT &nbsp;192.168.0.166</td><td class="tak">pasuje ✓</td></tr>
+        <tr><td>2</td><td>DROP &nbsp;192.168.10.240</td><td></td></tr>
+        <tr><td>3</td><td>DROP &nbsp;192.168.0.0/24 &nbsp;port 25</td><td></td></tr>
+      </table>
+      <div class="notatka ok" style="margin-top:14px">Poczta od klienta pasuje do reguły nr 1 i zostaje przepuszczona. Blokada spamu z reszty sieci dalej obowiązuje.</div>
+    </div>
+  </div>
+
+  <div class="podpis">Stąd różnica: <code>-A</code> (append) dokłada na dół, <code>-I</code> (insert) wstawia na górę. Wyjątki muszą stać <b>przed</b> regułą, która je obejmuje.</div>
+</div>
+</body></html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Budowa reguły iptables</h1><span class="pod">blokada ruchu z jednego adresu</span></div>
+
+  <div class="terminal" style="margin-bottom:6px">
+    <div class="pasek"><i></i><i></i><i></i><span>blokujemy adres 192.168.10.240</span></div>
+<pre><span class="p">[admin@serwer ~]$</span> sudo iptables <span class="k">-A</span> <span style="color:#7dd3fc">INPUT</span> <span style="color:#fca5a5">-s 192.168.10.240</span> <span style="color:#c4b5fd">-j DROP</span></pre>
+  </div>
+
+  <div class="wiersz" style="gap:12px;align-items:stretch;margin-top:16px">
+    <div class="karta" style="border-top:4px solid var(--bursztyn)">
+      <h3 style="font-size:15px"><code style="background:#fff7e6">-A</code> dodanie reguły</h3>
+      <p>Dopisuje ją na <b>koniec</b> łańcucha. <code>-I</code> wstawia na początek, <code>-D</code> usuwa.</p>
+    </div>
+    <div class="karta" style="border-top:4px solid #38bdf8">
+      <h3 style="font-size:15px"><code>INPUT</code> łańcuch</h3>
+      <p>Rodzaj ruchu: <b>INPUT</b> – pakiety przychodzące do serwera, <b>OUTPUT</b> – wychodzące, <b>FORWARD</b> – przekazywane dalej.</p>
+    </div>
+    <div class="karta" style="border-top:4px solid var(--czerwien)">
+      <h3 style="font-size:15px"><code>-s 192.168.10.240</code> dopasowanie</h3>
+      <p>Których pakietów dotyczy: adres lub sieć źródłowa. Inne dopasowania to m.in. <code>-p tcp</code> i <code>--dport 25</code>.</p>
+    </div>
+    <div class="karta" style="border-top:4px solid var(--fiolet)">
+      <h3 style="font-size:15px"><code>-j DROP</code> cel</h3>
+      <p>Co zrobić z pasującym pakietem: <b>DROP</b> – wyrzuć po cichu, <b>REJECT</b> – odrzuć z komunikatem, <b>ACCEPT</b> – przepuść.</p>
+    </div>
+  </div>
+
+  <div class="podpis">Każda reguła odpowiada na trzy pytania: <b>gdzie ją wpisać</b> (łańcuch), <b>czego dotyczy</b> (dopasowania) i <b>co z tym zrobić</b> (cel).</div>
+</div>
+</body></html>
