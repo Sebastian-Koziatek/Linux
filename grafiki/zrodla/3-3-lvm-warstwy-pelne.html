@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css">
+<style>
+  .blok { display: grid; grid-template-columns: 168px 1fr; column-gap: 14px; row-gap: 16px; align-items: center; }
+  .blok.lvm { position: relative; padding: 22px 0 18px; }
+  .ramka-lvm {
+    position: absolute; left: 182px; right: -10px; top: 4px; bottom: 4px;
+    border: 3px solid var(--granat); border-radius: 14px; background: #fbfcfe; z-index: 0;
+  }
+  .ramka-lvm span {
+    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+    background: #fbfcfe; padding: 0 16px; font-size: 19px; font-weight: 800; letter-spacing: .04em; color: var(--granat);
+  }
+  .etyk { text-align: right; font-size: 14.5px; font-weight: 700; color: var(--granat); position: relative; z-index: 1; }
+  .etyk small { display: block; font-weight: 600; font-size: 12px; color: var(--szary-4); }
+  .rzad { display: flex; gap: 12px; position: relative; z-index: 1; }
+  .kafel {
+    flex: 1 1 0; text-align: center; border-radius: 9px; padding: 11px 6px;
+    font-family: var(--mono); font-size: 13px; font-weight: 700; border: 2px solid; line-height: 1.3;
+  }
+  .kafel small { display: block; font-family: var(--font); font-size: 11.5px; font-weight: 600; opacity: .8; }
+  .fs, .lv { background: #dbe6f6; border-color: #3b6fb8; color: #1d3f72; }
+  .wolne { background: #e8edf5; border-color: #9fb3cf; color: #5a6b85; font-family: var(--font); }
+  .vg { background: #7ac943; border-color: #4e9c1f; color: #15330a; font-size: 15px; padding: 13px 6px; }
+  .pv { background: #fde3b3; border-color: #d99a0b; color: #6b4600; }
+  .part { background: #f9c7cc; border-color: var(--czerwien); color: #8c1f28; }
+  .naped { flex: 1 1 0; }
+  .naped .walec {
+    height: 54px; border: 2px solid var(--granat); border-radius: 50% / 16px;
+    background: linear-gradient(180deg,#eef2f8 0%,#dfe6f0 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--granat);
+  }
+</style>
+</head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Warstwy LVM</h1><span class="pod">od dysków fizycznych po zamontowane systemy plików</span></div>
+
+  <div class="blok lvm">
+    <div class="ramka-lvm"><span>LVM</span></div>
+
+    <div class="etyk">Systemy plików</div>
+    <div class="rzad">
+      <div class="kafel fs" style="flex:2 1 0">/mnt/data<small>ReiserFS</small></div>
+      <div class="kafel fs" style="flex:2 1 0">/mnt/backup<small>EXT3</small></div>
+      <div class="kafel wolne" style="flex:1 1 0">Wolna przestrzeń</div>
+    </div>
+
+    <div class="etyk">Woluminy logiczne<small>LV</small></div>
+    <div class="rzad">
+      <div class="kafel lv" style="flex:2 1 0">/dev/datavg/data</div>
+      <div class="kafel lv" style="flex:2 1 0">/dev/datavg/backup</div>
+      <div class="kafel wolne" style="flex:1 1 0">nieprzydzielone</div>
+    </div>
+
+    <div class="etyk">Grupa woluminów<small>VG</small></div>
+    <div class="rzad"><div class="kafel vg">datavg</div></div>
+
+    <div class="etyk">Woluminy fizyczne<small>PV</small></div>
+    <div class="rzad">
+      <div class="kafel pv">/dev/sda1</div>
+      <div class="kafel pv">/dev/sdb1</div>
+      <div class="kafel pv">/dev/sdc1</div>
+      <div class="kafel pv">/dev/sdd1</div>
+      <div class="kafel pv">/dev/sde1</div>
+    </div>
+  </div>
+
+  <div class="blok" style="margin-top:16px">
+    <div class="etyk">Partycje</div>
+    <div class="rzad">
+      <div class="kafel part">/dev/sda1</div>
+      <div class="kafel part">/dev/sdb1</div>
+      <div class="kafel part">/dev/sdc1</div>
+      <div class="kafel part">/dev/sdd1</div>
+      <div class="kafel part">/dev/sde1</div>
+    </div>
+
+    <div class="etyk">Dyski twarde</div>
+    <div class="rzad">
+      <div class="naped"><div class="walec">/dev/sda</div></div>
+      <div class="naped"><div class="walec">/dev/sdb</div></div>
+      <div class="naped"><div class="walec">/dev/sdc</div></div>
+      <div class="naped"><div class="walec">/dev/sdd</div></div>
+      <div class="naped"><div class="walec">/dev/sde</div></div>
+    </div>
+  </div>
+
+  <div class="podpis">Każdy poziom opiera się na poprzednim: dysk → partycja → wolumin fizyczny (PV) → wspólna pula (VG) → wycięte z niej woluminy logiczne (LV) → systemy plików w punktach montowania. Nieprzydzielone miejsce w grupie czeka na powiększenie dowolnego woluminu.</div>
+</div>
+</body></html>
