@@ -239,3 +239,31 @@ code { font-family: var(--mono); font-size: 0.92em; background: var(--szary-2); 
   color: var(--akcent, var(--bursztyn)); margin-bottom: 10px;
 }
 .naglowek h1 { position: relative; margin: 0; font-size: 40px; font-weight: 800; color: var(--bialy); letter-spacing: -0.01em; max-width: 860px; line-height: 1.12; }
+
+/* ---- klamra spinająca kilka elementów (etykieta pojemności nad dyskami) ---- */
+.klamra { position: relative; padding-top: 34px; }
+.klamra::before {
+  content: ""; position: absolute; left: 6%; right: 6%; top: 22px; height: 14px;
+  border: 3px solid var(--granat); border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+.klamra::after {
+  content: ""; position: absolute; left: 50%; top: 10px; width: 3px; height: 12px;
+  background: var(--granat); transform: translateX(-50%);
+}
+.klamra > .etykieta {
+  position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
+  background: var(--szary-1); padding: 0 12px; font-weight: 800; font-size: 15px; white-space: nowrap;
+}
+
+/* ---- poziomy pasek reprezentujący plik ---- */
+.plik {
+  border-radius: 8px; padding: 11px 0; text-align: center;
+  font-weight: 800; font-size: 15px; border: 2px solid;
+}
+.plik.caly { background: #cfe0f7; border-color: #3b6fb8; color: #1d3f72; }
+.plik.zly { background: #f9c7cc; border-color: var(--czerwien); color: var(--czerwien); }
+.plik.dzielony { border-color: var(--bursztyn); color: var(--granat); padding: 0; display: flex; overflow: hidden; }
+.plik.dzielony span { padding: 11px 0; flex: 1 1 0; }
+.plik.dzielony span:first-child { background: #f5a623; }
+.plik.dzielony span:last-child { background: #ffd770; }
