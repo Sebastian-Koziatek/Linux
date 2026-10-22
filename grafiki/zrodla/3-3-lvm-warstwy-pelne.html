@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css">
 <style>
-  .blok { display: grid; grid-template-columns: 168px 1fr; column-gap: 14px; row-gap: 16px; align-items: center; }
+  .blok { display: grid; grid-template-columns: 168px 1fr; column-gap: 14px; row-gap: 0; align-items: center; }
   .blok.lvm { position: relative; padding: 22px 0 18px; }
   .ramka-lvm {
     position: absolute; left: 182px; right: -10px; top: 4px; bottom: 4px;
@@ -31,6 +31,13 @@
     display: flex; align-items: center; justify-content: center;
     font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--granat);
   }
+  /* pionowe łączniki między warstwami */
+  .lacz { grid-column: 2; display: flex; gap: 12px; height: 18px; position: relative; z-index: 1; }
+  .lacz i { flex: 1 1 0; position: relative; }
+  .lacz i::after {
+    content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px;
+    background: #5b8fd4; transform: translateX(-50%); border-radius: 2px;
+  }
 </style>
 </head>
 <body>
@@ -47,6 +54,8 @@
       <div class="kafel wolne" style="flex:1 1 0">Wolna przestrzeń</div>
     </div>
 
+    <div class="lacz"><i style="flex:2 1 0"></i><i style="flex:2 1 0"></i><i style="flex:1 1 0"></i></div>
+
     <div class="etyk">Woluminy logiczne<small>LV</small></div>
     <div class="rzad">
       <div class="kafel lv" style="flex:2 1 0">/dev/datavg/data</div>
@@ -54,8 +63,12 @@
       <div class="kafel wolne" style="flex:1 1 0">nieprzydzielone</div>
     </div>
 
+    <div class="lacz"><i style="flex:2 1 0"></i><i style="flex:2 1 0"></i><i style="flex:1 1 0"></i></div>
+
     <div class="etyk">Grupa woluminów<small>VG</small></div>
     <div class="rzad"><div class="kafel vg">datavg</div></div>
+
+    <div class="lacz"><i></i><i></i><i></i><i></i><i></i></div>
 
     <div class="etyk">Woluminy fizyczne<small>PV</small></div>
     <div class="rzad">
@@ -67,9 +80,10 @@
     </div>
   </div>
 
-  <div class="blok" style="margin-top:16px">
-    <div class="etyk">Partycje</div>
-    <div class="rzad">
+  <div class="blok">
+    <div class="etyk" style="grid-row:2">Partycje</div>
+    <div class="lacz" style="grid-row:1"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="rzad" style="grid-row:2">
       <div class="kafel part">/dev/sda1</div>
       <div class="kafel part">/dev/sdb1</div>
       <div class="kafel part">/dev/sdc1</div>
@@ -77,8 +91,10 @@
       <div class="kafel part">/dev/sde1</div>
     </div>
 
-    <div class="etyk">Dyski twarde</div>
-    <div class="rzad">
+    <div class="lacz" style="grid-row:3"><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="etyk" style="grid-row:4">Dyski twarde</div>
+    <div class="rzad" style="grid-row:4">
       <div class="naped"><div class="walec">/dev/sda</div></div>
       <div class="naped"><div class="walec">/dev/sdb</div></div>
       <div class="naped"><div class="walec">/dev/sdc</div></div>
