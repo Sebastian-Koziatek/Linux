@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Budowa systemu plików ext2</h1><span class="pod">od partycji do grupy bloków</span></div>
+
+  <div class="warstwa-opis">Dysk</div>
+  <div class="pasek">
+    <div class="seg meta">Partycja 0</div>
+    <div class="seg meta" style="flex:1.4 1 0;background:#dbe6f6">Partycja 1</div>
+    <div class="seg meta">Partycja 2</div>
+  </div>
+  <div class="rozwin"></div>
+
+  <div class="warstwa-opis">System plików na jednej partycji</div>
+  <div class="pasek">
+    <div class="seg boot">Sektor<br>rozruchowy</div>
+    <div class="seg grupa">Grupa bloków 0</div>
+    <div class="seg grupa">Grupa bloków 1</div>
+    <div class="seg grupa">Grupa bloków 2</div>
+    <div class="seg kropki">…</div>
+    <div class="seg grupa">Grupa bloków N</div>
+  </div>
+  <div class="rozwin"></div>
+
+  <div class="warstwa-opis">Pojedyncza grupa bloków</div>
+  <div class="pasek">
+    <div class="seg meta">Superblok<small>parametry systemu plików</small></div>
+    <div class="seg meta">Deskryptor grupy<small>opis zawartości</small></div>
+    <div class="seg meta">Mapa bloków<small>zajęte / wolne</small></div>
+    <div class="seg meta">Mapa i-węzłów<small>zajęte / wolne</small></div>
+    <div class="seg inode" style="flex:1.3 1 0">Tablica i-węzłów<small>metadane plików</small></div>
+    <div class="seg dane" style="flex:2 1 0">Bloki danych<small>zawartość plików</small></div>
+  </div>
+
+  <div class="podpis">Partycja dzieli się na grupy bloków, a każda grupa ma ten sam układ: informacje o sobie, mapy wolnego miejsca, tablicę i-węzłów (metadane plików) i właściwe dane. Ext2 <b>nie ma dziennika</b> — po nagłym wyłączeniu zasilania system plików trzeba sprawdzić w całości.</div>
+</div>
+</body></html>

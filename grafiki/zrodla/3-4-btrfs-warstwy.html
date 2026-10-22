@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika">
+  <div class="tytul"><h1>Budowa Btrfs</h1><span class="pod">warstwy od danych użytkownika do urządzeń blokowych</span></div>
+  <div class="warstwy">
+    <div class="warstwa" style="background:var(--bialy)">Dane użytkownika <small>pliki i katalogi</small></div>
+    <div class="warstwa w1">Podwoluminy <small>niezależne „systemy plików” w jednym systemie plików</small></div>
+    <div class="warstwa w4" style="background:#2f7d32;border-color:#2f7d32">Metadane i ekstenty <small>drzewa B, sumy kontrolne</small></div>
+    <div class="warstwa" style="background:var(--fiolet);color:var(--bialy);border-color:var(--fiolet)" data-jasny="1">Logiczna przestrzeń adresowa <small>wspólna dla wszystkich urządzeń</small></div>
+    <div class="warstwa" style="background:transparent;border:none;padding:0">
+      <div class="dyski" style="width:100%;gap:12px">
+        <div class="kafel-dysk">urządzenie 1</div>
+        <div class="kafel-dysk">urządzenie 2</div>
+        <div class="kafel-dysk">urządzenie N</div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .kafel-dysk { flex:1 1 0; text-align:center; padding:11px 6px; border-radius:8px;
+      background:#f7b24a; border:2px solid #d99a0b; font-weight:700; font-size:13.5px; color:#6b4600; }
+    .warstwa[data-jasny] small { color: #e4e0fb; }
+  </style>
+  <div class="podpis">Btrfs sam zarządza wieloma urządzeniami: skleja je w jedną logiczną przestrzeń, a nad nią buduje metadane z sumami kontrolnymi i podwoluminy, z których robi migawki.</div>
+</div>
+</body></html>

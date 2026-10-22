@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Budowa puli ZFS (zpool)</h1><span class="pod">pula składa się z grup dysków zwanych vdev</span></div>
+
+  <div class="karta" style="border-color:var(--morski);margin-bottom:14px">
+    <h3 style="color:var(--morski)">Dyski pomocnicze (support vdevs)</h3>
+    <div class="wiersz" style="gap:12px;margin-top:10px">
+      <div class="karta" style="padding:12px 14px"><h3 style="font-size:14px">CACHE</h3><p style="font-size:12.5px">zwany L2ARC — szybki dysk podręczny na odczyty</p></div>
+      <div class="karta" style="padding:12px 14px"><h3 style="font-size:14px">LOG</h3><p style="font-size:12.5px">zwany SLOG — przechowuje dziennik zamiarów zapisu</p></div>
+      <div class="karta" style="padding:12px 14px"><h3 style="font-size:14px">SPECIAL</h3><p style="font-size:12.5px">szybkie lustro na metadane</p></div>
+    </div>
+  </div>
+
+  <div class="karta" style="border-color:#3b6fb8">
+    <h3 style="color:#1d3f72">Dyski danych (storage vdevs)</h3>
+    <p style="margin:6px 0 12px">Tu leżą dane. Każdy vdev może być pojedynczym dyskiem, lustrem albo macierzą RAID-Z1/Z2/Z3. Poniżej cztery vdevy RAID-Z2, każdy z pięciu dysków — dane kontrolne zajmują w nich po dwa dyski.</p>
+    <div class="wiersz" style="gap:12px;flex-wrap:wrap">
+      <div class="vdev"><b>raidz2-0</b><div class="dyski-rz"><i></i><i></i><i></i><i class="p"></i><i class="p"></i></div></div>
+      <div class="vdev"><b>raidz2-1</b><div class="dyski-rz"><i></i><i></i><i></i><i class="p"></i><i class="p"></i></div></div>
+      <div class="vdev"><b>raidz2-2</b><div class="dyski-rz"><i></i><i></i><i></i><i class="p"></i><i class="p"></i></div></div>
+      <div class="vdev"><b>raidz2-3</b><div class="dyski-rz"><i></i><i></i><i></i><i class="p"></i><i class="p"></i></div></div>
+    </div>
+  </div>
+
+  <style>
+    .vdev { flex:1 1 44%; border:1px solid var(--szary-3); border-radius:10px; padding:10px 12px; background:var(--bialy); }
+    .vdev b { font-size:13px; display:block; margin-bottom:8px; }
+    .dyski-rz { display:flex; gap:8px; }
+    .dyski-rz i { flex:1 1 0; height:40px; border-radius:6px; background:#e3e9f2; border:2px solid var(--granat); display:block; }
+    .dyski-rz i.p { background:#c9c2f7; border-color:var(--fiolet); }
+  </style>
+
+  <div class="podpis">Pula rozkłada dane na wszystkie vdevy danych, ale <b>odporność na awarię istnieje tylko wewnątrz vdevu</b> — utrata całego vdevu oznacza utratę puli. Dyski pomocnicze przyspieszają pracę, lecz same danych nie chronią.</div>
+</div>
+</body></html>

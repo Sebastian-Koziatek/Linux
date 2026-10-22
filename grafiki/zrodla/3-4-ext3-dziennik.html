@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>ext3 — dziennik (journal)</h1><span class="pod">zapis najpierw trafia do dziennika, potem na swoje miejsce</span></div>
+
+  <div class="warstwa-opis">System plików</div>
+  <div class="pasek">
+    <div class="seg boot">Sektor<br>rozruchowy</div>
+    <div class="seg dziennik" style="flex:1.2 1 0">Dziennik</div>
+    <div class="seg grupa">Grupa bloków 0</div>
+    <div class="seg grupa">Grupa bloków 1</div>
+    <div class="seg kropki">…</div>
+    <div class="seg grupa">Grupa bloków N</div>
+  </div>
+  <div class="rozwin"></div>
+
+  <div class="warstwa-opis">Wnętrze dziennika</div>
+  <div class="pasek">
+    <div class="seg poczatek">Początek<br>transakcji</div>
+    <div class="seg wpis">Dane bloku 123</div>
+    <div class="seg wpis">Dane bloku 765</div>
+    <div class="seg koniec">Koniec<br>transakcji</div>
+    <div class="seg poczatek">Początek<br>transakcji</div>
+    <div class="seg wpis">Dane bloku 1024</div>
+    <div class="seg kropki">…</div>
+  </div>
+  <div style="margin-top:10px;display:flex;align-items:center;gap:12px">
+    <div style="flex:0 0 62%;border:2px dashed var(--czerwien);border-radius:8px;height:16px"></div>
+    <div style="font-size:13px;font-weight:800;color:var(--czerwien)">zatwierdzone (committed)</div>
+  </div>
+
+  <div class="podpis">Zamknięta klamrą transakcja — z początkiem i końcem — jest <b>kompletna</b>, więc po awarii system odtwarza ją z dziennika. Transakcja bez zapisanego końca zostaje odrzucona. Dlatego ext3 wstaje po nagłym wyłączeniu w kilka sekund zamiast sprawdzać cały dysk.</div>
+</div>
+</body></html>

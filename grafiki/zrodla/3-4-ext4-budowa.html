@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Budowa systemu plików ext4</h1><span class="pod">grupy bloków z zapasem na rozbudowę</span></div>
+
+  <div class="warstwa-opis">System plików</div>
+  <div class="pasek">
+    <div class="seg boot">Blok<br>rozruchowy</div>
+    <div class="seg grupa">Grupa bloków 0</div>
+    <div class="seg grupa">Grupa bloków 1</div>
+    <div class="seg kropki">…</div>
+    <div class="seg grupa">Grupa bloków n</div>
+  </div>
+  <div class="rozwin"></div>
+
+  <div class="warstwa-opis">Pojedyncza grupa bloków</div>
+  <div class="pasek">
+    <div class="seg meta">Superblok<small>1 blok</small></div>
+    <div class="seg meta">GDT<small>n bloków</small></div>
+    <div class="seg meta">Zapasowy GDT<small>n bloków</small></div>
+    <div class="seg meta">Mapa bloków<small>1 blok</small></div>
+    <div class="seg meta">Mapa i-węzłów<small>1 blok</small></div>
+    <div class="seg inode" style="flex:1.2 1 0">Tablica i-węzłów<small>n bloków</small></div>
+    <div class="seg dane" style="flex:2 1 0">Bloki danych<small>n bloków</small></div>
+  </div>
+
+  <div class="podpis">Układ jak w ext2 i ext3, ale z <b>zapasowym deskryptorem grup</b> (GDT), dzięki któremu system plików da się powiększyć bez odmontowania. Ext4 zapisuje dane <b>ekstentami</b> — ciągłymi obszarami zamiast listy pojedynczych bloków — co przyspiesza pracę na dużych plikach.</div>
+</div>
+</body></html>

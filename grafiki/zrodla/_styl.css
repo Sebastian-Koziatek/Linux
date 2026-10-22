@@ -257,13 +257,40 @@ code { font-family: var(--mono); font-size: 0.92em; background: var(--szary-2); 
 }
 
 /* ---- poziomy pasek reprezentujący plik ---- */
-.plik {
+.pasek-pliku {
   border-radius: 8px; padding: 11px 0; text-align: center;
   font-weight: 800; font-size: 15px; border: 2px solid;
 }
-.plik.caly { background: #cfe0f7; border-color: #3b6fb8; color: #1d3f72; }
-.plik.zly { background: #f9c7cc; border-color: var(--czerwien); color: var(--czerwien); }
-.plik.dzielony { border-color: var(--bursztyn); color: var(--granat); padding: 0; display: flex; overflow: hidden; }
-.plik.dzielony span { padding: 11px 0; flex: 1 1 0; }
-.plik.dzielony span:first-child { background: #f5a623; }
-.plik.dzielony span:last-child { background: #ffd770; }
+.pasek-pliku.caly { background: #cfe0f7; border-color: #3b6fb8; color: #1d3f72; }
+.pasek-pliku.zly { background: #f9c7cc; border-color: var(--czerwien); color: var(--czerwien); }
+.pasek-pliku.dzielony { border-color: var(--bursztyn); color: var(--granat); padding: 0; display: flex; overflow: hidden; }
+.pasek-pliku.dzielony span { padding: 11px 0; flex: 1 1 0; }
+.pasek-pliku.dzielony span:first-child { background: #f5a623; }
+.pasek-pliku.dzielony span:last-child { background: #ffd770; }
+
+/* ---- pasek podzielony na segmenty (budowa systemu plików, dziennik) ---- */
+.pasek { display: flex; gap: 0; border: 2px solid var(--granat); border-radius: 8px; overflow: hidden; }
+.pasek .seg {
+  flex: 1 1 0; text-align: center; padding: 10px 6px; font-size: 13px; font-weight: 700;
+  border-right: 2px solid var(--granat); line-height: 1.25; color: var(--granat);
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+}
+.pasek .seg:last-child { border-right: none; }
+.pasek .seg small { font-weight: 600; font-size: 11px; color: var(--szary-4); }
+.pasek .seg.boot { background: var(--szary-2); flex: 0 0 90px; }
+.pasek .seg.grupa { background: #f7b24a; }
+.pasek .seg.dziennik { background: #ffe066; }
+.pasek .seg.meta { background: var(--bialy); }
+.pasek .seg.inode { background: #ffe066; }
+.pasek .seg.dane { background: #86d98f; }
+.pasek .seg.poczatek { background: #f28b82; color: #7f1d1d; }
+.pasek .seg.koniec { background: #8ab4f8; color: #1e3a8a; }
+.pasek .seg.wpis { background: #ffe066; }
+.pasek .seg.kropki { background: var(--bialy); color: var(--szary-4); font-weight: 800; letter-spacing: 2px; }
+
+/* podpis warstwy nad paskiem */
+.warstwa-opis { font-size: 13.5px; font-weight: 800; color: var(--granat); margin: 0 0 6px 2px; }
+.rozwin { display: flex; justify-content: center; margin: 2px 0; }
+.rozwin::after {
+  content: ""; border: 10px solid transparent; border-top: 14px solid var(--szary-3);
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="_styl.css"></head>
+<body>
+<div id="grafika" class="grafika szeroka">
+  <div class="tytul"><h1>Jakie systemy plików mam w systemie</h1><span class="pod">polecenie <code>lsblk -f</code></span></div>
+  <div class="terminal">
+    <div class="pasek"><i></i><i></i><i></i><span>lsblk -f</span></div>
+<pre><span class="p">[szkolenie@serwer ~]$</span> lsblk -f
+NAME          FSTYPE      FSVER LABEL  UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
+sda
+├─sda1        <span class="k">xfs</span>                      92adc14b-924d-419d-85fc-845412995116   659,9M    31% /boot
+└─sda2        LVM2_member LVM2 001     NLDVOv-q3zo-nqP4-WLmr-NxDM-GhDr-BlpHHn
+  ├─cs-root   <span class="k">xfs</span>                      5f82e6da-c1ae-4736-8b1c-c890426ed698    33,4G     4% /
+  └─cs-swap   <span class="d">swap</span>        1            b1678d87-7e63-473d-b0af-508f0e24fb81                 [SWAP]
+sdb
+└─sdb1        LVM2_member LVM2 001     em6Szg-cwao-3Pc3-G7Ny-awb2-l5Wk-326UNX
+  └─cs-dane   <span class="k">ext4</span>        1.0          57691b9b-9543-4c8c-b0df-0c1c6376e282            /dane
+sr0           <span class="d">iso9660</span>           Rocky-9-BaseOS-x86_64</pre>
+  </div>
+  <div class="podpis">Kolumna <b>FSTYPE</b> mówi, jaki system plików jest na danym urządzeniu, <b>UUID</b> to jego trwały identyfikator (używany w <code>/etc/fstab</code>), a <b>MOUNTPOINTS</b> — gdzie jest zamontowany. Puste pola przy <code>sda</code> i <code>sdb</code> to same dyski, które systemu plików nie mają — mają go dopiero partycje.</div>
+</div>
+</body></html>
